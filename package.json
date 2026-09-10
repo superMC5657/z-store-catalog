@@ -1,0 +1,20 @@
+{
+  "name": "z-store-catalog",
+  "version": "1.0.0",
+  "description": "The official open-source application catalog and manifest repository for Z-Store.",
+  "type": "module",
+  "scripts": {
+    "refresh": "node scripts/refresh-catalog.mjs",
+    "test": "node scripts/validate-catalog.mjs",
+    "validate": "node scripts/validate-catalog.mjs"
+  },
+  "keywords": [
+    "z-store",
+    "catalog",
+    "open-source",
+    "app-store",
+    "manifest"
+  ],
+  "author": "supermc",
+  "license": "MIT"
+}

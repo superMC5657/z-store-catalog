@@ -1,0 +1,26 @@
+name: Validate Catalog PR
+
+on:
+  pull_request:
+    paths:
+      - 'catalog.json'
+      - 'scripts/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'catalog.json'
+
+jobs:
+  validate:
+    name: Validate Catalog Schema & Rules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate Catalog
+        run: node scripts/validate-catalog.mjs
