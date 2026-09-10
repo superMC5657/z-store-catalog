@@ -1,12 +1,12 @@
 # Z-Store Catalog
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/supermc/z-store/main/src-tauri/icons/128x128.png" width="96" height="96" alt="Z-Store Logo" />
+  <img src="https://raw.githubusercontent.com/superMC5657/z-store/main/src-tauri/icons/128x128.png" width="96" height="96" alt="Z-Store Logo" />
 </p>
 
 <p align="center">
   <b>Z-Store 官方开源应用收录清单与生态数据仓库</b><br>
-  Official Open-Source Application Catalog & Manifest Repository for <a href="https://github.com/supermc/z-store">Z-Store</a>.
+  Official Open-Source Application Catalog & Manifest Repository for <a href="https://github.com/superMC5657/z-store">Z-Store</a>.
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 ## 📖 简介 (Introduction)
 
-本仓库是 [Z-Store](https://github.com/supermc/z-store)（基于 Tauri 2 + Rust 的跨平台开源应用商店）的官方数据源仓库。
+本仓库是 [Z-Store](https://github.com/superMC5657/z-store)（基于 Tauri 2 + Rust 的跨平台开源应用商店）的官方数据源仓库。
 
 参照成熟包管理器（如 Homebrew Cask、Winget-pkgs、Scoop Bucket）的工程实践，我们将**生态内容数据**与**客户端运行时引擎**彻底解耦。本仓库负责：
 - 集中收录与维护全球优秀的开源软件；
