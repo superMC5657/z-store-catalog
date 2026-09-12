@@ -92,6 +92,12 @@ for (let i = 0; i < catalog.length; i++) {
   await new Promise((r) => setTimeout(r, 200));
 }
 
-// 格式化写回 catalog.json
-fs.writeFileSync(catalogPath, JSON.stringify(catalog, null, 2) + '\n', 'utf8');
+// 格式化写回 catalog.json（保持纯标量数组单行，不换行展开）
+const rawJson = JSON.stringify(catalog, null, 2);
+const formattedJson = rawJson.replace(/\[\s*\n([^\[\]\{\}]*?)\n\s*\]/g, (_match, inner) => {
+  const items = inner.split('\n').map((line) => line.trim()).filter(Boolean).join(' ');
+  return `[${items}]`;
+}) + '\n';
+fs.writeFileSync(catalogPath, formattedJson, 'utf8');
 console.log(`\n🎉 保鲜完成！已成功保鲜 ${updatedCount}/${catalog.length} 款应用数据。`);
+

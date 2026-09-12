@@ -35,11 +35,7 @@ git checkout -b add-my-app
   "repo": "repository-name",
   "forge": "github",
   "icon": "https://raw.githubusercontent.com/owner/repo/main/logo.png",
-  "platforms": [
-    "windows",
-    "macos",
-    "linux"
-  ],
+  "platforms": ["windows", "macos", "linux"],
   "identifiers": {
     "windows": ["AppName.exe"],
     "linux": ["appname"],
