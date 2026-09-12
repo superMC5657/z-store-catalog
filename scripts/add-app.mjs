@@ -89,9 +89,12 @@ function parseRepoInput(input) {
  */
 async function probeRepoLogo(owner, repo, headers) {
   const candidatePaths = [
+    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/res/icon.png`,
     `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/assets/icon.png`,
     `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/assets/logo.png`,
     `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/assets/app-icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/src-tauri/icons/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/buildResources/icon.png`,
     `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/public/icon.png`,
     `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/public/logo.png`,
     `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/public/app-icon.png`,
