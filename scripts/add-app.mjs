@@ -85,31 +85,149 @@ function parseRepoInput(input) {
 }
 
 /**
+ * 路径打分器：对单个仓库文件路径评分，优先选择应用官方高清图标/矢量Logo
+ */
+function scoreIconCandidate(filePath, size, repoName) {
+  const lower = filePath.toLowerCase();
+  const ext = path.extname(lower);
+  if (ext !== '.png' && ext !== '.svg' && ext !== '.ico') return -100;
+
+  // 排除无关或第三方依赖目录
+  if (
+    lower.includes('node_modules/') ||
+    lower.includes('vendor/') ||
+    lower.includes('tests/') ||
+    lower.includes('test/') ||
+    lower.includes('.github/') ||
+    lower.includes('dist/') ||
+    lower.includes('target/') ||
+    lower.includes('ui-lightness') ||
+    lower.includes('jquery')
+  ) {
+    return -100;
+  }
+
+  // 排除非 Logo 的营销或状态图片
+  if (
+    lower.includes('screenshot') ||
+    lower.includes('preview') ||
+    lower.includes('banner') ||
+    lower.includes('badge') ||
+    lower.includes('demo') ||
+    lower.includes('diagram') ||
+    lower.includes('architecture') ||
+    lower.includes('cover')
+  ) {
+    return -50;
+  }
+
+  // 排除节日特殊主题图标（如 aprilfools, xmas）
+  if (lower.includes('aprilfools') || lower.includes('xmas') || lower.includes('christmas')) {
+    return -30;
+  }
+
+  // 排除 Git LFS 指针文本文件 (~130 字节)
+  if (size && size < 300) {
+    return -100;
+  }
+
+  let score = 0;
+  const filename = path.basename(lower);
+  const cleanRepo = (repoName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  // 1. 文件名核心匹配
+  if (['icon.png', 'app-icon.png', 'app_icon.png', 'logo.png', 'applogo.png'].includes(filename)) {
+    score += 100;
+  } else if (['icon.svg', 'logo.svg', 'app-icon.svg', 'app_icon.svg'].includes(filename)) {
+    score += 95;
+  } else if (cleanRepo && (filename === `${cleanRepo}.png` || filename === `${cleanRepo}.svg`)) {
+    score += 90;
+  } else if (['icon.ico', 'app.ico', 'logo.ico', '7ziplogo.ico'].includes(filename)) {
+    score += 70;
+  } else if (filename.includes('icon') || filename.includes('logo')) {
+    score += 50;
+  }
+
+  // 2. 分辨率加权 (优先 512, 256, 1024, large 等高清图)
+  if (lower.includes('512') || lower.includes('large') || lower.includes('hi-res') || lower.includes('hires') || lower.includes('1024')) {
+    score += 40;
+  } else if (lower.includes('256')) {
+    score += 30;
+  } else if (lower.includes('128')) {
+    score += 20;
+  } else if (lower.includes('64')) {
+    score += 10;
+  } else if (lower.includes('32')) {
+    score += 5;
+  } else if (lower.includes('16')) {
+    score -= 20;
+  }
+
+  // 3. 语义目录加权
+  if (lower.startsWith('res/') || lower.startsWith('assets/') || lower.startsWith('resources/') || lower.startsWith('media/') || lower.startsWith('public/')) {
+    score += 25;
+  }
+  if (lower.includes('/app/') || lower.includes('/icon/') || lower.includes('/icons/') || lower.includes('src-tauri/icons')) {
+    score += 20;
+  }
+  if (lower.includes('desktop') || lower.includes('packaging') || lower.includes('gtk/icons') || lower.includes('extra/logo')) {
+    score += 15;
+  }
+
+  return score;
+}
+
+/**
  * 探测远程仓库中的高质量 Logo
  */
-async function probeRepoLogo(owner, repo, headers) {
+async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD') {
+  // 1. 优先调用 GitHub Git Trees API 遍历全量仓库路径进行启发式智能推荐 (单次调用纵览全库且内置文件字节大小)
+  try {
+    const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${defaultBranch}?recursive=1`;
+    const treeRes = await fetch(treeUrl, { headers, signal: AbortSignal.timeout(6000) });
+    if (treeRes.ok) {
+      const treeData = await treeRes.json();
+      if (Array.isArray(treeData.tree)) {
+        const scored = treeData.tree
+          .filter((node) => node.type === 'blob' && typeof node.path === 'string')
+          .map((node) => ({ path: node.path, score: scoreIconCandidate(node.path, node.size, repo), size: node.size }))
+          .filter((item) => item.score > 0)
+          .sort((a, b) => b.score - a.score);
+
+        if (scored.length > 0) {
+          const best = scored[0];
+          return `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${best.path}`;
+        }
+      }
+    }
+  } catch (err) {
+    // API 超时或受限时平滑降级至静态目录探测
+  }
+
+  // 2. 平滑降级：快速探测常见静态候选路径
   const candidatePaths = [
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/res/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/assets/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/assets/logo.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/assets/app-icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/src-tauri/icons/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/buildResources/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/public/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/public/logo.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/public/app-icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/resources/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/icon.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/logo.png`,
-    `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/logo.svg`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/res/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/assets/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/assets/logo.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/assets/app-icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/src-tauri/icons/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/buildResources/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/public/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/public/logo.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/public/app-icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/resources/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/icon.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/logo.png`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/logo.svg`,
   ];
 
   for (const url of candidatePaths) {
     try {
-      const res = await fetch(url, { method: 'HEAD', headers, signal: AbortSignal.timeout(2500) });
+      const res = await fetch(url, { method: 'HEAD', headers, signal: AbortSignal.timeout(2000) });
       if (res.status === 200) {
         const cType = res.headers.get('content-type') || '';
-        if (cType.startsWith('image/') || cType.includes('octet-stream')) {
+        const cLength = parseInt(res.headers.get('content-length') || '0', 10);
+        if ((cType.startsWith('image/') || cType.includes('octet-stream') || cType.includes('svg')) && (cLength === 0 || cLength > 300)) {
           return url;
         }
       }
@@ -118,7 +236,7 @@ async function probeRepoLogo(owner, repo, headers) {
     }
   }
 
-  // 兜底回退为 GitHub 官方头像 CDN
+  // 3. 终极兜底：回退为 GitHub 官方头像 CDN
   return `https://github.com/${owner}.png`;
 }
 
@@ -296,7 +414,7 @@ async function main() {
 
   // 3. 探测图标与推断平台
   console.log('🔍 正在自动探测高清矢量/PNG 图标并推断平台资产...');
-  const detectedIcon = await probeRepoLogo(owner, repo, headers);
+  const detectedIcon = await probeRepoLogo(owner, repo, headers, repoData.default_branch || 'HEAD');
   const { platforms: deducedPlatforms, identifiers: deducedIdentifiers } = deducePlatformsAndIdentifiers(
     repoData.name,
     latestRelease?.assets
