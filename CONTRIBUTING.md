@@ -22,7 +22,18 @@
 git checkout -b add-my-app
 ```
 
-### 2. 在 `catalog.json` 末尾追加应用配置
+### 2. 添加应用配置
+
+#### 方式 A：极速智能收录（推荐，10 秒搞定）
+运行自动收录脚本，输入 GitHub 仓库地址，脚本会自动抓取 Stars、Forks、Releases 产物、推断支持平台并探测高清 Logo：
+
+```bash
+pnpm add:app <github-repo-url>
+# 或
+node scripts/add-app.mjs <owner/repo>
+```
+
+#### 方式 B：手动在 `catalog.json` 末尾追加
 在 `catalog.json` 数组中添加一项，填入基础信息：
 
 ```json

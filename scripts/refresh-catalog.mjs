@@ -34,10 +34,10 @@ const headers = {
   'Accept': 'application/vnd.github.v3+json',
 };
 if (token) {
-  headers['Authorization'] = `token ${token}`;
+  headers['Authorization'] = `token ${token.trim()}`;
   console.log('🔑 使用环境变量中的 GitHub Token 进行高速拉取 (5000次/小时)');
 } else {
-  console.log('⚠️ 未检测到 GITHUB_TOKEN，将使用公开匿名限额 (60次/小时)');
+  console.log('⚠️ 未检测到 Token 环境变量，将使用公开匿名限额 (60次/小时)');
 }
 
 let updatedCount = 0;
@@ -99,5 +99,14 @@ const formattedJson = rawJson.replace(/\[\s*\n([^\[\]\{\}]*?)\n\s*\]/g, (_match,
   return `[${items}]`;
 }) + '\n';
 fs.writeFileSync(catalogPath, formattedJson, 'utf8');
+console.log(`💾 已写回清单仓库: ${path.relative(rootDir, catalogPath)}`);
+
+// 同步检测：若本地存在客户端根目录种子 catalog.json (../../catalog.json)，顺手一并同步！
+const clientCatalogPath = path.resolve(rootDir, '../../catalog.json');
+if (fs.existsSync(clientCatalogPath)) {
+  fs.writeFileSync(clientCatalogPath, formattedJson, 'utf8');
+  console.log(`🚀 已自动同步至主客户端离线种子: ${path.relative(rootDir, clientCatalogPath)}`);
+}
+
 console.log(`\n🎉 保鲜完成！已成功保鲜 ${updatedCount}/${catalog.length} 款应用数据。`);
 

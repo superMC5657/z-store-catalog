@@ -4,6 +4,8 @@
   "description": "The official open-source application catalog and manifest repository for Z-Store.",
   "type": "module",
   "scripts": {
+    "add": "node scripts/add-app.mjs",
+    "add:app": "node scripts/add-app.mjs",
     "refresh": "node scripts/refresh-catalog.mjs",
     "test": "node scripts/validate-catalog.mjs",
     "validate": "node scripts/validate-catalog.mjs"

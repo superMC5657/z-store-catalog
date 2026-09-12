@@ -83,13 +83,20 @@
 ## 🛠️ 本地维护脚本 (Scripts)
 
 ```bash
+# 极速一键收录新应用（全自动调 API 抓取、推断平台、探测图标并双向写入）
+pnpm add:app <github-url-or-owner/repo>
+# 或支持全自动无交互模式 (-y)
+node scripts/add-app.mjs localsend/localsend -y
+
 # 校验 catalog.json 格式与数据合法性
 pnpm test
 # 或
 node scripts/validate-catalog.mjs
 
-# 自动保鲜（拉取 GitHub 最新 Stars 与 Release Tag）
-GITHUB_TOKEN=your_token node scripts/refresh-catalog.mjs
+# 批量保鲜（自动获取最新 Stars、Forks 与 Release Tag）
+pnpm refresh
+# 或
+node scripts/refresh-catalog.mjs
 ```
 
 ---
