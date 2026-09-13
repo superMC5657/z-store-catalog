@@ -79,22 +79,19 @@ function main() {
 
   const seeds = loadSeeds();
   const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+  // ADR-0010：id 即小写 owner/repo，与仓库坐标一一对应，按坐标去重即可
   const existingByRepo = new Set(catalog.map((a) => `${a.owner}/${a.repo}`.toLowerCase()));
-  const existingById = new Set(catalog.map((a) => a.id.toLowerCase()));
 
   // 种子内部去重
   const seenRepo = new Set();
-  const seenId = new Set();
   const queue = [];
   for (const seed of seeds) {
     const repoKey = seed.repo.toLowerCase();
     if (onlyRepo && seed.repo.toLowerCase() !== onlyRepo.toLowerCase()) continue;
     if (onlyCategory && seed.category !== onlyCategory) continue;
     if (existingByRepo.has(repoKey)) continue; // 已收录，跳过
-    if (seenRepo.has(repoKey) || seenId.has(seed.id.toLowerCase())) continue;
-    if (existingById.has(seed.id.toLowerCase())) continue; // id 与现有冲突，跳过
+    if (seenRepo.has(repoKey)) continue;
     seenRepo.add(repoKey);
-    seenId.add(seed.id.toLowerCase());
     queue.push(seed);
   }
 
@@ -110,10 +107,10 @@ function main() {
   };
 
   let idx = 0;
-  runQueue(queue, idx, catalog, headers, report, categoryNames, existingByRepo, existingById);
+  runQueue(queue, idx, catalog, headers, report, categoryNames, existingByRepo);
 }
 
-async function runQueue(queue, idx, catalog, headers, report, categoryNames, existingByRepo, existingById) {
+async function runQueue(queue, idx, catalog, headers, report, categoryNames, existingByRepo) {
   while (idx < queue.length) {
     const seed = queue[idx];
     idx += 1;
@@ -134,7 +131,6 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
       const clientCatalogPath = path.resolve(rootDir, '../../catalog.json');
       if (fs.existsSync(clientCatalogPath)) fs.writeFileSync(clientCatalogPath, formatted, 'utf8');
       existingByRepo.add(`${result.entry.owner}/${result.entry.repo}`.toLowerCase());
-      existingById.add(result.entry.id.toLowerCase());
     }
 
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf8');
@@ -148,7 +144,7 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
 }
 
 async function processSeed(seed, headers, categoryNames) {
-  const base = { repo: seed.repo, id: seed.id, category: seed.category };
+  const base = { repo: seed.repo, id: seed.repo.toLowerCase(), category: seed.category };
   const [owner, repoName] = seed.repo.split('/');
 
   try {
@@ -277,7 +273,7 @@ async function processSeed(seed, headers, categoryNames) {
     // 5. 组装条目
     const matchedCategory = CATEGORIES.find((c) => c.key === seed.category) || CATEGORIES[0];
     const entry = {
-      id: seed.id,
+      id: seed.repo.toLowerCase(),
       name: seed.name || repoData.name,
       chinese_name: seed.chinese_name || undefined,
       owner: realOwner,

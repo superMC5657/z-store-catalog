@@ -146,7 +146,8 @@ async function main() {
   const guessedCategoryKey = guessCategory(repoData.description, repoData.topics);
   const defaultCategory = CATEGORIES.find((c) => c.key === guessedCategoryKey) || CATEGORIES[4];
 
-  const defaultId = repoData.name.toLowerCase().replace(/[^a-z0-9-_]/g, '-');
+  // ADR-0010：id 即全局唯一坐标 owner/repo（小写），不再人工指定 slug
+  const defaultId = `${owner}/${repo}`.toLowerCase();
   const defaultName = repoData.name;
   const defaultDesc = repoData.description || '开源跨平台应用';
   const defaultVersion = latestRelease?.tag_name || 'v0.1.0';
@@ -157,9 +158,12 @@ async function main() {
     ? repoData.homepage
     : repoData.html_url;
 
-  // 检查是否已存在
+  // 检查是否已存在（ADR-0010：按 owner/repo 坐标去重，大小写不敏感）
   const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
-  const existingIndex = catalog.findIndex((item) => item.id === defaultId || (item.owner === owner && item.repo === repo));
+  const repoCoord = `${owner}/${repo}`.toLowerCase();
+  const existingIndex = catalog.findIndex(
+    (item) => `${item.owner}/${item.repo}`.toLowerCase() === repoCoord
+  );
   const existingItem = existingIndex >= 0 ? catalog[existingIndex] : null;
 
   let finalId = existingItem?.id || defaultId;
@@ -177,9 +181,7 @@ async function main() {
       rl = readline.createInterface({ input: process.stdin, output: process.stdout });
     }
     console.log('\n──────── 🛠️ 请确认应用收录信息 (直接回车保持默认) ────────');
-
-    const inId = await rl.question(`应用 ID [${finalId}]: `);
-    if (inId.trim()) finalId = inId.trim().toLowerCase();
+    console.log(`应用 ID (自动生成): ${finalId}`);
 
     const inName = await rl.question(`应用英文名称 [${finalName}]: `);
     if (inName.trim()) finalName = inName.trim();
