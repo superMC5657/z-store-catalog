@@ -66,14 +66,20 @@ for (let i = 0; i < catalog.length; i++) {
     }
   }
 
-  // 2. ID 唯一性与格式检查
+  // 2. ID 检查（ADR-0010）：id 必须为小写 owner/repo 全局唯一标识
   if (item.id) {
-    if (seenIds.has(item.id)) {
+    if (seenIds.has(item.id.toLowerCase())) {
       reportError(item, `应用 ID '${item.id}' 重复出现`);
     }
-    seenIds.add(item.id);
-    if (!/^[a-z0-9-_]+$/.test(item.id)) {
-      reportError(item, `ID '${item.id}' 格式不合法 (仅允许小写字母、数字、连字符和下划线)`);
+    seenIds.add(item.id.toLowerCase());
+    if (!/^[a-z0-9-]+\/[a-z0-9._-]+$/.test(item.id)) {
+      reportError(item, `ID '${item.id}' 格式不合法 (必须为小写 owner/repo)`);
+    }
+    if (item.owner && item.repo) {
+      const canonical = `${item.owner}/${item.repo}`.toLowerCase();
+      if (item.id !== canonical) {
+        reportError(item, `ID '${item.id}' 与 owner/repo 不一致 (应为 '${canonical}')`);
+      }
     }
   }
 
