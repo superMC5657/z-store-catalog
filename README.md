@@ -90,12 +90,13 @@
 | 脚本 / 目录 | 作用 |
 | --- | --- |
 | `scripts/add-app.mjs` | **单应用交互收录**：输入 GitHub 链接，自动抓取元数据、推断平台与标识符、探测图标，交互确认后写入 catalog.json（支持 `-y` 全自动） |
-| `scripts/batch-add.mjs` | **批量智能收录**：读取 `scripts/seed/` 候选清单逐个收录，内置 Release 二进制资产校验、四级图标探测（种子提示 → Git Trees 全库评分 → 静态路径 → 头像兜底）与实时字节验证；每成功一个立即写盘，中断可续跑，自动跳过已收录仓库 |
-| `scripts/seed/*.json` | **候选种子库**：按 10 大分类维护的待收录应用清单（含中文简介、英文简介、别名等人工文案）。重复执行会自动去重跳过已收录项，是扩充收录的入口 |
+| `scripts/batch-add.mjs` | **批量智能收录**：读取 `scripts/seed/YYYY-MM-DD/` 日期档候选清单逐个收录（`--date` 指定，默认当天 UTC），内置 Release 二进制资产校验、四级图标探测（种子提示 → Git Trees 全库评分 → 静态路径 → 头像兜底）与实时字节验证；每成功一个立即写盘，中断可续跑，自动跳过已收录仓库 |
+| `scripts/discover-apps.mjs` | **热门挖掘**：全自动挖掘热门开源软件，产出同日期档 `auto.json`；与 batch-add 用同一 `--date` 即同一批输入，可直接被消费 |
+| `scripts/seed/YYYY-MM-DD/*.json` | **候选种子库**：按日期归档的待收录应用清单（含中文简介、英文简介、别名等人工文案；`batch-report*.json` / `seed-excluded.json` 为运行产物，不计入输入）。重复执行会自动去重跳过已收录项，是扩充收录的入口 |
 | `scripts/lib/catalog-shared.mjs` | **共享核心库**：分类定义、图标评分器、平台/标识符推断、JSON 排版格式化，供单应用与批量两条收录路径复用，保证产出格式一致 |
 | `scripts/refresh-catalog.mjs` | **数据保鲜**：定时（CI）或手动刷新全部应用 Stars / Forks / 最新 Release Tag |
 | `scripts/validate-catalog.mjs` | **规范校验**：检查必填字段、ID 唯一性、分类/平台合法性、图标 URL 格式，PR 自动化检查即此脚本 |
-| `scripts/batch-report.json` | 批量收录的运行报告（生成物）：每个应用的图标来源、版本、淘汰原因，供人工审计 |
+| `scripts/seed/YYYY-MM-DD/` | 按日期归档的种子与运行产物（git 忽略，同日覆盖、换日新建）：输入种子（含 discover 挖掘 `auto.json`）+ batch-add 报告 `batch-report.json`（每应用状态/图标来源/失败原因）+ 淘汰审计 `seed-excluded.json` |
 
 ### 常用命令
 
@@ -105,11 +106,15 @@ pnpm add:app <github-url-or-owner/repo>
 # 或支持全自动无交互模式 (-y)
 node scripts/add-app.mjs localsend/localsend -y
 
-# 批量收录（需 GitHub Token，5000 次/小时限额）
+# 批量收录（需 GitHub Token，5000 次/小时限额；种子按日期档读写，--date 指定，默认当天 UTC）
 GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs
 # 仅核验种子不写入（dry-run）/ 仅处理指定分类或仓库
 GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs --dry-run
+GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs --date=2026-10-01 --dry-run --limit=2
 GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs --category=dev --repo=owner/name
+
+# 热门挖掘（产出同日期档 auto.json，与 batch-add 用同一 --date 即同一批输入）
+node scripts/discover-apps.mjs --date=2026-10-01 --limit=50
 
 # 校验 catalog.json 格式与数据合法性
 pnpm test

@@ -4,8 +4,9 @@
  * discover-apps.mjs
  *
  * Z-Store 热门开源软件全自动挖掘工具（零依赖，Node >= 18 原生 ESM）。
- * 产出 scripts/seed/auto-YYYY-MM-DD.json，可直接被 scripts/batch-add.mjs
- * 的 loadSeeds() 通配读入（seedDir/*.json，无校验，字段缺省由 batch-add 组装）。
+ * 产出 scripts/seed/YYYY-MM-DD/auto.json（按日期归档，同一天覆盖换天新建，git 忽略；
+ * --out 仍可覆盖输出到任意路径）。与 batch-add 同一日期档即同批输入，
+ * 可被 batch-add --date=<同日> 直接消费，无需复制。
  *
  * 种子字段（精简，id 由 batch-add 按 repo.toLowerCase() 生成）：
  *   { repo, category, name, description, description_en, aliases, allow_no_assets:false }
@@ -25,10 +26,12 @@
  *   无 Token 直接报错退出（匿名 60/hr 不够用），dry-run 模式除外（警告+跳过）。
  *
  * 用法:
- *   node scripts/discover-apps.mjs                                   # 默认挖掘 100 个
+ *   node scripts/discover-apps.mjs                                   # 默认挖掘 100 个，写入当天日期档
  *   node scripts/discover-apps.mjs --limit=50 --days=30 --stars=1000
- *   node scripts/discover-apps.mjs --out=scripts/seed/custom.json
+ *   node scripts/discover-apps.mjs --date=2026-10-01 --limit=50      # 写指定日期档（与 batch-add --date 同值即同批）
+ *   node scripts/discover-apps.mjs --out=scripts/seed/custom.json    # 覆盖输出到任意路径
  *   node scripts/discover-apps.mjs --dry-run --limit=5               # 只打印不写盘
+ *   node scripts/discover-apps.mjs --seed-dir=scripts/seed          # 高级覆盖：种子根目录（默认 scripts/seed）
  */
 
 import fs from 'node:fs';
@@ -55,6 +58,20 @@ const STARS_MIN = Math.max(0, parseInt(getArg('stars', '1000'), 10) || 1000);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const toISODate = (d) => d.toISOString().slice(0, 10);
+
+// --date 指定日期档（默认当天 UTC，与 batch-add toISODate 同逻辑）；非法直接报错退出
+const DATE_ARG = getArg('date', null);
+let DATE_STR = toISODate(new Date());
+if (DATE_ARG !== null) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(DATE_ARG) || Number.isNaN(Date.parse(`${DATE_ARG}T00:00:00Z`))) {
+    console.error(`❌ 非法 --date="${DATE_ARG}"，需为 YYYY-MM-DD（如 --date=2026-10-01）。`);
+    process.exit(1);
+  }
+  DATE_STR = DATE_ARG;
+}
+// --seed-dir 高级覆盖（默认 scripts/seed；相对路径按仓库根解析）
+const SEED_DIR_ARG = getArg('seed-dir', null);
+const EFFECTIVE_SEED_DIR = SEED_DIR_ARG ? path.resolve(rootDir, SEED_DIR_ARG) : seedDir;
 
 // 全局节流门：保证任意两次 GitHub core 请求之间至少间隔 ms
 let nextSlot = 0;
@@ -450,14 +467,13 @@ async function main() {
     return;
   }
 
-  const dateStr = toISODate(new Date());
   const outPath = OUT_ARG
     ? path.resolve(rootDir, OUT_ARG)
-    : path.join(seedDir, `auto-${dateStr}.json`);
+    : path.join(EFFECTIVE_SEED_DIR, DATE_STR, 'auto.json');
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, `${JSON.stringify(seeds, null, 2)}\n`, 'utf8');
-  console.log(`💾 已写入 ${path.relative(rootDir, outPath)}，可被 batch-add loadSeeds 直接消费`);
-  console.log(`   下一步: node scripts/batch-add.mjs --dry-run`);
+  console.log(`💾 已写入 ${path.relative(rootDir, outPath)}（日期归档；同目录输入可被 batch-add --date=${DATE_STR} 直接消费）`);
+  console.log(`   下一步: node scripts/batch-add.mjs --date=${DATE_STR} --dry-run`);
 }
 
 main().catch((err) => {

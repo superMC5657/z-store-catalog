@@ -84,3 +84,14 @@ node scripts/validate-catalog.mjs
 - Commit 信息建议形如：`feat(app): add <app-name>`；
 - PR 提交后，GitHub Actions 会自动运行格式校验；
 - 审核通过并合并后，全网 Z-Store 客户端将自动同步展示！
+
+---
+
+## 🛠️ 批量收录与挖掘（维护者）
+
+候选种子按日期归档：`scripts/seed/YYYY-MM-DD/`（`batch-report*.json` / `seed-excluded.json` 为运行产物，不计入输入）。挖掘与收录用同一 `--date` 即同一批输入，无需复制：
+
+```bash
+node scripts/discover-apps.mjs --date=2026-10-01 --limit=50
+GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs --date=2026-10-01 --dry-run --limit=2
+```

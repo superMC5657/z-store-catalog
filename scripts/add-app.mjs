@@ -38,6 +38,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const catalogPath = path.join(rootDir, 'catalog.json');
+// NOTE（seed 豁免）：单条直写 catalog.json，不读写 scripts/seed/*，故不参与 --date/--seed-dir 日期档统一。
 
 /**
  * 解析命令行参数中的 GitHub 仓库

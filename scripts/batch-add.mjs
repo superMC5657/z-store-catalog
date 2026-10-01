@@ -4,7 +4,8 @@
  * batch-add.mjs
  *
  * Z-Store 批量智能收录工具：
- * 读取 scripts/seed/*.json 中的候选应用清单，逐个抓取 GitHub 元数据并批量写入 catalog.json。
+ * 读取 scripts/seed/<date>/*.json 日期档候选清单（--date=YYYY-MM-DD 指定，默认当天 UTC），
+ * 逐个抓取 GitHub 元数据并批量写入 catalog.json。
  *
  * 单个应用的处理流程（复用 scripts/lib/catalog-shared.mjs 共享库）：
  * 1. 抓取仓库元数据（Stars/Forks/License/Homepage/默认分支/归档状态）；
@@ -13,13 +14,18 @@
  * 4. 每个图标 URL 实时验证（HTTP 200 + image/* + ≥300 字节非 LFS 指针）；
  * 5. 平台与 identifiers 推断（种子 hints 优先，修正 exe 名猜测偏差）；
  * 6. 组装条目追加到 catalog.json（保持标量数组单行排版）并同步客户端离线种子；
- * 7. 产出 scripts/batch-report.json（每应用状态/图标来源/失败原因）。
+ * 6. 组装条目追加到 catalog.json（保持标量数组单行排版）并同步客户端离线种子；
+ * 7. 产出同日期档 scripts/seed/<date>/batch-report.json（每应用状态/图标来源/失败原因）
+ *    与同目录 seed-excluded.json（淘汰审计快照，历史条目合并保留；二者均在 deny 名单，不计入输入）。
+ *    旧顶层 scripts/batch-report.json 已废弃，启动时一次性迁移进当天日期档。
  *
  * 用法:
- *   node scripts/batch-add.mjs --dry-run                 # 仅核验种子，不写入
+ *   node scripts/batch-add.mjs --dry-run                 # 仅核验当天日期档种子，不写入任何文件
+ *   node scripts/batch-add.mjs --date=2026-10-01 --dry-run --limit=2  # 核验指定日期档前 2 个种子
  *   node scripts/batch-add.mjs --category=dev            # 只处理指定分类
  *   node scripts/batch-add.mjs --repo=owner/name         # 只处理指定仓库
  *   node scripts/batch-add.mjs                           # 正式批量收录（支持中断续跑）
+ *   node scripts/batch-add.mjs --seed-dir=scripts/seed   # 高级覆盖：种子根目录（默认 scripts/seed）
  */
 
 import fs from 'node:fs';
@@ -40,33 +46,142 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const catalogPath = path.join(rootDir, 'catalog.json');
-const seedDir = path.join(__dirname, 'seed');
-const reportPath = path.join(__dirname, 'batch-report.json');
+const defaultSeedDir = path.join(__dirname, 'seed');
 
 const BINARY_EXTS = /\.(exe|msi|msix|appx|dmg|pkg|appimage|deb|rpm|apk|flatpak|snap|jar)$/i;
 
 // ────────────────────────────── 参数解析 ──────────────────────────────
 const args = process.argv.slice(2);
+const getArg = (name, def) => {
+  const hit = args.find((a) => a.startsWith(`--${name}=`));
+  return hit ? hit.slice(name.length + 3) : def;
+};
 const dryRun = args.includes('--dry-run');
-const onlyCategory = args.find((a) => a.startsWith('--category='))?.split('=')[1] || null;
-const onlyRepo = args.find((a) => a.startsWith('--repo='))?.split('=')[1] || null;
+const onlyCategory = getArg('category', null);
+const onlyRepo = getArg('repo', null);
+const limitArg = getArg('limit', null);
+const limit = limitArg ? Math.max(1, parseInt(limitArg, 10) || 1) : Infinity;
+
+// UTC 日期（与 discover-apps.mjs toISODate 同逻辑）；非法 --date 直接报错退出
+const toISODate = (d) => d.toISOString().slice(0, 10);
+const dateArg = getArg('date', null);
+let dateStr = toISODate(new Date());
+if (dateArg !== null) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateArg) || Number.isNaN(Date.parse(`${dateArg}T00:00:00Z`))) {
+    console.error(`❌ 非法 --date="${dateArg}"，需为 YYYY-MM-DD（如 --date=2026-10-01）。`);
+    process.exit(1);
+  }
+  dateStr = dateArg;
+}
+// --seed-dir 高级覆盖（默认 scripts/seed；相对路径按仓库根解析）
+const seedDirArg = getArg('seed-dir', null);
+const seedDir = seedDirArg ? path.resolve(rootDir, seedDirArg) : defaultSeedDir;
+// 输入与报告同日期档：scripts/seed/YYYY-MM-DD/（同一天覆盖，换天新建；seed/ 整体被 .gitignore 忽略）。
+// 旧顶层 scripts/batch-report.json / scripts/seed-excluded.json 已废弃，启动时一次性迁移进当天日期档。
+const runDir = path.join(seedDir, dateStr);
+const reportPath = path.join(runDir, 'batch-report.json');
+const excludedPath = path.join(runDir, 'seed-excluded.json');
+const legacyReportPath = path.join(__dirname, 'batch-report.json');
+const legacyExcludedPath = path.join(__dirname, 'seed-excluded.json');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ────────────────────────────── 种子加载与去重 ──────────────────────────────
 function loadSeeds() {
+  // 只读本日期档 scripts/seed/<date>/*.json 输入种子（isFile 显式过滤 + 不递归）；
+  // deny 名单明确跳过本档运行产物：batch-report*.json（含 -legacy 后缀归档）与 seed-excluded.json
+  // 绝不作为输入。discover 产出 auto.json 视为合法输入（同目录即同批，可直接被消费，无需复制）。
+  const DENY_EXACT = new Set(['seed-excluded.json']);
+  const isReportFile = (name) => /^batch-report.*\.json$/.test(name);
   const seeds = [];
-  const files = fs.readdirSync(seedDir).filter((f) => f.endsWith('.json')).sort();
+  let files = [];
+  try {
+    files = fs.readdirSync(runDir, { withFileTypes: true })
+      .filter((d) => d.isFile() && d.name.endsWith('.json'))
+      .map((d) => d.name)
+      .sort();
+  } catch {
+    return seeds; // 日期档不存在视为空输入，由 main 报错提示可用 --date
+  }
   for (const file of files) {
-    const arr = JSON.parse(fs.readFileSync(path.join(seedDir, file), 'utf8'));
+    if (DENY_EXACT.has(file) || isReportFile(file)) continue;
+    const arr = JSON.parse(fs.readFileSync(path.join(runDir, file), 'utf8'));
+    if (!Array.isArray(arr)) continue;
     for (const item of arr) seeds.push(item);
   }
   return seeds;
 }
 
+// 兼容旧顶层报告：一次性移入当天日期档（重名则加 -legacy 后缀，绝不覆盖），打印废弃提示后旧路径废弃
+function migrateLegacyFile(legacyPath, baseName) {
+  if (!fs.existsSync(legacyPath)) return;
+  let target = path.join(runDir, baseName);
+  if (fs.existsSync(target)) target = path.join(runDir, baseName.replace(/\.json$/, '-legacy.json'));
+  if (fs.existsSync(target)) target = path.join(runDir, baseName.replace(/\.json$/, `-legacy-${Date.now()}.json`));
+  try {
+    fs.renameSync(legacyPath, target);
+    console.log(`📦 旧文件 ${path.relative(rootDir, legacyPath)} 已归档至 ${path.relative(rootDir, target)}（旧顶层路径废弃，报告统一写入 scripts/seed/YYYY-MM-DD/）`);
+  } catch (err) {
+    console.log(`⚠️ 旧文件迁移失败（保留原位）：${err?.message || err}`);
+  }
+}
+
+// 由本轮 report 构造淘汰审计条目（兼容历史 seed-excluded.json 快照格式：种子字段 + excluded 块）
+function buildExcludedEntries(queue, report) {
+  const byRepo = new Map(queue.map((s) => [String(s.repo).toLowerCase(), s]));
+  const out = [];
+  for (const r of report.results || []) {
+    if (r.status === 'ok' || r.status === 'ok_fallback_icon') continue;
+    const seed = byRepo.get(String(r.repo || '').toLowerCase()) || {};
+    const entry = {
+      repo: seed.repo || r.repo,
+      id: r.id,
+      category: r.category,
+      name: seed.name,
+      description: seed.description,
+      description_en: seed.description_en,
+      aliases: seed.aliases,
+      icon_hint: seed.icon_hint ?? null,
+      excluded: {
+        status: r.status,
+        reason: r.reason || '',
+        stars: r.stars ?? null,
+        checkedAt: report.generatedAt,
+        note: r.status === 'no_binary_assets'
+          ? 'GitHub Release 无可安装二进制资产；若为自有渠道分发可在 seed 条目中加 "allow_no_assets": true'
+          : '本轮批量收录未通过，详见同目录 batch-report.json',
+      },
+    };
+    if (seed.allow_no_assets) entry.allow_no_assets = true;
+    Object.keys(entry).forEach((k) => entry[k] === undefined && delete entry[k]);
+    out.push(entry);
+  }
+  return out;
+}
+
+// seed-excluded.json 合并写盘：保留历史条目（本轮成功的从审计中移除，本轮淘汰的覆盖），按 repo 排序
+function writeExcludedMerged(queue, report) {
+  const merged = new Map();
+  try {
+    const prev = JSON.parse(fs.readFileSync(excludedPath, 'utf8'));
+    if (Array.isArray(prev)) for (const e of prev) if (e?.repo) merged.set(String(e.repo).toLowerCase(), e);
+  } catch {
+    // 首轮尚无文件，视为空
+  }
+  const okRepos = new Set(
+    (report.results || [])
+      .filter((r) => r.status === 'ok' || r.status === 'ok_fallback_icon')
+      .map((r) => String(r.repo || '').toLowerCase()),
+  );
+  for (const k of okRepos) merged.delete(k);
+  for (const e of buildExcludedEntries(queue, report)) merged.set(String(e.repo).toLowerCase(), e);
+  const list = [...merged.values()].sort((a, b) => String(a.repo).localeCompare(String(b.repo)));
+  fs.writeFileSync(excludedPath, `${JSON.stringify(list, null, 2)}\n`, 'utf8');
+}
+
 function main() {
   const token = resolveGitHubToken();
-  if (!token) {
+  if (!token && !dryRun) {
     console.error('❌ 未检测到 GITHUB_TOKEN/GH_TOKEN，批量收录必须携带 Token（5000次/小时）。');
     console.error('   提示: GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs');
     process.exit(1);
@@ -74,10 +189,15 @@ function main() {
   const headers = {
     'User-Agent': 'ZStore-Batch-Adder/1.0.0',
     'Accept': 'application/vnd.github.v3+json',
-    'Authorization': `token ${token}`,
+    ...(token ? { 'Authorization': `token ${token}` } : {}),
   };
 
   const seeds = loadSeeds();
+  if (seeds.length === 0) {
+    console.error(`❌ 日期档 ${path.relative(rootDir, runDir)} 内无可用输入种子（batch-report*.json / seed-excluded.json 明确跳过不计）。`);
+    console.error('   归档 inputs 在 --date=2026-10-01，例如：node scripts/batch-add.mjs --date=2026-10-01 --dry-run --limit=2');
+    process.exit(1);
+  }
   const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
   // ADR-0010：id 即小写 owner/repo，与仓库坐标一一对应，按坐标去重即可
   const existingByRepo = new Set(catalog.map((a) => `${a.owner}/${a.repo}`.toLowerCase()));
@@ -86,7 +206,8 @@ function main() {
   const seenRepo = new Set();
   const queue = [];
   for (const seed of seeds) {
-    const repoKey = seed.repo.toLowerCase();
+    if (!seed.repo) continue;
+    const repoKey = String(seed.repo).toLowerCase();
     if (onlyRepo && seed.repo.toLowerCase() !== onlyRepo.toLowerCase()) continue;
     if (onlyCategory && seed.category !== onlyCategory) continue;
     if (existingByRepo.has(repoKey)) continue; // 已收录，跳过
@@ -97,17 +218,33 @@ function main() {
 
   const categoryNames = Object.fromEntries(CATEGORIES.map((c) => [c.key, c.name]));
   console.log(`✨ Z-Store 批量收录助手${dryRun ? '（DRY-RUN 核验模式）' : ''}\n`);
-  console.log(`📦 种子候选 ${queue.length} 个${dryRun ? '' : '（已收录仓库自动跳过）'}\n`);
+  console.log(`📦 种子候选 ${queue.length} 个（日期档 ${path.relative(rootDir, runDir)}）${dryRun ? '' : '（已收录仓库自动跳过）'}${limit !== Infinity ? `（--limit=${limitArg} 取前 ${Math.min(limit, queue.length)} 个）` : ''}\n`);
 
+  const runList = queue.slice(0, limit);
+
+  // 无 Token dry-run：仅列候选，不请求网络、不写盘
+  if (dryRun && !token) {
+    console.log('⚠️ 未检测到 GITHUB_TOKEN/GH_TOKEN，dry-run 降级为仅列候选（不请求网络、不写盘）。');
+    for (const s of runList) console.log(` - ${s.repo} [${s.category}] ${s.name || ''}`);
+    console.log(`\n💡 DRY-RUN 未写入任何文件（候选 ${runList.length} 个，日期档 ${path.relative(rootDir, runDir)}）。`);
+    return;
+  }
+
+  // 非 dry-run 才确保日期档存在并一次性迁移旧顶层报告（dry-run 不写盘；迁移提示后旧路径废弃）
+  if (!dryRun) {
+    fs.mkdirSync(runDir, { recursive: true });
+    migrateLegacyFile(legacyReportPath, 'batch-report.json');
+    migrateLegacyFile(legacyExcludedPath, 'seed-excluded.json');
+  }
   const report = {
     generatedAt: new Date().toISOString(),
     mode: dryRun ? 'dry-run' : 'batch',
-    counts: { total: queue.length, ok: 0, ok_fallback_icon: 0, failed: 0 },
+    counts: { total: runList.length, ok: 0, ok_fallback_icon: 0, failed: 0 },
     results: [],
   };
 
   let idx = 0;
-  runQueue(queue, idx, catalog, headers, report, categoryNames, existingByRepo);
+  runQueue(runList, idx, catalog, headers, report, categoryNames, existingByRepo);
 }
 
 async function runQueue(queue, idx, catalog, headers, report, categoryNames, existingByRepo) {
@@ -123,7 +260,7 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
     const tag = result.status === 'ok' ? '✅' : result.status === 'ok_fallback_icon' ? '⚠️ ' : '❌';
     console.log(`${tag} [${idx}/${queue.length}] ${seed.repo} → ${result.status}${result.reason ? ` (${result.reason})` : ''}`);
 
-    // 非 dry-run 且成功时立即写盘（崩溃可续跑）
+    // 非 dry-run 且成功时立即写盘（崩溃可续跑；dry-run 不写盘）
     if (!dryRun && isOk) {
       catalog.push(result.entry);
       const formatted = formatCatalogJson(catalog);
@@ -133,14 +270,24 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
       existingByRepo.add(`${result.entry.owner}/${result.entry.repo}`.toLowerCase());
     }
 
-    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf8');
+    // dry-run 不写盘：报告与淘汰审计仅非 dry-run 落盘
+    if (!dryRun) {
+      fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf8');
+      writeExcludedMerged(queue, report);
+    }
     await sleep(120);
+  }
+
+  // 空队列直接结束时也落盘，保证每次运行日期档内都有报告（dry-run 除外，不写盘）
+  if (!dryRun) {
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf8');
+    writeExcludedMerged(queue, report);
   }
 
   console.log(`\n──────────────────────────────────────`);
   console.log(`📊 完成: 成功 ${report.counts.ok} / 兜底图标 ${report.counts.ok_fallback_icon} / 失败 ${report.counts.failed}`);
-  if (dryRun) console.log('💡 DRY-RUN 模式未写入 catalog.json，详细结果见 scripts/batch-report.json');
-  else console.log('💾 catalog.json 已更新，详细结果见 scripts/batch-report.json');
+  if (dryRun) console.log('💡 DRY-RUN 模式未写入任何文件（核验输出仅打印）。');
+  else console.log(`💾 catalog.json 已更新，详细结果见 ${path.relative(rootDir, reportPath)}`);
 }
 
 async function processSeed(seed, headers, categoryNames) {
