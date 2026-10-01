@@ -270,17 +270,18 @@ async function processSeed(seed, headers, categoryNames) {
     }
     if (seed.android_id && identifiers.android.length > 0) identifiers.android = [seed.android_id];
 
-    // 5. 组装条目
+    // 5. 组装条目（新 schema：description 中文 + description_en 英文原文，不写 chinese_name；
+    //    兼容旧种子一次性读取：历史 chinese_name 仅作 description 缺失时的回退，不再写出）
     const matchedCategory = CATEGORIES.find((c) => c.key === seed.category) || CATEGORIES[0];
     const entry = {
       id: seed.repo.toLowerCase(),
       name: seed.name || repoData.name,
-      chinese_name: seed.chinese_name || undefined,
       owner: realOwner,
       repo: realRepo,
       icon: iconUrl,
       icon_bg: CATEGORY_GRADIENTS[seed.category] || 'linear-gradient(135deg, #2563eb, #1d4ed8)',
-      description: seed.description || repoData.description || '开源跨平台应用',
+      description: seed.description || seed.chinese_name || repoData.description || '开源跨平台应用',
+      description_en: seed.description_en || repoData.description || undefined,
       category: seed.category,
       category_name: categoryNames[seed.category] || matchedCategory.name,
       aliases: Array.isArray(seed.aliases) ? seed.aliases : undefined,

@@ -6,6 +6,7 @@
   "scripts": {
     "add": "node scripts/add-app.mjs",
     "add:app": "node scripts/add-app.mjs",
+    "discover": "node scripts/discover-apps.mjs",
     "refresh": "node scripts/refresh-catalog.mjs",
     "test": "node scripts/validate-catalog.mjs",
     "validate": "node scripts/validate-catalog.mjs"

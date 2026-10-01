@@ -149,6 +149,7 @@ async function main() {
   // ADR-0010：id 即全局唯一坐标 owner/repo（小写），不再人工指定 slug
   const defaultId = `${owner}/${repo}`.toLowerCase();
   const defaultName = repoData.name;
+  const defaultDescEn = repoData.description || '';
   const defaultDesc = repoData.description || '开源跨平台应用';
   const defaultVersion = latestRelease?.tag_name || 'v0.1.0';
   const defaultLicense = repoData.license?.spdx_id || 'MIT';
@@ -168,8 +169,8 @@ async function main() {
 
   let finalId = existingItem?.id || defaultId;
   let finalName = existingItem?.name || defaultName;
-  let finalChineseName = existingItem?.chinese_name || '';
   let finalDesc = existingItem?.description || defaultDesc;
+  let finalDescEn = existingItem?.description_en || defaultDescEn;
   let finalCategoryKey = existingItem?.category || defaultCategory.key;
   let finalIcon = (existingItem?.icon && !existingItem.icon.endsWith('.png')) ? existingItem.icon : detectedIcon;
   let finalPlatforms = existingItem?.platforms || deducedPlatforms;
@@ -186,9 +187,6 @@ async function main() {
     const inName = await rl.question(`应用英文名称 [${finalName}]: `);
     if (inName.trim()) finalName = inName.trim();
 
-    const inChinese = await rl.question(`应用中文显示名称 [${finalChineseName || '空'}]: `);
-    if (inChinese.trim()) finalChineseName = inChinese.trim();
-
     console.log('\n可选分类列表:');
     CATEGORIES.forEach((c, idx) => {
       const marker = c.key === finalCategoryKey ? ' (当前/推荐)' : '';
@@ -201,8 +199,11 @@ async function main() {
       finalCategoryKey = CATEGORIES[catNum - 1].key;
     }
 
-    const inDesc = await rl.question(`中文简介 [${finalDesc}]: `);
+    const inDesc = await rl.question(`中文简介 description [${finalDesc}]: `);
     if (inDesc.trim()) finalDesc = inDesc.trim();
+
+    const inDescEn = await rl.question(`英文简介 description_en（默认取 GitHub 原文） [${finalDescEn}]: `);
+    if (inDescEn.trim()) finalDescEn = inDescEn.trim();
 
     const inIcon = await rl.question(`图标 URL [${finalIcon}]: `);
     if (inIcon.trim()) finalIcon = inIcon.trim();
@@ -219,16 +220,16 @@ async function main() {
 
   const matchedCategory = CATEGORIES.find((c) => c.key === finalCategoryKey) || CATEGORIES[4];
 
-  // 构建新条目对象
+  // 构建新条目对象（新 schema：description 中文 + description_en 英文原文，无 chinese_name / publisher_fingerprint）
   const newEntry = {
     id: finalId,
     name: finalName,
-    chinese_name: finalChineseName || undefined,
     owner,
     repo,
     icon: finalIcon,
     icon_bg: existingItem?.icon_bg || CATEGORY_GRADIENTS[finalCategoryKey] || 'linear-gradient(135deg, #2563eb, #1d4ed8)',
     description: finalDesc,
+    description_en: finalDescEn || undefined,
     category: finalCategoryKey,
     category_name: matchedCategory.name,
     aliases: finalAliases.length > 0 ? finalAliases : undefined,
@@ -237,7 +238,6 @@ async function main() {
     stars: defaultStars,
     forks: defaultForks,
     is_verified: true,
-    publisher_fingerprint: existingItem?.publisher_fingerprint || undefined,
     homepage: defaultHomepage,
     platforms: finalPlatforms,
     identifiers: finalIdentifiers,

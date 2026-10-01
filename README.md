@@ -37,12 +37,12 @@
 {
   "id": "localsend",
   "name": "LocalSend",
-  "chinese_name": "LocalSend 局域网快传",
   "owner": "localsend",
   "repo": "localsend",
   "icon": "https://raw.githubusercontent.com/localsend/localsend/main/app/assets/img/logo-512.png",
   "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
   "description": "跨平台的开源局域网文件传输工具，无需互联网，基于安全协议高速传输。",
+  "description_en": "An open-source cross-platform alternative to AirDrop.",
   "category": "network",
   "category_name": "网络工具",
   "aliases": ["局域网传输", "隔空投送", "快传", "airdrop", "file transfer"],
@@ -65,7 +65,7 @@
 
 ### 字段说明
 - `id`: 唯一标识符，小写字母、数字与连字符；
-- `chinese_name` / `description` / `aliases`: 中文显示名、一句话简介与搜索别名，供客户端展示与检索；
+- `description` / `description_en` / `aliases`: 中文简介、英文原文简介与搜索别名，供客户端展示与检索（`description` 为中文人工文案，`description_en` 默认取 GitHub 仓库英文原文）；
 - `icon`: 应用官方高清图标 URL（优先仓库内资源；所有图标均经过存活性核验与人工目检）；
 - `icon_bg`: 客户端渲染图标时的渐变底色，与分类对应；
 - `category` / `category_name`: 分类键与中文名（`system` `network` `media` `security` `dev` `graphics` `office` `reading` `ops` `games`）；
@@ -91,7 +91,7 @@
 | --- | --- |
 | `scripts/add-app.mjs` | **单应用交互收录**：输入 GitHub 链接，自动抓取元数据、推断平台与标识符、探测图标，交互确认后写入 catalog.json（支持 `-y` 全自动） |
 | `scripts/batch-add.mjs` | **批量智能收录**：读取 `scripts/seed/` 候选清单逐个收录，内置 Release 二进制资产校验、四级图标探测（种子提示 → Git Trees 全库评分 → 静态路径 → 头像兜底）与实时字节验证；每成功一个立即写盘，中断可续跑，自动跳过已收录仓库 |
-| `scripts/seed/*.json` | **候选种子库**：按 10 大分类维护的待收录应用清单（含中文名、简介、别名等人工文案）。重复执行会自动去重跳过已收录项，是扩充收录的入口 |
+| `scripts/seed/*.json` | **候选种子库**：按 10 大分类维护的待收录应用清单（含中文简介、英文简介、别名等人工文案）。重复执行会自动去重跳过已收录项，是扩充收录的入口 |
 | `scripts/lib/catalog-shared.mjs` | **共享核心库**：分类定义、图标评分器、平台/标识符推断、JSON 排版格式化，供单应用与批量两条收录路径复用，保证产出格式一致 |
 | `scripts/refresh-catalog.mjs` | **数据保鲜**：定时（CI）或手动刷新全部应用 Stars / Forks / 最新 Release Tag |
 | `scripts/validate-catalog.mjs` | **规范校验**：检查必填字段、ID 唯一性、分类/平台合法性、图标 URL 格式，PR 自动化检查即此脚本 |

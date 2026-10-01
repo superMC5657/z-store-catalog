@@ -64,6 +64,11 @@ for (let i = 0; i < catalog.length; i++) {
         if (repoData.license?.spdx_id) {
           item.license = repoData.license.spdx_id;
         }
+        // 新 schema：同步刷新英文原文 description_en（取 GitHub description）；
+        // 中文 description 为人工文案不再覆盖；不再碰 chinese_name / publisher_fingerprint（已废弃）。
+        if (repoData.description) {
+          item.description_en = repoData.description;
+        }
 
         // 2. 获取最新 Release Tag
         const releaseUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;

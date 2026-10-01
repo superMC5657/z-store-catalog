@@ -58,11 +58,20 @@ for (let i = 0; i < catalog.length; i++) {
     continue;
   }
 
-  // 1. 必填基础字段
-  const requiredFields = ['id', 'name', 'category', 'description', 'owner', 'repo', 'icon', 'platforms', 'identifiers'];
+  // 1. 必填基础字段（新 schema：description 中文必填，description_en 英文与 description 规则对齐必填；
+  //    chinese_name / publisher_fingerprint 已废弃，不再校验）
+  const requiredFields = ['id', 'name', 'category', 'description', 'description_en', 'owner', 'repo', 'icon', 'platforms', 'identifiers'];
   for (const field of requiredFields) {
     if (item[field] === undefined || item[field] === null || item[field] === '') {
       reportError(item, `缺少必填字段 '${field}'`);
+    }
+  }
+
+  // 1b. description / description_en 必须为非空字符串（缺失已由必填校验覆盖，此处仅校验类型）
+  for (const field of ['description', 'description_en']) {
+    const v = item[field];
+    if (v !== undefined && v !== null && v !== '' && (typeof v !== 'string' || !v.trim())) {
+      reportError(item, `'${field}' 必须是非空字符串`);
     }
   }
 

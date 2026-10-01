@@ -3,3 +3,9 @@ node_modules/
 Thumbs.db
 *.log
 .zcode/
+.idea/
+# 批量收录运行报告（生成物，可再生）
+scripts/batch-report.json
+# 种子输入只存本地归档，不进 git（git 只留脚本+产物 catalog.json）
+scripts/seed/
+scripts/seed-excluded.json

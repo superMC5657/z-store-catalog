@@ -42,6 +42,7 @@ node scripts/add-app.mjs <owner/repo>
   "name": "App Name",
   "category": "develop",
   "description": "应用一句话中文简介",
+  "description_en": "One-line English description (defaults to upstream GitHub repo description)",
   "owner": "github-username",
   "repo": "repository-name",
   "forge": "github",
