@@ -237,50 +237,9 @@ export async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD'
       }
     }
   } catch (err) {
-    // API 超时或受限时平滑降级至静态目录探测
+    // API 超时或受限时静默结束
   }
 
-  // 2. 平滑降级：探测常见静态候选路径（经 jsDelivr 镜像实测存在后返回 raw 权威 URL）
-  const candidatePaths = [
-    'res/icon.png',
-    'assets/icon.png',
-    'assets/logo.png',
-    'assets/app-icon.png',
-    'src-tauri/icons/icon.png',
-    'buildResources/icon.png',
-    'public/icon.png',
-    'public/logo.png',
-    'public/app-icon.png',
-    'resources/icon.png',
-    'icon.png',
-    'logo.png',
-    'logo.svg',
-  ];
-
-  for (const candidate of candidatePaths) {
-    const verified = await verifyImageBytes(jsdelivrMirror(owner, repo, defaultBranch, candidate));
-    if (verified) {
-      return {
-        url: `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${candidate}`,
-        source: 'static',
-        size: verified.bytes,
-      };
-    }
-  }
-
-  // 3. 终极兜底：GitHub 用户/组织头像 CDN（经 users API 获取，绕开 github.com 主站可达性限制）
-  try {
-    const userRes = await fetch(`https://api.github.com/users/${owner}`, { headers, signal: AbortSignal.timeout(8000) });
-    if (userRes.ok) {
-      const userData = await userRes.json();
-      if (userData.avatar_url) {
-        const avatar = `${userData.avatar_url}${userData.avatar_url.includes('?') ? '&' : '?'}s=200&v=4`;
-        return { url: avatar, source: 'avatar', size: 0 };
-      }
-    }
-  } catch {
-    // 保持返回 null 由调用方处理
-  }
   return null;
 }
 

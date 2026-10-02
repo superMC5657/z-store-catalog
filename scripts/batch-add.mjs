@@ -10,7 +10,7 @@
  * 单个应用的处理流程（复用 scripts/lib/catalog-shared.mjs 共享库）：
  * 1. 抓取仓库元数据（Stars/Forks/License/Homepage/默认分支/归档状态）；
  * 2. 抓取最新 Release（版本号 + Asset 列表），校验存在可安装二进制；
- * 3. 图标探测：种子 icon_hint 精确命中 → Git Trees 全库评分 → 静态路径 → 头像兜底；
+ * 3. 图标探测：种子 hint → 品牌库 Simple Icons → 翻全家 Git Trees → 失败记 icon_unavailable；
  * 4. 每个图标 URL 实时验证（HTTP 200 + image/* + ≥300 字节非 LFS 指针）；
  * 5. 平台与 identifiers 推断（种子 hints 优先，修正 exe 名猜测偏差）；
  * 6. 组装条目追加到 catalog.json（保持标量数组单行排版）并同步客户端离线种子；
@@ -38,8 +38,6 @@ import {
   probeRepoLogo,
   deducePlatformsAndIdentifiers,
   formatCatalogJson,
-  verifyImageBytes,
-  jsdelivrMirror,
 } from './lib/catalog-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -131,7 +129,7 @@ function buildExcludedEntries(queue, report) {
   const byRepo = new Map(queue.map((s) => [String(s.repo).toLowerCase(), s]));
   const out = [];
   for (const r of report.results || []) {
-    if (r.status === 'ok' || r.status === 'ok_fallback_icon') continue;
+    if (r.status === 'ok') continue;
     const seed = byRepo.get(String(r.repo || '').toLowerCase()) || {};
     const entry = {
       repo: seed.repo || r.repo,
@@ -170,7 +168,7 @@ function writeExcludedMerged(queue, report) {
   }
   const okRepos = new Set(
     (report.results || [])
-      .filter((r) => r.status === 'ok' || r.status === 'ok_fallback_icon')
+      .filter((r) => r.status === 'ok')
       .map((r) => String(r.repo || '').toLowerCase()),
   );
   for (const k of okRepos) merged.delete(k);
@@ -239,7 +237,7 @@ function main() {
   const report = {
     generatedAt: new Date().toISOString(),
     mode: dryRun ? 'dry-run' : 'batch',
-    counts: { total: runList.length, ok: 0, ok_fallback_icon: 0, failed: 0 },
+    counts: { total: runList.length, ok: 0, failed: 0 },
     results: [],
   };
 
@@ -253,11 +251,11 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
     idx += 1;
     const result = await processSeed(seed, headers, categoryNames);
     report.results.push(result);
-    const isOk = result.status === 'ok' || result.status === 'ok_fallback_icon';
-    if (isOk) report.counts[result.status] += 1;
+    const isOk = result.status === 'ok';
+    if (isOk) report.counts.ok += 1;
     else report.counts.failed += 1;
 
-    const tag = result.status === 'ok' ? '✅' : result.status === 'ok_fallback_icon' ? '⚠️ ' : '❌';
+    const tag = isOk ? '✅' : '❌';
     console.log(`${tag} [${idx}/${queue.length}] ${seed.repo} → ${result.status}${result.reason ? ` (${result.reason})` : ''}`);
 
     // 非 dry-run 且成功时立即写盘（崩溃可续跑；dry-run 不写盘）
@@ -285,7 +283,7 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
   }
 
   console.log(`\n──────────────────────────────────────`);
-  console.log(`📊 完成: 成功 ${report.counts.ok} / 兜底图标 ${report.counts.ok_fallback_icon} / 失败 ${report.counts.failed}`);
+  console.log(`📊 完成: 成功 ${report.counts.ok} / 失败 ${report.counts.failed}`);
   if (dryRun) console.log('💡 DRY-RUN 模式未写入任何文件（核验输出仅打印）。');
   else console.log(`💾 catalog.json 已更新，详细结果见 ${path.relative(rootDir, reportPath)}`);
 }
@@ -359,53 +357,14 @@ async function processSeed(seed, headers, categoryNames) {
       return { ...base, status: 'no_binary_assets', reason: '最近 Release 均无可安装资产', stars: repoData.stargazers_count };
     }
 
-    // 3. 图标探测 + 实时验证
-    //    raw.githubusercontent.com 在部分网络不可达：size 校验走 Git Trees 元数据，
-    //    内容校验走 jsDelivr 镜像；catalog 中始终保存 raw 权威 URL。
+    // 3. 图标探测（种子 hint → 品牌库 Simple Icons → 翻全家 Git Trees → 失败记 icon_unavailable）
     const branch = repoData.default_branch || 'HEAD';
-    let iconUrl = null;
-    let iconSource = null;
-    let iconBytes = 0;
+    const probed = await probeRepoLogo(realOwner, realRepo, headers, branch, seed.icon_hint);
+    if (!probed) return { ...base, status: 'icon_unavailable', reason: '所有图标探测均失败', stars: repoData.stargazers_count };
 
-    if (seed.icon_hint) {
-      const candidate = seed.icon_hint.replace(/^\//, '');
-      const verified = await verifyImageBytes(jsdelivrMirror(realOwner, realRepo, branch, candidate));
-      if (verified) {
-        iconUrl = `https://raw.githubusercontent.com/${realOwner}/${realRepo}/${branch}/${candidate}`;
-        iconSource = 'hint';
-        iconBytes = verified.bytes;
-      }
-    }
-    if (!iconUrl) {
-      // 探测两次（首次可能瞬时超时），仍失败才接受头像兜底
-      for (let attempt = 0; attempt < 2 && !iconUrl; attempt += 1) {
-        if (attempt > 0) await sleep(400);
-        const probed = await probeRepoLogo(realOwner, realRepo, headers, branch);
-        if (!probed || probed.source === 'avatar') continue;
-        if (probed.source === 'trees' && (!probed.size || probed.size < 300)) continue;
-        iconUrl = probed.url;
-        iconSource = probed.source;
-        iconBytes = probed.size || 0;
-      }
-    }
-    if (!iconUrl) {
-      // 终极兜底：GitHub 用户/组织头像 CDN（报告中标记，供人工修正）
-      try {
-        const userRes = await fetch(`https://api.github.com/users/${realOwner}`, { headers, signal: AbortSignal.timeout(8000) });
-        if (userRes.ok) {
-          const userData = await userRes.json();
-          if (userData.avatar_url) {
-            iconUrl = `${userData.avatar_url}${userData.avatar_url.includes('?') ? '&' : '?'}s=200&v=4`;
-            iconSource = 'avatar';
-            const verified = await verifyImageBytes(iconUrl);
-            iconBytes = verified ? verified.bytes : 0;
-          }
-        }
-      } catch {
-        // 保持 iconUrl 为空
-      }
-    }
-    if (!iconUrl) return { ...base, status: 'icon_unavailable', reason: '所有图标探测均失败', stars: repoData.stargazers_count };
+    const iconUrl = probed.url;
+    const iconSource = probed.source;
+    const iconBytes = probed.size || 0;
 
     // 4. 平台与标识符推断
     const deduced = deducePlatformsAndIdentifiers(repoData.name, release?.assets);
@@ -445,7 +404,7 @@ async function processSeed(seed, headers, categoryNames) {
 
     return {
       ...base,
-      status: iconSource === 'avatar' ? 'ok_fallback_icon' : 'ok',
+      status: 'ok',
       iconUrl,
       iconSource,
       iconBytes,
