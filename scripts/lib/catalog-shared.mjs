@@ -163,11 +163,60 @@ export function jsdelivrMirror(owner, repo, branch, filePath) {
 }
 
 /**
- * 探测远程仓库中的高质量 Logo
- * 返回 { url, source, size? }，source ∈ trees | static | avatar
+ * 由仓库名派生 Simple Icons slug 候选（小写、去分隔符等）
+ * 例如：SeriousSamClassic-VK -> ['serioussamclassicvk', 'serioussamclassic-vk']
  */
-export async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD') {
-  // 1. 优先调用 GitHub Git Trees API 遍历全量仓库路径进行启发式智能推荐
+export function deriveSimpleIconSlugs(repoName) {
+  if (!repoName || typeof repoName !== 'string') return [];
+  const lower = repoName.toLowerCase().trim();
+  const stripped = lower.replace(/[^a-z0-9]/g, '');
+  const candidates = [];
+  if (stripped) candidates.push(stripped);
+  if (lower && lower !== stripped) candidates.push(lower);
+  return candidates;
+}
+
+/**
+ * 探测远程仓库中的高质量 Logo（顺序：种子hint → 品牌库Simple Icons → 翻全家Git Trees）
+ * 返回 { url, source, size? }，source ∈ hint | simple-icons | trees，未命中返回 null
+ */
+export async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD', iconHint = null) {
+  // 0. 种子提示（若传入 iconHint）
+  if (iconHint) {
+    try {
+      const candidate = iconHint.replace(/^\//, '');
+      const verified = await verifyImageBytes(jsdelivrMirror(owner, repo, defaultBranch, candidate));
+      if (verified) {
+        return {
+          url: `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${candidate}`,
+          source: 'hint',
+          size: verified.bytes,
+        };
+      }
+    } catch {
+      // 平滑降级
+    }
+  }
+
+  // 1. Simple Icons 品牌库 CDN 探测（由 repo 名派生 slug 候选，命中官方矢量标）
+  try {
+    const slugCandidates = deriveSimpleIconSlugs(repo);
+    for (const slug of slugCandidates) {
+      const cdnUrl = `https://cdn.simpleicons.org/${slug}`;
+      const verified = await verifyImageBytes(cdnUrl);
+      if (verified && (verified.contentType.includes('svg') || verified.contentType.startsWith('image/'))) {
+        return {
+          url: cdnUrl,
+          source: 'simple-icons',
+          size: verified.bytes,
+        };
+      }
+    }
+  } catch {
+    // 失败静默降级至后续级别
+  }
+
+  // 2. 优先调用 GitHub Git Trees API 遍历全量仓库路径进行启发式智能推荐
   //    (单次调用纵览全库且内置文件字节大小，size ≥ 300 可直接排除 LFS 指针，无需二次请求验证)
   try {
     const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${defaultBranch}?recursive=1`;
