@@ -32,6 +32,7 @@ import {
   probeRepoLogo,
   deducePlatformsAndIdentifiers,
   formatCatalogJson,
+  todayAddedAt,
 } from './lib/catalog-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -235,6 +236,7 @@ async function main() {
     category_name: matchedCategory.name,
     aliases: finalAliases.length > 0 ? finalAliases : undefined,
     default_version: defaultVersion,
+    added_at: existingItem?.added_at || todayAddedAt(), // 收录日期（UTC, YYYY-MM-DD）；覆盖更新时保留原值
     license: defaultLicense,
     stars: defaultStars,
     forks: defaultForks,

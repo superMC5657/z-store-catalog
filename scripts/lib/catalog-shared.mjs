@@ -326,6 +326,13 @@ export function deducePlatformsAndIdentifiers(repoName, assets) {
 }
 
 /**
+ * 返回当天 UTC 日期（YYYY-MM-DD），供收录脚本填充 added_at。
+ */
+export function todayAddedAt() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/**
  * 保持标量数组单行排版格式化 JSON
  */
 export function formatCatalogJson(catalog) {

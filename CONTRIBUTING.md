@@ -46,6 +46,7 @@ node scripts/add-app.mjs <owner/repo>
   "owner": "github-username",
   "repo": "repository-name",
   "forge": "github",
+  "added_at": "2026-10-16",
   "icon": "https://raw.githubusercontent.com/owner/repo/main/logo.png",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
@@ -57,6 +58,8 @@ node scripts/add-app.mjs <owner/repo>
   }
 }
 ```
+
+> 手动追加时，`added_at` 请填写提交当天的 UTC 日期（`YYYY-MM-DD` 格式）；使用 `add-app` / `batch-add` 脚本收录时会自动填充 `added_at`，无需手填。
 
 #### 可选分类 (`category`):
 - `system`: 系统增强、文件管理、快捷启动器、压缩工具

@@ -26,6 +26,10 @@ if (!fs.existsSync(catalogPath)) {
 }
 
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+// added_at 写回保护快照：记录进入时的各条 added_at，写回前校验，防误删/误改。
+const addedAtSnapshot = new Map(
+  catalog.map((item) => [`${item.owner}/${item.repo}`.toLowerCase(), item.added_at]),
+);
 console.log(`📋 开始保鲜收录库，已载入 ${catalog.length} 款应用...`);
 
 const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
@@ -59,6 +63,8 @@ for (let i = 0; i < catalog.length; i++) {
         const newStars = repoData.stargazers_count ?? oldStars;
         const newForks = repoData.forks_count ?? item.forks;
 
+        // 仅刷新 stars/forks/license/description_en/default_version 等动态字段；
+        // added_at（收录日期）为静态元数据，刷新逻辑中绝不覆盖或删除，写回前另有断言兜底。
         item.stars = newStars;
         item.forks = newForks;
         if (repoData.license?.spdx_id) {
@@ -95,6 +101,15 @@ for (let i = 0; i < catalog.length; i++) {
 
   // 避免高频突发请求
   await new Promise((r) => setTimeout(r, 200));
+}
+
+// added_at 写回前断言：若刷新过程中 added_at 被改动或丢失，直接报错退出，绝不写盘。
+for (const item of catalog) {
+  const key = `${item.owner}/${item.repo}`.toLowerCase();
+  if (item.added_at !== addedAtSnapshot.get(key)) {
+    console.error(`❌ added_at 保护断言失败 (${key})：进入时为 ${addedAtSnapshot.get(key)}，当前为 ${item.added_at}，拒绝写回。`);
+    process.exit(1);
+  }
 }
 
 // 格式化写回 catalog.json（保持纯标量数组单行，不换行展开）

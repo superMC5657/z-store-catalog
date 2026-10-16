@@ -38,6 +38,7 @@ import {
   probeRepoLogo,
   deducePlatformsAndIdentifiers,
   formatCatalogJson,
+  todayAddedAt,
 } from './lib/catalog-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -392,6 +393,7 @@ async function processSeed(seed, headers, categoryNames) {
       category_name: categoryNames[seed.category] || matchedCategory.name,
       aliases: Array.isArray(seed.aliases) ? seed.aliases : undefined,
       default_version: release?.tag_name || 'unknown',
+      added_at: todayAddedAt(), // 收录日期（UTC, YYYY-MM-DD；已收录仓库会被跳过，仅新条目写入）
       license: repoData.license?.spdx_id || 'Unknown',
       stars: repoData.stargazers_count ?? 0,
       forks: repoData.forks_count ?? 0,

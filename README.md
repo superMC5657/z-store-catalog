@@ -47,6 +47,7 @@
   "category_name": "网络工具",
   "aliases": ["局域网传输", "隔空投送", "快传", "airdrop", "file transfer"],
   "default_version": "v1.18.2",
+  "added_at": "2026-10-16",
   "license": "Apache-2.0",
   "stars": 90581,
   "forks": 5051,
@@ -72,6 +73,7 @@
 - `platforms`: 支持的设备端（`windows`, `linux`, `macos`, `android`, `ios`）；
 - `identifiers`: 各端原生识别符，供客户端本地已安装扫描与拉起使用；
 - `default_version` / `stars` / `forks`: 由 CI 定时保鲜自动填充，提交 PR 时可省略。
+- `added_at`: 该应用被收录进 `catalog.json` 的日期（UTC，`YYYY-MM-DD` 格式），由收录脚本自动填入当天日期；保鲜脚本只更新动态字段，绝不改动此字段。其中 2026-10-16 为无 git 历史可查条目的回填占位日期（工作区新增），前两档 2026-09-10 / 2026-09-13 为 git 历史首次出现日。
 
 ---
 

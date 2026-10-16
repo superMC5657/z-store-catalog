@@ -60,7 +60,7 @@ for (let i = 0; i < catalog.length; i++) {
 
   // 1. 必填基础字段（新 schema：description 中文必填，description_en 英文与 description 规则对齐必填；
   //    chinese_name / publisher_fingerprint 已废弃，不再校验）
-  const requiredFields = ['id', 'name', 'category', 'description', 'description_en', 'owner', 'repo', 'icon', 'platforms', 'identifiers'];
+  const requiredFields = ['id', 'name', 'category', 'description', 'description_en', 'owner', 'repo', 'icon', 'platforms', 'identifiers', 'added_at'];
   for (const field of requiredFields) {
     if (item[field] === undefined || item[field] === null || item[field] === '') {
       reportError(item, `缺少必填字段 '${field}'`);
@@ -72,6 +72,19 @@ for (let i = 0; i < catalog.length; i++) {
     const v = item[field];
     if (v !== undefined && v !== null && v !== '' && (typeof v !== 'string' || !v.trim())) {
       reportError(item, `'${field}' 必须是非空字符串`);
+    }
+  }
+
+  // 1c. added_at 必须为合法的 YYYY-MM-DD 日期（该应用被收录进 catalog.json 的日期，UTC）
+  if (item.added_at !== undefined && item.added_at !== null && item.added_at !== '') {
+    if (typeof item.added_at !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(item.added_at)) {
+      reportError(item, `'added_at' 格式不合法 (应为 YYYY-MM-DD，如 2026-10-16)`);
+    } else {
+      const [y, m, d] = item.added_at.split('-').map(Number);
+      const dt = new Date(Date.UTC(y, m - 1, d));
+      if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== m - 1 || dt.getUTCDate() !== d) {
+        reportError(item, `'added_at' '${item.added_at}' 不是合法的日历日期`);
+      }
     }
   }
 
