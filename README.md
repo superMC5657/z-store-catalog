@@ -96,6 +96,21 @@
 - 仓库设置开启 `Settings → Actions → General → Allow GitHub Actions to create and approve pull requests`；
 - 或配置 `CATALOG_BOT_TOKEN` secret（fine-grained PAT，`contents` / `pull-requests` / `issues` 读写）。使用 PAT 时自动 PR 还会触发 `validate-pr.yml`。
 
+### Jules 维护代理（可选）
+
+仓库根 `AGENTS.md` 规定了清单字段顺序、校验命令与提交规范，Jules 会自动读取。两种用法：
+
+1. **API 工作流**：在 Jules 设置页生成 API key，添加为仓库 secret `JULES_API_KEY`；然后在 Actions → `Jules Maintenance` → Run workflow，选择：
+   - `catalog-audit`：检查失效/改名仓库、错误分类、过期简介、与产物不符的平台；
+   - `fix-ci`：复现并修复 `main` 上的 CI 失败；
+   - `custom`：自行填写任务。
+
+   未配置 `JULES_API_KEY` 时工作流会跳过，不会报错。默认每月 1 日 03:00 UTC 跑一次 `catalog-audit`，不需要可删除 workflow 里的 `schedule`。
+
+2. **`jules` 标签**：安装 Jules GitHub App 并授权本仓库后，给维护类 Issue 打 `jules` 标签，Jules 会接管并开 PR。**不要**给公开发布收录申请 Issue 打该标签——那条链路已由 `issue-to-pr.yml` 处理，避免重复 PR 和配额浪费。
+
+Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人工复核。免费额度为 15 个任务/天。
+
 ---
 
 ## 🛠️ 本地维护脚本 (Scripts)
