@@ -115,11 +115,15 @@ jobs:
               automationMode: "AUTO_CREATE_PR"
             }' > "$RUNNER_TEMP/jules-payload.json"
 
-          response=$(curl --fail-with-body -sS \
+          if ! response=$(curl --fail-with-body -sS \
             -X POST "$api/sessions" \
             -H "Content-Type: application/json" \
             -H "X-Goog-Api-Key: $JULES_API_KEY" \
-            -d @"$RUNNER_TEMP/jules-payload.json")
+            -d @"$RUNNER_TEMP/jules-payload.json"); then
+            echo "::error::Jules API request failed (check JULES_API_KEY, quota, and repo connection)"
+            printf '%s\n' "$response"
+            exit 1
+          fi
 
           session=$(printf '%s' "$response" | jq -r '.name // "unknown"')
           echo "Jules session: \`$session\`" >> "$GITHUB_STEP_SUMMARY"
