@@ -8,6 +8,7 @@
     "add:app": "node scripts/add-app.mjs",
     "discover": "node scripts/discover-apps.mjs",
     "refresh": "node scripts/refresh-catalog.mjs",
+    "ingest:issue": "node scripts/ingest-issue.mjs",
     "test": "node scripts/validate-catalog.mjs",
     "validate": "node scripts/validate-catalog.mjs"
   },

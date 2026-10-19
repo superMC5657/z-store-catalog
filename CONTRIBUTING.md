@@ -24,6 +24,11 @@ git checkout -b add-my-app
 
 ### 2. 添加应用配置
 
+> 使用 Z-Store 客户端「提交收录申请」时无需手动改 JSON：客户端会生成带
+> `### payload_json` 的 Issue，`.github/workflows/issue-to-pr.yml` 自动解析、
+> 校验并追加到 `catalog.json` 后开 PR，维护者只需 review / merge。
+> 校验失败只需编辑 Issue 正文修正 payload，维护者可手动重跑该 workflow，无需另开 Issue。
+
 #### 方式 A：极速智能收录（推荐，10 秒搞定）
 运行自动收录脚本，输入 GitHub 仓库地址，脚本会自动抓取 Stars、Forks、Releases 产物、推断支持平台并探测高清 Logo：
 

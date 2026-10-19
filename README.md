@@ -83,6 +83,19 @@
 
 详细提交流程与规范请参阅：👉 [CONTRIBUTING.md](./CONTRIBUTING.md)
 
+### Issue → 自动 PR
+
+客户端「提交收录申请」生成的 Issue 只要正文包含 `### payload_json`，`.github/workflows/issue-to-pr.yml` 会自动：
+
+1. 用 `scripts/ingest-issue.mjs` 解析单条或批量 payload，并按 `owner/repo` 去重；
+2. 用 `scripts/validate-catalog.mjs` 同款规则校验，失败时在 Issue 下回复具体原因；
+3. 追加到 `catalog.json`，推送 `catalog/issue-<n>` 分支并创建 PR（正文含 `Closes #<n>`）。
+
+维护者只需 review / merge。首次启用需满足任一条件：
+
+- 仓库设置开启 `Settings → Actions → General → Allow GitHub Actions to create and approve pull requests`；
+- 或配置 `CATALOG_BOT_TOKEN` secret（fine-grained PAT，`contents` / `pull-requests` / `issues` 读写）。使用 PAT 时自动 PR 还会触发 `validate-pr.yml`。
+
 ---
 
 ## 🛠️ 本地维护脚本 (Scripts)
@@ -98,6 +111,7 @@
 | `scripts/lib/catalog-shared.mjs` | **共享核心库**：分类定义、图标评分器、平台/标识符推断、JSON 排版格式化，供单应用与批量两条收录路径复用，保证产出格式一致 |
 | `scripts/refresh-catalog.mjs` | **数据保鲜**：定时（CI）或手动刷新全部应用 Stars / Forks / 最新 Release Tag |
 | `scripts/validate-catalog.mjs` | **规范校验**：检查必填字段、ID 唯一性、分类/平台合法性、图标 URL 格式，PR 自动化检查即此脚本 |
+| `scripts/ingest-issue.mjs` | **Issue 自动收录**：解析收录申请 Issue 正文的 `payload_json`，按 owner/repo 去重、复用校验规则后追加 `catalog.json`；由 `.github/workflows/issue-to-pr.yml` 在 Issue 创建时自动调用并开 PR |
 | `scripts/seed/YYYY-MM-DD/` | 按日期归档的种子与运行产物（git 忽略，同日覆盖、换日新建）：输入种子（含 discover 挖掘 `auto.json`）+ batch-add 报告 `batch-report.json`（每应用状态/图标来源/失败原因）+ 淘汰审计 `seed-excluded.json` |
 
 ### 常用命令

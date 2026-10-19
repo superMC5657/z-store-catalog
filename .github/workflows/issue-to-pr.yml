@@ -1,0 +1,116 @@
+name: Issue to Catalog PR
+
+# 把客户端预填的收录申请 Issue（正文含 ### payload_json）
+# 自动合并进 catalog.json 并开 PR；维护者只需 review / merge。
+on:
+  issues:
+    types: [opened, edited]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 要重新处理的 Issue 编号
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: issue-to-catalog-pr
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (contains(github.event.issue.body, '### payload_json') &&
+       (github.event.action == 'opened' || github.event.changes.body != null))
+    runs-on: ubuntu-latest
+    env:
+      # 可选：配置 CATALOG_BOT_TOKEN（fine-grained PAT：contents / pull-requests / issues 读写）
+      # 让自动 PR 能触发 validate-pr.yml；未配置时回退 GITHUB_TOKEN，脚本内仍会先跑同款校验。
+      GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
+      REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Ingest payload
+        id: ingest
+        run: |
+          set +e
+          node scripts/ingest-issue.mjs \
+            --issue "$ISSUE_NUMBER" \
+            --repo "$REPO" \
+            --pr-body pr-body.md \
+            --pr-title pr-title.txt \
+            --failure-comment failure.md \
+            --nochange-comment nochange.md
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Comment validation failure
+        if: steps.ingest.outputs.code != '0'
+        run: |
+          if [ ! -f failure.md ]; then
+            printf '## 自动收录失败\n\n处理 Issue 时出错，请查看 Actions 日志。\n' > failure.md
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file failure.md
+          exit 1
+
+      - name: Detect catalog changes
+        id: detect
+        run: |
+          if git diff --quiet -- catalog.json; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file nochange.md
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate catalog
+        if: steps.detect.outputs.changed == 'true'
+        run: node scripts/validate-catalog.mjs
+
+      - name: Commit and push branch
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          branch="catalog/issue-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add catalog.json
+          git commit -m "$(cat pr-title.txt)"
+          git push --force origin "HEAD:refs/heads/$branch"
+
+      - name: Create or update pull request
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          branch="catalog/issue-${ISSUE_NUMBER}"
+          pr_url=$(gh pr list --repo "$REPO" --head "$branch" --state open --json url --jq '.[0].url')
+          if [ -z "$pr_url" ]; then
+            if ! gh pr create --repo "$REPO" --base main --head "$branch" \
+              --title "$(cat pr-title.txt)" --body-file pr-body.md > pr-url.txt 2> pr-error.txt; then
+              # GITHUB_TOKEN 需要仓库启用 “Allow GitHub Actions to create and approve pull requests”，
+              # 或配置 CATALOG_BOT_TOKEN；被拦截时退化为一次性点击创建。
+              compare_url="https://github.com/${REPO}/compare/main...${branch}?expand=1"
+              gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "分支 \`${branch}\` 已推送，但自动创建 PR 被仓库权限拦截。请点此创建：${compare_url}"
+              exit 0
+            fi
+            pr_url=$(tail -n 1 pr-url.txt)
+          else
+            gh pr edit "$pr_url" --body-file pr-body.md
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" \
+            --body "已自动生成收录 PR：$pr_url"
