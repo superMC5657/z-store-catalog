@@ -241,6 +241,8 @@ function buildPrBody(issue, added, skipped) {
     ? `\n## 已跳过（已在清单中）\n\n${skipped.map((s) => `- \`${s.id}\`：${s.reason}`).join('\n')}\n`
     : '';
 
+  const closing = issue.number ? `Closes #${issue.number}\n` : '';
+
   return `## 自动收录 PR
 
 ${issueSourceLine(issue)}
@@ -257,8 +259,7 @@ ${skippedBlock}
 - [x] 已通过 \`scripts/validate-catalog.mjs\`（与 PR CI 同款规则）
 - [ ] 维护者复核中文简介 / 图标 / 平台标识符
 
-Closes ${issue.number ? `#${issue.number}` : '#'}
-
+${closing}
 > 由 \`.github/workflows/issue-to-pr.yml\` 自动生成。
 `;
 }
