@@ -111,6 +111,23 @@
 
 Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人工复核。免费额度为 15 个任务/天。
 
+### Jules 评审 + 自动合并
+
+`jules-pr-review.yml` 在 PR 打开或更新时：
+
+1. 用 `main` 上的 `validate-catalog.mjs` 校验 PR 的 `catalog.json`（不执行 PR 里的脚本）；
+2. 让 Jules 读 PR diff，输出 `VERDICT: APPROVE|REJECT` 与 `REASON`；
+3. 把结论评论到 PR；
+4. 仅当结论为 `APPROVE`、head SHA 未变化、改动范围合规，且满足以下任一条件时 squash merge：
+   - 收录 PR 关联 Issue 的作者在 `AUTO_MERGE_AUTHORS` 中（默认仓库 owner）；
+   - PR 带 `jules-auto-merge` 标签。
+
+外部作者的收录 PR 默认只评审、不合并；维护者确认后打 `jules-auto-merge` 即可让它自动合并。代码 PR 默认不进入该流程，打标签后才会评审并自动合并。
+
+需要 `JULES_API_KEY`；可选仓库变量 `AUTO_MERGE_AUTHORS=alice,bob` 扩展白名单。
+
+> Jules 结论是 LLM 判断，不是安全保证。默认只对自己的提交全自动，外部提交保留人工决策。Jules API 为 `v1alpha`，免费额度 15 任务/天。
+
 ---
 
 ## 🛠️ 本地维护脚本 (Scripts)

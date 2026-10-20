@@ -16,6 +16,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  actions: write
 
 concurrency:
   group: issue-to-catalog-pr
@@ -96,6 +97,8 @@ jobs:
 
       - name: Create or update pull request
         if: steps.detect.outputs.changed == 'true'
+        env:
+          CATALOG_BOT_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN }}
         run: |
           branch="catalog/issue-${ISSUE_NUMBER}"
           pr_url=$(gh pr list --repo "$REPO" --head "$branch" --state open --json url --jq '.[0].url')
@@ -114,3 +117,12 @@ jobs:
           fi
           gh issue comment "$ISSUE_NUMBER" --repo "$REPO" \
             --body "已自动生成收录 PR：$pr_url"
+
+          # 自动 PR 由 GITHUB_TOKEN 创建时不会触发 pull_request workflow；
+          # workflow_dispatch 不受该限制，显式触发 Jules 评审。
+          # 配置了 PAT 时 PR 事件本身会触发，跳过 dispatch 避免重复消耗 Jules 任务。
+          if [ -z "${CATALOG_BOT_TOKEN:-}" ]; then
+            pr_number=${pr_url##*/}
+            gh workflow run jules-pr-review.yml --repo "$REPO" -f pr="$pr_number" \
+              || echo "::warning::无法触发 Jules PR Review（workflow 可能尚未合并到 main）"
+          fi

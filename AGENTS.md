@@ -27,6 +27,7 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 - `validate-pr.yml`：PR 与 `main` 的格式校验。
 - `refresh-catalog.yml`：每日刷新 stars / forks / release；不要手工维护这些字段。
 - `jules-maintenance.yml`：手动或每月触发 Jules 做语义审计、修 CI。不要把公开 Issue 直接接给 Jules，避免任务配额被滥用。
+- `jules-pr-review.yml`：Jules 评审 PR 并输出 `VERDICT`；仅在硬门槛通过且作者在白名单（或 PR 带 `jules-auto-merge` 标签）时自动 squash merge。不要绕过它的 head SHA 校验或改动范围检查。
 
 ## 提交
 

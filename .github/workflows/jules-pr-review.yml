@@ -1,0 +1,177 @@
+name: Jules PR Review
+
+# 让 Jules 评审 PR 并给出 APPROVE / REJECT，符合硬门槛时由本 workflow 合并。
+# 适用范围：
+# - catalog/issue-* 分支的收录 PR（自动生成）；
+# - 带 jules-auto-merge 标签的其他 PR（显式 opt-in）。
+# 自动合并仅在 Issue 作者属于 AUTO_MERGE_AUTHORS（默认仓库 owner）或带标签时执行。
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: PR number
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: jules-pr-review-${{ github.event.pull_request.number || inputs.pr }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.draft == false &&
+       github.event.pull_request.head.repo.full_name == github.repository &&
+       (github.event.action != 'labeled' || github.event.label.name == 'jules-auto-merge') &&
+       (startsWith(github.event.pull_request.head.ref, 'catalog/issue-') ||
+        contains(github.event.pull_request.labels.*.name, 'jules-auto-merge')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+      PR: ${{ github.event.pull_request.number || inputs.pr }}
+      REPO: ${{ github.repository }}
+      # 逗号分隔；默认只信任仓库 owner。可在仓库变量 AUTO_MERGE_AUTHORS 中扩展。
+      AUTO_MERGE_AUTHORS: ${{ vars.AUTO_MERGE_AUTHORS || github.repository_owner }}
+    steps:
+      - name: Check Jules API key
+        id: key
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+        run: |
+          if [ -z "$JULES_API_KEY" ]; then
+            echo "::warning::JULES_API_KEY is not configured; skipping Jules review."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.ok == 'true'
+        with:
+          ref: ${{ github.event.pull_request.base.sha || 'main' }}
+          fetch-depth: 1
+
+      - name: Collect PR scope
+        id: scope
+        if: steps.key.outputs.ok == 'true'
+        run: |
+          set -euo pipefail
+          head_sha=$(gh pr view "$PR" --repo "$REPO" --json headRefOid --jq .headRefOid)
+          head_ref=$(gh pr view "$PR" --repo "$REPO" --json headRefName --jq .headRefName)
+          gh pr view "$PR" --repo "$REPO" --json files --jq '.files[].path' > "$RUNNER_TEMP/files.txt"
+          echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
+          echo "head_ref=$head_ref" >> "$GITHUB_OUTPUT"
+
+          if [[ "$head_ref" == catalog/issue-* ]]; then
+            if [ "$(wc -l < "$RUNNER_TEMP/files.txt")" -ne 1 ] || [ "$(cat "$RUNNER_TEMP/files.txt")" != "catalog.json" ]; then
+              {
+                echo "## 跳过自动评审"
+                echo
+                echo "\`catalog/issue-*\` PR 只允许改动 \`catalog.json\`；该 PR 改动了其他文件，需要人工评审。"
+              } > "$RUNNER_TEMP/scope-comment.md"
+              echo "allow=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "allow=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment out-of-scope PR
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'false'
+        run: gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/scope-comment.md"
+
+      - name: Validate PR catalog with trusted script
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true'
+        run: |
+          set -euo pipefail
+          gh api "repos/$REPO/contents/catalog.json?ref=${{ steps.scope.outputs.head_sha }}" --jq .content \
+            | base64 -d > "$RUNNER_TEMP/catalog.json"
+          CATALOG_PATH="$RUNNER_TEMP/catalog.json" node scripts/validate-catalog.mjs
+
+      - name: Check auto-merge eligibility
+        id: eligibility
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true'
+        run: |
+          set -euo pipefail
+          auto=false
+          labels=$(gh pr view "$PR" --repo "$REPO" --json labels --jq '.labels[].name')
+          if grep -qx 'jules-auto-merge' <<< "$labels"; then
+            auto=true
+          fi
+          issue_number=$(gh pr view "$PR" --repo "$REPO" --json closingIssuesReferences --jq '.closingIssuesReferences[0].number // empty')
+          if [ -z "$issue_number" ]; then
+            # 刚创建的 PR 可能还没被 GitHub 解析出 closing reference，回退到正文里的 Closes #N。
+            issue_number=$(gh pr view "$PR" --repo "$REPO" --json body --jq .body \
+              | grep -oE 'Closes #[0-9]+' | head -n 1 | grep -oE '[0-9]+' || true)
+          fi
+          issue_author=""
+          if [ -n "$issue_number" ]; then
+            issue_author=$(gh issue view "$issue_number" --repo "$REPO" --json author --jq .author.login)
+          fi
+          IFS=',' read -ra allowed <<< "$AUTO_MERGE_AUTHORS"
+          for author in "${allowed[@]}"; do
+            author=$(echo "$author" | xargs)
+            if [ -n "$author" ] && [ "$author" = "$issue_author" ]; then
+              auto=true
+            fi
+          done
+          echo "auto=$auto" >> "$GITHUB_OUTPUT"
+          echo "issue_author=$issue_author" >> "$GITHUB_OUTPUT"
+
+      - name: Review with Jules
+        id: review
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true'
+        run: |
+          set +e
+          node scripts/review-pr.mjs --repo "$REPO" --pr "$PR" \
+            --out "$RUNNER_TEMP/verdict.json" \
+            --comment "$RUNNER_TEMP/verdict.md"
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Comment review failure
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.review.outputs.code != '0'
+        run: |
+          body="$RUNNER_TEMP/verdict.md"
+          if [ ! -f "$body" ]; then
+            printf '## Jules PR 评审失败\n\n评审流程出错，请查看 Actions 日志。\n' > "$body"
+          fi
+          gh pr comment "$PR" --repo "$REPO" --body-file "$body"
+          exit 1
+
+      - name: Comment verdict
+        if: steps.review.outputs.code == '0'
+        run: |
+          if [ "${{ steps.eligibility.outputs.auto }}" != "true" ]; then
+            printf '\n> 本 PR 不在自动合并白名单（%s）中，也未打 `jules-auto-merge` 标签；Jules 结论仅作参考。\n' "${{ steps.eligibility.outputs.issue_author }}" >> "$RUNNER_TEMP/verdict.md"
+          fi
+          gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/verdict.md"
+
+      - name: Merge approved PR
+        if: steps.review.outputs.code == '0' && steps.eligibility.outputs.auto == 'true'
+        run: |
+          set -euo pipefail
+          verdict=$(jq -r .verdict "$RUNNER_TEMP/verdict.json")
+          reviewed_sha=$(jq -r .headSha "$RUNNER_TEMP/verdict.json")
+          if [ "$verdict" != "APPROVE" ]; then
+            echo "Jules verdict: $verdict; not merging."
+            exit 0
+          fi
+          current_sha=$(gh pr view "$PR" --repo "$REPO" --json headRefOid --jq .headRefOid)
+          if [ "$reviewed_sha" != "$current_sha" ]; then
+            echo "::warning::PR head changed during review; not merging."
+            gh pr comment "$PR" --repo "$REPO" --body "PR head 在评审期间发生变化（\`$reviewed_sha\` → \`$current_sha\`），已跳过自动合并。"
+            exit 0
+          fi
+          gh pr merge "$PR" --repo "$REPO" --squash --delete-branch

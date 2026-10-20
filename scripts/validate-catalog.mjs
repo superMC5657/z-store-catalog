@@ -15,7 +15,10 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
-const catalogPath = path.join(rootDir, 'catalog.json');
+// 默认校验仓库根 catalog.json；CI 评审 PR 时可用 CATALOG_PATH 指向 PR 版本。
+const catalogPath = process.env.CATALOG_PATH
+  ? path.resolve(process.env.CATALOG_PATH)
+  : path.join(rootDir, 'catalog.json');
 
 export const VALID_PLATFORMS = new Set(['windows', 'linux', 'macos', 'android', 'ios']);
 export const VALID_CATEGORIES = new Set([
