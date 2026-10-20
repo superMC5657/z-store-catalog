@@ -11,7 +11,7 @@
     "ingest:issue": "node scripts/ingest-issue.mjs",
     "review:pr": "node scripts/review-pr.mjs",
     "test:review": "node --test scripts/review-pr.test.mjs",
-    "test": "node scripts/validate-catalog.mjs",
+    "test": "node scripts/validate-catalog.mjs && node --test scripts/review-pr.test.mjs",
     "validate": "node scripts/validate-catalog.mjs"
   },
   "keywords": [
