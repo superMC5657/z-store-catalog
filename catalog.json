@@ -10133,5 +10133,32 @@
       "android": [],
       "ios": []
     }
+  },
+  {
+    "id": "mountain-loop/yaak",
+    "name": "Yaak",
+    "owner": "mountain-loop",
+    "repo": "yaak",
+    "icon": "https://raw.githubusercontent.com/mountain-loop/yaak/main/crates-tauri/yaak-app-client/icons/icon.png",
+    "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+    "description": "开源的桌面 API 客户端，支持 REST、GraphQL、gRPC 与 WebSocket。",
+    "description_en": "The most intuitive desktop API client. Organize and execute REST, GraphQL, WebSocket, Server Sent Events, and gRPC.",
+    "category": "dev",
+    "category_name": "开发编程",
+    "default_version": "v2026.9.0",
+    "added_at": "2026-10-20",
+    "license": "MIT",
+    "stars": 19338,
+    "forks": 835,
+    "is_verified": true,
+    "homepage": "https://yaak.app",
+    "platforms": ["windows", "macos", "linux"],
+    "identifiers": {
+      "windows": ["yaak.exe"],
+      "linux": ["yaak"],
+      "macos": ["yaak.app"],
+      "android": [],
+      "ios": []
+    }
   }
 ]
