@@ -34,6 +34,7 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
 ## 提交
 
+- 维护者本地开发：在分支上改完后直接 `git merge` 进本地 `main` 再 push，不必为此开 PR。ruleset 的 `pull_request` / `required_status_checks` 只约束外部贡献，管理员的 `bypass_mode` 是 `always`。
 - 使用 conventional commits：`feat(catalog): ...`、`fix(scripts): ...`、`docs: ...`。
 - 一个 PR 只做一件事；不要顺手改无关条目或 workflow。
 - 不要提交 token、API key、个人路径；`scripts/seed/` 是运行产物，已被 git 忽略。
