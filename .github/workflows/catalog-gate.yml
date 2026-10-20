@@ -1,0 +1,75 @@
+name: Catalog Gate
+
+# 为所有 PR 生成统一的 catalog-ingest commit status。
+# - 人工/同仓库 PR：本 workflow 校验 PR 里的 catalog.json 后写 status；
+# - bot 收录 PR：pull_request run 会停在 approval-required，由 issue-to-pr.yml 自己写 status；
+# - fork PR：GITHUB_TOKEN 只读，无法写 status，需维护者 bypass 后手动合并。
+#
+# 规则集只需求 required status check: catalog-ingest。
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  statuses: write
+
+concurrency:
+  group: catalog-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: Catalog Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout trusted base scripts
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate PR catalog with base scripts
+        id: validate
+        run: |
+          set +e
+          git fetch --depth=1 origin "refs/pull/${{ github.event.pull_request.number }}/head"
+          git show FETCH_HEAD:catalog.json > "$RUNNER_TEMP/catalog.json"
+          CATALOG_PATH="$RUNNER_TEMP/catalog.json" node scripts/validate-catalog.mjs
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Post success status
+        if: >-
+          steps.validate.outputs.code == '0' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/statuses/${{ github.event.pull_request.head.sha }}" \
+            -f state=success \
+            -f context=catalog-ingest \
+            -f description="catalog.json validated by gate"
+
+      - name: Post failure status
+        if: >-
+          steps.validate.outputs.code != '0' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/statuses/${{ github.event.pull_request.head.sha }}" \
+            -f state=failure \
+            -f context=catalog-ingest \
+            -f description="catalog.json validation failed"
+          exit 1
+
+      - name: Fork PR note
+        if: github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          echo "Fork PR: 只读 token 无法写 catalog-ingest status；请维护者 bypass 后手动合并。" >> "$GITHUB_STEP_SUMMARY"

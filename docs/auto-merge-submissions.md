@@ -210,16 +210,18 @@ concurrency:
 - 创建 PR 后**不需要**手动 dispatch 评审：配置了 PAT/App token 时 `pull_request` 事件会自然触发；
 - `dry_run=true` 时只评论解析/校验结果，不建分支。
 
-### 4.3 `validate-pr.yml`（去掉 `paths` 过滤，作为必需 check）
+### 4.3 `catalog-gate.yml` + `catalog-ingest` 状态（P3 必需检查）
 
-现有 workflow 已监听 `pull_request` 的 `catalog.json` 变更，跑 `node scripts/validate-catalog.mjs`，job 名是 **`Validate Catalog Schema & Rules`**。
+**为什么不用 `Validate Catalog Schema & Rules` 当必需 check：** `GITHUB_TOKEN` 创建的 PR 的 `pull_request` run 会停在 approval-required，check 不会上报；再加上 `paths:` 过滤，必需 check 会永久 Pending。用 PAT 可以解决，但不值得为一条数据流水线引入长期 token。
 
-**关键陷阱：`paths:` 过滤 + 必需 check = 永久 pending。** GitHub 文档明确：workflow 因 path/branch 过滤被跳过时，关联的 check 会停留在 Pending，要求该 check 的 PR 永远无法合并。一旦把它设为必需检查，就必须：
+P3 改用统一的 commit status **`catalog-ingest`**：
 
-- 去掉 `paths:` 过滤（改为在 job 内判断改动文件），或
-- 只对 `catalog/issue-*` PR 要求该 check。
+- `issue-to-pr.yml` 在 PR 创建后、合并前，在自己的 head SHA 上写 `catalog-ingest=success`（它已经跑过同款校验）；
+- `catalog-gate.yml` 对所有 PR 用 **base 分支的可信脚本** 校验 PR 里的 `catalog.json`，并写同一个 status；
+- 规则集只要求 `catalog-ingest`，**不需要 PAT/App token**；
+- fork PR 的 `GITHUB_TOKEN` 只读，写不了 status，需要维护者 bypass 后手动合并（主流程走 Issue，不受影响）。
 
-另外：`workflow_dispatch` 触发的 check **不满足**分支保护要求，只有 `pull_request` / `push` 等事件产生的 check 才算数。这也是必须用 App/PAT 让 PR 事件自然触发的原因。
+`validate-pr.yml` 保留为普通 CI，不作为必需 check（它有 `paths` 过滤，跳过时的 Pending 不会阻塞合并）。
 
 ### 4.4 `jules-pr-review.yml`（可选，沿用 PR #3）
 
@@ -468,13 +470,13 @@ REASON: <一句话>
 
 ### P3（可选，原生 auto-merge）
 
-- [ ] 仓库设置开启 **Allow auto-merge** 与 **Automatically delete head branches**：
+- [x] 仓库设置开启 **Allow auto-merge** 与 **Automatically delete head branches**：
   `gh api -X PATCH repos/superMC5657/z-store-catalog -f allow_auto_merge=true -f delete_branch_on_merge=true`
-- [ ] 建 main 规则集：Require PR、Require status checks（`Validate Catalog Schema & Rules`，可选 `Jules PR Review`）、Block force push；
-- [ ] **去掉 `validate-pr.yml` 的 `paths:` 过滤**（否则必需 check 在未命中路径的 PR 上永远 Pending）；
-- [ ] 必须使用 GitHub App / PAT 开 PR（`GITHUB_TOKEN` 的 run 会停在 approval-required，必需 check 不上报）；
-- [ ] `refresh-catalog.yml` 改为 PR 化，或把 Actions bot 加入 bypass；
+- [x] 新增 `catalog-gate.yml`；`issue-to-pr.yml` 在 PR 后写 `catalog-ingest` status；
+- [ ] 建 main 规则集：Require PR、Required status checks = `catalog-ingest`、Block force push；
+- [ ] `refresh-catalog.yml` 直接 push 需要一个 bypass（GitHub Actions integration）或改为 PR 化；
 - [ ] `AUTO_MERGE_MODE=native`；若开启 strict up-to-date，合并前 `gh pr update-branch`。
+- [ ] fork PR 需要维护者 bypass（只读 token 无法写 status），主流程走 Issue 不受影响。
 
 ---
 
