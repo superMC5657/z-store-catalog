@@ -1,7 +1,8 @@
 name: Jules PR Review
 
-# Jules 作为 PR 的第一道语义门：评审 diff，评论 APPROVE / REJECT，并打标签。
-# 不自动合并；维护者看过结论后手动 merge。
+# Jules 作为 PR 的硬门禁：评审 diff 后写 jules-verdict commit status，
+# 同时评论 APPROVE / REJECT 并打标签。ruleset 要求 jules-verdict。
+# bot PR（收录 / refresh）由各自 workflow 自己写 jules-verdict，这里跳过。
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
@@ -16,6 +17,7 @@ permissions:
   contents: read
   pull-requests: write
   issues: write
+  statuses: write
 
 concurrency:
   group: jules-pr-review-${{ github.event.pull_request.number || inputs.pr }}
@@ -29,6 +31,7 @@ jobs:
       (github.event.pull_request.state == 'open' &&
        github.event.pull_request.draft == false &&
        github.event.pull_request.head.ref != 'chore/refresh-baseline' &&
+       github.event.pull_request.user.login != 'github-actions[bot]' &&
        github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -45,9 +48,9 @@ jobs:
           JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
         run: |
           if [ -z "$JULES_API_KEY" ]; then
-            echo "::warning::JULES_API_KEY is not configured; skipping Jules review."
+            echo "::error::JULES_API_KEY is required because Jules is a hard gate."
             {
-              echo "### Jules review skipped"
+              echo "### Jules review failed closed"
               echo
               echo "\`JULES_API_KEY\` is not configured. Add it in Settings → Secrets and variables → Actions."
             } >> "$GITHUB_STEP_SUMMARY"
@@ -55,6 +58,10 @@ jobs:
           else
             echo "ok=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Fail closed when key is missing
+        if: steps.key.outputs.ok != 'true'
+        run: exit 1
 
       - uses: actions/checkout@v4
         if: steps.key.outputs.ok == 'true'
@@ -167,3 +174,33 @@ jobs:
             echo "::error::Jules verdict: $verdict; see the PR comment for reasons."
             exit 1
           fi
+
+      - name: Post jules-verdict status
+        if: always()
+        run: |
+          set -euo pipefail
+          state=failure
+          desc="Jules review failed"
+          if [ "${{ steps.key.outputs.ok }}" != "true" ]; then
+            desc="JULES_API_KEY missing"
+          elif [ "${{ steps.scope.outputs.allow }}" = "false" ]; then
+            desc="PR out of allowed scope"
+          elif [ "${{ steps.validate.outputs.code }}" != "0" ]; then
+            desc="catalog.json validation failed"
+          elif [ "${{ steps.review.outputs.code }}" = "0" ] && [ -f "$RUNNER_TEMP/verdict.json" ]; then
+            verdict=$(jq -r '.verdict // "REJECT"' "$RUNNER_TEMP/verdict.json")
+            if [ "$verdict" = "APPROVE" ]; then
+              state=success
+              desc="Jules APPROVE"
+            else
+              desc="Jules REJECT"
+            fi
+          fi
+          sha=$(jq -r '.headSha // empty' "$RUNNER_TEMP/verdict.json" 2>/dev/null || true)
+          if [ -z "$sha" ]; then
+            sha=$(gh pr view "$PR" --repo "$REPO" --json headRefOid --jq .headRefOid)
+          fi
+          gh api -X POST "repos/$REPO/statuses/$sha" \
+            -f state="$state" \
+            -f context=jules-verdict \
+            -f description="$desc"

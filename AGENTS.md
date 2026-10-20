@@ -25,12 +25,12 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
 ## 工作流
 
-- `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，校验后开 PR，并按 `AUTO_MERGE_POLICY`（trusted / all / label）与 `AUTO_MERGE_MODE`（direct / native）自动合并。不要绕过它手改 `catalog.json`。
-- `catalog-gate.yml`：对所有 PR 写 `catalog-ingest` commit status；main 规则集要求这个 status。bot PR 由 `issue-to-pr.yml` 自己写。
+- `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，校验后开 PR，内联跑 Jules 语义门禁，再按 `AUTO_MERGE_POLICY`（trusted / all / label）与 `AUTO_MERGE_MODE`（direct / native）自动合并。不要绕过它手改 `catalog.json`。
+- `catalog-gate.yml`：对人工 PR 写 `catalog-ingest` commit status；bot PR 由 `issue-to-pr.yml` / `refresh-catalog.yml` 自己写。
 - `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
-- `refresh-catalog.yml`：每日刷新 stars / forks / release；走 `catalog-ingest` 门禁开 PR 合并，不再直接 push main。
+- `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`，并写豁免 `jules-verdict=success`（动态字段不做语义评审）。
 - `jules-maintenance.yml`：手动或每月触发 Jules 做语义审计、修 CI。不要把公开 Issue 直接接给 Jules，避免任务配额被滥用。
-- `jules-pr-review.yml`：Jules 评审同仓库 PR，评论 `VERDICT` 并打 `jules-approved` / `jules-rejected` 标签。它不合并 PR；最终由维护者手动 merge。需要 `JULES_API_KEY`，未配置时跳过。
+- `jules-pr-review.yml`：人工 PR 的 Jules 硬门禁，写 `jules-verdict` 并打 `jules-approved` / `jules-rejected`；规则集要求 `catalog-ingest` + `jules-verdict` 两个状态。bot PR 由 `issue-to-pr.yml` 内联评审，本 workflow 跳过。需要 `JULES_API_KEY`，缺失时 fail-closed。
 
 ## 提交
 

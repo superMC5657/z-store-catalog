@@ -92,7 +92,7 @@ PR #3 已实现：
         ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ validate-pr.yml        schema / 唯一性 / 平台 / 图标 URL    │
-│ jules-pr-review.yml    语义复核（可选，fail-closed）        │
+│ jules-verdict          语义硬门禁（fail-closed）             │
 │ auto-merge gate        作者信任度 + 仓库信誉 + 门禁结果     │
 └─────────────────────────────────────────────────────────────┘
         │  全部通过
@@ -223,20 +223,22 @@ P3 改用统一的 commit status **`catalog-ingest`**：
 
 `validate-pr.yml` 保留为普通 CI，不作为必需 check（它有 `paths` 过滤，跳过时的 Pending 不会阻塞合并）。
 
-### 4.4 `jules-pr-review.yml`（可选，沿用 PR #3）
+### 4.4 Jules 硬门禁：`jules-verdict`
 
-- 只评审 `catalog/issue-*` 分支，且 PR 只允许改 `catalog.json`；
-- 用 **base 分支的脚本**校验 PR 里的 `catalog.json`（不执行 PR 代码）；
-- Jules 只读评审，要求输出：
+- 规则集 `main-protection` 要求 `catalog-ingest` + **`jules-verdict`** 两个状态；
+- 人工 PR：`jules-pr-review.yml` 用 **base 分支的脚本**校验 PR 里的 `catalog.json`（不执行 PR 代码），再调 Jules 评审，写 `jules-verdict=success|failure`；
+- bot 收录 PR：`issue-to-pr.yml` 在创建 PR 后内联调用 `review-pr.mjs`，写同一个 `jules-verdict`，再决定是否写 `catalog-ingest` 和合并；
+- 每日 refresh PR：动态字段变更，不做语义评审；`refresh-catalog.yml` 直接写 `jules-verdict=success`（描述 `Exempt: daily refresh`）；
+- 只读评审，要求输出：
 
 ```
 VERDICT: APPROVE
 REASON: <一句话>
 ```
 
-- `APPROVE` → `jules-approved`；`REJECT` / 超时 / 无结论 → `jules-rejected`（fail-closed）；
-- 免费档 15 任务/天、3 并发，单次 5–60 分钟（无 SLA）；**不要把 Jules 设为唯一门禁**，它挂了不能阻塞主线；
-- 未配置 `JULES_API_KEY` 时必须**让 job 正常跑完并成功**（在 step 内 skip），不能用 job 级 `if:` 跳过——否则作为必需 check 会永远 Pending。
+- `APPROVE` → `jules-verdict=success` + `jules-approved`；`REJECT` / 超时 / 无结论 / 缺 key → `jules-verdict=failure`（fail-closed），PR 留在 `needs-review`，不合并；
+- 配额：免费档 15 任务/天、3 并发，单次 5–60 分钟；每条 PR/每次 push 消耗一次任务，量大时升级 Pro 或改成只对 `catalog/issue-*` 评审；
+- `JULES_API_KEY` 缺失时**必须 fail-closed**，不能跳过——否则规则集会一直等不到 `jules-verdict`。
 
 ### 4.5 自动合并步骤
 
@@ -253,7 +255,7 @@ gh pr merge "$PR" --repo "$REPO" --auto --squash --delete-branch
 合并前再确认：
 
 - PR 只改了 `catalog.json`；
-- 所有必需 check 通过（`gh pr checks`）；
+- 所有必需 check 通过（`catalog-ingest` + `jules-verdict`）；
 - 没有 `needs-review` / `jules-rejected` 标签；
 - PR head 仍是最新（`gh pr view --json mergeable,mergeStateStatus`）；
 - `mergeStateStatus == BEHIND` → `gh pr update-branch <n>`，等 check 重跑后再合并（GitHub 不会替 auto-merge 自动变基）。
@@ -285,10 +287,11 @@ gh pr merge "$PR" --repo "$REPO" --auto --squash --delete-branch
 | `scripts/lib/catalog-shared.mjs` | 修改 | 导出 `guessCategory()`；可选新增 `fetchRepoFacts()` 统一封装 GitHub API |
 | `scripts/validate-catalog.mjs` | 修改 | 导出 `validateCatalog()`；支持 `CATALOG_PATH` 环境变量（PR #3 已做） |
 | `scripts/ingest-issue.mjs` | 新增 | 解析 / 富化 / 去重 / 校验 / 输出 PR 素材 |
-| `.github/workflows/issue-to-pr.yml` | 新增 | Issue → 分支 → PR |
-| `.github/workflows/jules-pr-review.yml` | 可选新增 | Jules 语义门禁（PR #3 版本可直接复用） |
-| `.github/workflows/refresh-catalog.yml` | 修改 | 加 `concurrency: catalog-main`，push 前 `git pull --rebase` |
-| `AGENTS.md` + `.github/jules/*.md` | 可选新增 | Jules 的仓库规则与任务提示词（PR #3 已写好） |
+| `.github/workflows/issue-to-pr.yml` | 新增 | Issue → 分支 → PR → Jules 内联门禁 → 合并 |
+| `.github/workflows/jules-pr-review.yml` | 新增 | 人工 PR 的 Jules 硬门禁（写 `jules-verdict`） |
+| `.github/workflows/catalog-gate.yml` | 新增 | 人工 PR 的 `catalog-ingest` 状态 |
+| `.github/workflows/refresh-catalog.yml` | 修改 | 改为 PR 化，写 `catalog-ingest` + 豁免 `jules-verdict` |
+| `AGENTS.md` + `.github/jules/*.md` | 新增 | Jules 的仓库规则与任务提示词 |
 | `CONTRIBUTING.md` / `README.md` | 修改 | 说明「提交后自动处理」，以及 `needs-review` / `auto-merge` 标签含义 |
 | `package.json` | 修改 | 增加 `ingest:issue` 脚本，便于本地复现 |
 
@@ -307,7 +310,7 @@ gh pr merge "$PR" --repo "$REPO" --auto --squash --delete-branch
 | G7 | 图标 | HTTPS、`image/*`、300 B–2 MB、非内网地址 | 自动探测；仍失败 → `needs-review` |
 | G8 | 文案 | `description` 4–500 字符、无 HTML/脚本；`description_en` 非空 | `needs-review` |
 | G9 | 作者信任 | 见下方策略 | 只开 PR，不合并 |
-| G10 | 语义（可选） | Jules `APPROVE` | 只开 PR，不合并 |
+| G10 | 语义（硬门禁） | Jules `APPROVE` + `jules-verdict=success` | 不合并（fail-closed） |
 
 ### 作者信任策略（`AUTO_MERGE_POLICY` 仓库变量）
 
@@ -317,7 +320,7 @@ gh pr merge "$PR" --repo "$REPO" --auto --squash --delete-branch
 | `all` | 任何作者，只要 G1–G8 全过 + 仓库信誉达标（stars ≥ 50、最近 18 个月有 push、非空 description）就自动合并 |
 | `label` | 只有 Issue 带 `auto-merge` 标签才自动合并（最保守） |
 
-建议：**先用 `trusted` 跑两周**，观察误收/漏收，再切 `all`。当前 Issue #4/#5 的作者都是仓库 owner，P1 即可全自动。
+当前仓库已切到 `all`；如需保守，随时 `gh variable set AUTO_MERGE_POLICY --body trusted`。外部作者走 `all` 时仍要求 `reputationOk=true`。
 
 ### 合并方式（`AUTO_MERGE_MODE`）
 
@@ -368,17 +371,19 @@ gh pr merge "$PR" --repo "$REPO" --auto --squash --delete-branch
 
 ```
 确定性门禁（G1–G9）  →  必须通过
-Jules 语义门禁（G10） →  可选；不可用时 trusted 作者仍可合并，外部作者降级为 needs-review
+Jules 语义门禁（G10） →  必须通过（jules-verdict=success；缺 key/超时/REJECT 一律 fail-closed）
+每日 refresh PR       →  豁免语义评审，直接写 jules-verdict=success
 ```
 
 ### 6.5 失败/降级
 
 | 情况 | 行为 |
 | --- | --- |
-| 未配置 `JULES_API_KEY` | 跳过语义门禁，评论注明；不影响 G1–G9 |
-| Jules 超时 / 配额耗尽 / 无 VERDICT | fail-closed：不自动合并，打 `jules-rejected` + `needs-review` |
-| Jules REJECT | 评论 `REASON`，打 `jules-rejected`；维护者可人工覆盖 |
-| Jules 误判 | 维护者加 `auto-merge` 标签并 re-run，人工兜底 |
+| 未配置 `JULES_API_KEY` | fail-closed：写 `jules-verdict=failure`，不合并，打 `needs-review` |
+| Jules 超时 / 配额耗尽 / 无 VERDICT | fail-closed：写 `jules-verdict=failure`，不自动合并，打 `jules-rejected` + `needs-review` |
+| Jules REJECT | 评论 `REASON`，写 `jules-verdict=failure`，打 `jules-rejected`；维护者可 bypass 规则集人工合并 |
+| Jules 误判 | 修改 Issue/payload 后 re-run（会重新评审）；不要直接删 status |
+| 每日 refresh PR | 豁免：`refresh-catalog.yml` 直接写 `jules-verdict=success` |
 | 需要 Jules 修文案 | 打 `jules` 标签开新 PR；原自动 PR 保持 `needs-review`，人工二选一 |
 
 ### 6.6 评审提示词（只读）
@@ -468,7 +473,7 @@ REASON: <一句话>
 - [x] 增加 `needs-review` / `auto-merge` / `duplicate` / `update` 标签；
 - [ ] 观察外部作者误判，调整阈值（目前只验证了 owner 提交与本地模拟）。
 
-### P3（可选，原生 auto-merge）
+### P3（已上线，原生 auto-merge + Jules 硬门禁）
 
 - [x] 仓库设置开启 **Allow auto-merge** 与 **Automatically delete head branches**：
   `gh api -X PATCH repos/superMC5657/z-store-catalog -f allow_auto_merge=true -f delete_branch_on_merge=true`

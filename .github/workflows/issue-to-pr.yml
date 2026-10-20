@@ -49,7 +49,7 @@ jobs:
           github.event.label.name == 'retry' ||
           github.event.label.name == 'update'))))
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     env:
       REPO: ${{ github.repository }}
       ISSUE_NUMBER: ${{ github.event.issue.number || github.event.inputs.issue_number }}
@@ -83,6 +83,10 @@ jobs:
             --description "Update an existing catalog entry" --force || true
           gh label create duplicate --repo "$REPO" --color CFD3D7 \
             --description "Already present in catalog.json" --force || true
+          gh label create jules-approved --repo "$REPO" --color 0E8A16 \
+            --description "Jules semantic review passed" --force || true
+          gh label create jules-rejected --repo "$REPO" --color B60205 \
+            --description "Jules semantic review rejected" --force || true
 
       - name: Ingest issue
         id: ingest
@@ -207,8 +211,69 @@ jobs:
           echo "url=$pr_url" >> "$GITHUB_OUTPUT"
           echo "number=${pr_url##*/}" >> "$GITHUB_OUTPUT"
 
-      - name: Post catalog gate status
+      - name: Jules semantic gate
+        id: jules
         if: steps.pr.outputs.url != ''
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+          GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+        run: |
+          set +e
+          if [ -z "$JULES_API_KEY" ]; then
+            echo "::error::JULES_API_KEY is required because Jules is a hard gate"
+            echo "verdict=REJECT" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          node scripts/review-pr.mjs --repo "$REPO" --pr "${{ steps.pr.outputs.number }}" \
+            --out jules-verdict.json --comment jules-comment.md
+          code=$?
+          verdict="REJECT"
+          if [ -f jules-verdict.json ]; then
+            verdict=$(jq -r '.verdict // "REJECT"' jules-verdict.json)
+          fi
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
+          echo "Jules verdict: $verdict"
+          exit 0
+
+      - name: Post Jules verdict status
+        if: steps.pr.outputs.url != '' && steps.jules.outputs.verdict != ''
+        run: |
+          sha=$(git rev-parse HEAD)
+          state=success
+          if [ "${{ steps.jules.outputs.verdict }}" != "APPROVE" ]; then
+            state=failure
+          fi
+          gh api -X POST "repos/$REPO/statuses/$sha" \
+            -f state=$state \
+            -f context=jules-verdict \
+            -f description="Jules: ${{ steps.jules.outputs.verdict }}"
+
+      - name: Comment Jules verdict
+        if: steps.pr.outputs.url != '' && steps.jules.outputs.verdict != ''
+        run: |
+          if [ -f jules-comment.md ]; then
+            gh pr comment "${{ steps.pr.outputs.url }}" --repo "$REPO" --body-file jules-comment.md
+          else
+            gh pr comment "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+              --body "Jules verdict: \`${{ steps.jules.outputs.verdict }}\`（无详细结论，见 Actions 日志）"
+          fi
+
+      - name: Handle Jules rejection
+        if: >-
+          steps.pr.outputs.url != '' &&
+          steps.jules.outputs.verdict != '' &&
+          steps.jules.outputs.verdict != 'APPROVE'
+        run: |
+          gh pr edit "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+            --add-label jules-rejected --add-label needs-review || true
+          gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
+            --add-label needs-review || true
+          echo "::error::Jules rejected the PR; left open for maintainer review."
+          exit 1
+
+      - name: Post catalog gate status
+        if: steps.pr.outputs.url != '' && steps.jules.outputs.verdict == 'APPROVE'
         run: |
           # 规则集要求 catalog-ingest；bot PR 不会触发 pull_request workflow，
           # 因此由本 workflow 在已验证的 head SHA 上直接写 commit status。
@@ -220,7 +285,7 @@ jobs:
 
       - name: Decide and merge
         id: merge
-        if: steps.pr.outputs.url != ''
+        if: steps.pr.outputs.url != '' && steps.jules.outputs.verdict == 'APPROVE'
         run: |
           set -euo pipefail
           assoc="${{ steps.ingest.outputs.author_association }}"
@@ -298,7 +363,7 @@ jobs:
           echo "merged=$merged" >> "$GITHUB_OUTPUT"
 
       - name: Comment result
-        if: steps.pr.outputs.url != ''
+        if: always() && steps.pr.outputs.url != ''
         run: |
           {
             cat comment.md
