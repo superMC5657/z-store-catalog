@@ -36,7 +36,16 @@ jobs:
           git add catalog.json
           if git diff --staged --quiet; then
             echo "No changes in catalog.json"
-          else
-            git commit -m "chore(catalog): automated refresh of stars, forks, and releases [skip ci]"
-            git push
+            exit 0
           fi
+          git commit -m "chore(catalog): automated refresh of stars, forks, and releases [skip ci]"
+          # 与收录 PR 共用 catalog.json：push 前先 rebase，冲突时退避重试。
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 5))
+          done
+          echo "::error::catalog.json push failed after 3 attempts"
+          exit 1

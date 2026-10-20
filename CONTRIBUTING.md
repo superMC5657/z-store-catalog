@@ -88,6 +88,19 @@ node scripts/validate-catalog.mjs
 - PR 提交后，GitHub Actions 会自动运行格式校验；
 - 审核通过并合并后，全网 Z-Store 客户端将自动同步展示！
 
+### 5. 通过 Issue 提交（客户端一键收录）
+
+Z-Store 客户端「提交收录申请」会打开一个预填 Issue，正文包含 `### payload_json`。仓库的 `issue-to-pr.yml` 会自动：
+
+1. 解析 payload，并从 GitHub API 补齐 stars / forks / license / 最新版本；
+2. 缺 `platforms` / `identifiers` 时从最新 Release 资产推断，缺图标时自动探测；
+3. 通过 `validate-catalog.mjs` 后创建 PR，并在合并后自动关闭 Issue。
+
+维护者可以：
+- 给 Issue 打 `update` 标签：更新已收录条目，而不是按重复关闭；
+- 给 Issue 打 `auto-merge` 标签：在数据校验通过的前提下强制自动合并（PR 保持原样，不直接改动）；
+- 看到 `needs-review` 标签：说明存在需要人工确认的字段（协议、图标、平台等）。
+
 ---
 
 ## 🛠️ 批量收录与挖掘（维护者）

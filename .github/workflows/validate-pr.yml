@@ -24,3 +24,6 @@ jobs:
 
       - name: Validate Catalog
         run: node scripts/validate-catalog.mjs
+
+      - name: Test ingest parser
+        run: node --test scripts/ingest-issue.test.mjs
