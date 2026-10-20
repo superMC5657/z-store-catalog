@@ -1,0 +1,12 @@
+{
+  "name": "sessions/fixture-no-verdict",
+  "state": "COMPLETED",
+  "activities": [
+    {
+      "originator": "agent",
+      "agentMessaged": {
+        "agentMessage": "Everything looks fine to me."
+      }
+    }
+  ]
+}

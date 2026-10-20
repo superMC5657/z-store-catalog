@@ -1,6 +1,6 @@
 # 收录申请 Issue 全自动合并方案
 
-> 状态：P1 实现已提交（PR #6：`issue-to-pr.yml` + `ingest-issue.mjs`），待合并；P2/P3 待启用
+> 状态：P1/P2/P3 已上线（PR #6 / #8 / #10 / #11 / #12 + main 规则集）；Jules 工作流已恢复，等待 `JULES_API_KEY` 激活
 > 仓库：`superMC5657/z-store-catalog`
 > 关联：PR #3（`feat(ci): 收录 Issue 自动转 PR + Jules 评审第一道门`，已关闭，分支已删除）
 
