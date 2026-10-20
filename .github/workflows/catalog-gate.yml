@@ -22,6 +22,9 @@ concurrency:
 jobs:
   gate:
     name: Catalog Gate
+    # bot PR（收录 / 每日 refresh）由对应 workflow 自己写 catalog-ingest；
+    # 这里跳过，避免 GITHUB_TOKEN 的 pull_request run 停在 approval-required 或合并后补跑失败。
+    if: github.event.pull_request.user.login != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout trusted base scripts
