@@ -141,23 +141,28 @@ function activityText(activity) {
 }
 
 function lastAgentText(activities) {
-  const messages = activities
-    .filter((activity) => activity.originator === 'agent' && activity.agentMessaged?.agentMessage)
+  const agentActivities = activities.filter((activity) => activity.originator === 'agent');
+  const messages = agentActivities
+    .filter((activity) => activity.agentMessaged?.agentMessage)
     .map((activity) => activity.agentMessaged.agentMessage);
-  if (messages.length > 0) {
-    // Jules 有时在 VERDICT 之后再发一条 "I have finished the review."；
-    // 只取最后一条会丢掉 VERDICT，优先选最后一条包含 VERDICT 的消息。
-    const verdictMessages = messages.filter((message) => /VERDICT\s*:/i.test(message));
-    return verdictMessages.length > 0
-      ? verdictMessages[verdictMessages.length - 1]
-      : messages[messages.length - 1];
+
+  // Jules 有时在 VERDICT 之后再发一条 "I have finished the review."；
+  // 只取最后一条会丢掉 VERDICT，优先选最后一条包含 VERDICT 的消息。
+  const verdictMessages = messages.filter((message) => /VERDICT\s*:/i.test(message));
+  if (verdictMessages.length > 0) {
+    return verdictMessages[verdictMessages.length - 1];
   }
 
-  return activities
-    .filter((activity) => activity.originator === 'agent')
-    .map(activityText)
-    .filter(Boolean)
-    .join('\n');
+  // 有的会话里 VERDICT 只出现在进度/描述类活动（progressUpdated、description），
+  // agentMessaged 只有一句收尾语。用每条 agent 活动的完整文本再找一次，
+  // 取最后一条带 VERDICT 的文本（只取那一条，避免把 VERDICT 之后的其他活动当成多余内容）。
+  const texts = agentActivities.map(activityText).filter(Boolean);
+  const verdictTexts = texts.filter((text) => /VERDICT\s*:/i.test(text));
+  if (verdictTexts.length > 0) {
+    return verdictTexts[verdictTexts.length - 1];
+  }
+
+  return messages.length > 0 ? messages[messages.length - 1] : texts.join('\n');
 }
 
 function parseVerdict(text) {

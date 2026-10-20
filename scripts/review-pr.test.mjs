@@ -82,6 +82,34 @@ test('code prompt uses code review rules', () => {
   assert.ok(!prompt.includes('catalog submission PR'));
 });
 
+test('finds VERDICT in progressUpdated when agent messages only say the review finished', () => {
+  const activities = [
+    {
+      originator: 'agent',
+      progressUpdated: {
+        title: 'Reviewing PR #29',
+        description: 'VERDICT: APPROVE\nREASON: catalog entry matches upstream',
+      },
+    },
+    { originator: 'agent', agentMessaged: { agentMessage: 'I have finished the review.' } },
+  ];
+  const text = lastAgentText(activities);
+  assert.match(text, /VERDICT: APPROVE/);
+  const result = parseVerdict(text);
+  assert.equal(result.verdict, 'APPROVE');
+  assert.deepEqual(result.reasons, ['catalog entry matches upstream']);
+});
+
+test('still fails closed when no agent activity contains a verdict', () => {
+  const activities = [
+    { originator: 'agent', progressUpdated: { title: 'Reviewing', description: 'Looks fine to me.' } },
+    { originator: 'agent', agentMessaged: { agentMessage: 'I have finished the review.' } },
+  ];
+  const result = parseVerdict(lastAgentText(activities));
+  assert.equal(result.verdict, 'REJECT');
+  assert.match(result.reasons[0], /未返回 VERDICT/);
+});
+
 test('timeout is PENDING, not a semantic rejection', () => {
   const base = { pr: 25, repo: 'o/r', headSha: 'abc123', files: ['catalog.json'], isCatalog: true };
   const result = timeoutResult(base, 1800, {
