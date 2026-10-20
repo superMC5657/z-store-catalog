@@ -101,6 +101,17 @@ Z-Store 客户端「提交收录申请」会打开一个预填 Issue，正文包
 - 给 Issue 打 `auto-merge` 标签：在数据校验通过的前提下强制自动合并（PR 保持原样，不直接改动）；
 - 看到 `needs-review` 标签：说明存在需要人工确认的字段（协议、图标、平台等）。
 
+### 6. Jules 语义硬门禁
+
+所有合入 `main` 的 PR 现在都需要通过 Jules 语义评审（`jules-verdict`），与 `catalog-ingest` 一起由 main 规则集强制：
+
+- **人工 PR**：`Jules PR Review` 自动评论 `VERDICT` 并打 `jules-approved` / `jules-rejected`；
+- **客户端 Issue PR**：由 `issue-to-pr.yml` 在合并前内联评审，`APPROVE` 后才写 `catalog-ingest` 并自动合并；
+- **每日 refresh PR**：只改 stars / forks / 版本等动态字段，豁免语义评审；
+- 评审通常需要 5–15 分钟；缺 key、超时、无结论或 `REJECT` 都会 fail-closed，PR 留在 `needs-review`。
+
+> 免费档 15 任务/天、3 并发；频繁 push 会重复消耗任务，建议把一组修改合并成一次 push。
+
 ---
 
 ## 🛠️ 批量收录与挖掘（维护者）
