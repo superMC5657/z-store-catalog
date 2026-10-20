@@ -143,7 +143,14 @@ function lastAgentText(activities) {
   const messages = activities
     .filter((activity) => activity.originator === 'agent' && activity.agentMessaged?.agentMessage)
     .map((activity) => activity.agentMessaged.agentMessage);
-  if (messages.length > 0) return messages[messages.length - 1];
+  if (messages.length > 0) {
+    // Jules 有时在 VERDICT 之后再发一条 "I have finished the review."；
+    // 只取最后一条会丢掉 VERDICT，优先选最后一条包含 VERDICT 的消息。
+    const verdictMessages = messages.filter((message) => /VERDICT\s*:/i.test(message));
+    return verdictMessages.length > 0
+      ? verdictMessages[verdictMessages.length - 1]
+      : messages[messages.length - 1];
+  }
 
   return activities
     .filter((activity) => activity.originator === 'agent')
@@ -482,4 +489,4 @@ if (isDirectRun) {
   });
 }
 
-export { parseVerdict, buildPrompt, buildComment };
+export { parseVerdict, buildPrompt, buildComment, lastAgentText };
