@@ -131,11 +131,11 @@ jobs:
           exit 1
 
       - name: Comment verdict
-        if: steps.review.outputs.code == '0'
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code == '0'
         run: gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/verdict.md"
 
       - name: Mark review result
-        if: steps.review.outputs.code == '0'
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code == '0'
         run: |
           verdict=$(jq -r .verdict "$RUNNER_TEMP/verdict.json")
           if [ "$verdict" = "APPROVE" ]; then
