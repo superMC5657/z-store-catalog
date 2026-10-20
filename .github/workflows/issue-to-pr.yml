@@ -26,6 +26,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  statuses: write
 
 concurrency:
   # 同一个 Issue 串行；不同 Issue 允许并行（合并前会 update-branch）。
@@ -205,6 +206,17 @@ jobs:
           fi
           echo "url=$pr_url" >> "$GITHUB_OUTPUT"
           echo "number=${pr_url##*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Post catalog gate status
+        if: steps.pr.outputs.url != ''
+        run: |
+          # 规则集要求 catalog-ingest；bot PR 不会触发 pull_request workflow，
+          # 因此由本 workflow 在已验证的 head SHA 上直接写 commit status。
+          sha=$(git rev-parse HEAD)
+          gh api -X POST "repos/$REPO/statuses/$sha" \
+            -f state=success \
+            -f context=catalog-ingest \
+            -f description="catalog.json validated by ingest"
 
       - name: Decide and merge
         id: merge
