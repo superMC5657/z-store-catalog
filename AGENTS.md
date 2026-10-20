@@ -30,7 +30,7 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 - `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
 - `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`，并写豁免 `jules-verdict=success`（动态字段不做语义评审）。
 - `jules-maintenance.yml`：手动或每月触发 Jules 做语义审计、修 CI。不要把公开 Issue 直接接给 Jules，避免任务配额被滥用。
-- `jules-pr-review.yml`：人工 PR 的 Jules 硬门禁，写 `jules-verdict` 并打 `jules-approved` / `jules-rejected`；规则集要求 `catalog-ingest` + `jules-verdict` 两个状态。bot PR 由 `issue-to-pr.yml` 内联评审，本 workflow 跳过。需要 `JULES_API_KEY`，缺失时 fail-closed。超时（`PENDING`）写 pending 而不是 REJECT，需重跑 workflow。
+- `jules-pr-review.yml`：人工 PR 的 Jules 硬门禁，写 `jules-verdict` 并打 `jules-approved` / `jules-rejected`；规则集要求 `catalog-ingest` + `jules-verdict` 两个状态。bot PR 由 `issue-to-pr.yml` 内联评审，本 workflow 跳过。需要 `JULES_API_KEY`，缺失时 fail-closed。评审超时或 Jules 完成评审却没返回 `VERDICT` 时都写 pending（`PENDING`），不写 REJECT，需重跑 workflow 或人工确认。
 
 ## 提交
 

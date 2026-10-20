@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseVerdict, buildPrompt, lastAgentText, timeoutResult } from './review-pr.mjs';
+import { parseVerdict, buildPrompt, lastAgentText, timeoutResult, noVerdictResult } from './review-pr.mjs';
 
 test('parses APPROVE with reasons', () => {
   const result = parseVerdict('ok\n\nVERDICT: APPROVE\nREASON: upstream repo matches\nREASON: only catalog.json changed');
@@ -108,6 +108,26 @@ test('still fails closed when no agent activity contains a verdict', () => {
   const result = parseVerdict(lastAgentText(activities));
   assert.equal(result.verdict, 'REJECT');
   assert.match(result.reasons[0], /未返回 VERDICT/);
+});
+
+test('missing VERDICT after a nudge becomes PENDING, not REJECT', () => {
+  const base = { pr: 25, repo: 'o/r', headSha: 'def456', files: ['catalog.json'], isCatalog: true };
+  const result = noVerdictResult(base, {
+    session: 'sessions/14107948331647624497',
+    sessionUrl: 'https://jules.example/sessions/14107948331647624497',
+    state: 'COMPLETED',
+    message: 'I have completed the PR review.',
+  });
+  assert.equal(result.verdict, 'PENDING');
+  assert.equal(result.reasons.length, 1);
+  assert.match(result.reasons[0], /VERDICT/);
+  assert.match(result.reasons[0], /PENDING/);
+  assert.equal(result.session, 'sessions/14107948331647624497');
+  assert.equal(result.sessionUrl, 'https://jules.example/sessions/14107948331647624497');
+  assert.equal(result.state, 'COMPLETED');
+  assert.equal(result.message, 'I have completed the PR review.');
+  assert.equal(result.fixture, false);
+  assert.equal(result.pr, 25);
 });
 
 test('timeout is PENDING, not a semantic rejection', () => {

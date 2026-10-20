@@ -10,6 +10,7 @@
  * - 只读评审：不创建 PR（不传 automationMode），提示 Jules 不要改文件；
  * - 结论必须显式包含 `VERDICT: APPROVE|REJECT`，否则按 REJECT 处理（fail closed）；
  * - 轮询超时写 PENDING（没拿到结论），PENDING 不是语义否决，也不代表内容不合格；
+ * - Jules 不保证遵守输出契约：缺 `VERDICT` 先发一次只要求结论的催促，仍无则写 PENDING；
  * - 支持 --fixture 离线回放，便于不消耗 Jules 配额地测试解析逻辑；
  * - 合并决策不在这里做：workflow 只评论结论并打标签，最终由维护者手动合并。
  *
@@ -261,6 +262,41 @@ VERDICT: REJECT
 REASON: <one line>`;
 }
 
+async function sendNudge(sessionName, prompt) {
+  await julesRequest(`/${sessionName}:sendMessage`, {
+    method: 'POST',
+    body: JSON.stringify({ prompt }),
+  });
+}
+
+const VERDICT_NUDGE_PROMPT = [
+  'Your review finished without the required VERDICT block.',
+  'Reply with exactly two lines and nothing else:',
+  'VERDICT: APPROVE|REJECT',
+  'REASON: <one line>',
+].join('\n');
+
+/**
+ * 评审完成但没有任何 VERDICT 时，催一次只要求结论的消息，并按 POLL_INTERVAL_MS 轮询。
+ * 拿到含 VERDICT 的文本就返回它，超时或调用失败返回空串（不抛异常）。
+ */
+async function nudgeForVerdict(sessionName, args) {
+  const maxSeconds = Math.min(300, args.timeout);
+  const maxPolls = Math.max(1, Math.ceil((maxSeconds * 1000) / POLL_INTERVAL_MS));
+  try {
+    await sendNudge(sessionName, VERDICT_NUDGE_PROMPT);
+    for (let poll = 0; poll < maxPolls; poll++) {
+      await sleep(POLL_INTERVAL_MS);
+      const activities = await listActivities(sessionName);
+      const text = lastAgentText(activities);
+      if (/VERDICT\s*:/i.test(text)) return text;
+    }
+  } catch (err) {
+    console.warn(`⚠️  催促 VERDICT 失败，按未返回处理：${err.message}`);
+  }
+  return '';
+}
+
 async function listActivities(sessionName) {
   const activities = [];
   let pageToken = '';
@@ -339,6 +375,23 @@ function timeoutResult(base, seconds, extra = {}) {
     sessionUrl: extra.sessionUrl || '',
     state: extra.state || 'SKIPPED',
     message: 'session still running',
+    fixture: false,
+  };
+}
+
+/**
+ * 评审跑完了但 Jules 没按契约输出 VERDICT：不是内容不合格，写 PENDING 等人工确认。
+ * 保留 session / sessionUrl / state 与最后一条 agent 文本，方便定位和重跑。
+ */
+function noVerdictResult(base, extra = {}) {
+  return {
+    ...base,
+    verdict: 'PENDING',
+    reasons: ['Jules 完成评审但未返回 VERDICT（已提示一次），按 PENDING 处理，需人工确认或重跑'],
+    session: extra.session ?? null,
+    sessionUrl: extra.sessionUrl || '',
+    state: extra.state || 'COMPLETED',
+    message: extra.message || '',
     fixture: false,
   };
 }
@@ -429,12 +482,10 @@ async function main() {
     for (let poll = 0; poll < maxPolls; poll++) {
       if (state === 'AWAITING_USER_FEEDBACK' && !nudged) {
         // 评审任务不应反问；给一次明确收尾提示，避免白白消耗一次任务。
-        await julesRequest(`/${sessionName}:sendMessage`, {
-          method: 'POST',
-          body: JSON.stringify({
-            prompt: 'Do not ask questions. Finish the review and output the required VERDICT block now.',
-          }),
-        });
+        await sendNudge(
+          sessionName,
+          'Do not ask questions. Finish the review and output the required VERDICT block now.',
+        );
         nudged = true;
         await sleep(POLL_INTERVAL_MS);
         const latest = await julesRequest(`/${sessionName}`);
@@ -489,6 +540,19 @@ async function main() {
     if (finalText) activities = retryActivities;
   }
 
+  // Jules 不保证遵守输出契约：完成评审也可能不带 VERDICT。先催一次只要求结论的消息，
+  // 仍拿不到就记 PENDING（没拿到结论 ≠ 内容不合格），交给维护者确认或重跑。
+  if (!args.fixture && state === 'COMPLETED' && !/VERDICT\s*:/i.test(finalText)) {
+    const nudgedText = await nudgeForVerdict(sessionName, args);
+    if (!/VERDICT\s*:/i.test(nudgedText)) {
+      return emit(
+        args,
+        noVerdictResult(baseResult, { session: sessionName, sessionUrl, state, message: finalText }),
+      );
+    }
+    finalText = nudgedText;
+  }
+
   const parsed = parseVerdict(finalText);
   const result = {
     ...baseResult,
@@ -512,4 +576,4 @@ if (isDirectRun) {
   });
 }
 
-export { parseVerdict, buildPrompt, buildComment, lastAgentText, timeoutResult };
+export { parseVerdict, buildPrompt, buildComment, lastAgentText, timeoutResult, noVerdictResult };
