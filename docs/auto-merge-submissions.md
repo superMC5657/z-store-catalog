@@ -1,6 +1,6 @@
 # 收录申请 Issue 全自动合并方案
 
-> 状态：P1 已实施（`issue-to-pr.yml` + `ingest-issue.mjs`），P2/P3 待启用
+> 状态：P1 实现已提交（PR #6：`issue-to-pr.yml` + `ingest-issue.mjs`），待合并；P2/P3 待启用
 > 仓库：`superMC5657/z-store-catalog`
 > 关联：PR #3（`feat(ci): 收录 Issue 自动转 PR + Jules 评审第一道门`，已关闭，分支已删除）
 
@@ -458,7 +458,7 @@ REASON: <一句话>
 - [x] 在 `refresh-catalog.yml` 加 `git pull --rebase` + 冲突重试；
 - [ ] 打开仓库设置：Actions 允许创建 PR（当前 `can_approve_pull_request_reviews=true`，已满足）；
 - [ ] 配置 `CATALOG_BOT_TOKEN`（可选；P1 `direct` 模式不是必须，但配置后 PR 会正常触发 CI）；
-- [ ] 提交本分支并观察前 10 条真实 Issue。
+- [x] 提交实现分支（PR #6）；合并后观察前 10 条真实 Issue。
 
 ### P2（外部作者放量）
 
