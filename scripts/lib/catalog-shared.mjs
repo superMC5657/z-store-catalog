@@ -36,6 +36,25 @@ export const CATEGORY_GRADIENTS = {
 };
 
 /**
+ * 根据仓库简介与 topics 自动推断最贴切的软件分类。
+ * add-app 与 ingest-issue 共用，避免两套启发式漂移。
+ */
+export function guessCategory(desc, topics) {
+  const text = `${desc || ''} ${(topics || []).join(' ')}`.toLowerCase();
+  if (text.includes('remote') || text.includes('desktop') || text.includes('cleaner') || text.includes('launcher') || text.includes('file manager')) return 'system';
+  if (text.includes('network') || text.includes('transfer') || text.includes('download') || text.includes('torrent') || text.includes('proxy') || text.includes('vpn')) return 'network';
+  if (text.includes('player') || text.includes('video') || text.includes('audio') || text.includes('music') || text.includes('stream') || text.includes('record')) return 'media';
+  if (text.includes('password') || text.includes('security') || text.includes('crypto') || text.includes('2fa') || text.includes('otp') || text.includes('authenticator')) return 'security';
+  if (text.includes('editor') || text.includes('terminal') || text.includes('git') || text.includes('code') || text.includes('developer') || text.includes('api')) return 'dev';
+  if (text.includes('image') || text.includes('paint') || text.includes('photo') || text.includes('screenshot') || text.includes('3d') || text.includes('svg')) return 'graphics';
+  if (text.includes('note') || text.includes('markdown') || text.includes('pdf') || text.includes('office') || text.includes('todo') || text.includes('calendar')) return 'office';
+  if (text.includes('book') || text.includes('reader') || text.includes('rss') || text.includes('epub') || text.includes('feed')) return 'reading';
+  if (text.includes('docker') || text.includes('kubernetes') || text.includes('monitor') || text.includes('database') || text.includes('server')) return 'ops';
+  if (text.includes('game') || text.includes('emulator') || text.includes('arcade')) return 'games';
+  return 'dev';
+}
+
+/**
  * 获取显式配置的 GitHub Token（仅读取 GITHUB_TOKEN 或 GH_TOKEN 环境变量）
  */
 export function resolveGitHubToken() {

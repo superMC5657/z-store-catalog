@@ -92,6 +92,7 @@
 | 脚本 / 目录 | 作用 |
 | --- | --- |
 | `scripts/add-app.mjs` | **单应用交互收录**：输入 GitHub 链接，自动抓取元数据、推断平台与标识符、探测图标，交互确认后写入 catalog.json（支持 `-y` 全自动） |
+| `scripts/ingest-issue.mjs` | **收录 Issue 自动入库**：解析 Issue 正文的 `payload_json`，从 GitHub API 补齐 stars/forks/license/platforms/identifiers/icon，校验后写入 catalog.json；CI 由 `.github/workflows/issue-to-pr.yml` 调用，默认 dry-run |
 | `scripts/batch-add.mjs` | **批量智能收录**：读取 `scripts/seed/YYYY-MM-DD/` 日期档候选清单逐个收录（`--date` 指定，默认当天 UTC），内置 Release 二进制资产校验、四级图标探测（种子提示 → Git Trees 全库评分 → 静态路径 → 头像兜底）与实时字节验证；每成功一个立即写盘，中断可续跑，自动跳过已收录仓库 |
 | `scripts/discover-apps.mjs` | **热门挖掘**：全自动挖掘热门开源软件，产出同日期档 `auto.json`；与 batch-add 用同一 `--date` 即同一批输入，可直接被消费 |
 | `scripts/seed/YYYY-MM-DD/*.json` | **候选种子库**：按日期归档的待收录应用清单（含中文简介、英文简介、别名等人工文案；`batch-report*.json` / `seed-excluded.json` 为运行产物，不计入输入）。重复执行会自动去重跳过已收录项，是扩充收录的入口 |

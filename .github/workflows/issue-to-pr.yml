@@ -1,0 +1,315 @@
+name: Issue to Catalog PR
+
+# 收录申请 Issue → catalog.json → PR → 自动合并。
+# 设计说明见 docs/auto-merge-submissions.md。
+#
+# 安全边界：
+# - Issue 正文只当数据，不执行任何 Issue/PR 里的代码；
+# - 只允许 catalog/issue-* 分支改 catalog.json；
+# - 默认只给 owner/member/collaborator 自动合并；外部作者只开 PR。
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 要重新处理的 Issue 编号
+        required: true
+        type: string
+      dry_run:
+        description: 只解析与校验，不写文件、不建 PR
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  # 同一个 Issue 串行；不同 Issue 允许并行（合并前会 update-branch）。
+  group: catalog-issue-${{ github.event.issue.number || github.event.inputs.issue_number }}
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    name: Ingest submission
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue != null &&
+       github.event.issue.body != null &&
+       contains(github.event.issue.body, '### payload_json') &&
+       github.event.sender.login != 'github-actions[bot]' &&
+       (github.event.action == 'opened' ||
+        (github.event.action == 'edited' && github.event.changes.body != null) ||
+        (github.event.action == 'labeled' &&
+         (github.event.label.name == 'auto-merge' ||
+          github.event.label.name == 'retry' ||
+          github.event.label.name == 'update'))))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      REPO: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ github.event.issue.number || github.event.inputs.issue_number }}
+      # 建议配置 CATALOG_BOT_TOKEN（fine-grained PAT：contents / pull-requests / issues 读写）。
+      # 未配置时回退 github.token：P1 direct 模式仍可用，但 PR 的 pull_request run 会停在 approval-required。
+      GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      AUTO_MERGE_MODE: ${{ vars.AUTO_MERGE_MODE || 'direct' }}
+      AUTO_MERGE_POLICY: ${{ vars.AUTO_MERGE_POLICY || 'trusted' }}
+      DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Ensure labels
+        run: |
+          gh label create needs-review --repo "$REPO" --color FBCA04 \
+            --description "Needs maintainer review" --force || true
+          gh label create auto-merge --repo "$REPO" --color 0E8A16 \
+            --description "Maintainer approved for auto-merge" --force || true
+          gh label create update --repo "$REPO" --color 1D76DB \
+            --description "Update an existing catalog entry" --force || true
+          gh label create duplicate --repo "$REPO" --color CFD3D7 \
+            --description "Already present in catalog.json" --force || true
+
+      - name: Ingest issue
+        id: ingest
+        run: |
+          set +e
+          extra=""
+          if [ "$DRY_RUN" = "true" ]; then
+            extra="--dry-run"
+          else
+            extra="--write"
+          fi
+          if gh issue view "$ISSUE_NUMBER" --repo "$REPO" --json labels \
+              --jq '.labels[].name' 2>/dev/null | grep -qx update; then
+            extra="$extra --update"
+          fi
+
+          node scripts/ingest-issue.mjs \
+            --issue "$ISSUE_NUMBER" \
+            --repo "$REPO" \
+            --out result.json \
+            --pr-body pr-body.md \
+            --pr-title pr-title.txt \
+            --comment comment.md \
+            --failure-comment failure.md \
+            $extra
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ -f result.json ]; then
+            echo "action=$(jq -r '.action // "error"' result.json)" >> "$GITHUB_OUTPUT"
+            echo "needs_review=$(jq -r '.needsReview // true' result.json)" >> "$GITHUB_OUTPUT"
+            echo "reputation_ok=$(jq -r '.reputationOk // false' result.json)" >> "$GITHUB_OUTPUT"
+            echo "author_association=$(jq -r '.authorAssociation // ""' result.json)" >> "$GITHUB_OUTPUT"
+            echo "ids=$(jq -r '(.ids // []) | join(", ")' result.json)" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Comment validation failure
+        if: steps.ingest.outputs.code != '0'
+        run: |
+          if [ ! -f failure.md ]; then
+            printf '## 自动收录失败\n\n处理 Issue 时出错，请查看 Actions 日志。\n' > failure.md
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file failure.md
+          gh issue edit "$ISSUE_NUMBER" --repo "$REPO" --add-label needs-review || true
+          exit 1
+
+      - name: Handle duplicate or no-op
+        if: >-
+          steps.ingest.outputs.code == '0' &&
+          (steps.ingest.outputs.action == 'duplicate' ||
+           steps.ingest.outputs.action == 'noop')
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file comment.md
+          if [ "${{ steps.ingest.outputs.action }}" = "duplicate" ]; then
+            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" --add-label duplicate || true
+            gh issue close "$ISSUE_NUMBER" --repo "$REPO" --reason "not planned" || true
+          fi
+
+      - name: Handle dry run
+        if: >-
+          steps.ingest.outputs.code == '0' &&
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.dry_run == 'true' &&
+          steps.ingest.outputs.action != 'duplicate' &&
+          steps.ingest.outputs.action != 'noop'
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file comment.md
+          echo "dry_run=true；未写 catalog.json、未建分支/PR。" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate written catalog
+        if: >-
+          steps.ingest.outputs.code == '0' &&
+          steps.ingest.outputs.action != 'duplicate' &&
+          steps.ingest.outputs.action != 'noop' &&
+          !(github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true')
+        run: node scripts/validate-catalog.mjs
+
+      - name: Commit and push branch
+        id: push
+        if: >-
+          steps.ingest.outputs.code == '0' &&
+          steps.ingest.outputs.action != 'duplicate' &&
+          steps.ingest.outputs.action != 'noop' &&
+          !(github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true')
+        run: |
+          set -euo pipefail
+          branch="catalog/issue-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch" origin/main
+          git add catalog.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "$(cat pr-title.txt)"
+          # bot 独占分支：重复触发时强制覆盖，保证同一 Issue 只有一个 PR。
+          git push --force origin "HEAD:refs/heads/$branch"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update pull request
+        id: pr
+        if: steps.push.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          branch="catalog/issue-${ISSUE_NUMBER}"
+          pr_url=$(gh pr list --repo "$REPO" --head "$branch" --state open \
+            --json url --jq '.[0].url // ""')
+          if [ -z "$pr_url" ]; then
+            if ! pr_url=$(gh pr create --repo "$REPO" --base main --head "$branch" \
+              --title "$(cat pr-title.txt)" --body-file pr-body.md); then
+              compare="https://github.com/${REPO}/compare/main...${branch}?expand=1"
+              gh issue comment "$ISSUE_NUMBER" --repo "$REPO" \
+                --body "分支 \`${branch}\` 已推送，但自动创建 PR 被仓库权限拦截。请手动创建：${compare}"
+              exit 0
+            fi
+          else
+            gh pr edit "$pr_url" --repo "$REPO" \
+              --title "$(cat pr-title.txt)" --body-file pr-body.md
+          fi
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+          echo "number=${pr_url##*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Decide and merge
+        id: merge
+        if: steps.pr.outputs.url != ''
+        run: |
+          set -euo pipefail
+          assoc="${{ steps.ingest.outputs.author_association }}"
+          needs_review="${{ steps.ingest.outputs.needs_review }}"
+          reputation_ok="${{ steps.ingest.outputs.reputation_ok }}"
+          labels=$(gh issue view "$ISSUE_NUMBER" --repo "$REPO" --json labels \
+            --jq '.labels[].name' 2>/dev/null || true)
+
+          trusted=false
+          case "$assoc" in
+            OWNER|MEMBER|COLLABORATOR) trusted=true ;;
+          esac
+          forced=false
+          if echo "$labels" | grep -qx auto-merge; then
+            forced=true
+          fi
+
+          # 如果 main 已被 refresh 或其他 PR 推进，先同步分支再合并。
+          merge_state=$(gh pr view "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+            --json mergeStateStatus --jq '.mergeStateStatus // ""' 2>/dev/null || true)
+          if [ "$merge_state" = "BEHIND" ]; then
+            gh pr update-branch "${{ steps.pr.outputs.url }}" --repo "$REPO" || true
+          fi
+
+          can_merge=false
+          if [ "$needs_review" = "false" ]; then
+            case "$AUTO_MERGE_POLICY" in
+              trusted)
+                if [ "$trusted" = "true" ]; then can_merge=true; fi
+                ;;
+              all)
+                if [ "$trusted" = "true" ] || [ "$reputation_ok" = "true" ]; then
+                  can_merge=true
+                fi
+                ;;
+              label)
+                if [ "$forced" = "true" ]; then can_merge=true; fi
+                ;;
+              *)
+                if [ "$trusted" = "true" ]; then can_merge=true; fi
+                ;;
+            esac
+            # 维护者显式打 auto-merge 标签时覆盖默认策略。
+            if [ "$forced" = "true" ]; then
+              can_merge=true
+            fi
+          fi
+
+          merged=false
+          if [ "$can_merge" = "true" ]; then
+            if [ "$AUTO_MERGE_MODE" = "native" ]; then
+              if gh pr merge "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+                  --auto --squash --delete-branch; then
+                merged=true
+              fi
+            else
+              if gh pr merge "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+                  --squash --delete-branch; then
+                merged=true
+              fi
+            fi
+          fi
+
+          if [ "$merged" != "true" ]; then
+            gh pr edit "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+              --add-label needs-review || true
+            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
+              --add-label needs-review || true
+          else
+            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
+              --remove-label needs-review || true
+          fi
+          echo "merged=$merged" >> "$GITHUB_OUTPUT"
+
+      - name: Comment result
+        if: steps.pr.outputs.url != ''
+        run: |
+          {
+            cat comment.md
+            echo
+            echo "PR: ${{ steps.pr.outputs.url }}"
+            echo
+            if [ "${{ steps.merge.outputs.merged }}" = "true" ]; then
+              echo "✅ 已自动合并到 main。"
+            else
+              echo "⏳ 已生成 PR，等待维护者审核。"
+            fi
+          } > final-comment.md
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file final-comment.md
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### 收录处理"
+            echo
+            echo "| 项 | 值 |"
+            echo "| --- | --- |"
+            echo "| Issue | #${ISSUE_NUMBER} |"
+            echo "| Action | ${{ steps.ingest.outputs.action }} |"
+            echo "| IDs | ${{ steps.ingest.outputs.ids }} |"
+            echo "| Needs review | ${{ steps.ingest.outputs.needs_review }} |"
+            echo "| PR | ${{ steps.pr.outputs.url }} |"
+            echo "| Merged | ${{ steps.merge.outputs.merged }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
