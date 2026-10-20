@@ -110,6 +110,26 @@ async function julesRequest(pathname, options = {}) {
   return text ? JSON.parse(text) : {};
 }
 
+/**
+ * Jules 的 source 命名在不同文档/账号下可能是 sources/github-owner-repo
+ * 或 sources/github/owner/repo。运行时从 /sources 解析，避免硬编码。
+ */
+async function resolveSourceName(repo) {
+  try {
+    const data = await julesRequest('/sources?pageSize=100');
+    const [owner, name] = String(repo).split('/');
+    const match = (data.sources || []).find((source) => {
+      const gh = source.githubRepo || {};
+      return String(gh.owner || '').toLowerCase() === String(owner).toLowerCase()
+        && String(gh.repo || '').toLowerCase() === String(name).toLowerCase();
+    });
+    if (match && match.name) return match.name;
+  } catch {
+    // 回退到 live 已验证可用的 slash 形式
+  }
+  return `sources/github/${repo}`;
+}
+
 function activityText(activity) {
   const parts = [];
   if (activity.agentMessaged?.agentMessage) parts.push(activity.agentMessaged.agentMessage);
@@ -356,13 +376,13 @@ async function main() {
       throw new Error('未设置 JULES_API_KEY');
     }
 
+    const sourceName = await resolveSourceName(args.repo);
     const session = await julesRequest('/sessions', {
       method: 'POST',
       body: JSON.stringify({
         prompt,
         sourceContext: {
-          // 官方示例：sources/github-owner-repo（不是 sources/github/owner/repo）
-          source: `sources/github-${args.repo.replace('/', '-')}`,
+          source: sourceName,
           githubRepoContext: { startingBranch: pr.headRefName },
         },
         requirePlanApproval: false,
