@@ -12,40 +12,98 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: write
+  statuses: write
 
 jobs:
   refresh-catalog:
     name: Fetch Latest Stars & Releases
     runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.repository }}
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      AUTO_MERGE_MODE: ${{ vars.AUTO_MERGE_MODE || 'direct' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Run Catalog Refresher
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/refresh-catalog.mjs
 
-      - name: Commit & Push changes
+      - name: Commit changes
+        id: commit
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add catalog.json
           if git diff --staged --quiet; then
             echo "No changes in catalog.json"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "chore(catalog): automated refresh of stars, forks, and releases [skip ci]"
-          # 与收录 PR 共用 catalog.json：push 前先 rebase，冲突时退避重试。
-          for attempt in 1 2 3; do
-            if git pull --rebase origin main && git push; then
-              exit 0
-            fi
-            git rebase --abort || true
-            sleep $((attempt * 5))
-          done
-          echo "::error::catalog.json push failed after 3 attempts"
-          exit 1
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push refresh branch
+        id: push
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          branch="chore/refresh-baseline"
+          git checkout -B "$branch"
+          git push --force origin "HEAD:refs/heads/$branch"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Validate refreshed catalog
+        if: steps.commit.outputs.changed == 'true'
+        run: node scripts/validate-catalog.mjs
+
+      - name: Create or update pull request
+        id: pr
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          branch="chore/refresh-baseline"
+          pr_url=$(gh pr list --repo "$REPO" --head "$branch" --state open \
+            --json url --jq '.[0].url // ""')
+          body="每日自动保鲜：更新 catalog.json 的 stars / forks / default_version。由 refresh-catalog.yml 生成。"
+          if [ -z "$pr_url" ]; then
+            pr_url=$(gh pr create --repo "$REPO" --base main --head "$branch" \
+              --title "chore(catalog): daily refresh of stars, forks, and releases" \
+              --body "$body")
+          else
+            gh pr edit "$pr_url" --repo "$REPO" --body "$body"
+          fi
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Post catalog gate status
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          gh api -X POST "repos/$REPO/statuses/${{ steps.push.outputs.sha }}" \
+            -f state=success \
+            -f context=catalog-ingest \
+            -f description="catalog.json validated by refresh"
+
+      - name: Merge refresh PR
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set +e
+          pr_url="${{ steps.pr.outputs.url }}"
+          if [ "$AUTO_MERGE_MODE" = "native" ]; then
+            gh pr merge "$pr_url" --repo "$REPO" --auto --squash --delete-branch
+          else
+            gh pr merge "$pr_url" --repo "$REPO" --squash --delete-branch
+          fi
+          code=$?
+          if [ "$code" != "0" ]; then
+            echo "::warning::refresh PR 暂未合并（可能需要 update-branch 或人工处理）：$pr_url"
+          fi
+          exit 0
