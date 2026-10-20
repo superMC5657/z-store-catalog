@@ -108,7 +108,8 @@ jobs:
             '{
               prompt: $prompt,
               sourceContext: {
-                source: ("sources/github/" + $repo),
+                # 官方示例：sources/github-owner-repo（不是 sources/github/owner/repo）
+                source: ("sources/github-" + ($repo | gsub("/"; "-"))),
                 githubRepoContext: { startingBranch: $branch }
               },
               requirePlanApproval: false,
