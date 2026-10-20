@@ -126,7 +126,7 @@ Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人�
 
 所有同仓库、非 draft 的 PR 都会评审（fork PR 跳过）；自动生成的收录 PR 由 `issue-to-pr.yml` 显式触发评审。
 
-需要 `JULES_API_KEY`。Jules 结论是 LLM 判断，不是安全保证；API 为 `v1alpha`，免费额度 15 任务/天。
+需要 `JULES_API_KEY`。Jules 结论是 LLM 判断，不是安全保证；API 为 `v1alpha`，免费额度 15 任务/天。每次 push / ready_for_review 都会重新评审，消耗 1 个任务；频繁推送会消耗配额。
 
 ---
 
