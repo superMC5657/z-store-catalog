@@ -111,8 +111,9 @@ jobs:
           echo "code=$code" >> "$GITHUB_OUTPUT"
           if [ -f result.json ]; then
             echo "action=$(jq -r '.action // "error"' result.json)" >> "$GITHUB_OUTPUT"
-            echo "needs_review=$(jq -r '.needsReview // true' result.json)" >> "$GITHUB_OUTPUT"
-            echo "reputation_ok=$(jq -r '.reputationOk // false' result.json)" >> "$GITHUB_OUTPUT"
+            # 注意：jq 的 // 会把 false 当成空值，这里必须显式判断 null。
+            echo "needs_review=$(jq -r 'if .needsReview == null then true else .needsReview end' result.json)" >> "$GITHUB_OUTPUT"
+            echo "reputation_ok=$(jq -r 'if .reputationOk == null then false else .reputationOk end' result.json)" >> "$GITHUB_OUTPUT"
             echo "author_association=$(jq -r '.authorAssociation // ""' result.json)" >> "$GITHUB_OUTPUT"
             echo "ids=$(jq -r '(.ids // []) | join(", ")' result.json)" >> "$GITHUB_OUTPUT"
           fi
