@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseVerdict, buildPrompt } from './review-pr.mjs';
+import { parseVerdict, buildPrompt, lastAgentText } from './review-pr.mjs';
 
 test('parses APPROVE with reasons', () => {
   const result = parseVerdict('ok\n\nVERDICT: APPROVE\nREASON: upstream repo matches\nREASON: only catalog.json changed');
@@ -36,6 +36,15 @@ test('rejects when anything follows the verdict block', () => {
   const result = parseVerdict('VERDICT: APPROVE\nREASON: ok\nNow here is the diff again: ...');
   assert.equal(result.verdict, 'REJECT');
   assert.match(result.reasons[0], /额外内容/);
+});
+
+test('prefers the last agent message containing VERDICT over a later completion message', () => {
+  const activities = [
+    { originator: 'agent', agentMessaged: { agentMessage: 'analysis...' } },
+    { originator: 'agent', agentMessaged: { agentMessage: 'VERDICT: APPROVE\nREASON: verified' } },
+    { originator: 'agent', agentMessaged: { agentMessage: 'I have finished the review.' } },
+  ];
+  assert.match(lastAgentText(activities), /VERDICT: APPROVE/);
 });
 
 test('catalog prompt uses random delimiters and catalog rules', () => {
