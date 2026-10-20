@@ -100,16 +100,28 @@ jobs:
           set -euo pipefail
           api=https://jules.googleapis.com/v1alpha
 
+          # source 名称在文档/账号间可能是 github-owner-repo 或 github/owner/repo，
+          # 运行时从 /sources 解析，避免硬编码导致 404。
+          sources=$(curl --fail-with-body -sS "$api/sources?pageSize=100" \
+            -H "X-Goog-Api-Key: $JULES_API_KEY" 2>/dev/null || echo '{}')
+          source=$(printf '%s' "$sources" | jq -r \
+            --arg owner "${REPO%%/*}" \
+            --arg repo "${REPO##*/}" \
+            '.sources[]? | select(((.githubRepo.owner // "") | ascii_downcase) == ($owner | ascii_downcase) and ((.githubRepo.repo // "") | ascii_downcase) == ($repo | ascii_downcase)) | .name' \
+            | head -n1)
+          if [ -z "$source" ]; then
+            source="sources/github/$REPO"
+          fi
+
           # AUTO_CREATE_PR：Jules 完成后直接开 PR；v1alpha 为官方 alpha API。
           jq -n \
             --arg prompt "$PROMPT" \
             --arg branch "$STARTING_BRANCH" \
-            --arg repo "$REPO" \
+            --arg source "$source" \
             '{
               prompt: $prompt,
               sourceContext: {
-                # 官方示例：sources/github-owner-repo（不是 sources/github/owner/repo）
-                source: ("sources/github-" + ($repo | gsub("/"; "-"))),
+                source: $source,
                 githubRepoContext: { startingBranch: $branch }
               },
               requirePlanApproval: false,
