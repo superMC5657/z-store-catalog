@@ -3,14 +3,14 @@
 /**
  * review-pr.mjs
  *
- * 让 Jules 评审一个 PR，输出结构化结论（APPROVE / REJECT），供
- * jules-pr-review workflow 决定是否自动合并。
+ * 让 Jules 评审一个 PR，输出结构化结论（APPROVE / REJECT）。
+ * 它是合并前的第一道语义门，不负责合并；维护者看过结论后手动 merge。
  *
  * 设计要点：
  * - 只读评审：不创建 PR（不传 automationMode），提示 Jules 不要改文件；
  * - 结论必须显式包含 `VERDICT: APPROVE|REJECT`，否则按 REJECT 处理（fail closed）；
  * - 支持 --fixture 离线回放，便于不消耗 Jules 配额地测试解析逻辑；
- * - 合并决策不在这里做：workflow 还会校验 head SHA、改动范围与作者白名单。
+ * - 合并决策不在这里做：workflow 只评论结论并打标签，最终由维护者手动合并。
  *
  * 用法:
  *   JULES_API_KEY=... node scripts/review-pr.mjs --repo owner/repo --pr 3 \
@@ -257,7 +257,7 @@ function buildComment(result) {
   }
   lines.push(
     '',
-    '> 硬门槛：`scripts/validate-catalog.mjs` 通过；收录 PR 仅改动 `catalog.json`；合并前校验 head SHA 未变化。',
+    '> 本结论是 Jules 的语义判断，仅作合并前参考；schema 校验与最终合并由维护者执行。',
   );
   if (result.fixture) {
     lines.push('> 本地 fixture 预演，未调用 Jules API。');

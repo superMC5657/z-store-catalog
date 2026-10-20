@@ -111,22 +111,20 @@
 
 Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人工复核。免费额度为 15 个任务/天。
 
-### Jules 评审 + 自动合并
+### Jules 评审（合并前第一道门）
 
 `jules-pr-review.yml` 在 PR 打开或更新时：
 
-1. 用 `main` 上的 `validate-catalog.mjs` 校验 PR 的 `catalog.json`（不执行 PR 里的脚本）；
-2. 让 Jules 读 PR diff，输出 `VERDICT: APPROVE|REJECT` 与 `REASON`；
-3. 把结论评论到 PR；
-4. 仅当结论为 `APPROVE`、head SHA 未变化、改动范围合规，且满足以下任一条件时 squash merge：
-   - 收录 PR 关联 Issue 的作者在 `AUTO_MERGE_AUTHORS` 中（默认仓库 owner）；
-   - PR 带 `jules-auto-merge` 标签。
+1. 用 `main` 上的 `validate-catalog.mjs` 校验 PR 的 `catalog.json`（不执行 PR 里的脚本）；失败则评论并停止；
+2. 收录 PR 只允许改动 `catalog.json`；
+3. 让 Jules 读 PR diff，输出 `VERDICT: APPROVE|REJECT` 与 `REASON`；
+4. 把结论评论到 PR，并打 `jules-approved` / `jules-rejected` 标签。
 
-外部作者的收录 PR 默认只评审、不合并；维护者确认后打 `jules-auto-merge` 即可让它自动合并。代码 PR 默认不进入该流程，打标签后才会评审并自动合并。
+**它不合并 PR。** 维护者看过结论后手动 merge；Jules 只是第一道语义门，不替代 schema 校验和最终 review。
 
-需要 `JULES_API_KEY`；可选仓库变量 `AUTO_MERGE_AUTHORS=alice,bob` 扩展白名单。
+所有同仓库、非 draft 的 PR 都会评审（fork PR 跳过）；自动生成的收录 PR 由 `issue-to-pr.yml` 显式触发评审。
 
-> Jules 结论是 LLM 判断，不是安全保证。默认只对自己的提交全自动，外部提交保留人工决策。Jules API 为 `v1alpha`，免费额度 15 任务/天。
+需要 `JULES_API_KEY`。Jules 结论是 LLM 判断，不是安全保证；API 为 `v1alpha`，免费额度 15 任务/天。
 
 ---
 
@@ -144,7 +142,7 @@ Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人�
 | `scripts/refresh-catalog.mjs` | **数据保鲜**：定时（CI）或手动刷新全部应用 Stars / Forks / 最新 Release Tag |
 | `scripts/validate-catalog.mjs` | **规范校验**：检查必填字段、ID 唯一性、分类/平台合法性、图标 URL 格式，PR 自动化检查即此脚本 |
 | `scripts/ingest-issue.mjs` | **Issue 自动收录**：解析收录申请 Issue 正文的 `payload_json`，按 owner/repo 去重、复用校验规则后追加 `catalog.json`；由 `.github/workflows/issue-to-pr.yml` 在 Issue 创建时自动调用并开 PR |
-| `scripts/review-pr.mjs` | **Jules PR 评审**：创建只读 Jules session 评审 PR diff，解析 `VERDICT: APPROVE|REJECT`，输出结论 JSON 与 PR 评论；由 `.github/workflows/jules-pr-review.yml` 调用，满足硬门槛时自动合并 |
+| `scripts/review-pr.mjs` | **Jules PR 评审**：创建只读 Jules session 评审 PR diff，解析 `VERDICT: APPROVE|REJECT`，输出结论 JSON 与 PR 评论；由 `.github/workflows/jules-pr-review.yml` 调用，结论作为人工合并前的第一道参考 |
 | `scripts/seed/YYYY-MM-DD/` | 按日期归档的种子与运行产物（git 忽略，同日覆盖、换日新建）：输入种子（含 discover 挖掘 `auto.json`）+ batch-add 报告 `batch-report.json`（每应用状态/图标来源/失败原因）+ 淘汰审计 `seed-excluded.json` |
 
 ### 常用命令
