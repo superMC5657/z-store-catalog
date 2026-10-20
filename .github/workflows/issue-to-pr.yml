@@ -280,6 +280,8 @@ jobs:
           else
             gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
               --remove-label needs-review || true
+            # GITHUB_TOKEN 合并时 Closes #N 不一定会触发自动关闭，显式兜底。
+            gh issue close "$ISSUE_NUMBER" --repo "$REPO" --reason completed || true
           fi
           echo "merged=$merged" >> "$GITHUB_OUTPUT"
 

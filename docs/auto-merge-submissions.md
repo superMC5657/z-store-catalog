@@ -97,7 +97,7 @@ PR #3 已实现：
 └─────────────────────────────────────────────────────────────┘
         │  全部通过
         ▼
-squash merge → main → Issue 由 Closes #N 自动关闭
+squash merge → main → 显式 close Issue（Closes #N 作为文本兜底）
         │
         ▼
 refresh-catalog.yml 定时保鲜 stars/forks/default_version
@@ -206,7 +206,7 @@ concurrency:
 - 防自触发：`github.event.sender.login != 'github-actions[bot]'`；
 - checkout `main`，用 `CATALOG_BOT_TOKEN`（或 GitHub App token）拉代码和开 PR；没有配置时回退 `github.token`，并在 PR 里注明 CI 可能不跑；
 - 分支名固定 `catalog/issue-<N>`，重复触发 `git push --force-with-lease` 更新同一个 PR（幂等）；
-- PR 正文包含 `Closes #<N>`，merge 后 Issue 自动关闭；
+- PR 正文包含 `Closes #<N>`；merge 成功后 workflow 还会显式 `gh issue close`——`GITHUB_TOKEN` 合并时 `Closes` 的自动关闭不一定会触发（Issue #5 实测）；
 - 创建 PR 后**不需要**手动 dispatch 评审：配置了 PAT/App token 时 `pull_request` 事件会自然触发；
 - `dry_run=true` 时只评论解析/校验结果，不建分支。
 
