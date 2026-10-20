@@ -361,7 +361,8 @@ async function main() {
       body: JSON.stringify({
         prompt,
         sourceContext: {
-          source: `sources/github/${args.repo}`,
+          // 官方示例：sources/github-owner-repo（不是 sources/github/owner/repo）
+          source: `sources/github-${args.repo.replace('/', '-')}`,
           githubRepoContext: { startingBranch: pr.headRefName },
         },
         requirePlanApproval: false,
