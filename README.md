@@ -144,6 +144,7 @@ Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人�
 | `scripts/refresh-catalog.mjs` | **数据保鲜**：定时（CI）或手动刷新全部应用 Stars / Forks / 最新 Release Tag |
 | `scripts/validate-catalog.mjs` | **规范校验**：检查必填字段、ID 唯一性、分类/平台合法性、图标 URL 格式，PR 自动化检查即此脚本 |
 | `scripts/ingest-issue.mjs` | **Issue 自动收录**：解析收录申请 Issue 正文的 `payload_json`，按 owner/repo 去重、复用校验规则后追加 `catalog.json`；由 `.github/workflows/issue-to-pr.yml` 在 Issue 创建时自动调用并开 PR |
+| `scripts/review-pr.mjs` | **Jules PR 评审**：创建只读 Jules session 评审 PR diff，解析 `VERDICT: APPROVE|REJECT`，输出结论 JSON 与 PR 评论；由 `.github/workflows/jules-pr-review.yml` 调用，满足硬门槛时自动合并 |
 | `scripts/seed/YYYY-MM-DD/` | 按日期归档的种子与运行产物（git 忽略，同日覆盖、换日新建）：输入种子（含 discover 挖掘 `auto.json`）+ batch-add 报告 `batch-report.json`（每应用状态/图标来源/失败原因）+ 淘汰审计 `seed-excluded.json` |
 
 ### 常用命令
