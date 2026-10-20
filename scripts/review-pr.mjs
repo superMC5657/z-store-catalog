@@ -3,12 +3,13 @@
 /**
  * review-pr.mjs
  *
- * 让 Jules 评审一个 PR，输出结构化结论（APPROVE / REJECT）。
+ * 让 Jules 评审一个 PR，输出结构化结论（APPROVE / REJECT / PENDING）。
  * 它是合并前的第一道语义门，不负责合并；维护者看过结论后手动 merge。
  *
  * 设计要点：
  * - 只读评审：不创建 PR（不传 automationMode），提示 Jules 不要改文件；
  * - 结论必须显式包含 `VERDICT: APPROVE|REJECT`，否则按 REJECT 处理（fail closed）；
+ * - 轮询超时写 PENDING（没拿到结论），PENDING 不是语义否决，也不代表内容不合格；
  * - 支持 --fixture 离线回放，便于不消耗 Jules 配额地测试解析逻辑；
  * - 合并决策不在这里做：workflow 只评论结论并打标签，最终由维护者手动合并。
  *
@@ -29,13 +30,13 @@ const __filename = fileURLToPath(import.meta.url);
 const JULES_API_BASE = process.env.JULES_API_BASE || 'https://jules.googleapis.com/v1alpha';
 const MAX_DIFF_CHARS = 120000;
 const POLL_INTERVAL_MS = 10000;
-const SESSION_TIMEOUT_SECONDS = 900;
+const SESSION_TIMEOUT_SECONDS = 1800;
 
 function usage() {
   console.error(
     [
       '用法: node scripts/review-pr.mjs --repo <owner/repo> --pr <number> [选项]',
-      '  --timeout <seconds>  等待 Jules 完成的上限，默认 900',
+      '  --timeout <seconds>  等待 Jules 完成的上限，默认 1800',
       '  --out <path>         写入结论 JSON',
       '  --comment <path>     写入 PR 评论 Markdown',
       '  --fixture <path>     用本地 session fixture 代替 Jules API',
@@ -320,6 +321,23 @@ function rejectResult(base, reasons, extra = {}) {
   };
 }
 
+/**
+ * 轮询超时：没拿到结论，不是内容不合格。
+ * 保留 session / sessionUrl / state，方便重跑时定位同一次评审。
+ */
+function timeoutResult(base, seconds, extra = {}) {
+  return {
+    ...base,
+    verdict: 'PENDING',
+    reasons: [`Jules 评审超时（${seconds}s），未取得结论`],
+    session: extra.session ?? null,
+    sessionUrl: extra.sessionUrl || '',
+    state: extra.state || 'SKIPPED',
+    message: 'session still running',
+    fixture: false,
+  };
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -431,7 +449,7 @@ async function main() {
     if (!['COMPLETED', 'FAILED', 'AWAITING_USER_FEEDBACK', 'AWAITING_PLAN_APPROVAL', 'PAUSED'].includes(state)) {
       return emit(
         args,
-        rejectResult(baseResult, [`Jules 评审超时（${args.timeout}s）`], { state, message: 'session still running' }),
+        timeoutResult(baseResult, args.timeout, { session: sessionName, sessionUrl, state }),
       );
     }
 
@@ -489,4 +507,4 @@ if (isDirectRun) {
   });
 }
 
-export { parseVerdict, buildPrompt, buildComment, lastAgentText };
+export { parseVerdict, buildPrompt, buildComment, lastAgentText, timeoutResult };

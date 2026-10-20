@@ -34,7 +34,7 @@ jobs:
        github.event.pull_request.user.login != 'github-actions[bot]' &&
        github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       GH_TOKEN: ${{ github.token }}
       GITHUB_TOKEN: ${{ github.token }}
@@ -170,7 +170,9 @@ jobs:
         if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code == '0'
         run: |
           verdict=$(jq -r .verdict "$RUNNER_TEMP/verdict.json")
-          if [ "$verdict" != "APPROVE" ]; then
+          if [ "$verdict" = "PENDING" ]; then
+            echo "::warning::Jules 评审超时，jules-verdict 保持 pending，需重跑本 workflow"
+          elif [ "$verdict" != "APPROVE" ]; then
             echo "::error::Jules verdict: $verdict; see the PR comment for reasons."
             exit 1
           fi
@@ -192,6 +194,9 @@ jobs:
             if [ "$verdict" = "APPROVE" ]; then
               state=success
               desc="Jules APPROVE"
+            elif [ "$verdict" = "PENDING" ]; then
+              state=pending
+              desc="Jules 评审超时，需重跑"
             else
               desc="Jules REJECT"
             fi

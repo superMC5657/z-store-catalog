@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseVerdict, buildPrompt, lastAgentText } from './review-pr.mjs';
+import { parseVerdict, buildPrompt, lastAgentText, timeoutResult } from './review-pr.mjs';
 
 test('parses APPROVE with reasons', () => {
   const result = parseVerdict('ok\n\nVERDICT: APPROVE\nREASON: upstream repo matches\nREASON: only catalog.json changed');
@@ -80,4 +80,23 @@ test('code prompt uses code review rules', () => {
   const prompt = buildPrompt({ repo: 'o/r', pr, diff: '+x', isCatalog: false });
   assert.match(prompt, /Hard requirements for a code PR/);
   assert.ok(!prompt.includes('catalog submission PR'));
+});
+
+test('timeout is PENDING, not a semantic rejection', () => {
+  const base = { pr: 25, repo: 'o/r', headSha: 'abc123', files: ['catalog.json'], isCatalog: true };
+  const result = timeoutResult(base, 1800, {
+    session: 'sessions/123',
+    sessionUrl: 'https://jules.example/sessions/123',
+    state: 'IN_PROGRESS',
+  });
+  assert.equal(result.verdict, 'PENDING');
+  assert.equal(result.reasons.length, 1);
+  assert.match(result.reasons[0], /1800s/);
+  assert.match(result.reasons[0], /超时/);
+  assert.equal(result.state, 'IN_PROGRESS');
+  assert.equal(result.session, 'sessions/123');
+  assert.equal(result.sessionUrl, 'https://jules.example/sessions/123');
+  assert.equal(result.message, 'session still running');
+  assert.equal(result.fixture, false);
+  assert.equal(result.pr, 25);
 });
