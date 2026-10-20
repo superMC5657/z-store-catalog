@@ -1,6 +1,6 @@
 # 收录申请 Issue 全自动合并方案
 
-> 状态：P1/P2/P3 已上线（PR #6 / #8 / #10 / #11 / #12 + main 规则集）；Jules 工作流已恢复，等待 `JULES_API_KEY` 激活
+> 状态：P1/P2/P3 已上线并验证（Issue #4 / #5 / #13）；Jules 工作流已恢复，等待 `JULES_API_KEY` 激活
 > 仓库：`superMC5657/z-store-catalog`
 > 关联：PR #3（`feat(ci): 收录 Issue 自动转 PR + Jules 评审第一道门`，已关闭，分支已删除）
 
@@ -465,18 +465,20 @@ REASON: <一句话>
 ### P2（外部作者放量）
 
 - [ ] 增加 G9 信誉阈值与 `AUTO_MERGE_POLICY=all`；
-- [ ] 增加 `needs-review` / `auto-merged` / `duplicate` / `update` 标签；
-- [ ] 观察误判，调整阈值。
+- [x] 增加 `needs-review` / `auto-merge` / `duplicate` / `update` 标签；
+- [ ] 观察外部作者误判，调整阈值（目前只验证了 owner 提交与本地模拟）。
 
 ### P3（可选，原生 auto-merge）
 
 - [x] 仓库设置开启 **Allow auto-merge** 与 **Automatically delete head branches**：
   `gh api -X PATCH repos/superMC5657/z-store-catalog -f allow_auto_merge=true -f delete_branch_on_merge=true`
 - [x] 新增 `catalog-gate.yml`；`issue-to-pr.yml` 在 PR 后写 `catalog-ingest` status；
-- [ ] 建 main 规则集：Require PR、Required status checks = `catalog-ingest`、Block force push；
-- [ ] `refresh-catalog.yml` 直接 push 需要一个 bypass（GitHub Actions integration）或改为 PR 化；
-- [ ] `AUTO_MERGE_MODE=native`；若开启 strict up-to-date，合并前 `gh pr update-branch`。
-- [ ] fork PR 需要维护者 bypass（只读 token 无法写 status），主流程走 Issue 不受影响。
+- [x] 建 main 规则集 `main-protection`：Require PR、Required status checks = `catalog-ingest`、Block force push、禁止删除分支；
+- [x] `refresh-catalog.yml` 改为固定分支 `chore/refresh-baseline` + PR + `catalog-ingest`；
+- [x] `AUTO_MERGE_MODE=native`；`strict_required_status_checks_policy=false`。
+- [x] fork PR 需要维护者 bypass（规则集给 RepositoryRole admin 配了 bypass；只读 token 无法写 status），主流程走 Issue 不受影响。
+
+已验证：Issue #13 → PR #14 原生 auto-merge 并显式关闭 Issue；每日 refresh → PR #15 通过 `catalog-ingest` 合并；PR #17/#18/#19 人工 PR 的 `Catalog Gate` / `Validate Catalog` / Jules skip 均正常。
 
 ---
 
