@@ -122,6 +122,8 @@ Jules 官方目前仅保证英文；中文提示词可用，但产出仍需人�
 
 **它不合并 PR。** 维护者看过结论后手动 merge；Jules 只是第一道语义门，不替代 schema 校验和最终 review。
 
+`REJECT` 会让 `Jules PR Review` check 变红（仍可手动 merge）；如果希望变成硬门禁，可在 branch protection 中把该 check 设为 required。
+
 所有同仓库、非 draft 的 PR 都会评审（fork PR 跳过）；自动生成的收录 PR 由 `issue-to-pr.yml` 显式触发评审。
 
 需要 `JULES_API_KEY`。Jules 结论是 LLM 判断，不是安全保证；API 为 `v1alpha`，免费额度 15 任务/天。
