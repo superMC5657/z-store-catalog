@@ -10105,5 +10105,33 @@
       "android": [],
       "ios": []
     }
+  },
+  {
+    "id": "debpalash/voicestudio",
+    "name": "VoiceStudio",
+    "owner": "debpalash",
+    "repo": "VoiceStudio",
+    "icon": "https://raw.githubusercontent.com/debpalash/voicestudio/main/electron/build/icons/icon.png",
+    "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+    "description": "VoiceStudio 是一款开源且完全本地运行的 ElevenLabs 替代方案——支持 646 种语言的声音克隆、声音设计、视频配音、语音听写、音频转录与有声书制作。",
+    "description_en": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+    "category": "media",
+    "category_name": "影音播放",
+    "aliases": ["voicestudio", "debpalash/voicestudio"],
+    "default_version": "v0.5.6",
+    "added_at": "2026-10-20",
+    "license": "AGPL-3.0",
+    "stars": 78650,
+    "forks": 8635,
+    "is_verified": true,
+    "homepage": "https://voicestudio.sh",
+    "platforms": ["windows", "macos", "linux"],
+    "identifiers": {
+      "windows": ["VoiceStudio.exe", "voicestudio.exe"],
+      "linux": ["VoiceStudio", "voicestudio"],
+      "macos": ["VoiceStudio", "voicestudio"],
+      "android": [],
+      "ios": []
+    }
   }
 ]
