@@ -91,6 +91,11 @@ jobs:
             -f state=success \
             -f context=catalog-ingest \
             -f description="catalog.json validated by refresh"
+          # 每日 refresh 是动态字段更新，不做 Jules 语义评审；显式写豁免状态。
+          gh api -X POST "repos/$REPO/statuses/${{ steps.push.outputs.sha }}" \
+            -f state=success \
+            -f context=jules-verdict \
+            -f description="Exempt: daily refresh"
 
       - name: Merge refresh PR
         if: steps.commit.outputs.changed == 'true'

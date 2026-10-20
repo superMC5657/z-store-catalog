@@ -194,7 +194,7 @@ function buildPrompt({ repo, pr, diff, isCatalog }) {
 
   const catalogRules = isCatalog
     ? `Hard requirements for a catalog submission PR (any failure => REJECT):
-- The change must only touch catalog.json, append new entries, and leave existing entries unchanged.
+- The change must only touch catalog.json. New submissions append entries; update PRs may modify only the target entry. Never reorder or reformat the file.
 - id must equal "owner/repo" in lowercase and match an existing, non-archived GitHub repository.
 - license must be a real open-source license that matches the upstream repository.
 - description / description_en must be accurate and not misleading.
