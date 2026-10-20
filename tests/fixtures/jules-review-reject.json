@@ -1,0 +1,13 @@
+{
+  "name": "sessions/fixture-reject",
+  "url": "https://jules.google.com/session/fixture-reject",
+  "state": "COMPLETED",
+  "activities": [
+    {
+      "originator": "agent",
+      "agentMessaged": {
+        "agentMessage": "The icon URL returns 404 and the repository is archived.\n\nVERDICT: REJECT\nREASON: icon returns 404\nREASON: upstream repository is archived"
+      }
+    }
+  ]
+}

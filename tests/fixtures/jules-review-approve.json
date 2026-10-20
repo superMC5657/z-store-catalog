@@ -1,0 +1,20 @@
+{
+  "name": "sessions/fixture-approve",
+  "url": "https://jules.google.com/session/fixture-approve",
+  "state": "COMPLETED",
+  "activities": [
+    {
+      "originator": "agent",
+      "progressUpdated": {
+        "title": "Reviewing PR",
+        "description": "Checking the diff and validating the entry."
+      }
+    },
+    {
+      "originator": "agent",
+      "agentMessaged": {
+        "agentMessage": "The diff only appends one catalog entry and validation passes.\n\nVERDICT: APPROVE\nREASON: metadata matches the upstream repository\nREASON: only catalog.json changed"
+      }
+    }
+  ]
+}

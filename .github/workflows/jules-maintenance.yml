@@ -1,0 +1,129 @@
+name: Jules Maintenance
+
+# 手动或每月触发 Jules（Google Labs 异步编码代理）维护清单仓库。
+# 需要仓库 secret：JULES_API_KEY（Jules 设置页生成；未配置时自动跳过）。
+# 提示词在 .github/jules/ 下，规则见仓库根 AGENTS.md。
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 任务类型
+        type: choice
+        options: [catalog-audit, fix-ci, custom]
+        default: catalog-audit
+      prompt:
+        description: task=custom 时的具体任务
+        required: false
+        type: string
+      starting_branch:
+        description: 起始分支
+        default: main
+        type: string
+  schedule:
+    # 每月 1 日 03:00 UTC 做一次语义审计；不需要可删除整段 schedule
+    - cron: '0 3 1 * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jules-maintenance
+  cancel-in-progress: false
+
+jobs:
+  invoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Jules API key
+        id: key
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+        run: |
+          if [ -z "$JULES_API_KEY" ]; then
+            echo "::warning::JULES_API_KEY is not configured; skipping Jules."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.ok == 'true'
+        with:
+          ref: ${{ inputs.starting_branch || 'main' }}
+
+      - name: Build prompt
+        id: prompt
+        if: steps.key.outputs.ok == 'true'
+        env:
+          TASK: ${{ inputs.task || 'catalog-audit' }}
+          CUSTOM_PROMPT: ${{ inputs.prompt }}
+          RUNNER_TEMP: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          case "$TASK" in
+            catalog-audit)
+              task_file=.github/jules/catalog-audit.md
+              ;;
+            fix-ci)
+              task_file=.github/jules/fix-ci.md
+              ;;
+            custom)
+              if [ -z "$CUSTOM_PROMPT" ]; then
+                echo "::error::task=custom requires the prompt input"
+                exit 1
+              fi
+              task_file="$RUNNER_TEMP/custom-task.md"
+              printf '%s\n' "$CUSTOM_PROMPT" > "$task_file"
+              ;;
+            *)
+              echo "::error::unknown task: $TASK"
+              exit 1
+              ;;
+          esac
+
+          {
+            echo "text<<PROMPT_EOF"
+            cat "$task_file"
+            echo
+            cat .github/jules/rules.md
+            echo "PROMPT_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Invoke Jules
+        if: steps.key.outputs.ok == 'true'
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+          PROMPT: ${{ steps.prompt.outputs.text }}
+          REPO: ${{ github.repository }}
+          STARTING_BRANCH: ${{ inputs.starting_branch || 'main' }}
+        run: |
+          set -euo pipefail
+          api=https://jules.googleapis.com/v1alpha
+
+          # AUTO_CREATE_PR：Jules 完成后直接开 PR；v1alpha 为官方 alpha API。
+          jq -n \
+            --arg prompt "$PROMPT" \
+            --arg branch "$STARTING_BRANCH" \
+            --arg repo "$REPO" \
+            '{
+              prompt: $prompt,
+              sourceContext: {
+                source: ("sources/github/" + $repo),
+                githubRepoContext: { startingBranch: $branch }
+              },
+              requirePlanApproval: false,
+              automationMode: "AUTO_CREATE_PR"
+            }' > "$RUNNER_TEMP/jules-payload.json"
+
+          if ! response=$(curl --fail-with-body -sS \
+            -X POST "$api/sessions" \
+            -H "Content-Type: application/json" \
+            -H "X-Goog-Api-Key: $JULES_API_KEY" \
+            -d @"$RUNNER_TEMP/jules-payload.json"); then
+            echo "::error::Jules API request failed (check JULES_API_KEY, quota, and repo connection)"
+            printf '%s\n' "$response"
+            exit 1
+          fi
+
+          session=$(printf '%s' "$response" | jq -r '.name // "unknown"')
+          echo "Jules session: \`$session\`" >> "$GITHUB_STEP_SUMMARY"

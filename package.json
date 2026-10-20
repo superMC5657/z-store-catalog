@@ -11,6 +11,7 @@
     "refresh": "node scripts/refresh-catalog.mjs",
     "test": "node scripts/validate-catalog.mjs",
     "test:ingest": "node --test scripts/ingest-issue.test.mjs",
+    "test:review": "node --test scripts/review-pr.test.mjs",
     "validate": "node scripts/validate-catalog.mjs"
   },
   "keywords": [

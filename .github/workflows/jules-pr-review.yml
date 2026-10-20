@@ -1,0 +1,167 @@
+name: Jules PR Review
+
+# Jules 作为 PR 的第一道语义门：评审 diff，评论 APPROVE / REJECT，并打标签。
+# 不自动合并；维护者看过结论后手动 merge。
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: PR number
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: jules-pr-review-${{ github.event.pull_request.number || inputs.pr }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Jules PR Review
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.draft == false &&
+       github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+      PR: ${{ github.event.pull_request.number || inputs.pr }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Check Jules API key
+        id: key
+        env:
+          JULES_API_KEY: ${{ secrets.JULES_API_KEY }}
+        run: |
+          if [ -z "$JULES_API_KEY" ]; then
+            echo "::warning::JULES_API_KEY is not configured; skipping Jules review."
+            {
+              echo "### Jules review skipped"
+              echo
+              echo "\`JULES_API_KEY\` is not configured. Add it in Settings → Secrets and variables → Actions."
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.ok == 'true'
+        with:
+          ref: ${{ github.event.pull_request.base.sha || 'main' }}
+          fetch-depth: 1
+
+      - name: Collect PR scope
+        id: scope
+        if: steps.key.outputs.ok == 'true'
+        run: |
+          set -euo pipefail
+          head_sha=$(gh pr view "$PR" --repo "$REPO" --json headRefOid --jq .headRefOid)
+          head_ref=$(gh pr view "$PR" --repo "$REPO" --json headRefName --jq .headRefName)
+          gh pr view "$PR" --repo "$REPO" --json files --jq '.files[].path' > "$RUNNER_TEMP/files.txt"
+          echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
+
+          if [[ "$head_ref" == catalog/issue-* ]]; then
+            if [ "$(wc -l < "$RUNNER_TEMP/files.txt")" -ne 1 ] || [ "$(cat "$RUNNER_TEMP/files.txt")" != "catalog.json" ]; then
+              {
+                echo "## Jules 评审未启动"
+                echo
+                echo "\`catalog/issue-*\` PR 只允许改动 \`catalog.json\`；该 PR 改动了其他文件，需要人工评审。"
+              } > "$RUNNER_TEMP/scope-comment.md"
+              echo "allow=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "allow=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment out-of-scope PR
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'false'
+        run: |
+          gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/scope-comment.md"
+          gh pr edit "$PR" --repo "$REPO" --remove-label jules-approved || true
+          exit 1
+
+      - name: Validate PR catalog
+        id: validate
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true'
+        run: |
+          set +e
+          gh api "repos/$REPO/contents/catalog.json?ref=${{ steps.scope.outputs.head_sha }}" --jq .content \
+            | base64 -d > "$RUNNER_TEMP/catalog.json" 2> "$RUNNER_TEMP/validate.log"
+          CATALOG_PATH="$RUNNER_TEMP/catalog.json" node scripts/validate-catalog.mjs >> "$RUNNER_TEMP/validate.log" 2>&1
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Comment validation failure
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code != '0'
+        run: |
+          {
+            echo "## Jules 评审未启动"
+            echo
+            echo "\`catalog.json\` 校验未通过，先修正后再评审："
+            echo
+            echo '```'
+            tail -n 40 "$RUNNER_TEMP/validate.log" 2>/dev/null || true
+            echo '```'
+          } > "$RUNNER_TEMP/validate-comment.md"
+          gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/validate-comment.md"
+          gh pr edit "$PR" --repo "$REPO" --remove-label jules-approved || true
+          exit 1
+
+      - name: Review with Jules
+        id: review
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0'
+        run: |
+          set +e
+          node scripts/review-pr.mjs --repo "$REPO" --pr "$PR" \
+            --out "$RUNNER_TEMP/verdict.json" \
+            --comment "$RUNNER_TEMP/verdict.md"
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Comment review failure
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code != '0'
+        run: |
+          body="$RUNNER_TEMP/verdict.md"
+          if [ ! -f "$body" ]; then
+            printf '## Jules 评审失败\n\n评审流程出错，请查看 Actions 日志。\n' > "$body"
+          fi
+          gh pr comment "$PR" --repo "$REPO" --body-file "$body"
+          gh pr edit "$PR" --repo "$REPO" --remove-label jules-approved || true
+          exit 1
+
+      - name: Comment verdict
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code == '0'
+        run: gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/verdict.md"
+
+      - name: Mark review result
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code == '0'
+        run: |
+          verdict=$(jq -r .verdict "$RUNNER_TEMP/verdict.json")
+          if [ "$verdict" = "APPROVE" ]; then
+            gh pr edit "$PR" --repo "$REPO" --add-label jules-approved || true
+            gh pr edit "$PR" --repo "$REPO" --remove-label jules-rejected || true
+          else
+            gh pr edit "$PR" --repo "$REPO" --add-label jules-rejected || true
+            gh pr edit "$PR" --repo "$REPO" --remove-label jules-approved || true
+          fi
+
+      - name: Fail check on rejection
+        if: steps.key.outputs.ok == 'true' && steps.scope.outputs.allow == 'true' && steps.validate.outputs.code == '0' && steps.review.outputs.code == '0'
+        run: |
+          verdict=$(jq -r .verdict "$RUNNER_TEMP/verdict.json")
+          if [ "$verdict" != "APPROVE" ]; then
+            echo "::error::Jules verdict: $verdict; see the PR comment for reasons."
+            exit 1
+          fi
