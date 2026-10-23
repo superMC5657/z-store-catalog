@@ -17,7 +17,7 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 ## catalog.json 规则
 
 - 新条目追加到数组末尾；不改动既有条目，禁止整体重排或重格式化。
-- 字段顺序固定：`id, name, owner, repo, icon, icon_bg, description, description_en, category, category_name, aliases, default_version, added_at, license, stars, forks, is_verified, homepage, platforms, identifiers`。
+- 字段顺序固定：`id, name, owner, repo, icon, icon_bg, description, description_en, category, category_name, aliases, default_version, added_at, license, stars, forks, is_verified, homepage, install_dirs, search_subdirs, publishers, platforms, identifiers`。`install_dirs` / `search_subdirs` / `publishers` 为可选项（省略即可），其余为固定位置，不得乱序；校验脚本会拦截。
 - `id` 必须是 `owner/repo` 小写；`added_at` 用 UTC `YYYY-MM-DD`；收录条目 `is_verified` 为 `true`。
 - `platforms` 不能为空；`identifiers` 只放各平台真实可执行名。
 - 中文简介写 `description`，英文原文写 `description_en`；分类键取自 `scripts/lib/catalog-shared.mjs` 的 `CATEGORIES`。

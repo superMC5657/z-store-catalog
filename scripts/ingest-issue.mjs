@@ -31,7 +31,7 @@ import {
   resolveGitHubToken,
   todayAddedAt,
 } from './lib/catalog-shared.mjs';
-import { validateCatalog } from './validate-catalog.mjs';
+import { validateCatalog, FIELD_ORDER as CATALOG_FIELD_ORDER } from './validate-catalog.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -63,6 +63,19 @@ const STRING_FIELDS = [
   'id', 'name', 'owner', 'repo', 'icon', 'description', 'description_en',
   'category', 'license', 'default_version', 'homepage',
 ];
+
+// 更新已有条目时，payload 新增的字段会被对象展开追加到末尾（如 aliases），
+// 这里按 catalog.json 固定顺序重排，避免 --update 产生字段乱序。
+export function reorderCatalogFields(item) {
+  const ordered = {};
+  for (const key of CATALOG_FIELD_ORDER) {
+    if (Object.prototype.hasOwnProperty.call(item, key)) ordered[key] = item[key];
+  }
+  for (const key of Object.keys(item)) {
+    if (!Object.prototype.hasOwnProperty.call(ordered, key)) ordered[key] = item[key];
+  }
+  return ordered;
+}
 
 function usage() {
   console.error(
@@ -325,9 +338,15 @@ export function normalizeItem(raw, today = todayAddedAt(), facts = {}, warnings 
         .filter((alias) => typeof alias === 'string' && alias.trim())
         .map((alias) => alias.trim())
     )].slice(0, MAX_ALIASES);
-    if (item.aliases.length === 0) delete item.aliases;
   } else {
-    delete item.aliases;
+    const fallback = [];
+    if (typeof item.name === 'string' && item.name.trim()) {
+      fallback.push(item.name.trim().toLowerCase());
+    }
+    if (typeof repo?.name === 'string' && repo.name.trim()) {
+      fallback.push(repo.name.trim().toLowerCase());
+    }
+    item.aliases = [...new Set(fallback)];
   }
 
   const apiVersion = release && typeof release.tag_name === 'string' ? release.tag_name.trim() : '';
@@ -842,11 +861,11 @@ async function main() {
   const next = catalog.map((entry) => {
     const change = updated.find((u) => itemCoord(entry) === itemCoord(u.item));
     if (!change) return entry;
-    return {
+    return reorderCatalogFields({
       ...change.existing,
       ...change.item,
       added_at: change.existing.added_at || change.item.added_at,
-    };
+    });
   });
   for (const item of added) next.push(item);
 

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { extractPayload, isReputable, itemCoord, normalizeItem } from './ingest-issue.mjs';
+import { extractPayload, isReputable, itemCoord, normalizeItem, reorderCatalogFields } from './ingest-issue.mjs';
 
 const FENCE = '```';
 
@@ -173,6 +173,28 @@ test('normalizeItem 字段顺序与 catalog.json 磁盘顺序一致', () => {
   assert.equal(item.homepage, 'https://voicestudio.sh');
 });
 
+test('reorderCatalogFields 修复对象展开追加字段造成的乱序', () => {
+  const existing = {
+    id: 't8y2/dbx', name: 'DBX', owner: 't8y2', repo: 'dbx',
+    icon: 'https://example.com/icon.png', icon_bg: '',
+    description: '数据库客户端', description_en: 'Database client',
+    category: 'dev', category_name: '开发编程',
+    default_version: 'v0.6.50', added_at: '2026-10-20', license: 'Apache-2.0',
+    stars: 1, forks: 0, is_verified: true, homepage: 'https://example.com',
+    publishers: ['dbx'], platforms: ['windows'], identifiers: { windows: ['dbx.exe'] },
+  };
+  // 模拟 ingest --update：payload 新增 aliases 被展开追加到末尾
+  const merged = reorderCatalogFields({ ...existing, aliases: ['dbx'] });
+  assert.deepEqual(Object.keys(merged), [
+    'id', 'name', 'owner', 'repo', 'icon', 'icon_bg',
+    'description', 'description_en', 'category', 'category_name',
+    'aliases', 'default_version', 'added_at', 'license',
+    'stars', 'forks', 'is_verified', 'homepage', 'publishers',
+    'platforms', 'identifiers',
+  ]);
+  assert.equal('publishers' in merged, true);
+});
+
 test('isReputable 对外部作者的低星/归档/fork 仓库返回 false', () => {
   const now = new Date().toISOString();
   assert.equal(isReputable({ stars: 10, pushedAt: now, fork: false }), false);
@@ -187,4 +209,41 @@ test('normalizeItem 缺 description 时拒绝', () => {
     () => normalizeItem({ owner: 'a', repo: 'b', name: 'x', category: 'dev' }, '2026-10-21', {}),
     /description/
   );
+});
+
+test('normalizeItem 在未提供 aliases 或提供空 aliases 时始终保留 aliases 数组', () => {
+  const withoutAliases = normalizeItem(
+    {
+      owner: 'debpalash',
+      repo: 'voicestudio',
+      name: 'VoiceStudio',
+      description: '本地声音克隆工具',
+      description_en: 'Local voice cloning',
+      category: 'media',
+      icon: 'https://example.com/icon.png',
+    },
+    '2026-10-21',
+    FACTS
+  );
+  assert.ok(Array.isArray(withoutAliases.aliases));
+  assert.deepEqual(withoutAliases.aliases, ['voicestudio']);
+  assert.ok(Object.keys(withoutAliases).includes('aliases'));
+
+  const withEmptyAliases = normalizeItem(
+    {
+      owner: 'debpalash',
+      repo: 'voicestudio',
+      name: 'VoiceStudio',
+      description: '本地声音克隆工具',
+      description_en: 'Local voice cloning',
+      category: 'media',
+      icon: 'https://example.com/icon.png',
+      aliases: [],
+    },
+    '2026-10-21',
+    FACTS
+  );
+  assert.ok(Array.isArray(withEmptyAliases.aliases));
+  assert.deepEqual(withEmptyAliases.aliases, []);
+  assert.ok(Object.keys(withEmptyAliases).includes('aliases'));
 });

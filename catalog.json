@@ -9781,6 +9781,7 @@
     "description_en": "PixiEditor is a Universal Editor for all your 2D needs",
     "category": "graphics",
     "category_name": "图形创作",
+    "aliases": ["photoshop替代", "修图", "像素画", "2d编辑", "pixel art", "图像编辑"],
     "default_version": "2.1.2.5",
     "added_at": "2026-10-16",
     "license": "LGPL-3.0",
@@ -9795,8 +9796,7 @@
       "macos": ["PixiEditor.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["photoshop替代", "修图", "像素画", "2d编辑", "pixel art", "图像编辑"]
+    }
   },
   {
     "id": "tannerhelland/photodemon",
@@ -9809,6 +9809,7 @@
     "description_en": "A free portable photo editor focused on pro-grade features, high performance, and maximum usability.",
     "category": "graphics",
     "category_name": "图形创作",
+    "aliases": ["photoshop替代", "修图", "照片编辑", "photo editor", "图像处理"],
     "default_version": "v2025.12",
     "added_at": "2026-10-16",
     "license": "NOASSERTION",
@@ -9823,8 +9824,7 @@
       "macos": ["PhotoDemon.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["photoshop替代", "修图", "照片编辑", "photo editor", "图像处理"]
+    }
   },
   {
     "id": "sethrobinson/patchy",
@@ -9837,6 +9837,7 @@
     "description_en": "Open-source image editor focused on PSD compatibility and workflows familiar to Adobe Photoshop users.",
     "category": "graphics",
     "category_name": "图形创作",
+    "aliases": ["photoshop替代", "修图", "psd", "图像编辑", "photo editor"],
     "default_version": "v1.23",
     "added_at": "2026-10-16",
     "license": "MIT",
@@ -9851,8 +9852,7 @@
       "macos": ["Patchy.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["photoshop替代", "修图", "psd", "图像编辑", "photo editor"]
+    }
   },
   {
     "id": "vegidio/open-photo-ai",
@@ -9865,6 +9865,7 @@
     "description_en": "An open source alternative to the popular photo AI editor.",
     "category": "graphics",
     "category_name": "图形创作",
+    "aliases": ["ai修图", "修图", "照片编辑", "ai photo", "图像增强"],
     "default_version": "26.10.6",
     "added_at": "2026-10-16",
     "license": "AGPL-3.0",
@@ -9879,8 +9880,7 @@
       "macos": ["open-photo-ai.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["ai修图", "修图", "照片编辑", "ai photo", "图像增强"]
+    }
   },
   {
     "id": "anomalyco/opencode",
@@ -9893,6 +9893,7 @@
     "description_en": "The open source coding agent.",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["ai编程", "agent", "coding agent", "ai agent", "编程助手"],
     "default_version": "v1.19.5",
     "added_at": "2026-10-16",
     "license": "MIT",
@@ -9907,8 +9908,7 @@
       "macos": ["opencode.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["ai编程", "agent", "coding agent", "ai agent", "编程助手"]
+    }
   },
   {
     "id": "charmbracelet/crush",
@@ -9921,6 +9921,7 @@
     "description_en": "Glamourous agentic coding for all 💘",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["ai编程", "agent", "coding agent", "终端助手", "编程助手"],
     "default_version": "v0.99.0",
     "added_at": "2026-10-16",
     "license": "NOASSERTION",
@@ -9935,8 +9936,7 @@
       "macos": ["crush.app"],
       "android": ["org.crush"],
       "ios": []
-    },
-    "aliases": ["ai编程", "agent", "coding agent", "终端助手", "编程助手"]
+    }
   },
   {
     "id": "dataelement/dsh-desktop",
@@ -9949,6 +9949,7 @@
     "description_en": "DSHDesktop：DeepSeek Harness Desktop / DeepSeek Harness 桌面版",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["ai编程", "deepseek", "agent", "ai助手", "harness"],
     "default_version": "v0.13.0",
     "added_at": "2026-10-16",
     "license": "MIT",
@@ -9963,8 +9964,7 @@
       "macos": ["dsh-desktop.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["ai编程", "deepseek", "agent", "ai助手", "harness"]
+    }
   },
   {
     "id": "zai-org/zcode",
@@ -9977,6 +9977,7 @@
     "description_en": "Z.ai's coding agent harness. Powerful, intelligent, extensible.",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["ai编程", "agent", "coding agent", "z.ai", "编程助手"],
     "default_version": "v3.17.1",
     "added_at": "2026-10-16",
     "license": "Apache-2.0",
@@ -9991,8 +9992,7 @@
       "macos": ["ZCode.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["ai编程", "agent", "coding agent", "z.ai", "编程助手"]
+    }
   },
   {
     "id": "cline/cline",
@@ -10005,6 +10005,7 @@
     "description_en": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["ai编程", "agent", "cline", "编程助手", "ide插件"],
     "default_version": "v4.1.26",
     "added_at": "2026-10-16",
     "license": "Apache-2.0",
@@ -10019,8 +10020,7 @@
       "macos": ["cline.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["ai编程", "agent", "cline", "编程助手", "ide插件"]
+    }
   },
   {
     "id": "qwenlm/qwen-code",
@@ -10033,6 +10033,7 @@
     "description_en": "An open-source AI coding agent that lives in your terminal.",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["ai编程", "agent", "qwen", "通义", "编程助手"],
     "default_version": "sdk-typescript-v0.1.26",
     "added_at": "2026-10-16",
     "license": "Apache-2.0",
@@ -10047,8 +10048,7 @@
       "macos": ["qwen-code.app"],
       "android": [],
       "ios": []
-    },
-    "aliases": ["ai编程", "agent", "qwen", "通义", "编程助手"]
+    }
   },
   {
     "id": "openai/codex",
@@ -10145,6 +10145,7 @@
     "description_en": "The most intuitive desktop API client. Organize and execute REST, GraphQL, WebSockets, Server Sent Events, and gRPC 🦬",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["yaak", "api调试", "接口测试", "rest", "graphql", "grpc"],
     "default_version": "v2026.9.0",
     "added_at": "2026-10-20",
     "license": "MIT",
@@ -10172,6 +10173,7 @@
     "description_en": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
     "category": "dev",
     "category_name": "开发编程",
+    "aliases": ["dbx", "数据库", "sql", "客户端", "mysql", "redis"],
     "default_version": "v0.6.62",
     "added_at": "2026-10-20",
     "license": "Apache-2.0",

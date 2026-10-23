@@ -25,6 +25,18 @@ export const VALID_CATEGORIES = new Set([
   'system', 'network', 'media', 'security', 'dev', 'graphics', 'office', 'reading', 'ops', 'games'
 ]);
 
+// catalog.json 磁盘字段顺序（与 Rust CatalogItem 的序列化顺序对齐）。
+// install_dirs / search_subdirs / publishers 为可选扩展字段，省略时不影响顺序。
+export const FIELD_ORDER = [
+  'id', 'name', 'owner', 'repo', 'icon', 'icon_bg',
+  'description', 'description_en', 'category', 'category_name',
+  'aliases', 'default_version', 'added_at', 'license',
+  'stars', 'forks', 'is_verified', 'homepage',
+  'install_dirs', 'search_subdirs', 'publishers',
+  'platforms', 'identifiers',
+];
+const KNOWN_FIELDS = new Set(FIELD_ORDER);
+
 /**
  * 校验整份 catalog（纯函数）。
  * 返回 { errors, warnings }，元素形如 { id, msg }，按条目顺序排列。
@@ -51,13 +63,25 @@ export function validateCatalog(catalog) {
       continue;
     }
 
-    // 1. 必填基础字段（新 schema：description 中文必填，description_en 英文与 description 规则对齐必填；
-    //    chinese_name / publisher_fingerprint 已废弃，不再校验）
-    const requiredFields = ['id', 'name', 'category', 'description', 'description_en', 'owner', 'repo', 'icon', 'platforms', 'identifiers', 'added_at'];
+    // 1. 必填基础字段（description 中文必填，description_en 英文必填）
+    const requiredFields = ['id', 'name', 'category', 'description', 'description_en', 'owner', 'repo', 'icon', 'platforms', 'identifiers', 'added_at', 'aliases'];
     for (const field of requiredFields) {
       if (item[field] === undefined || item[field] === null || item[field] === '') {
         reportError(item, `缺少必填字段 '${field}'`);
       }
+    }
+
+    // 1a. 字段顺序必须符合固定 schema（JSON 对象键顺序在解析后保持写入顺序）
+    const keys = Object.keys(item);
+    const actualOrder = keys.filter((k) => KNOWN_FIELDS.has(k));
+    const expectedOrder = FIELD_ORDER.filter((k) => actualOrder.includes(k));
+    if (actualOrder.join(',') !== expectedOrder.join(',')) {
+      const pos = actualOrder.findIndex((k, n) => k !== expectedOrder[n]);
+      reportError(item, `字段顺序不符：第 ${pos + 1} 个字段应为 '${expectedOrder[pos]}'，实际为 '${actualOrder[pos]}'`);
+    }
+    const unknownFields = keys.filter((k) => !KNOWN_FIELDS.has(k));
+    if (unknownFields.length > 0) {
+      warnings.push({ id: item.id, msg: `包含未登记字段: ${unknownFields.join(', ')}（如为客户端扩展字段，请同步 FIELD_ORDER）` });
     }
 
     // 1b. description / description_en 必须为非空字符串（缺失已由必填校验覆盖，此处仅校验类型）
@@ -77,6 +101,19 @@ export function validateCatalog(catalog) {
         const dt = new Date(Date.UTC(y, m - 1, d));
         if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== m - 1 || dt.getUTCDate() !== d) {
           reportError(item, `'added_at' '${item.added_at}' 不是合法的日历日期`);
+        }
+      }
+    }
+
+    // 1d. aliases 必须为数组且元素必须为非空字符串
+    if (item.aliases !== undefined && item.aliases !== null) {
+      if (!Array.isArray(item.aliases)) {
+        reportError(item, `'aliases' 必须是一个数组`);
+      } else {
+        for (const alias of item.aliases) {
+          if (typeof alias !== 'string' || !alias.trim()) {
+            reportError(item, `'aliases' 包含无效别名 (必须是非空字符串)`);
+          }
         }
       }
     }
