@@ -37,6 +37,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { guessCategory, resolveGitHubToken } from './lib/catalog-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -82,28 +83,7 @@ async function throttle(ms) {
   if (wait > 0) await sleep(wait);
 }
 
-// ────────────────────────────── 分类（复用 add-app.mjs guessCategory 逻辑） ──────────────────────────────
-function guessCategory(desc, topics) {
-  const text = `${desc || ''} ${(topics || []).join(' ')}`.toLowerCase();
-  if (text.includes('remote') || text.includes('desktop') || text.includes('cleaner') || text.includes('launcher') || text.includes('file manager')) return 'system';
-  if (text.includes('network') || text.includes('transfer') || text.includes('download') || text.includes('torrent') || text.includes('proxy') || text.includes('vpn')) return 'network';
-  if (text.includes('player') || text.includes('video') || text.includes('audio') || text.includes('music') || text.includes('stream') || text.includes('record')) return 'media';
-  if (text.includes('password') || text.includes('security') || text.includes('crypto') || text.includes('2fa') || text.includes('otp') || text.includes('authenticator')) return 'security';
-  if (text.includes('editor') || text.includes('terminal') || text.includes('git') || text.includes('code') || text.includes('developer') || text.includes('api')) return 'dev';
-  if (text.includes('image') || text.includes('paint') || text.includes('photo') || text.includes('screenshot') || text.includes('3d') || text.includes('svg')) return 'graphics';
-  if (text.includes('note') || text.includes('markdown') || text.includes('pdf') || text.includes('office') || text.includes('todo') || text.includes('calendar')) return 'office';
-  if (text.includes('book') || text.includes('reader') || text.includes('rss') || text.includes('epub') || text.includes('feed')) return 'reading';
-  if (text.includes('docker') || text.includes('kubernetes') || text.includes('monitor') || text.includes('database') || text.includes('server')) return 'ops';
-  if (text.includes('game') || text.includes('emulator') || text.includes('arcade')) return 'games';
-  return 'dev';
-}
-
 // ────────────────────────────── GitHub 请求封装 ──────────────────────────────
-function resolveToken() {
-  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN.trim();
-  if (process.env.GH_TOKEN) return process.env.GH_TOKEN.trim();
-  return null;
-}
 
 function ghHeaders(token) {
   return {
@@ -320,7 +300,7 @@ async function fetchRepo(full, token) {
 
 // ────────────────────────────── 主流程 ──────────────────────────────
 async function main() {
-  const token = resolveToken();
+  const token = resolveGitHubToken();
   if (!token) {
     if (DRY_RUN) {
       console.log('⚠️ 未检测到 GITHUB_TOKEN/GH_TOKEN，dry-run 模式下降级：跳过 GitHub 依赖数据源，仅演示流程。');
@@ -346,7 +326,7 @@ async function main() {
   const log = (tag, full, status, reason) =>
     console.log(`[${tag}] ${full} ${status}${reason ? `(${reason})` : ''}`);
 
-  // 候选归一化：repo JSON → 种子条目（字段仅 batch-add 消费所需；新 schema 无 chinese_name）
+  // 候选归一化：repo JSON → 种子条目（供 batch-add 消费所需）
   const toSeed = (data) => ({
     repo: data.full_name,
     category: guessCategory(data.description, data.topics),

@@ -14,10 +14,8 @@
  * 4. 每个图标 URL 实时验证（HTTP 200 + image/* + ≥300 字节非 LFS 指针）；
  * 5. 平台与 identifiers 推断（种子 hints 优先，修正 exe 名猜测偏差）；
  * 6. 组装条目追加到 catalog.json（保持标量数组单行排版）并同步客户端离线种子；
- * 6. 组装条目追加到 catalog.json（保持标量数组单行排版）并同步客户端离线种子；
  * 7. 产出同日期档 scripts/seed/<date>/batch-report.json（每应用状态/图标来源/失败原因）
  *    与同目录 seed-excluded.json（淘汰审计快照，历史条目合并保留；二者均在 deny 名单，不计入输入）。
- *    旧顶层 scripts/batch-report.json 已废弃，启动时一次性迁移进当天日期档。
  *
  * 用法:
  *   node scripts/batch-add.mjs --dry-run                 # 仅核验当天日期档种子，不写入任何文件
@@ -76,12 +74,9 @@ if (dateArg !== null) {
 const seedDirArg = getArg('seed-dir', null);
 const seedDir = seedDirArg ? path.resolve(rootDir, seedDirArg) : defaultSeedDir;
 // 输入与报告同日期档：scripts/seed/YYYY-MM-DD/（同一天覆盖，换天新建；seed/ 整体被 .gitignore 忽略）。
-// 旧顶层 scripts/batch-report.json / scripts/seed-excluded.json 已废弃，启动时一次性迁移进当天日期档。
 const runDir = path.join(seedDir, dateStr);
 const reportPath = path.join(runDir, 'batch-report.json');
 const excludedPath = path.join(runDir, 'seed-excluded.json');
-const legacyReportPath = path.join(__dirname, 'batch-report.json');
-const legacyExcludedPath = path.join(__dirname, 'seed-excluded.json');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -109,20 +104,6 @@ function loadSeeds() {
     for (const item of arr) seeds.push(item);
   }
   return seeds;
-}
-
-// 兼容旧顶层报告：一次性移入当天日期档（重名则加 -legacy 后缀，绝不覆盖），打印废弃提示后旧路径废弃
-function migrateLegacyFile(legacyPath, baseName) {
-  if (!fs.existsSync(legacyPath)) return;
-  let target = path.join(runDir, baseName);
-  if (fs.existsSync(target)) target = path.join(runDir, baseName.replace(/\.json$/, '-legacy.json'));
-  if (fs.existsSync(target)) target = path.join(runDir, baseName.replace(/\.json$/, `-legacy-${Date.now()}.json`));
-  try {
-    fs.renameSync(legacyPath, target);
-    console.log(`📦 旧文件 ${path.relative(rootDir, legacyPath)} 已归档至 ${path.relative(rootDir, target)}（旧顶层路径废弃，报告统一写入 scripts/seed/YYYY-MM-DD/）`);
-  } catch (err) {
-    console.log(`⚠️ 旧文件迁移失败（保留原位）：${err?.message || err}`);
-  }
 }
 
 // 由本轮 report 构造淘汰审计条目（兼容历史 seed-excluded.json 快照格式：种子字段 + excluded 块）
@@ -229,11 +210,9 @@ function main() {
     return;
   }
 
-  // 非 dry-run 才确保日期档存在并一次性迁移旧顶层报告（dry-run 不写盘；迁移提示后旧路径废弃）
+  // 非 dry-run 确保日期档目录存在
   if (!dryRun) {
     fs.mkdirSync(runDir, { recursive: true });
-    migrateLegacyFile(legacyReportPath, 'batch-report.json');
-    migrateLegacyFile(legacyExcludedPath, 'seed-excluded.json');
   }
   const report = {
     generatedAt: new Date().toISOString(),
@@ -377,8 +356,7 @@ async function processSeed(seed, headers, categoryNames) {
     }
     if (seed.android_id && identifiers.android.length > 0) identifiers.android = [seed.android_id];
 
-    // 5. 组装条目（新 schema：description 中文 + description_en 英文原文，不写 chinese_name；
-    //    兼容旧种子一次性读取：历史 chinese_name 仅作 description 缺失时的回退，不再写出）
+    // 5. 组装条目（历史 chinese_name 仅作 description 缺失时的回退）
     const matchedCategory = CATEGORIES.find((c) => c.key === seed.category) || CATEGORIES[0];
     const entry = {
       id: seed.repo.toLowerCase(),
@@ -391,7 +369,7 @@ async function processSeed(seed, headers, categoryNames) {
       description_en: seed.description_en || repoData.description || undefined,
       category: seed.category,
       category_name: categoryNames[seed.category] || matchedCategory.name,
-      aliases: Array.isArray(seed.aliases) ? seed.aliases : undefined,
+      aliases: Array.isArray(seed.aliases) ? seed.aliases : [],
       default_version: release?.tag_name || 'unknown',
       added_at: todayAddedAt(), // 收录日期（UTC, YYYY-MM-DD；已收录仓库会被跳过，仅新条目写入）
       license: repoData.license?.spdx_id || 'Unknown',

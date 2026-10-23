@@ -4,7 +4,7 @@
  * refresh-catalog.mjs
  * 
  * 自动保鲜收录清单脚本：
- * 批量调用 GitHub / Codeberg API，获取各收录应用的最新 Stars、Forks 与 Release Tag，
+ * 调用 GitHub API 获取各收录应用的最新 Stars、Forks 与 Release Tag，
  * 并自动同步更新 catalog.json。
  * 
  * 用法:
@@ -14,6 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { formatCatalogJson } from './lib/catalog-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,55 +49,51 @@ let updatedCount = 0;
 
 for (let i = 0; i < catalog.length; i++) {
   const item = catalog[i];
-  const { owner, repo, forge } = item;
+  const { owner, repo } = item;
 
-  // 默认作为 GitHub 仓库处理
-  if (!forge || forge === 'github') {
-    try {
-      // 1. 获取最新 Star / Fork / Description / License
-      const repoUrl = `https://api.github.com/repos/${owner}/${repo}`;
-      const repoRes = await fetch(repoUrl, { headers });
+  try {
+    // 1. 获取最新 Star / Fork / Description / License
+    const repoUrl = `https://api.github.com/repos/${owner}/${repo}`;
+    const repoRes = await fetch(repoUrl, { headers });
 
-      if (repoRes.status === 200) {
-        const repoData = await repoRes.json();
-        const oldStars = item.stars;
-        const newStars = repoData.stargazers_count ?? oldStars;
-        const newForks = repoData.forks_count ?? item.forks;
+    if (repoRes.status === 200) {
+      const repoData = await repoRes.json();
+      const oldStars = item.stars;
+      const newStars = repoData.stargazers_count ?? oldStars;
+      const newForks = repoData.forks_count ?? item.forks;
 
-        // 仅刷新 stars/forks/license/description_en/default_version 等动态字段；
-        // added_at（收录日期）为静态元数据，刷新逻辑中绝不覆盖或删除，写回前另有断言兜底。
-        item.stars = newStars;
-        item.forks = newForks;
-        if (repoData.license?.spdx_id) {
-          item.license = repoData.license.spdx_id;
-        }
-        // 新 schema：同步刷新英文原文 description_en（取 GitHub description）；
-        // 中文 description 为人工文案不再覆盖；不再碰 chinese_name / publisher_fingerprint（已废弃）。
-        if (repoData.description) {
-          item.description_en = repoData.description;
-        }
-
-        // 2. 获取最新 Release Tag
-        const releaseUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
-        const relRes = await fetch(releaseUrl, { headers });
-        if (relRes.status === 200) {
-          const relData = await relRes.json();
-          if (relData.tag_name) {
-            item.default_version = relData.tag_name;
-          }
-        }
-
-        console.log(`[${i + 1}/${catalog.length}] ✅ ${item.name} (${owner}/${repo}): ⭐ ${oldStars} ➔ ${item.stars}, 🏷️ ${item.default_version}`);
-        updatedCount++;
-      } else if (repoRes.status === 403) {
-        console.warn(`[${i + 1}/${catalog.length}] ⚠️ 触发 GitHub 速率限制 (Rate Limit)，停止后续刷新。`);
-        break;
-      } else {
-        console.warn(`[${i + 1}/${catalog.length}] ⚠️ 请求失败 (${owner}/${repo}): HTTP ${repoRes.status}`);
+      // 仅刷新 stars/forks/license/description_en/default_version 等动态字段；
+      // added_at（收录日期）为静态元数据，刷新逻辑中绝不覆盖或删除，写回前另有断言兜底。
+      item.stars = newStars;
+      item.forks = newForks;
+      if (repoData.license?.spdx_id) {
+        item.license = repoData.license.spdx_id;
       }
-    } catch (err) {
-      console.error(`[${i + 1}/${catalog.length}] ❌ 网络错误 (${owner}/${repo}):`, err.message);
+      // 同步刷新英文原文 description_en（取 GitHub description）；中文 description 为人工文案不覆盖。
+      if (repoData.description) {
+        item.description_en = repoData.description;
+      }
+
+      // 2. 获取最新 Release Tag
+      const releaseUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+      const relRes = await fetch(releaseUrl, { headers });
+      if (relRes.status === 200) {
+        const relData = await relRes.json();
+        if (relData.tag_name) {
+          item.default_version = relData.tag_name;
+        }
+      }
+
+      console.log(`[${i + 1}/${catalog.length}] ✅ ${item.name} (${owner}/${repo}): ⭐ ${oldStars} ➔ ${item.stars}, 🏷️ ${item.default_version}`);
+      updatedCount++;
+    } else if (repoRes.status === 403) {
+      console.warn(`[${i + 1}/${catalog.length}] ⚠️ 触发 GitHub 速率限制 (Rate Limit)，停止后续刷新。`);
+      break;
+    } else {
+      console.warn(`[${i + 1}/${catalog.length}] ⚠️ 请求失败 (${owner}/${repo}): HTTP ${repoRes.status}`);
     }
+  } catch (err) {
+    console.error(`[${i + 1}/${catalog.length}] ❌ 网络错误 (${owner}/${repo}):`, err.message);
   }
 
   // 避免高频突发请求
@@ -112,12 +109,8 @@ for (const item of catalog) {
   }
 }
 
-// 格式化写回 catalog.json（保持纯标量数组单行，不换行展开）
-const rawJson = JSON.stringify(catalog, null, 2);
-const formattedJson = rawJson.replace(/\[\s*\n([^\[\]\{\}]*?)\n\s*\]/g, (_match, inner) => {
-  const items = inner.split('\n').map((line) => line.trim()).filter(Boolean).join(' ');
-  return `[${items}]`;
-}) + '\n';
+// 格式化写回 catalog.json（保持纯标量数组单行）
+const formattedJson = formatCatalogJson(catalog);
 fs.writeFileSync(catalogPath, formattedJson, 'utf8');
 console.log(`💾 已写回清单仓库: ${path.relative(rootDir, catalogPath)}`);
 

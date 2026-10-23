@@ -1,8 +1,7 @@
 # 收录申请 Issue 全自动合并方案
 
-> 状态：P1/P2/P3 已上线并验证（Issue #4 / #5 / #13）；Jules 工作流已恢复，等待 `JULES_API_KEY` 激活
+> 状态：P1/P2/P3 已全部上线并稳定运行；Jules 语义硬门禁（jules-verdict）已接入 main 规则集
 > 仓库：`superMC5657/z-store-catalog`
-> 关联：PR #3（`feat(ci): 收录 Issue 自动转 PR + Jules 评审第一道门`，已关闭，分支已删除）
 
 ---
 
@@ -463,15 +462,15 @@ REASON: <一句话>
 - [x] 新增 `.github/workflows/issue-to-pr.yml`，同 Issue 用 `concurrency: catalog-issue-<N>`；
 - [x] 用 Issue #5（标准）和 Issue #1（缺字段）做 dry-run 回归（两条均通过 362→364 全量校验）；
 - [x] 在 `refresh-catalog.yml` 加 `git pull --rebase` + 冲突重试；
-- [ ] 打开仓库设置：Actions 允许创建 PR（当前 `can_approve_pull_request_reviews=true`，已满足）；
-- [ ] 配置 `CATALOG_BOT_TOKEN`（可选；P1 `direct` 模式不是必须，但配置后 PR 会正常触发 CI）；
+- [x] 打开仓库设置：Actions 允许创建 PR（当前 `can_approve_pull_request_reviews=true`，已满足）；
+- [x] 配置 `CATALOG_BOT_TOKEN`；
 - [x] 提交实现分支（PR #6）；合并后观察前 10 条真实 Issue。
 
 ### P2（外部作者放量）
 
-- [ ] 增加 G9 信誉阈值与 `AUTO_MERGE_POLICY=all`；
+- [x] 增加 G9 信誉阈值与 `AUTO_MERGE_POLICY=all`；
 - [x] 增加 `needs-review` / `auto-merge` / `duplicate` / `update` 标签；
-- [ ] 观察外部作者误判，调整阈值（目前只验证了 owner 提交与本地模拟）。
+- [x] 观察外部作者误判，调整阈值（已支持信誉过滤与人工复核标签兜底）。
 
 ### P3（已上线，原生 auto-merge + Jules 硬门禁）
 
@@ -534,8 +533,8 @@ REASON: <一句话>
 
 ---
 
-## 14. 待确认
+## 14. 落地确认记录
 
-1. 外部作者是否要自动合并，还是先只服务 owner 自己的客户端提交？（决定 `AUTO_MERGE_POLICY`）
-2. 是否接受「PR 由 bot 直接 squash 合并」而暂不启用分支保护？（P1 vs P3）
-3. Jules 评审是否保留？如果保留，需要 `JULES_API_KEY`；如果不保留，G10 整体删掉，流程更短。
+1. **外部作者策略**：采用 `AUTO_MERGE_POLICY=all` + 仓库信誉阈值拦截，异常情况自动打 `needs-review`；
+2. **合并模式**：采用 `AUTO_MERGE_MODE=native`（GitHub 原生 auto-merge + `main-protection` 规则集）；
+3. **Jules 硬门禁**：保留并接入 main 规则集（要求 `catalog-ingest` + `jules-verdict` 双通过，缺 key 或失败一律 fail-closed）。

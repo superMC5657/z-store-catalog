@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="./catalog.json"><img src="https://img.shields.io/badge/Apps-341-blue.svg" alt="Apps Count" /></a>
+  <a href="./catalog.json"><img src="https://img.shields.io/badge/Apps-366-blue.svg" alt="Apps Count" /></a>
   <a href="./scripts/validate-catalog.mjs"><img src="https://img.shields.io/badge/Validation-Passing-brightgreen.svg" alt="Validation" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License" /></a>
 </p>
@@ -35,7 +35,7 @@
 
 ```json
 {
-  "id": "localsend",
+  "id": "localsend/localsend",
   "name": "LocalSend",
   "owner": "localsend",
   "repo": "localsend",
@@ -65,7 +65,7 @@
 ```
 
 ### 字段说明
-- `id`: 唯一标识符，小写字母、数字与连字符；
+- `id`: 唯一标识符，必须为小写 `owner/repo`（如 `localsend/localsend`）；
 - `description` / `description_en` / `aliases`: 中文简介、英文原文简介与搜索别名，供客户端展示与检索（`description` 为中文人工文案，`description_en` 默认取 GitHub 仓库英文原文）；
 - `icon`: 应用官方高清图标 URL（优先仓库内资源；所有图标均经过存活性核验与人工目检）；
 - `icon_bg`: 客户端渲染图标时的渐变底色，与分类对应；

@@ -4,7 +4,7 @@
  * review-pr.mjs
  *
  * 让 Jules 评审一个 PR，输出结构化结论（APPROVE / REJECT / PENDING）。
- * 它是合并前的第一道语义门，不负责合并；维护者看过结论后手动 merge。
+ * 它是合并前的语义硬门禁，只输出评审结论与评论，不负责执行合并。
  *
  * 设计要点：
  * - 只读评审：不创建 PR（不传 automationMode），提示 Jules 不要改文件；
@@ -12,7 +12,7 @@
  * - 轮询超时写 PENDING（没拿到结论），PENDING 不是语义否决，也不代表内容不合格；
  * - Jules 不保证遵守输出契约：缺 `VERDICT` 先发一次只要求结论的催促，仍无则写 PENDING；
  * - 支持 --fixture 离线回放，便于不消耗 Jules 配额地测试解析逻辑；
- * - 合并决策不在这里做：workflow 只评论结论并打标签，最终由维护者手动合并。
+ * - 合并决策不在这里做：由调用方 workflow 结合规则集或维护者进行合并。
  *
  * 用法:
  *   JULES_API_KEY=... node scripts/review-pr.mjs --repo owner/repo --pr 3 \

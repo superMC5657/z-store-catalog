@@ -10,7 +10,7 @@
  * 3. 智能推断支持平台 (platforms) 与可执行文件名标识符 (identifiers)；
  * 4. 自动探测仓库高清 Logo / Icon；
  * 5. 交互式确认/微调（支持 -y / --yes 全自动无交互）；
- * 6. 格式化写入 publish/z-store-catalog/catalog.json；
+ * 6. 格式化写入 catalog.json；
  * 7. 若在本地工作区，自动同步至根目录客户端离线种子 (catalog.json)；
  * 8. 执行规范校验。
  *
@@ -205,7 +205,7 @@ async function main() {
 
   const matchedCategory = CATEGORIES.find((c) => c.key === finalCategoryKey) || CATEGORIES[4];
 
-  // 构建新条目对象（新 schema：description 中文 + description_en 英文原文，无 chinese_name / publisher_fingerprint）
+  // 构建新条目对象
   const newEntry = {
     id: finalId,
     name: finalName,
@@ -217,7 +217,7 @@ async function main() {
     description_en: finalDescEn || undefined,
     category: finalCategoryKey,
     category_name: matchedCategory.name,
-    aliases: finalAliases.length > 0 ? finalAliases : undefined,
+    aliases: Array.isArray(finalAliases) ? finalAliases : [],
     default_version: defaultVersion,
     added_at: existingItem?.added_at || todayAddedAt(), // 收录日期（UTC, YYYY-MM-DD）；覆盖更新时保留原值
     license: defaultLicense,
@@ -240,7 +240,7 @@ async function main() {
     console.log(`\n➕ 已成功追加新应用: ${finalId} (${finalName})`);
   }
 
-  // 格式化写回 publish/z-store-catalog/catalog.json
+  // 格式化写回 catalog.json
   const formattedJson = formatCatalogJson(catalog);
   fs.writeFileSync(catalogPath, formattedJson, 'utf8');
   console.log(`💾 已写回清单仓库: ${path.relative(rootDir, catalogPath)}`);
