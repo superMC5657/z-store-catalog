@@ -58,7 +58,7 @@ jobs:
       GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
       GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
       AUTO_MERGE_MODE: ${{ vars.AUTO_MERGE_MODE || 'direct' }}
-      AUTO_MERGE_POLICY: ${{ vars.AUTO_MERGE_POLICY || 'trusted' }}
+      AUTO_MERGE_POLICY: ${{ vars.AUTO_MERGE_POLICY || 'manual' }}
       DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
 
     steps:
@@ -248,11 +248,15 @@ jobs:
           can_merge=false
           if [ "$needs_review" = "false" ]; then
             case "$AUTO_MERGE_POLICY" in
+              manual|none)
+                # 默认人工合并模式，只有显式贴 auto-merge 标签才自动合并
+                if [ "$forced" = "true" ]; then can_merge=true; fi
+                ;;
               trusted)
-                if [ "$trusted" = "true" ]; then can_merge=true; fi
+                if [ "$trusted" = "true" ] || [ "$forced" = "true" ]; then can_merge=true; fi
                 ;;
               all)
-                if [ "$trusted" = "true" ] || [ "$reputation_ok" = "true" ]; then
+                if [ "$trusted" = "true" ] || [ "$reputation_ok" = "true" ] || [ "$forced" = "true" ]; then
                   can_merge=true
                 fi
                 ;;
@@ -260,13 +264,9 @@ jobs:
                 if [ "$forced" = "true" ]; then can_merge=true; fi
                 ;;
               *)
-                if [ "$trusted" = "true" ]; then can_merge=true; fi
+                if [ "$forced" = "true" ]; then can_merge=true; fi
                 ;;
             esac
-            # 维护者显式打 auto-merge 标签时覆盖默认策略。
-            if [ "$forced" = "true" ]; then
-              can_merge=true
-            fi
           fi
 
           merged=false
@@ -284,16 +284,19 @@ jobs:
             fi
           fi
 
-          if [ "$merged" != "true" ]; then
-            gh pr edit "${{ steps.pr.outputs.url }}" --repo "$REPO" \
-              --add-label needs-review || true
-            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
-              --add-label needs-review || true
-          else
+          if [ "$merged" = "true" ]; then
             gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
               --remove-label needs-review || true
             # GITHUB_TOKEN 合并时 Closes #N 不一定会触发自动关闭，显式兜底。
             gh issue close "$ISSUE_NUMBER" --repo "$REPO" --reason completed || true
+          else
+            # 未自动合并时：仅当数据存在待审查原因（如非 OSI/低星/缺图标等）时才贴 needs-review 标签
+            if [ "$needs_review" = "true" ]; then
+              gh pr edit "${{ steps.pr.outputs.url }}" --repo "$REPO" \
+                --add-label needs-review || true
+              gh issue edit "$ISSUE_NUMBER" --repo "$REPO" \
+                --add-label needs-review || true
+            fi
           fi
           echo "merged=$merged" >> "$GITHUB_OUTPUT"
 
@@ -307,8 +310,10 @@ jobs:
             echo
             if [ "${{ steps.merge.outputs.merged }}" = "true" ]; then
               echo "✅ 已自动合并到 main。"
+            elif [ "${{ steps.ingest.outputs.needs_review }}" = "true" ]; then
+              echo "⏳ 已生成 PR，部分字段存在疑问（已标记 \`needs-review\`），请维护者核对后合并。"
             else
-              echo "⏳ 已生成 PR，等待维护者审核。"
+              echo "✅ 数据格式与合规校验已通过，已生成 PR，请维护者/作者核对后合并。"
             fi
           } > final-comment.md
           gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file final-comment.md

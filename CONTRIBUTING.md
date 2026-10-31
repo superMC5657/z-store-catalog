@@ -114,7 +114,7 @@ Z-Store 客户端「提交收录申请」会打开一个预填 Issue，正文包
 所有合入 `main` 的 PR 均需通过 `catalog-ingest` 状态检查（由规则集保护）：
 
 - **人工 PR**：由 `catalog-gate.yml` 基于 base 分支脚本校验 PR 内容后打上 `catalog-ingest=success`；
-- **客户端 Issue PR**：由 `issue-to-pr.yml` 校验后写入 `catalog-ingest=success`，若满足自动合并条件则自动 squash 合并；
+- **客户端 Issue PR**：由 `issue-to-pr.yml` 自动清洗补齐并写入 `catalog-ingest=success` 门禁状态，由维护者/作者核对后确认合并（亦可打 `auto-merge` 标签触发自动合并）；
 - **每日 refresh PR**：由 `refresh-catalog.yml` 自动保鲜并写入 `catalog-ingest=success` 后合并。
 
 ---

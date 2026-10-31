@@ -24,7 +24,7 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
 ## 工作流
 
-- `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，校验后开 PR，再按 `AUTO_MERGE_POLICY`（trusted / all / label）与 `AUTO_MERGE_MODE`（direct / native）自动合并。不要绕过它手改 `catalog.json`。
+- `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，补全元数据与平台信息后开 PR 并写入 `catalog-ingest` 门禁状态；默认 `AUTO_MERGE_POLICY=manual` 由维护者/作者人工确认合并（亦支持贴 `auto-merge` 标签触发自动合并）。不要绕过它手改 `catalog.json`。
 - `catalog-gate.yml`：对人工 PR 写 `catalog-ingest` commit status；bot PR 由 `issue-to-pr.yml` / `refresh-catalog.yml` 自己写。
 - `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
 - `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`。
