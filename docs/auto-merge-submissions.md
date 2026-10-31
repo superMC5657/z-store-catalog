@@ -1,7 +1,8 @@
 # 收录申请 Issue 全自动合并方案
 
-> 状态：P1/P2/P3 已全部上线并稳定运行；Jules 语义硬门禁（jules-verdict）已接入 main 规则集
+> 状态：P1/P2/P3 已全部上线并稳定运行；Jules 组件已停用下线，主干规则集恢复为仅要求 `catalog-ingest` 校验状态
 > 仓库：`superMC5657/z-store-catalog`
+> 说明：本方案早期版本曾包含基于 Google Jules 的语义门禁实验（`jules-verdict`）；现已精简移除 Jules 依赖，全量收录与保鲜流程完全由确定性脚本及原生 Actions 驱动。
 
 ---
 
