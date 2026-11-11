@@ -179,7 +179,10 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git commit -m "$(cat pr-title.txt)"
+          # 附带 [skip ci] 避免 PR 触发 catalog-gate / validate-pr；
+          # bot PR 的数据已由上一步 validate-catalog 校验并由后一步直接写 status。
+          # 亦可避免 PR 被秒合并后临时分支被删导致排队的 PR CI 因找不到分支而报红。
+          git commit -m "$(cat pr-title.txt) [skip ci]"
           # bot 独占分支：重复触发时强制覆盖，保证同一 Issue 只有一个 PR。
           git push --force origin "HEAD:refs/heads/$branch"
           echo "changed=true" >> "$GITHUB_OUTPUT"
