@@ -1,0 +1,28 @@
+{
+  "id": "saga-soft/novelwriter",
+  "name": "novelWriter",
+  "owner": "saga-soft",
+  "repo": "novelWriter",
+  "icon": "https://raw.githubusercontent.com/saga-soft/novelWriter/main/setup/data/hicolor/512x512/apps/novelwriter.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "为小说家设计的 Markdown 写作器，角色与场景结构化管理。",
+  "description_en": "novelWriter is an open source plain text editor designed for writing novels",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["写作", "小说", "novel"],
+  "default_version": "v26.2.3",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3233,
+  "forks": 231,
+  "is_verified": true,
+  "homepage": "https://novelwriter.io",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["novelWriter.exe"],
+    "linux": ["novelwriter"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

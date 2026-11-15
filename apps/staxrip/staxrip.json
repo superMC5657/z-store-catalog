@@ -1,0 +1,28 @@
+{
+  "id": "staxrip/staxrip",
+  "name": "StaxRip",
+  "owner": "staxrip",
+  "repo": "staxrip",
+  "icon": "https://raw.githubusercontent.com/staxrip/staxrip/master/Source/SR_blue.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "功能强大的 Windows 视频转码编码工具，x265/NVENC 与脚本支持。",
+  "description_en": "🎞 Video encoding GUI for Windows.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["转码", "编码", "x265"],
+  "default_version": "v2.52.6",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 3042,
+  "forks": 151,
+  "is_verified": true,
+  "homepage": "https://github.com/staxrip/staxrip",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["staxrip.exe"],
+    "linux": ["staxrip"],
+    "macos": ["staxrip.app"],
+    "android": [],
+    "ios": []
+  }
+}

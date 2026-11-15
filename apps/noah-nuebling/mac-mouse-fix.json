@@ -1,0 +1,28 @@
+{
+  "id": "noah-nuebling/mac-mouse-fix",
+  "name": "Mac Mouse Fix",
+  "owner": "noah-nuebling",
+  "repo": "mac-mouse-fix",
+  "icon": "https://raw.githubusercontent.com/noah-nuebling/mac-mouse-fix/master/Shared/Resources/Assets/MainAppAssets.xcassets/UniversalAccess.imageset/UniversalAccess-Icon-512-120x120@2x.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "让普通鼠标在 macOS 上获得平滑滚动与手势按键映射的小工具。",
+  "description_en": "Mac Mouse Fix - Make Your $10 Mouse Better Than an Apple Trackpad!",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["鼠标", "滚动", "macos"],
+  "default_version": "3.1.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 11245,
+  "forks": 473,
+  "is_verified": true,
+  "homepage": "https://macmousefix.com/",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["mac-mouse-fix.app"],
+    "android": [],
+    "ios": []
+  }
+}

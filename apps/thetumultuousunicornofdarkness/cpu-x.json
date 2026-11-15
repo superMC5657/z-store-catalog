@@ -1,0 +1,28 @@
+{
+  "id": "thetumultuousunicornofdarkness/cpu-x",
+  "name": "CPU-X",
+  "owner": "TheTumultuousUnicornOfDarkness",
+  "repo": "CPU-X",
+  "icon": "https://raw.githubusercontent.com/TheTumultuousUnicornOfDarkness/CPU-X/master/data/icons/CPU-X_512x512.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "Linux 平台的硬件信息与系统监控工具，CPU-Z 的开源替代。",
+  "description_en": "CPU-X is a Free software that gathers information on CPU, motherboard and more",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["硬件信息", "cpu-z", "linux"],
+  "default_version": "v5.4.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2652,
+  "forks": 165,
+  "is_verified": true,
+  "homepage": "https://thetumultuousunicornofdarkness.github.io/CPU-X",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["cpu-x"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "agalwood/motrix",
+  "name": "Motrix",
+  "owner": "agalwood",
+  "repo": "Motrix",
+  "icon": "https://raw.githubusercontent.com/agalwood/Motrix/main/public/app-icon.png",
+  "icon_bg": "linear-gradient(135deg, #fb7185, #e11d48)",
+  "description": "全能开源下载工具，支持 HTTP、FTP、BT、磁力链接等多协议，界面清爽极简。",
+  "description_en": "A full-featured download manager.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["motrix", "下载工具", "全能下载器", "aria2", "download manager"],
+  "default_version": "v2.4.1",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 58281,
+  "forks": 5154,
+  "is_verified": true,
+  "homepage": "https://motrix.app",
+  "publishers": ["Dr_rOot", "agalwood"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Motrix.exe"],
+    "linux": ["motrix"],
+    "macos": ["Motrix.app"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "handbrake/handbrake",
+  "name": "HandBrake",
+  "owner": "HandBrake",
+  "repo": "HandBrake",
+  "icon": "https://raw.githubusercontent.com/HandBrake/HandBrake/master/gtk/icons/256x256/apps/fr.handbrake.ghb.png",
+  "icon_bg": "linear-gradient(135deg, #ea580c, #c2410c)",
+  "description": "功能强大的开源多平台视频转码工具，支持硬件加速与多重格式压制。",
+  "description_en": "HandBrake's development repository ",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["视频压制", "视频转码", "格式转换", "video encoder", "handbrake"],
+  "default_version": "1.11.2",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 25011,
+  "forks": 1754,
+  "is_verified": true,
+  "homepage": "https://handbrake.fr",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["HandBrake.exe"],
+    "linux": ["ghb", "HandBrakeCLI"],
+    "macos": ["HandBrake.app", "HandBrakeCLI"]
+  }
+}

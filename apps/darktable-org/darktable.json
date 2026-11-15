@@ -1,0 +1,28 @@
+{
+  "id": "darktable-org/darktable",
+  "name": "darktable",
+  "owner": "darktable-org",
+  "repo": "darktable",
+  "icon": "https://raw.githubusercontent.com/darktable-org/darktable/master/data/pixmaps/256x256/darktable.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "摄影师的开源 RAW 处理与照片管理工具，Lightroom 替代。",
+  "description_en": "darktable is an open source photography workflow application and raw developer",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["raw", "摄影", "修图"],
+  "default_version": "release-5.6.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 13447,
+  "forks": 1524,
+  "is_verified": true,
+  "homepage": "https://www.darktable.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["darktable.exe"],
+    "linux": ["darktable"],
+    "macos": ["darktable.app"],
+    "android": [],
+    "ios": []
+  }
+}

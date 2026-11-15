@@ -1,0 +1,28 @@
+{
+  "id": "cboxdoerfer/fsearch",
+  "name": "FSearch",
+  "owner": "cboxdoerfer",
+  "repo": "fsearch",
+  "icon": "https://raw.githubusercontent.com/cboxdoerfer/fsearch/master/help/C/figures/FSearch.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "基于索引的文件实时搜索工具，Everything 的开源跨平台替代。",
+  "description_en": "A fast file search utility for Unix-like systems based on GTK3",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["文件搜索", "everything", "search"],
+  "default_version": "0.3.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 4555,
+  "forks": 302,
+  "is_verified": true,
+  "homepage": "https://github.com/cboxdoerfer/fsearch",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["fsearch.exe"],
+    "linux": ["fsearch"],
+    "macos": ["fsearch.app"],
+    "android": [],
+    "ios": []
+  }
+}

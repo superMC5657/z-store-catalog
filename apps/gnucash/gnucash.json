@@ -1,0 +1,28 @@
+{
+  "id": "gnucash/gnucash",
+  "name": "GnuCash",
+  "owner": "Gnucash",
+  "repo": "gnucash",
+  "icon": "https://raw.githubusercontent.com/Gnucash/gnucash/stable/borrowed/chartjs-2/samples/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "老牌开源个人与小企业财务软件，复式记账与报表。",
+  "description_en": "GnuCash Double-Entry Accounting Program.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["记账", "财务", "会计"],
+  "default_version": "5.17",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 4412,
+  "forks": 1005,
+  "is_verified": true,
+  "homepage": "http://code.gnucash.org/website/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["gnucash.exe"],
+    "linux": [],
+    "macos": ["gnucash.app"],
+    "android": [],
+    "ios": []
+  }
+}

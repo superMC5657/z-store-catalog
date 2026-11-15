@@ -1,0 +1,28 @@
+{
+  "id": "ahrm/sioyek",
+  "name": "Sioyek",
+  "owner": "ahrm",
+  "repo": "sioyek",
+  "icon": "https://raw.githubusercontent.com/ahrm/sioyek/development/android/res/drawable-xxxhdpi/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "面向研究者的 PDF 阅读器，智能跳转引用与全局搜索。",
+  "description_en": "Sioyek is a PDF viewer with a focus on textbooks and research papers",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["pdf", "文献", "阅读器"],
+  "default_version": "v2.0.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 10011,
+  "forks": 400,
+  "is_verified": true,
+  "homepage": "https://sioyek.info/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["sioyek.exe"],
+    "linux": ["sioyek"],
+    "macos": ["sioyek.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "translucenttb/translucenttb",
+  "name": "TranslucentTB",
+  "owner": "TranslucentTB",
+  "repo": "TranslucentTB",
+  "icon": "https://raw.githubusercontent.com/TranslucentTB/TranslucentTB/release/AppPackage/Assets-Canary/Square44x44Logo.targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "让 Windows 任务栏变成透明/亚克力效果的开源小工具，轻量无广告。",
+  "description_en": "A lightweight utility that makes the Windows taskbar translucent/transparent.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["任务栏", "透明", "taskbar"],
+  "default_version": "2026.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 20813,
+  "forks": 1279,
+  "is_verified": true,
+  "homepage": "https://translucenttb.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["TranslucentTB.exe"],
+    "linux": ["translucenttb"],
+    "macos": ["TranslucentTB.app"],
+    "android": [],
+    "ios": []
+  }
+}

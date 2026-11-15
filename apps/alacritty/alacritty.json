@@ -1,0 +1,26 @@
+{
+  "id": "alacritty/alacritty",
+  "name": "Alacritty",
+  "owner": "alacritty",
+  "repo": "alacritty",
+  "icon": "https://raw.githubusercontent.com/alacritty/alacritty/master/extra/logo/compat/alacritty-term.png",
+  "icon_bg": "linear-gradient(135deg, #ea580c, #9a3412)",
+  "description": "基于 OpenGL GPU 渲染加速的高性能跨平台轻量终端模拟器，采用 Rust 打造。",
+  "description_en": "A cross-platform, OpenGL terminal emulator.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端模拟器", "命令行", "gpu终端", "terminal", "alacritty"],
+  "default_version": "v0.17.0",
+  "added_at": "2026-09-10",
+  "license": "Apache-2.0",
+  "stars": 66188,
+  "forks": 3717,
+  "is_verified": true,
+  "homepage": "https://alacritty.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["alacritty.exe"],
+    "linux": ["alacritty"],
+    "macos": ["Alacritty.app", "alacritty"]
+  }
+}

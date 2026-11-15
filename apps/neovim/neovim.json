@@ -1,0 +1,27 @@
+{
+  "id": "neovim/neovim",
+  "name": "Neovim",
+  "owner": "neovim",
+  "repo": "neovim",
+  "icon": "https://raw.githubusercontent.com/neovim/neovim/master/cmake.packaging/neovim.png",
+  "icon_bg": "linear-gradient(135deg, #16a34a, #15803d)",
+  "description": "重构进化的 Vim 现代分支，内置 Lua 脚本配置、Tree-sitter 与 LSP 支持。",
+  "description_en": "Vim-fork focused on extensibility and usability",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["vim编辑器", "终端编辑", "极客工具", "editor", "nvim"],
+  "default_version": "v0.12.6",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 103654,
+  "forks": 7426,
+  "is_verified": true,
+  "homepage": "https://neovim.io",
+  "search_subdirs": ["bin"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["nvim-qt.exe", "nvim.exe"],
+    "linux": ["nvim"],
+    "macos": ["nvim"]
+  }
+}

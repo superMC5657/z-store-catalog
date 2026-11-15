@@ -1,0 +1,28 @@
+{
+  "id": "lively-community/lively",
+  "name": "Lively Wallpaper",
+  "owner": "lively-community",
+  "repo": "lively",
+  "icon": "https://raw.githubusercontent.com/lively-community/lively/core-separation/src/Lively/Lively.UI.WinUI/Assets/Square44x44Logo.altform-lightunplated_targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "免费开源的动态壁纸引擎，支持视频、网页、游戏画面作壁纸，Win10/11。",
+  "description_en": "Free and open-source software that allows users to set animated desktop wallpapers and screensavers powered by WinUI 3.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["壁纸", "动态壁纸", "wallpaper"],
+  "default_version": "v2.2.1.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 20114,
+  "forks": 1414,
+  "is_verified": true,
+  "homepage": "https://rocksdanister.com/lively",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["lively.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "texstudio-org/texstudio",
+  "name": "TeXstudio",
+  "owner": "texstudio-org",
+  "repo": "texstudio",
+  "icon": "https://raw.githubusercontent.com/texstudio-org/texstudio/master/utilities/texstudio.svg",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "功能全面的 LaTeX 集成写作环境，自动补全与实时预览。",
+  "description_en": "TeXstudio is a fully featured LaTeX editor. Our goal is to make writing LaTeX documents as easy and comfortable as possible.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["latex", "论文", "写作"],
+  "default_version": "4.9.9",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3708,
+  "forks": 411,
+  "is_verified": true,
+  "homepage": "http://www.texstudio.org/",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["texstudio.exe"],
+    "linux": ["texstudio"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

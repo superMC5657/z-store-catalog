@@ -1,0 +1,28 @@
+{
+  "id": "jabref/jabref",
+  "name": "JabRef",
+  "owner": "JabRef",
+  "repo": "jabref",
+  "icon": "https://raw.githubusercontent.com/JabRef/jabref/main/jabgui/src/main/resources/icons/jabref.svg",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "开源文献管理器，BibTeX 原生支持，LaTeX 好伴侣。",
+  "description_en": "Desktop app for managing BibTeX and BibLaTeX (.bib) libraries",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["文献", "bibtex", "学术"],
+  "default_version": "v5.15",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 4898,
+  "forks": 3709,
+  "is_verified": true,
+  "homepage": "https://www.jabref.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["jabref.exe"],
+    "linux": ["jabref"],
+    "macos": ["jabref.app"],
+    "android": [],
+    "ios": []
+  }
+}

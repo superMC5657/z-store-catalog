@@ -1,0 +1,28 @@
+{
+  "id": "m2team/nanazip",
+  "name": "NanaZip",
+  "owner": "M2Team",
+  "repo": "NanaZip",
+  "icon": "https://raw.githubusercontent.com/M2Team/NanaZip/main/Assets/PackageAssets/Square44x44Logo.targetsize-1024.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "基于 7-Zip 的现代打包方案，支持 MSIX 打包、新版右键菜单与多种压缩格式。",
+  "description_en": "The 7-Zip derivative intended for the modern Windows experience",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["解压", "压缩", "7zip"],
+  "default_version": "7.0.1882.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 16247,
+  "forks": 424,
+  "is_verified": true,
+  "homepage": "https://nanazip.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["NanaZip.exe"],
+    "linux": ["nanazip"],
+    "macos": ["NanaZip.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "appflowy-io/appflowy",
+  "name": "AppFlowy",
+  "owner": "AppFlowy-IO",
+  "repo": "AppFlowy",
+  "icon": "https://raw.githubusercontent.com/AppFlowy-IO/AppFlowy/main/frontend/appflowy_flutter/linux/packaging/assets/logo.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "开源的 Notion 替代品，文档、看板与日历一体，数据自持。",
+  "description_en": "Bring projects, wikis, and teams together with AI. AppFlowy is the AI collaborative workspace where you achieve more without losing control of your data. The leading open source Notion alternative.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["notion", "笔记", "知识库"],
+  "default_version": "0.15.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 78920,
+  "forks": 6281,
+  "is_verified": true,
+  "homepage": "https://appflowy.com",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["AppFlowy.exe"],
+    "linux": ["appflowy"],
+    "macos": ["AppFlowy.app"],
+    "android": ["org.appflowy"],
+    "ios": []
+  }
+}

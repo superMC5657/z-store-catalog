@@ -1,0 +1,28 @@
+{
+  "id": "kde/kdeconnect-kde",
+  "name": "KDE Connect",
+  "owner": "KDE",
+  "repo": "kdeconnect-kde",
+  "icon": "https://raw.githubusercontent.com/KDE/kdeconnect-kde/master/icons/windows/512-apps-kdeconnect.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "手机与电脑互联互通工具：传文件、通知同步、剪贴板共享与远程控制。",
+  "description_en": "Multi-platform app that allows your devices to communicate",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["手机互联", "传文件", "kde connect"],
+  "default_version": "v26.08.1",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 4162,
+  "forks": 311,
+  "is_verified": true,
+  "homepage": "https://invent.kde.org/network/kdeconnect-kde",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["kdeconnect-kde.exe"],
+    "linux": ["kdeconnect-kde"],
+    "macos": ["kdeconnect-kde.app"],
+    "android": [],
+    "ios": []
+  }
+}

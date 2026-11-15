@@ -1,0 +1,28 @@
+{
+  "id": "hluk/copyq",
+  "name": "CopyQ",
+  "owner": "hluk",
+  "repo": "CopyQ",
+  "icon": "https://raw.githubusercontent.com/hluk/CopyQ/master/src/images/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "功能强大的剪贴板管理工具，支持标签、编辑、脚本与加密存储，跨平台。",
+  "description_en": "Clipboard manager with advanced features",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["剪贴板", "clipboard", "paste"],
+  "default_version": "v17.0.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 12638,
+  "forks": 632,
+  "is_verified": true,
+  "homepage": "https://github.com/hluk/CopyQ",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["CopyQ.exe"],
+    "linux": ["copyq"],
+    "macos": ["CopyQ.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "rawtherapee/rawtherapee",
+  "name": "RawTherapee",
+  "owner": "RawTherapee",
+  "repo": "RawTherapee",
+  "icon": "https://raw.githubusercontent.com/RawTherapee/RawTherapee/dev/rtdata/icons/hicolor/256x256/apps/rawtherapee.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "高质量 RAW 照片解码与后期处理工具，算法强大。",
+  "description_en": "A powerful cross-platform raw photo processing program",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["raw", "摄影", "后期"],
+  "default_version": "5.13",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 4297,
+  "forks": 430,
+  "is_verified": true,
+  "homepage": "https://rawtherapee.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["RawTherapee_5.13_win64_arm64_release.exe"],
+    "linux": ["rawtherapee"],
+    "macos": ["RawTherapee.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "xiaoyifang/goldendict-ng",
+  "name": "GoldenDict-ng",
+  "owner": "xiaoyifang",
+  "repo": "goldendict-ng",
+  "icon": "https://raw.githubusercontent.com/xiaoyifang/goldendict-ng/staged/icons/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "现代维护的 GoldenDict 分支，支持 MDX 等海量词典格式。",
+  "description_en": "The Next Generation GoldenDict",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["词典", "mdx", "翻译"],
+  "default_version": "v26.11.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 3161,
+  "forks": 179,
+  "is_verified": true,
+  "homepage": "https://xiaoyifang.github.io/goldendict-ng/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["GoldenDict-ng.exe"],
+    "linux": [],
+    "macos": ["goldendict-ng.app"],
+    "android": [],
+    "ios": []
+  }
+}

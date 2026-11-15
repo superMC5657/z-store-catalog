@@ -1,0 +1,28 @@
+{
+  "id": "melonds-emu/melonds",
+  "name": "melonDS",
+  "owner": "melonDS-emu",
+  "repo": "melonDS",
+  "icon": "https://raw.githubusercontent.com/melonDS-emu/melonDS/master/res/icon/melon_256x256.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "追求精确实时联机的 Nintendo DS 模拟器。",
+  "description_en": "DS emulator, sorta",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "nds", "游戏"],
+  "default_version": "1.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 5213,
+  "forks": 948,
+  "is_verified": true,
+  "homepage": "https://melonds.kuribo64.net",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["melonDS.exe"],
+    "linux": [],
+    "macos": ["melonDS.app"],
+    "android": [],
+    "ios": []
+  }
+}

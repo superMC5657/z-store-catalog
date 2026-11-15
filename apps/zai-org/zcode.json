@@ -1,0 +1,28 @@
+{
+  "id": "zai-org/zcode",
+  "name": "ZCode",
+  "owner": "zai-org",
+  "repo": "ZCode",
+  "icon": "https://raw.githubusercontent.com/zai-org/ZCode/main/packages/desktop/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Z.ai 出品的开源 AI 编程 harness，强大智能且可扩展的编码智能体。",
+  "description_en": "Z.ai's coding agent harness. Powerful, intelligent, extensible.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ai编程", "agent", "coding agent", "z.ai", "编程助手"],
+  "default_version": "v3.17.2",
+  "added_at": "2026-10-16",
+  "license": "Apache-2.0",
+  "stars": 8688,
+  "forks": 2711,
+  "is_verified": true,
+  "homepage": "https://zcode.z.ai/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["ZCode.exe"],
+    "linux": [],
+    "macos": ["ZCode.app"],
+    "android": [],
+    "ios": []
+  }
+}

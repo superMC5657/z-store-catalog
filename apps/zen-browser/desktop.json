@@ -1,0 +1,28 @@
+{
+  "id": "zen-browser/desktop",
+  "name": "Zen Browser",
+  "owner": "zen-browser",
+  "repo": "desktop",
+  "icon": "https://raw.githubusercontent.com/zen-browser/desktop/dev/configs/branding/twilight/logo.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "基于 Firefox 的极简隐私浏览器，工作区与分屏布局，Arc 风格设计。",
+  "description_en": "Welcome to a calmer internet",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["浏览器", "arc", "firefox"],
+  "default_version": "1.24.2b",
+  "added_at": "2026-09-13",
+  "license": "MPL-2.0",
+  "stars": 45808,
+  "forks": 1996,
+  "is_verified": true,
+  "homepage": "https://zen-browser.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["desktop.exe"],
+    "linux": ["desktop"],
+    "macos": ["desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

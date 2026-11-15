@@ -1,0 +1,28 @@
+{
+  "id": "zealdocs/zeal",
+  "name": "Zeal",
+  "owner": "zealdocs",
+  "repo": "zeal",
+  "icon": "https://raw.githubusercontent.com/zealdocs/zeal/main/assets/freedesktop/512-apps-zeal.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Dash 的 Windows/Linux 版离线 API 文档查阅工具。",
+  "description_en": "Offline documentation browser. Your personal reference library, searchable in an instant.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["文档", "api", "离线"],
+  "default_version": "v0.9.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 12879,
+  "forks": 855,
+  "is_verified": true,
+  "homepage": "https://zealdocs.org",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["zeal.exe"],
+    "linux": ["zeal"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

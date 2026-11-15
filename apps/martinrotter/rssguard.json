@@ -1,0 +1,28 @@
+{
+  "id": "martinrotter/rssguard",
+  "name": "RSS Guard",
+  "owner": "martinrotter",
+  "repo": "rssguard",
+  "icon": "https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/graphics/rssguard.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "轻量的 RSS/RDF/Atom 阅读器，支持多账户与播客。",
+  "description_en": "Feed reader (podcast player, basic XMPP client and also Gemini protocol client) which supports RSS/ATOM/JSON and many web-based feed services.",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["rss", "订阅", "阅读"],
+  "default_version": "5.3.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2843,
+  "forks": 171,
+  "is_verified": true,
+  "homepage": "https://github.com/martinrotter/rssguard",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["rssguard.exe"],
+    "linux": ["rssguard"],
+    "macos": ["rssguard.app"],
+    "android": [],
+    "ios": []
+  }
+}

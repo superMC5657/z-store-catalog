@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes-sigs/headlamp",
+  "name": "Headlamp",
+  "owner": "kubernetes-sigs",
+  "repo": "headlamp",
+  "icon": "https://raw.githubusercontent.com/kubernetes-sigs/headlamp/main/docs/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "用户友好的 Kubernetes 桌面/Web 管理面板，插件化扩展。",
+  "description_en": "A Kubernetes web UI that is fully-featured, user-friendly and extensible",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["kubernetes", "面板", "k8s"],
+  "default_version": "v0.46.0",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 7628,
+  "forks": 1225,
+  "is_verified": true,
+  "homepage": "https://headlamp.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Headlamp.exe"],
+    "linux": ["headlamp"],
+    "macos": ["headlamp.app"],
+    "android": [],
+    "ios": []
+  }
+}

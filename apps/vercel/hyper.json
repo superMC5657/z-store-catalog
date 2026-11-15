@@ -1,0 +1,28 @@
+{
+  "id": "vercel/hyper",
+  "name": "Hyper",
+  "owner": "vercel",
+  "repo": "hyper",
+  "icon": "https://raw.githubusercontent.com/vercel/hyper/canary/app/static/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "基于 Web 技术的终端，主题与插件生态丰富。",
+  "description_en": "A terminal built on web technologies",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "electron", "terminal"],
+  "default_version": "v3.4.1",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 44753,
+  "forks": 3571,
+  "is_verified": true,
+  "homepage": "https://hyper.is",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Hyper-Setup.exe"],
+    "linux": ["hyper"],
+    "macos": ["hyper.app"],
+    "android": [],
+    "ios": []
+  }
+}

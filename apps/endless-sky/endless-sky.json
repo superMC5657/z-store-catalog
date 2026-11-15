@@ -1,0 +1,28 @@
+{
+  "id": "endless-sky/endless-sky",
+  "name": "Endless Sky",
+  "owner": "endless-sky",
+  "repo": "endless-sky",
+  "icon": "https://raw.githubusercontent.com/endless-sky/endless-sky/master/icons/endless-sky.iconset/icon_512x512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源太空贸易与战斗沙盒，类 Elite 风格。",
+  "description_en": "Space exploration, trading, and combat game.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["太空", "rpg", "沙盒"],
+  "default_version": "v0.11.4",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7742,
+  "forks": 1357,
+  "is_verified": true,
+  "homepage": "https://endless-sky.github.io/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["endless-sky.exe"],
+    "linux": ["endless-sky"],
+    "macos": ["endless-sky.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "streetwriters/notesnook",
+  "name": "Notesnook",
+  "owner": "streetwriters",
+  "repo": "notesnook",
+  "icon": "https://raw.githubusercontent.com/streetwriters/notesnook/master/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "端到端加密的隐私笔记应用，跨平台同步。",
+  "description_en": "A fully open source & end-to-end encrypted note taking alternative to Evernote.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "加密", "隐私"],
+  "default_version": "v3.4.13",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 14941,
+  "forks": 1049,
+  "is_verified": true,
+  "homepage": "https://notesnook.com/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["notesnook_win.exe"],
+    "linux": ["notesnook"],
+    "macos": ["notesnook.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "mifi/lossless-cut",
+  "name": "LosslessCut",
+  "owner": "mifi",
+  "repo": "lossless-cut",
+  "icon": "https://raw.githubusercontent.com/mifi/lossless-cut/master/src/renderer/src/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "不重新编码快速剪辑/合并视频的利器，秒级操作不损画质。",
+  "description_en": "The swiss army knife of lossless video/audio editing",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["视频剪辑", "无损", "cut"],
+  "default_version": "v3.70.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 46044,
+  "forks": 2330,
+  "is_verified": true,
+  "homepage": "https://losslesscut.app/",
+  "platforms": ["macos", "linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["lossless-cut"],
+    "macos": ["lossless-cut.app"],
+    "android": [],
+    "ios": []
+  }
+}

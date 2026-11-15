@@ -1,0 +1,28 @@
+{
+  "id": "outlinefoundation/outline-apps",
+  "name": "Outline Client",
+  "owner": "OutlineFoundation",
+  "repo": "outline-apps",
+  "icon": "https://raw.githubusercontent.com/OutlineFoundation/outline-apps/master/client/resources/icons/osx/icon-1024.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "由 Jigsaw 开发的 Shadowsocks 图形客户端，一键导入访问密钥。",
+  "description_en": "Outline Client and Manager. Outline Manager makes it easy to create your own VPN server. Outline Client lets you share access to your VPN with anyone in your network, giving them access to the free and open internet.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["代理", "shadowsocks", "vpn"],
+  "default_version": "v1.10.1",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 9281,
+  "forks": 1469,
+  "is_verified": true,
+  "homepage": "https://getoutline.org/",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["Outline-Client.exe"],
+    "linux": ["outline-apps"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

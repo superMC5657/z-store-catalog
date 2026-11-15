@@ -1,0 +1,28 @@
+{
+  "id": "balena-io/etcher",
+  "name": "balenaEtcher",
+  "owner": "balena-io",
+  "repo": "etcher",
+  "icon": "https://raw.githubusercontent.com/balena-io/etcher/master/assets/icon.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "三步将系统镜像写入 U 盘/SD 卡的烧录工具，校验镜像防止误写，简单易用。",
+  "description_en": "Flash OS images to SD cards & USB drives, safely and easily.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["烧录", "启动盘", "iso"],
+  "default_version": "v2.1.9",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 34713,
+  "forks": 2441,
+  "is_verified": true,
+  "homepage": "https://etcher.io/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["balenaEtcher.exe"],
+    "linux": ["etcher"],
+    "macos": ["etcher.app"],
+    "android": [],
+    "ios": []
+  }
+}

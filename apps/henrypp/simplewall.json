@@ -1,0 +1,28 @@
+{
+  "id": "henrypp/simplewall",
+  "name": "simplewall",
+  "owner": "henrypp",
+  "repo": "simplewall",
+  "icon": "https://raw.githubusercontent.com/henrypp/simplewall/master/src/res/100.ico",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "基于 WFP 的简单应用网络管控工具，白名单模式。",
+  "description_en": "Simple tool to configure Windows Filtering Platform (WFP) which can configure network activity on your computer.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["防火墙", "网络", "windows"],
+  "default_version": "v.3.8.7",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 9314,
+  "forks": 673,
+  "is_verified": true,
+  "homepage": "https://github.com/henrypp/simplewall",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["simplewall.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

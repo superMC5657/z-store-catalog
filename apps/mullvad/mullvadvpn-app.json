@@ -1,0 +1,28 @@
+{
+  "id": "mullvad/mullvadvpn-app",
+  "name": "Mullvad VPN",
+  "owner": "mullvad",
+  "repo": "mullvadvpn-app",
+  "icon": "https://raw.githubusercontent.com/mullvad/mullvadvpn-app/main/android/src/main/play/listings/en-US/graphics/icon/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "知名隐私 VPN 的官方客户端，WireGuard 支持与匿名账户。",
+  "description_en": "The Mullvad VPN client app for desktop and mobile",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["vpn", "隐私", "wireguard"],
+  "default_version": "android/2026.12",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7779,
+  "forks": 567,
+  "is_verified": true,
+  "homepage": "https://mullvad.net/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["MullvadVPN.exe"],
+    "linux": ["mullvadvpn-app"],
+    "macos": ["mullvadvpn-app.app"],
+    "android": [],
+    "ios": []
+  }
+}

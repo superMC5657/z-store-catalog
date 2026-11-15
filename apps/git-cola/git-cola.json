@@ -1,0 +1,28 @@
+{
+  "id": "git-cola/git-cola",
+  "name": "Git Cola",
+  "owner": "git-cola",
+  "repo": "git-cola",
+  "icon": "https://raw.githubusercontent.com/git-cola/git-cola/main/cola/icons/dark/git-cola.ico",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "轻量快速的 Git 图形客户端，Python/Qt 编写。",
+  "description_en": "git-cola: The highly caffeinated Git GUI",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["git", "版本控制", "轻量"],
+  "default_version": "v4.19.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 2589,
+  "forks": 485,
+  "is_verified": true,
+  "homepage": "https://git-cola.gitlab.io/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["git-cola.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

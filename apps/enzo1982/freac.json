@@ -1,0 +1,28 @@
+{
+  "id": "enzo1982/freac",
+  "name": "fre:ac",
+  "owner": "enzo1982",
+  "repo": "freac",
+  "icon": "https://www.freac.org/favicon.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "免费音频转换器与 CD 抓轨工具，多格式转码与标签编辑。",
+  "description_en": "The fre:ac audio converter project",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音频", "转换", "抓轨"],
+  "default_version": "v1.1.7",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 2011,
+  "forks": 98,
+  "is_verified": true,
+  "homepage": "https://www.freac.org/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["freac.exe"],
+    "linux": ["freac"],
+    "macos": ["freac.app"],
+    "android": [],
+    "ios": []
+  }
+}

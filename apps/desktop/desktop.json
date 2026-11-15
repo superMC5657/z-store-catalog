@@ -1,0 +1,28 @@
+{
+  "id": "desktop/desktop",
+  "name": "GitHub Desktop",
+  "owner": "desktop",
+  "repo": "desktop",
+  "icon": "https://raw.githubusercontent.com/desktop/desktop/development/app/static/common/logo-64x64@2x.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "GitHub 官方图形化 Git 客户端，简化提交、分支与 PR 流程。",
+  "description_en": "Focus on what matters instead of fighting with Git.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["git", "github", "版本控制"],
+  "default_version": "release-3.6.10",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 22106,
+  "forks": 10718,
+  "is_verified": true,
+  "homepage": "https://github.com/apps/desktop",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["GitHubDesktopSetup-x64.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "d2phap/imageglass",
+  "name": "ImageGlass",
+  "owner": "d2phap",
+  "repo": "ImageGlass",
+  "icon": "https://raw.githubusercontent.com/d2phap/ImageGlass/develop/v9/_Setup/Settings/Logo.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "简洁快速的 Windows 图片查看器，支持 80+ 图片格式。",
+  "description_en": "🏞 A fast, open-source, modern image viewer for 90+ formats – including WEBP, GIF, SVG, AVIF, JXL, HEIC and more – built for smooth browsing across Windows, macOS, and Linux.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["看图", "图片", "viewer"],
+  "default_version": "10.0.6.906",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 14969,
+  "forks": 768,
+  "is_verified": true,
+  "homepage": "https://imageglass.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ImageGlass.exe"],
+    "linux": ["imageglass"],
+    "macos": ["ImageGlass.app"],
+    "android": [],
+    "ios": []
+  }
+}

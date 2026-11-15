@@ -1,0 +1,28 @@
+{
+  "id": "cutwire-studios/drift",
+  "name": "Drift",
+  "owner": "CutWire-Studios",
+  "repo": "Drift",
+  "icon": "https://raw.githubusercontent.com/CutWire-Studios/Drift/main/resources/drift.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "基于 Qt 6 与 FFmpeg 的免费开源桌面视频编辑器，新手友好。",
+  "description_en": "Drift is a free, open-source, beginner-friendly desktop video editor built with Qt 6 and FFmpeg.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": [],
+  "default_version": "v0.9.2",
+  "added_at": "2026-10-16",
+  "license": "GPL-3.0",
+  "stars": 2425,
+  "forks": 221,
+  "is_verified": true,
+  "homepage": "https://cutwire.org/drift",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Drift-Setup.exe"],
+    "linux": ["drift"],
+    "macos": ["Drift.app"],
+    "android": ["org.drift"],
+    "ios": []
+  }
+}

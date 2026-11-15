@@ -1,0 +1,28 @@
+{
+  "id": "team-spotube/spotube",
+  "name": "Spotube",
+  "owner": "team-spotube",
+  "repo": "spotube",
+  "icon": "https://spotube.cc/images/spotube-logo.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "利用公共 API 与本地/YouTube 音源的轻量 Spotify 客户端，无需官方付费 SDK。",
+  "description_en": "🎧 Open source music streaming app! Available for both desktop & mobile!",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "spotify", "youtube"],
+  "default_version": "v6.0.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 50772,
+  "forks": 2406,
+  "is_verified": true,
+  "homepage": "https://spotube.cc/",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["spotube.exe"],
+    "linux": ["spotube"],
+    "macos": ["spotube.app"],
+    "android": ["org.spotube"],
+    "ios": ["org.spotube"]
+  }
+}

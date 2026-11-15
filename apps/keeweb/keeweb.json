@@ -1,0 +1,28 @@
+{
+  "id": "keeweb/keeweb",
+  "name": "KeeWeb",
+  "owner": "keeweb",
+  "repo": "keeweb",
+  "icon": "https://raw.githubusercontent.com/keeweb/keeweb/master/desktop/img/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "兼容 KeePass 的跨平台密码管理器，Web 版可自托管。",
+  "description_en": "Free cross-platform password manager compatible with KeePass",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["密码", "keepass", "管理"],
+  "default_version": "v1.18.7",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 13039,
+  "forks": 1167,
+  "is_verified": true,
+  "homepage": "https://keeweb.info",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["KeeWeb.exe"],
+    "linux": ["keeweb"],
+    "macos": ["keeweb.app"],
+    "android": [],
+    "ios": []
+  }
+}

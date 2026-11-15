@@ -1,0 +1,28 @@
+{
+  "id": "pqrs-org/karabiner-elements",
+  "name": "Karabiner-Elements",
+  "owner": "pqrs-org",
+  "repo": "Karabiner-Elements",
+  "icon": "https://raw.githubusercontent.com/pqrs-org/Karabiner-Elements/main/files/icons/@Zabriskije/KarabinerElements/exported/KarabinerElements.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "macOS 强大的键盘自定义工具，改键、组合键与复杂映射。",
+  "description_en": "Karabiner-Elements is a powerful tool for customizing keyboards on macOS",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["键盘", "改键", "karabiner"],
+  "default_version": "v16.3.0",
+  "added_at": "2026-09-13",
+  "license": "Unlicense",
+  "stars": 23104,
+  "forks": 964,
+  "is_verified": true,
+  "homepage": "https://karabiner-elements.pqrs.org/",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["Karabiner-Elements.app"],
+    "android": [],
+    "ios": []
+  }
+}

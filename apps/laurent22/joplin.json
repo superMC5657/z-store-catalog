@@ -1,0 +1,28 @@
+{
+  "id": "laurent22/joplin",
+  "name": "Joplin",
+  "owner": "laurent22",
+  "repo": "joplin",
+  "icon": "https://raw.githubusercontent.com/laurent22/joplin/dev/Assets/SquareIcon512.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "端到端加密的自由开源笔记与待办软件，支持 Markdown、多端同步与插件。",
+  "description_en": "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "知识库", "markdown笔记", "evernote替代", "notes"],
+  "default_version": "v3.7.22",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 57183,
+  "forks": 6444,
+  "is_verified": true,
+  "homepage": "https://joplinapp.org",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["Joplin.exe"],
+    "linux": ["joplin", "joplin-desktop"],
+    "macos": ["Joplin.app"],
+    "android": ["net.cozic.joplin"],
+    "ios": ["net.cozic.joplin"]
+  }
+}

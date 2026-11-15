@@ -1,0 +1,28 @@
+{
+  "id": "nheko-reborn/nheko",
+  "name": "Nheko",
+  "owner": "Nheko-Reborn",
+  "repo": "nheko",
+  "icon": "https://raw.githubusercontent.com/Nheko-Reborn/nheko/master/resources/nheko.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "原生 Qt 编写的 Matrix 聊天客户端，轻量快速支持端到端加密。",
+  "description_en": "Desktop client for Matrix using Qt and C++20.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["matrix", "聊天", "qt"],
+  "default_version": "v0.12.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2523,
+  "forks": 248,
+  "is_verified": true,
+  "homepage": "https://nheko-reborn.github.io/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["nheko.exe"],
+    "linux": [],
+    "macos": ["nheko.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "anxcye/anx-reader",
+  "name": "Anx Reader",
+  "owner": "Anxcye",
+  "repo": "anx-reader",
+  "icon": "https://raw.githubusercontent.com/Anxcye/anx-reader/develop/web/icons/Icon-512.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "现代 AI 加持的电子书阅读器，多端同步与笔记。",
+  "description_en": "Featuring powerful AI capabilities and supporting various e-book formats, it makes reading smarter and more focused. ",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["电子书", "epub", "阅读"],
+  "default_version": "v1.14.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 9251,
+  "forks": 678,
+  "is_verified": true,
+  "homepage": "https://anx.anxcye.com",
+  "platforms": ["windows", "macos", "android", "ios"],
+  "identifiers": {
+    "windows": ["Anx-Reader-windows.exe"],
+    "linux": [],
+    "macos": ["anx-reader.app"],
+    "android": ["org.anx-reader"],
+    "ios": ["org.anx-reader"]
+  }
+}

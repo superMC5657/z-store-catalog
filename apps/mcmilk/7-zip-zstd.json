@@ -1,0 +1,26 @@
+{
+  "id": "mcmilk/7-zip-zstd",
+  "name": "7-Zip-zstd",
+  "owner": "mcmilk",
+  "repo": "7-Zip-zstd",
+  "icon": "https://raw.githubusercontent.com/mcmilk/7-Zip-zstd/master/CPP/7zip/UI/FileManager/7zipLogo.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "拥有极高压缩比的开源解压缩神器，增强支持现代 Zstandard / Brotli 算法。",
+  "description_en": "7-Zip with support for Brotli, Fast-LZMA2, Lizard, LZ4, LZ5 and Zstandard",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["解压缩", "压缩软件", "zip解压", "rar解压", "7zip"],
+  "default_version": "v26.05-v1.5.7-R1",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 7535,
+  "forks": 420,
+  "is_verified": true,
+  "homepage": "https://www.7-zip.org",
+  "publishers": ["Igor Pavlov"],
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["7zFM.exe", "7zG.exe", "7z.exe"],
+    "linux": ["7z", "7za"]
+  }
+}

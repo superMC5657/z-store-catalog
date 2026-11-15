@@ -1,0 +1,28 @@
+{
+  "id": "bforartists/bforartists",
+  "name": "Bforartists",
+  "owner": "Bforartists",
+  "repo": "Bforartists",
+  "icon": "https://raw.githubusercontent.com/Bforartists/Bforartists/master/release/freedesktop/icons/scalable/apps/bforartists.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "Blender 分支，界面更友好图标化，降低学习曲线。",
+  "description_en": "Bforartists is a fork of the popular 3D software Blender, with the goal to improve the UI.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["3d", "blender", "建模"],
+  "default_version": "v5.2.3",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 816,
+  "forks": 92,
+  "is_verified": true,
+  "homepage": "http://www.bforartists.de",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Install_Bforartists5_520.exe"],
+    "linux": ["bforartists"],
+    "macos": ["Bforartists.app"],
+    "android": [],
+    "ios": []
+  }
+}

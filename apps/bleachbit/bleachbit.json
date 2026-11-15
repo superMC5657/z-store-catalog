@@ -1,0 +1,28 @@
+{
+  "id": "bleachbit/bleachbit",
+  "name": "BleachBit",
+  "owner": "bleachbit",
+  "repo": "bleachbit",
+  "icon": "https://raw.githubusercontent.com/bleachbit/bleachbit/master/bleachbit.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "一键清理缓存、cookies 与日志的隐私清理工具，释放磁盘空间并保护隐私。",
+  "description_en": "BleachBit system cleaner for Windows and Linux",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["清理", "垃圾", "ccleaner"],
+  "default_version": "v6.0.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7495,
+  "forks": 488,
+  "is_verified": true,
+  "homepage": "https://www.bleachbit.org",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["bleachbit.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

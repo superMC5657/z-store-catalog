@@ -1,0 +1,28 @@
+{
+  "id": "cryptomator/cryptomator",
+  "name": "Cryptomator",
+  "owner": "cryptomator",
+  "repo": "cryptomator",
+  "icon": "https://raw.githubusercontent.com/cryptomator/cryptomator/develop/.idea/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "为网盘文件透明加密的虚拟保险箱，Dropbox/OneDrive 安全同步。",
+  "description_en": "Cryptomator for Windows, macOS, and Linux: Secure client-side encryption for your cloud storage, ensuring privacy and control over your data.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["加密", "网盘", "云"],
+  "default_version": "1.19.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 16512,
+  "forks": 1500,
+  "is_verified": true,
+  "homepage": "https://cryptomator.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Cryptomator.exe"],
+    "linux": ["cryptomator"],
+    "macos": ["cryptomator.app"],
+    "android": [],
+    "ios": []
+  }
+}

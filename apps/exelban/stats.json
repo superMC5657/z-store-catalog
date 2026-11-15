@@ -1,0 +1,28 @@
+{
+  "id": "exelban/stats",
+  "name": "Stats",
+  "owner": "exelban",
+  "repo": "stats",
+  "icon": "https://camo.githubusercontent.com/7d32c5fac1c57db1d239556bd639b839552b37691f9308e3f6adfd9e21cfed50/68747470733a2f2f63646e2e6d61632d73746174732e636f6d2f6173736574732f69636f6e2e706e67",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "macOS 菜单栏系统监控器，实时显示 CPU、内存、磁盘、网络与传感器信息。",
+  "description_en": "macOS system monitor in your menu bar",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["系统监控", "菜单栏", "macos"],
+  "default_version": "v3.0.26",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 43405,
+  "forks": 1633,
+  "is_verified": true,
+  "homepage": "https://mac-stats.com",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["stats.app"],
+    "android": [],
+    "ios": []
+  }
+}

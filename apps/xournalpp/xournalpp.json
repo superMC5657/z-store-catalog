@@ -1,0 +1,28 @@
+{
+  "id": "xournalpp/xournalpp",
+  "name": "Xournal++",
+  "owner": "xournalpp",
+  "repo": "xournalpp",
+  "icon": "https://raw.githubusercontent.com/xournalpp/xournalpp/master/mac-setup/icon/Icon1024.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "手写笔记与 PDF 标注的利器，数位板支持完美。",
+  "description_en": "Xournal++ is a handwriting notetaking software with PDF annotation support. Written in C++ with GTK3, supporting Linux (e.g. Ubuntu, Debian, Arch, SUSE), macOS and Windows 10. Supports pen input from devices such as Wacom Tablets.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["手写", "pdf", "批注"],
+  "default_version": "v1.3.8",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 15679,
+  "forks": 1176,
+  "is_verified": true,
+  "homepage": "https://xournalpp.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["xournalpp.exe"],
+    "linux": ["xournalpp"],
+    "macos": ["xournalpp.app"],
+    "android": [],
+    "ios": []
+  }
+}

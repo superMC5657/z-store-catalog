@@ -3,12 +3,14 @@ name: Validate Catalog PR
 on:
   pull_request:
     paths:
+      - 'apps/**'
       - 'catalog.json'
       - 'scripts/**'
   push:
     branches:
       - main
     paths:
+      - 'apps/**'
       - 'catalog.json'
 
 jobs:
@@ -31,3 +33,4 @@ jobs:
         run: |
           node --test scripts/ingest-issue.test.mjs
           node --test scripts/sync-open-prs.test.mjs
+          node --test scripts/build-catalog.test.mjs

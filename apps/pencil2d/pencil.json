@@ -1,0 +1,28 @@
+{
+  "id": "pencil2d/pencil",
+  "name": "Pencil2D",
+  "owner": "pencil2d",
+  "repo": "pencil",
+  "icon": "https://raw.githubusercontent.com/pencil2d/pencil/master/app/data/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "极简的传统手绘逐帧动画软件，跨平台。",
+  "description_en": "Pencil2D is an easy, intuitive tool to make 2D hand-drawn animations. Pencil2D is open source and cross-platform.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["动画", "手绘", "2d"],
+  "default_version": "v0.7.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 1895,
+  "forks": 333,
+  "is_verified": true,
+  "homepage": "http://pencil2d.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["pencil.exe"],
+    "linux": ["pencil"],
+    "macos": ["pencil.app"],
+    "android": [],
+    "ios": []
+  }
+}

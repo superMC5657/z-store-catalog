@@ -1,0 +1,28 @@
+{
+  "id": "geany/geany",
+  "name": "Geany",
+  "owner": "geany",
+  "repo": "geany",
+  "icon": "https://raw.githubusercontent.com/geany/geany/master/icons/48x48/geany.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "GTK 的轻量级集成开发环境，启动快插件够用。",
+  "description_en": "A fast and lightweight IDE",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ide", "编辑器", "轻量"],
+  "default_version": "2.1.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 3757,
+  "forks": 669,
+  "is_verified": true,
+  "homepage": "https://www.geany.org",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["geany.exe"],
+    "linux": [],
+    "macos": ["geany.app"],
+    "android": [],
+    "ios": []
+  }
+}

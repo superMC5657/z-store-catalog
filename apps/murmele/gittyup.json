@@ -1,0 +1,28 @@
+{
+  "id": "murmele/gittyup",
+  "name": "Gittyup",
+  "owner": "Murmele",
+  "repo": "Gittyup",
+  "icon": "https://raw.githubusercontent.com/Murmele/Gittyup/master/rsrc/Gittyup.iconset/icon_512x512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "原生 GTK 的 Git 图形客户端，双栏对比与历史图表。",
+  "description_en": "Understand your Git history!",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["git", "版本控制", "图形"],
+  "default_version": "gittyup_v2.0.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 2327,
+  "forks": 188,
+  "is_verified": true,
+  "homepage": "https://murmele.github.io/Gittyup",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["gittyup"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

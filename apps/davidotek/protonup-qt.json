@@ -1,0 +1,28 @@
+{
+  "id": "davidotek/protonup-qt",
+  "name": "ProtonUp-Qt",
+  "owner": "DavidoTek",
+  "repo": "ProtonUp-Qt",
+  "icon": "https://raw.githubusercontent.com/DavidoTek/ProtonUp-Qt/main/pupgui2/resources/img/appicon256.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "图形化管理 Steam Proton-GE 与 Wine 版本的工具。",
+  "description_en": "Install and manage GE-Proton, Luxtorpeda & more for Steam and Wine-GE & more for Lutris with this graphical user interface.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["proton", "steam", "wine"],
+  "default_version": "v2.16.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2071,
+  "forks": 80,
+  "is_verified": true,
+  "homepage": "https://davidotek.github.io/protonup-qt",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["protonup-qt"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

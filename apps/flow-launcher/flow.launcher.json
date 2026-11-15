@@ -1,0 +1,24 @@
+{
+  "id": "flow-launcher/flow.launcher",
+  "name": "Flow Launcher",
+  "owner": "Flow-Launcher",
+  "repo": "Flow.Launcher",
+  "icon": "https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher/dev/Artworks/Logo/logo.png",
+  "icon_bg": "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+  "description": "快速搜索应用、文件、书签并执行各类计算转换的开源 Windows 启动利器。",
+  "description_en": ":mag: Quick file search & app launcher for Windows with community-made plugins",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["快速启动", "效率搜索", "alfred替代", "spotlight", "launcher"],
+  "default_version": "v2.1.4",
+  "added_at": "2026-09-10",
+  "license": "MIT",
+  "stars": 16029,
+  "forks": 682,
+  "is_verified": true,
+  "homepage": "https://www.flowlauncher.com",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["Flow.Launcher.exe"]
+  }
+}

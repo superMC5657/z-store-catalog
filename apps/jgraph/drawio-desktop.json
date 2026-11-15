@@ -1,0 +1,28 @@
+{
+  "id": "jgraph/drawio-desktop",
+  "name": "draw.io",
+  "owner": "jgraph",
+  "repo": "drawio-desktop",
+  "icon": "https://raw.githubusercontent.com/jgraph/drawio-desktop/dev/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "功能全面的图表绘制桌面版，流程图/架构图/网络图模板丰富。",
+  "description_en": "Official electron build of draw.io",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["流程图", "图表", "diagram"],
+  "default_version": "v32.6.10",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 63999,
+  "forks": 5821,
+  "is_verified": true,
+  "homepage": "https://www.diagrams.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["drawio-desktop.exe"],
+    "linux": ["drawio-desktop"],
+    "macos": ["drawio-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

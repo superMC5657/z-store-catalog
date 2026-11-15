@@ -1,0 +1,28 @@
+{
+  "id": "angryip/ipscan",
+  "name": "Angry IP Scanner",
+  "owner": "angryip",
+  "repo": "ipscan",
+  "icon": "https://raw.githubusercontent.com/angryip/ipscan/master/resources/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "快速扫描 IP 段、端口与主机信息的跨平台网络扫描器。",
+  "description_en": "Angry IP Scanner - fast and friendly network scanner",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["端口扫描", "网段", "ip scanner"],
+  "default_version": "3.12.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 5202,
+  "forks": 847,
+  "is_verified": true,
+  "homepage": "https://github.com/angryip/ipscan",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ipscan.exe"],
+    "linux": ["ipscan"],
+    "macos": ["ipscan.app"],
+    "android": [],
+    "ios": []
+  }
+}

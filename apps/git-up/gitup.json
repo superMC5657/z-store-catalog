@@ -1,0 +1,28 @@
+{
+  "id": "git-up/gitup",
+  "name": "GitUp",
+  "owner": "git-up",
+  "repo": "GitUp",
+  "icon": "https://raw.githubusercontent.com/git-up/GitUp/master/GitUp/Application/Application.xcassets/AppIcon.appiconset/icon_512x512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "macOS 上实时可视化操作 Git 的客户端，直接操作快照图。",
+  "description_en": "The Git interface you've been missing all your life has finally arrived.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["git", "macos", "可视化"],
+  "default_version": "v1.5.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 12162,
+  "forks": 1514,
+  "is_verified": true,
+  "homepage": "http://gitup.co",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["GitUp.exe"],
+    "linux": ["gitup"],
+    "macos": ["GitUp.app"],
+    "android": [],
+    "ios": []
+  }
+}

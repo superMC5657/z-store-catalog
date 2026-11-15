@@ -1,0 +1,28 @@
+{
+  "id": "frappe/books",
+  "name": "Frappe Books",
+  "owner": "frappe",
+  "repo": "books",
+  "icon": "https://raw.githubusercontent.com/frappe/books/master/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "开源免费的小企业记账与开票桌面软件。",
+  "description_en": "Free Accounting Software",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["记账", "发票", "财务"],
+  "default_version": "v0.36.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 5011,
+  "forks": 1171,
+  "is_verified": true,
+  "homepage": "https://frappe.io/books",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Frappe-Books.exe"],
+    "linux": ["books"],
+    "macos": ["books.app"],
+    "android": [],
+    "ios": []
+  }
+}

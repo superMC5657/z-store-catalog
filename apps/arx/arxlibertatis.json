@@ -1,0 +1,28 @@
+{
+  "id": "arx/arxlibertatis",
+  "name": "Arx Libertatis",
+  "owner": "arx",
+  "repo": "ArxLibertatis",
+  "icon": "https://raw.githubusercontent.com/arx/ArxLibertatis/master/data/icons/arx-libertatis-logo.svg",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Arx Fatalis 跨平台开源重实现，沉浸式第一人称 RPG。",
+  "description_en": "Cross-platform port of Arx Fatalis, a first-person role-playing game",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["rpg", "复刻", "沉浸"],
+  "default_version": "1.2.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1120,
+  "forks": 160,
+  "is_verified": true,
+  "homepage": "https://arx-libertatis.org/",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["arx-libertatis.exe"],
+    "linux": ["arxlibertatis"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

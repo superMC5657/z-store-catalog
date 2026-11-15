@@ -1,0 +1,28 @@
+{
+  "id": "devtoys-app/devtoys",
+  "name": "DevToys",
+  "owner": "DevToys-app",
+  "repo": "DevToys",
+  "icon": "https://raw.githubusercontent.com/DevToys-app/DevToys/main/assets/logo/Windows-Linux/Stable/msix/Square44x44Logo.altform-lightunplated_targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "离线开发者瑞士军刀：JSON 格式化、编解码、正则测试一站搞定。",
+  "description_en": "A Swiss Army knife for developers.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["工具箱", "json", "开发者"],
+  "default_version": "v1.0.13.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 32276,
+  "forks": 1795,
+  "is_verified": true,
+  "homepage": "https://devtoys.app/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["DevToys.exe"],
+    "linux": ["devtoys"],
+    "macos": ["DevToys.app"],
+    "android": [],
+    "ios": []
+  }
+}

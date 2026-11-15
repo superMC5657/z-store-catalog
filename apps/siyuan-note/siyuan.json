@@ -1,0 +1,28 @@
+{
+  "id": "siyuan-note/siyuan",
+  "name": "SiYuan",
+  "owner": "siyuan-note",
+  "repo": "siyuan",
+  "icon": "https://raw.githubusercontent.com/siyuan-note/siyuan/master/app/src/assets/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "本地优先的块级双链笔记，支持同步与插件生态。",
+  "description_en": "An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "双链", "知识管理"],
+  "default_version": "v3.8.10",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 47231,
+  "forks": 3116,
+  "is_verified": true,
+  "homepage": "https://b3log.org/siyuan",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["siyuan.exe"],
+    "linux": ["siyuan"],
+    "macos": ["siyuan.app"],
+    "android": ["org.siyuan"],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "hiddify/hiddify-app",
+  "name": "Hiddify",
+  "owner": "hiddify",
+  "repo": "hiddify-app",
+  "icon": "https://raw.githubusercontent.com/hiddify/hiddify-app/main/assets/images/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "跨平台代理客户端，支持多协议与自动配置，一条订阅全平台可用。",
+  "description_en": "Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["代理", "hiddify", "科学上网"],
+  "default_version": "v5.5.5",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 34029,
+  "forks": 3222,
+  "is_verified": true,
+  "homepage": "https://hiddify.com",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Hiddify-Windows-Setup-x64.exe"],
+    "linux": ["hiddify-app"],
+    "macos": ["hiddify-app.app"],
+    "android": ["org.hiddify-app"],
+    "ios": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "wezterm/wezterm",
+  "name": "WezTerm",
+  "owner": "wezterm",
+  "repo": "wezterm",
+  "icon": "https://raw.githubusercontent.com/wezterm/wezterm/main/assets/icon/terminal.png",
+  "icon_bg": "linear-gradient(135deg, #6366f1, #4338ca)",
+  "description": "使用 Rust 编写的 GPU 加速跨平台终端模拟器与多路复用器，支持 Lua 全面配置。",
+  "description_en": "A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["wezterm", "终端", "终端模拟器", "terminal", "gpu terminal"],
+  "default_version": "20240203-110809-5046fc22",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 29560,
+  "forks": 1875,
+  "is_verified": true,
+  "homepage": "https://wezfurlong.org/wezterm/",
+  "publishers": ["Wez Furlong"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["wezterm-gui.exe", "wezterm.exe"],
+    "linux": ["wezterm", "wezterm-gui"],
+    "macos": ["WezTerm.app", "wezterm"]
+  }
+}

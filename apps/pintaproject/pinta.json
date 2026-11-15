@@ -1,0 +1,28 @@
+{
+  "id": "pintaproject/pinta",
+  "name": "Pinta",
+  "owner": "PintaProject",
+  "repo": "Pinta",
+  "icon": "https://raw.githubusercontent.com/PintaProject/Pinta/master/Pinta.Resources/icons/hicolor/32x32/apps/com.github.PintaProject.Pinta.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "类 Paint.NET 的简单图像编辑器，图层与效果。",
+  "description_en": "Simple GTK Paint Program",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["画图", "编辑", "paint"],
+  "default_version": "3.1.2",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 4137,
+  "forks": 412,
+  "is_verified": true,
+  "homepage": "http://www.pinta-project.com/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["Pinta-arm64.exe"],
+    "linux": [],
+    "macos": ["Pinta.app"],
+    "android": [],
+    "ios": []
+  }
+}

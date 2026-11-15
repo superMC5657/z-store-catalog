@@ -1,0 +1,28 @@
+{
+  "id": "mpvnet-player/mpv.net",
+  "name": "mpv.net",
+  "owner": "mpvnet-player",
+  "repo": "mpv.net",
+  "icon": "https://raw.githubusercontent.com/mpvnet-player/mpv.net/main/src/MpvNet.Windows/mpv-icon.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "mpv 的 Windows 图形前端，极简界面与强大解码，支持脚本扩展。",
+  "description_en": "🎞 mpv.net is a media player for Windows with a modern GUI.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["播放器", "mpv", "video"],
+  "default_version": "v7.1.2.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 5562,
+  "forks": 226,
+  "is_verified": true,
+  "homepage": "https://github.com/mpvnet-player/mpv.net",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["mpv.net.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

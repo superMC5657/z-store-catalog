@@ -1,0 +1,28 @@
+{
+  "id": "manga-download/hakuneko",
+  "name": "HakuNeko",
+  "owner": "manga-download",
+  "repo": "hakuneko",
+  "icon": "https://raw.githubusercontent.com/manga-download/hakuneko/master/res/logo.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "从数百个站点抓取漫画与轻小说的下载器。",
+  "description_en": "Manga & Anime Downloader for Linux, Windows & MacOS",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["漫画", "下载", "manga"],
+  "default_version": "v6.1.7",
+  "added_at": "2026-09-13",
+  "license": "Unlicense",
+  "stars": 6411,
+  "forks": 615,
+  "is_verified": true,
+  "homepage": "https://hakuneko.download",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["hakuneko.exe"],
+    "linux": ["hakuneko"],
+    "macos": ["hakuneko.app"],
+    "android": [],
+    "ios": []
+  }
+}

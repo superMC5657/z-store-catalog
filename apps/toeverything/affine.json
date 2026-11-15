@@ -1,0 +1,28 @@
+{
+  "id": "toeverything/affine",
+  "name": "AFFiNE",
+  "owner": "toeverything",
+  "repo": "AFFiNE",
+  "icon": "https://raw.githubusercontent.com/toeverything/AFFiNE/canary/packages/frontend/apps/electron/resources/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "类 Notion 与 Miro 的开源融合，文档白板数据库一体。",
+  "description_en": "There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. ",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "白板", "notion"],
+  "default_version": "v0.27.4",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 74540,
+  "forks": 5520,
+  "is_verified": true,
+  "homepage": "https://affine.pro",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["affine.exe"],
+    "linux": ["affine"],
+    "macos": ["AFFiNE.app"],
+    "android": [],
+    "ios": []
+  }
+}

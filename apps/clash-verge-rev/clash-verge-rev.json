@@ -1,0 +1,26 @@
+{
+  "id": "clash-verge-rev/clash-verge-rev",
+  "name": "Clash Verge Rev",
+  "owner": "clash-verge-rev",
+  "repo": "clash-verge-rev",
+  "icon": "https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev/dev/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #06b6d4, #0891b2)",
+  "description": "采用 Tauri 开发的轻量级规则代理客户端，界面优雅，占用极低。",
+  "description_en": "A modern GUI client based on Tauri, designed to run in Windows, macOS and Linux for tailored proxy experience",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["网络代理", "规则分流", "代理工具", "proxy", "clash"],
+  "default_version": "v2.5.10",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 158465,
+  "forks": 11405,
+  "is_verified": true,
+  "homepage": "https://clash-verge-rev.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Clash Verge.exe"],
+    "linux": ["clash-verge"],
+    "macos": ["Clash Verge.app"]
+  }
+}

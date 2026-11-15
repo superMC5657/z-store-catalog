@@ -1,0 +1,28 @@
+{
+  "id": "heidisql/heidisql",
+  "name": "HeidiSQL",
+  "owner": "HeidiSQL",
+  "repo": "HeidiSQL",
+  "icon": "https://raw.githubusercontent.com/HeidiSQL/HeidiSQL/master/res/Assets/Square44x44Logo.targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "老牌 Windows 数据库客户端，MySQL/MariaDB/MSSQL。",
+  "description_en": "A lightweight client for managing MariaDB, MySQL, SQL Server, PostgreSQL, SQLite, Interbase and Firebird, written in Delphi and Lazarus/FreePascal",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["数据库", "mysql", "客户端"],
+  "default_version": "v12.22",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 6328,
+  "forks": 603,
+  "is_verified": true,
+  "homepage": "https://www.heidisql.com/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["HeidiSQL_12.21.0.7344_Setup.exe"],
+    "linux": ["heidisql"],
+    "macos": ["HeidiSQL.app"],
+    "android": [],
+    "ios": []
+  }
+}

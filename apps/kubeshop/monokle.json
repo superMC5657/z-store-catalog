@@ -1,0 +1,28 @@
+{
+  "id": "kubeshop/monokle",
+  "name": "Monokle",
+  "owner": "kubeshop",
+  "repo": "monokle",
+  "icon": "https://raw.githubusercontent.com/kubeshop/monokle/main/public/icon.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "可视化浏览编辑 k8s 资源与 Helm Chart 的桌面工作台。",
+  "description_en": "Monokle is a set of OSS tools designed to help create and maintain high-quality Kubernetes configurations throughout the application lifecycle",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["kubernetes", "helm", "k8s"],
+  "default_version": "v2.4.8",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 2142,
+  "forks": 156,
+  "is_verified": true,
+  "homepage": "https://monokle.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Monokle-win.exe"],
+    "linux": ["monokle"],
+    "macos": ["monokle.app"],
+    "android": [],
+    "ios": []
+  }
+}

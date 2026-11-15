@@ -1,0 +1,28 @@
+{
+  "id": "fontforge/fontforge",
+  "name": "FontForge",
+  "owner": "fontforge",
+  "repo": "fontforge",
+  "icon": "https://raw.githubusercontent.com/fontforge/fontforge/master/desktop/icons-older/fontforge.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "开源字体编辑器，创建与修改 TrueType/OpenType 字体。",
+  "description_en": "Free (libre) font editor for Windows, Mac OS X and GNU+Linux",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["字体", "font", "编辑"],
+  "default_version": "20251009",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 8084,
+  "forks": 822,
+  "is_verified": true,
+  "homepage": "http://fontforge.github.io/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["FontForge.exe"],
+    "linux": ["fontforge"],
+    "macos": ["fontforge.app"],
+    "android": [],
+    "ios": []
+  }
+}

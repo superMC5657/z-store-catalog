@@ -1,0 +1,28 @@
+{
+  "id": "genymobile/scrcpy",
+  "name": "scrcpy",
+  "owner": "Genymobile",
+  "repo": "scrcpy",
+  "icon": "https://raw.githubusercontent.com/Genymobile/scrcpy/master/app/data/scrcpy.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "USB/网络下高帧率低延迟显示并控制 Android 设备。",
+  "description_en": "Display and control your Android device",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["投屏", "安卓", "android"],
+  "default_version": "v5.0.1",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 154843,
+  "forks": 14219,
+  "is_verified": true,
+  "homepage": "https://github.com/Genymobile/scrcpy",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["scrcpy.exe"],
+    "linux": ["scrcpy"],
+    "macos": ["scrcpy.app"],
+    "android": [],
+    "ios": []
+  }
+}

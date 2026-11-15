@@ -1,0 +1,28 @@
+{
+  "id": "sethrobinson/patchy",
+  "name": "Patchy",
+  "owner": "SethRobinson",
+  "repo": "Patchy",
+  "icon": "https://raw.githubusercontent.com/SethRobinson/Patchy/main/packaging/web/icons/apple-touch-icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "主打 PSD 兼容的开源图像编辑器，操作流程贴合 Photoshop 用户习惯。",
+  "description_en": "Open-source image editor focused on PSD compatibility and workflows familiar to Adobe Photoshop users.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["photoshop替代", "修图", "psd", "图像编辑", "photo editor"],
+  "default_version": "v1.36",
+  "added_at": "2026-10-16",
+  "license": "MIT",
+  "stars": 706,
+  "forks": 44,
+  "is_verified": true,
+  "homepage": "https://github.com/SethRobinson/Patchy",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["PatchyWindowsInstaller.exe"],
+    "linux": ["patchy"],
+    "macos": ["Patchy.app"],
+    "android": [],
+    "ios": []
+  }
+}

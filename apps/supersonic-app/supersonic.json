@@ -1,0 +1,28 @@
+{
+  "id": "supersonic-app/supersonic",
+  "name": "Supersonic",
+  "owner": "supersonic-app",
+  "repo": "supersonic",
+  "icon": "https://raw.githubusercontent.com/supersonic-app/supersonic/main/res/appicon-512.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "轻量原生的 Subsonic 音乐服务器桌面客户端，跨平台。",
+  "description_en": "A lightweight and full-featured cross-platform desktop client for self-hosted music servers",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "subsonic", "navidrome"],
+  "default_version": "v0.22.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2426,
+  "forks": 125,
+  "is_verified": true,
+  "homepage": "https://github.com/supersonic-app/supersonic",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["supersonic.exe"],
+    "linux": ["supersonic"],
+    "macos": ["supersonic.app"],
+    "android": [],
+    "ios": []
+  }
+}

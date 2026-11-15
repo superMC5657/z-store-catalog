@@ -1,0 +1,28 @@
+{
+  "id": "nickvisionapps/parabolic",
+  "name": "Parabolic",
+  "owner": "NickvisionApps",
+  "repo": "Parabolic",
+  "icon": "https://raw.githubusercontent.com/NickvisionApps/Parabolic/main/extension/chrome/icons/icon128.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "基于 yt-dlp 的视频下载工具，支持多平台链接与元数据填充。",
+  "description_en": "Download web video and audio",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["下载", "yt-dlp", "视频"],
+  "default_version": "2026.5.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 7627,
+  "forks": 375,
+  "is_verified": true,
+  "homepage": "https://flathub.org/apps/details/org.nickvision.tubeconverter",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["NickvisionParabolicSetup-arm64.exe"],
+    "linux": [],
+    "macos": ["Parabolic.app"],
+    "android": [],
+    "ios": []
+  }
+}

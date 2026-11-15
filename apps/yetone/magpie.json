@@ -1,0 +1,28 @@
+{
+  "id": "yetone/magpie",
+  "name": "magpie",
+  "owner": "yetone",
+  "repo": "magpie",
+  "icon": "https://raw.githubusercontent.com/yetone/magpie/HEAD/site/public/img/icon-256.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "汇聚所有智能体模型于一处。在 DeepSeek 上使用 Codex，在 Kimi 上使用 Claude Code，尽在菜单栏。",
+  "description_en": "Every agent's model. One place. Codex on DeepSeek, Claude Code on Kimi, from the menu bar.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["magpie", "yetone/magpie"],
+  "default_version": "v0.1.4227",
+  "added_at": "2026-11-11",
+  "license": "MIT",
+  "stars": 36594,
+  "forks": 3274,
+  "is_verified": true,
+  "homepage": "https://github.com/yetone/magpie",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["magpie.exe"],
+    "linux": [],
+    "macos": ["magpie"],
+    "android": [],
+    "ios": []
+  }
+}

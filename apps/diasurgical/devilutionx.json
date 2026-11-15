@@ -1,0 +1,28 @@
+{
+  "id": "diasurgical/devilutionx",
+  "name": "DevilutionX",
+  "owner": "diasurgical",
+  "repo": "DevilutionX",
+  "icon": "https://raw.githubusercontent.com/diasurgical/DevilutionX/master/Packaging/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Diablo 1 的开源跨平台复刻引擎，画质与操控增强。",
+  "description_en": "Diablo build for modern operating systems",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["暗黑", "复刻", "diablo"],
+  "default_version": "1.5.5",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 10018,
+  "forks": 1096,
+  "is_verified": true,
+  "homepage": "https://github.com/diasurgical/DevilutionX",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["DevilutionX.exe"],
+    "linux": ["devilutionx"],
+    "macos": ["DevilutionX.app"],
+    "android": ["org.devilutionx"],
+    "ios": ["org.devilutionx"]
+  }
+}

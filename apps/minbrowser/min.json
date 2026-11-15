@@ -1,0 +1,28 @@
+{
+  "id": "minbrowser/min",
+  "name": "Min",
+  "owner": "minbrowser",
+  "repo": "min",
+  "icon": "https://raw.githubusercontent.com/minbrowser/min/master/icons/icon256.ico",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "专注隐私与速度的极简浏览器，内置广告拦截与阅读模式。",
+  "description_en": "A fast, minimal browser that protects your privacy",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["浏览器", "极简", "min browser"],
+  "default_version": "v1.35.7",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 9253,
+  "forks": 874,
+  "is_verified": true,
+  "homepage": "https://minbrowser.org/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["min.exe"],
+    "linux": ["min"],
+    "macos": ["min.app"],
+    "android": [],
+    "ios": []
+  }
+}

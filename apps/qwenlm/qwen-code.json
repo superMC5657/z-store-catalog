@@ -1,0 +1,28 @@
+{
+  "id": "qwenlm/qwen-code",
+  "name": "qwen-code",
+  "owner": "QwenLM",
+  "repo": "qwen-code",
+  "icon": "https://raw.githubusercontent.com/QwenLM/qwen-code/main/packages/desktop/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "通义千问开源终端 AI 编程智能体，深度理解代码库辅助开发。",
+  "description_en": "An open-source AI coding agent that lives in your terminal.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ai编程", "agent", "qwen", "通义", "编程助手"],
+  "default_version": "sdk-typescript-v0.1.33",
+  "added_at": "2026-10-16",
+  "license": "Apache-2.0",
+  "stars": 30388,
+  "forks": 3519,
+  "is_verified": true,
+  "homepage": "https://qwenlm.github.io/qwen-code-docs/en/users/overview",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["qwen-code.exe"],
+    "linux": ["qwen-code"],
+    "macos": ["qwen-code.app"],
+    "android": [],
+    "ios": []
+  }
+}

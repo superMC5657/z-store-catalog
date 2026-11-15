@@ -1,0 +1,28 @@
+{
+  "id": "netchx/netch",
+  "name": "Netch",
+  "owner": "netchx",
+  "repo": "netch",
+  "icon": "https://raw.githubusercontent.com/netchx/netch/main/Netch/Resources/Netch.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "支持游戏加速模式的代理客户端，Socks5/TUN 多模式切换。",
+  "description_en": "A simple proxy client",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["代理", "加速", "科学上网"],
+  "default_version": "1.9.7",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 17687,
+  "forks": 2837,
+  "is_verified": true,
+  "homepage": "https://github.com/netchx/netch",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["netch.exe"],
+    "linux": ["netch"],
+    "macos": ["netch.app"],
+    "android": [],
+    "ios": []
+  }
+}

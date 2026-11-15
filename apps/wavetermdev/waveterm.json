@@ -1,0 +1,28 @@
+{
+  "id": "wavetermdev/waveterm",
+  "name": "Wave Terminal",
+  "owner": "wavetermdev",
+  "repo": "waveterm",
+  "icon": "https://raw.githubusercontent.com/wavetermdev/waveterm/main/frontend/app/asset/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "内嵌文件预览与 AI 的现代开源终端，SSH 工作流增强。",
+  "description_en": "An open-source, AI-integrated, cross-platform terminal for seamless workflows",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "ssh", "ai"],
+  "default_version": "v0.14.5",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 22701,
+  "forks": 1195,
+  "is_verified": true,
+  "homepage": "https://www.waveterm.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Wave-win32-x64.exe"],
+    "linux": ["waveterm"],
+    "macos": ["waveterm.app"],
+    "android": [],
+    "ios": []
+  }
+}

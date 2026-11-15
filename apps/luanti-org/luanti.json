@@ -1,0 +1,28 @@
+{
+  "id": "luanti-org/luanti",
+  "name": "Luanti",
+  "owner": "luanti-org",
+  "repo": "luanti",
+  "icon": "https://raw.githubusercontent.com/luanti-org/luanti/master/textures/base/pack/logo.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "原 Minetest，开源体素沙盒游戏与平台，模组生态丰富。",
+  "description_en": "Luanti (formerly Minetest) is an open source voxel game-creation platform with easy modding and game creation",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["沙盒", "minecraft", "体素"],
+  "default_version": "5.18.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 13863,
+  "forks": 2528,
+  "is_verified": true,
+  "homepage": "https://www.luanti.org/",
+  "platforms": ["windows", "macos", "android"],
+  "identifiers": {
+    "windows": ["luanti.exe"],
+    "linux": [],
+    "macos": ["luanti.app"],
+    "android": ["org.luanti"],
+    "ios": []
+  }
+}

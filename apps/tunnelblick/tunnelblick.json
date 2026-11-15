@@ -1,0 +1,28 @@
+{
+  "id": "tunnelblick/tunnelblick",
+  "name": "Tunnelblick",
+  "owner": "Tunnelblick",
+  "repo": "Tunnelblick",
+  "icon": "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/main/tunnelblick/tb-icon-64x64.v1.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "macOS 上老牌的 OpenVPN 图形客户端，导入 ovpn 配置即用。",
+  "description_en": "The official Tunnelblick website is at https://tunnelblick.net; the official Tunnelblick GitHub repository is at https://github.com/Tunnelblick",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["vpn", "openvpn", "macos"],
+  "default_version": "v10.0.3",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 3303,
+  "forks": 377,
+  "is_verified": true,
+  "homepage": "https://github.com/Tunnelblick/Tunnelblick",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["Tunnelblick.app"],
+    "android": [],
+    "ios": []
+  }
+}

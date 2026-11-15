@@ -1,0 +1,28 @@
+{
+  "id": "inkscape/inkscape",
+  "name": "Inkscape",
+  "owner": "inkscape",
+  "repo": "inkscape",
+  "icon": "https://avatars.githubusercontent.com/u/8506907?v=4&s=200&v=4",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "专业的开源矢量图形编辑器，SVG 编辑与设计，Illustrator 替代。",
+  "description_en": "Project Website: https://inkscape.org - Code Repository: https://gitlab.com/inkscape/inkscape - Draw freely. 🖌",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["矢量", "svg", "设计"],
+  "default_version": "unknown",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 4124,
+  "forks": 319,
+  "is_verified": true,
+  "homepage": "http://www.inkscape.org/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["inkscape.exe"],
+    "linux": ["inkscape"],
+    "macos": ["inkscape.app"],
+    "android": [],
+    "ios": []
+  }
+}

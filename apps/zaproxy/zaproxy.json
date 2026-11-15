@@ -1,0 +1,28 @@
+{
+  "id": "zaproxy/zaproxy",
+  "name": "OWASP ZAP",
+  "owner": "zaproxy",
+  "repo": "zaproxy",
+  "icon": "https://raw.githubusercontent.com/zaproxy/zaproxy/main/snap/snap/gui/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "最流行的开源 Web 应用渗透测试代理，漏洞扫描一体。",
+  "description_en": "The ZAP by Checkmarx Core project",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["渗透", "安全", "scanner"],
+  "default_version": "v2.17.0",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 16191,
+  "forks": 2708,
+  "is_verified": true,
+  "homepage": "https://www.zaproxy.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ZAP_2_17_0_windows-x32.exe"],
+    "linux": ["zaproxy"],
+    "macos": ["zaproxy.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "kingtoolbox/windterm",
+  "name": "WindTerm",
+  "owner": "kingToolbox",
+  "repo": "WindTerm",
+  "icon": "https://raw.githubusercontent.com/kingToolbox/WindTerm/master/images/WindTerm_icon_1024x1024.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "免费开源的专业 SSH/Sftp/Shell/Telnet 客户端，性能极佳。",
+  "description_en": "A professional cross-platform SSH/Sftp/Shell/Telnet/Tmux/Serial terminal.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "ssh", "sftp"],
+  "default_version": "2.7.0",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 32672,
+  "forks": 2502,
+  "is_verified": true,
+  "homepage": "https://kingtoolbox.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["WindTerm.exe"],
+    "linux": ["windterm"],
+    "macos": ["WindTerm.app"],
+    "android": [],
+    "ios": []
+  }
+}

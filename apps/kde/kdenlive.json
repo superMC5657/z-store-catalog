@@ -1,0 +1,28 @@
+{
+  "id": "kde/kdenlive",
+  "name": "Kdenlive",
+  "owner": "KDE",
+  "repo": "kdenlive",
+  "icon": "https://raw.githubusercontent.com/KDE/kdenlive/master/data/icons/1024-apps-kdenlive.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "KDE 出品的专业非线性视频编辑器，多轨时间线与丰富特效。",
+  "description_en": "Free and open source video editor, based on MLT Framework and KDE Frameworks",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["视频剪辑", "编辑器", "video editor"],
+  "default_version": "v26.08.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 6111,
+  "forks": 575,
+  "is_verified": true,
+  "homepage": "https://invent.kde.org/multimedia/kdenlive",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["kdenlive.exe"],
+    "linux": ["kdenlive"],
+    "macos": ["kdenlive.app"],
+    "android": [],
+    "ios": []
+  }
+}

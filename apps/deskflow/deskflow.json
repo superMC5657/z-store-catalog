@@ -1,0 +1,28 @@
+{
+  "id": "deskflow/deskflow",
+  "name": "Deskflow",
+  "owner": "deskflow",
+  "repo": "deskflow",
+  "icon": "https://raw.githubusercontent.com/deskflow/deskflow/master/docs/dev/deskflow-logo.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "Synergy 的开源延续，一套键鼠控制多台设备，跨平台剪贴板共享。",
+  "description_en": "Share a single keyboard and mouse between multiple computers.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["键鼠共享", "synergy", "多机"],
+  "default_version": "v1.27.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 31104,
+  "forks": 5134,
+  "is_verified": true,
+  "homepage": "https://deskflow.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["deskflow.exe"],
+    "linux": ["deskflow"],
+    "macos": ["deskflow.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "keepassxreboot/keepassxc",
+  "name": "KeePassXC",
+  "owner": "keepassxreboot",
+  "repo": "keepassxc",
+  "icon": "https://raw.githubusercontent.com/keepassxreboot/keepassxc/develop/share/macosx/keepassxc.iconset/icon_512x512.png",
+  "icon_bg": "linear-gradient(135deg, #10b981, #047857)",
+  "description": "跨平台社区驱动的安全密码库管理器，本地高强度加密保存所有私密凭据。",
+  "description_en": "KeePassXC is a cross-platform community-driven port of the Windows application “KeePass Password Safe”.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["密码管理", "安全密码箱", "password manager", "1password"],
+  "default_version": "2.8.0",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 29993,
+  "forks": 2040,
+  "is_verified": true,
+  "homepage": "https://keepassxc.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["KeePassXC.exe"],
+    "linux": ["keepassxc"],
+    "macos": ["KeePassXC.app", "keepassxc"]
+  }
+}

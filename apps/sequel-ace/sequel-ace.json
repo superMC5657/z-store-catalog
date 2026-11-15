@@ -1,0 +1,28 @@
+{
+  "id": "sequel-ace/sequel-ace",
+  "name": "Sequel Ace",
+  "owner": "Sequel-Ace",
+  "repo": "Sequel-Ace",
+  "icon": "https://raw.githubusercontent.com/Sequel-Ace/Sequel-Ace/main/Resources/Images.xcassets/AppIcon.appiconset/icon_512x512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "macOS 上经典 Sequel Pro 的社区延续，MySQL/MariaDB 管理。",
+  "description_en": "MySQL/MariaDB database management for macOS",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["mysql", "数据库", "macos"],
+  "default_version": "production/6.1.0-20117",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 7563,
+  "forks": 341,
+  "is_verified": true,
+  "homepage": "https://sequel-ace.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Sequel-Ace.exe"],
+    "linux": ["sequel-ace"],
+    "macos": ["Sequel-Ace.app"],
+    "android": [],
+    "ios": []
+  }
+}

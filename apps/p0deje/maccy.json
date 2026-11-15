@@ -1,0 +1,28 @@
+{
+  "id": "p0deje/maccy",
+  "name": "Maccy",
+  "owner": "p0deje",
+  "repo": "Maccy",
+  "icon": "https://raw.githubusercontent.com/p0deje/Maccy/master/Maccy/Assets.xcassets/AppIcon.appiconset/AppIcon (Big Sur)-1024w.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "轻量极速的 macOS 剪贴板历史管理器，菜单栏即点即用。",
+  "description_en": "Lightweight clipboard manager for macOS",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["剪贴板", "clipboard", "macos"],
+  "default_version": "2.8.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 22326,
+  "forks": 1292,
+  "is_verified": true,
+  "homepage": "https://maccy.app",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["Maccy.app"],
+    "android": [],
+    "ios": []
+  }
+}

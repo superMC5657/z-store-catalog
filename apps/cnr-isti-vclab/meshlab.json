@@ -1,0 +1,28 @@
+{
+  "id": "cnr-isti-vclab/meshlab",
+  "name": "MeshLab",
+  "owner": "cnr-isti-vclab",
+  "repo": "meshlab",
+  "icon": "https://raw.githubusercontent.com/cnr-isti-vclab/meshlab/main/resources/icons/meshlab.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "处理编辑三维三角网格的经典工具，点云与重建。",
+  "description_en": "The open source mesh processing system",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["3d", "网格", "点云"],
+  "default_version": "MeshLab-2025.07",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 5916,
+  "forks": 923,
+  "is_verified": true,
+  "homepage": "http://www.meshlab.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["MeshLab2025.07-windows_x86_64.exe"],
+    "linux": ["meshlab"],
+    "macos": ["meshlab.app"],
+    "android": [],
+    "ios": []
+  }
+}

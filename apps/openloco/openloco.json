@@ -1,0 +1,28 @@
+{
+  "id": "openloco/openloco",
+  "name": "OpenLoco",
+  "owner": "OpenLoco",
+  "repo": "OpenLoco",
+  "icon": "https://raw.githubusercontent.com/OpenLoco/OpenLoco/master/src/Resources/src/logo/icon_x1024.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Chris Sawyer Locomotion 的开源重实现，交通模拟经营。",
+  "description_en": "An open source re-implementation of Chris Sawyer's Locomotion",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟经营", "复刻", "locomotion"],
+  "default_version": "v26.09",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 1972,
+  "forks": 230,
+  "is_verified": true,
+  "homepage": "https://openloco.io/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenLoco.exe"],
+    "linux": ["openloco"],
+    "macos": ["OpenLoco.app"],
+    "android": [],
+    "ios": []
+  }
+}

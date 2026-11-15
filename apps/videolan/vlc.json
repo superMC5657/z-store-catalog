@@ -1,0 +1,29 @@
+{
+  "id": "videolan/vlc",
+  "name": "VLC Media Player",
+  "owner": "videolan",
+  "repo": "vlc",
+  "icon": "https://raw.githubusercontent.com/videolan/vlc/master/share/vlc512x512.png",
+  "icon_bg": "linear-gradient(135deg, #f59e0b, #d97706)",
+  "description": "支持所有音频和视频格式的跨平台多媒体播放器与流媒体服务器，开源无广告。",
+  "description_en": "VLC media player - plays everything, runs anywhere. Code here: https://code.videolan.org/videolan/vlc",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["播放器", "视频播放", "多媒体", "video player", "mp4"],
+  "default_version": "3.0.21",
+  "added_at": "2026-09-10",
+  "license": "GPL-2.0",
+  "stars": 20461,
+  "forks": 6444,
+  "is_verified": true,
+  "homepage": "https://www.videolan.org/vlc/",
+  "publishers": ["VideoLAN"],
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["vlc.exe"],
+    "linux": ["vlc"],
+    "macos": ["VLC.app", "vlc"],
+    "android": ["org.videolan.vlc"],
+    "ios": ["org.videolan.vlc-ios"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "lapce/lapce",
+  "name": "Lapce",
+  "owner": "lapce",
+  "repo": "lapce",
+  "icon": "https://raw.githubusercontent.com/lapce/lapce/master/extra/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Rust 编写的高性能代码编辑器，内建 LSP 与远程开发。",
+  "description_en": "Lightning-fast and Powerful Code Editor written in Rust",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["编辑器", "rust", "ide"],
+  "default_version": "v0.4.6",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 39038,
+  "forks": 1365,
+  "is_verified": true,
+  "homepage": "https://lap.dev/lapce/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["lapce.exe"],
+    "linux": ["lapce"],
+    "macos": ["lapce.app"],
+    "android": [],
+    "ios": []
+  }
+}

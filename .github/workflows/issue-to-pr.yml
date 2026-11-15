@@ -174,7 +174,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B "$branch" origin/main
-          git add catalog.json
+          git add apps/
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
@@ -264,7 +264,7 @@ jobs:
             node scripts/validate-catalog.mjs
             branch="catalog/issue-${ISSUE_NUMBER}"
             git checkout -B "$branch" origin/main
-            git add catalog.json
+            git add apps/
             git commit -m "$(cat pr-title.txt) [skip ci]"
             git push --force origin "HEAD:refs/heads/$branch"
             sha=$(git rev-parse HEAD)

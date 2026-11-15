@@ -1,0 +1,28 @@
+{
+  "id": "rxhanson/rectangle",
+  "name": "Rectangle",
+  "owner": "rxhanson",
+  "repo": "Rectangle",
+  "icon": "https://raw.githubusercontent.com/rxhanson/Rectangle/main/Rectangle/Assets.xcassets/AppIcon.appiconset/mac512pts2x.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "用快捷键与拖拽快速分屏排列窗口的 macOS 窗口管理工具。",
+  "description_en": "Move and resize windows on macOS with keyboard shortcuts and snap areas",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["窗口管理", "分屏", "macos"],
+  "default_version": "v2.0.4",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 30284,
+  "forks": 1043,
+  "is_verified": true,
+  "homepage": "https://rectangleapp.com",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["Rectangle.app"],
+    "android": [],
+    "ios": []
+  }
+}

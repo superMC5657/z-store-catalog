@@ -1,0 +1,28 @@
+{
+  "id": "dbeaver/dbeaver",
+  "name": "DBeaver Community",
+  "owner": "dbeaver",
+  "repo": "dbeaver",
+  "icon": "https://raw.githubusercontent.com/dbeaver/dbeaver/devel/product/community/icons/dbeaver.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "支持上百种数据库的通用数据库管理工具，ER 图与数据编辑。",
+  "description_en": "Free universal database tool and SQL client",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["数据库", "sql", "管理"],
+  "default_version": "26.2.4",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 52434,
+  "forks": 4452,
+  "is_verified": true,
+  "homepage": "https://dbeaver.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["dbeaver-ce.exe"],
+    "linux": ["dbeaver"],
+    "macos": ["dbeaver.app"],
+    "android": [],
+    "ios": []
+  }
+}

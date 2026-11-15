@@ -1,0 +1,28 @@
+{
+  "id": "anomalyco/opencode",
+  "name": "opencode",
+  "owner": "anomalyco",
+  "repo": "opencode",
+  "icon": "https://raw.githubusercontent.com/anomalyco/opencode/dev/packages/desktop/icons/dev/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "开源 AI 编程智能体，在终端内协作写码，支持多种大模型后端。",
+  "description_en": "The open source coding agent.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ai编程", "agent", "coding agent", "ai agent", "编程助手"],
+  "default_version": "v1.19.5",
+  "added_at": "2026-10-16",
+  "license": "MIT",
+  "stars": 226892,
+  "forks": 30737,
+  "is_verified": true,
+  "homepage": "https://opencode.ai",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["opencode-desktop-win-arm64.exe"],
+    "linux": ["opencode"],
+    "macos": ["opencode.app"],
+    "android": [],
+    "ios": []
+  }
+}

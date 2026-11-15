@@ -1,0 +1,28 @@
+{
+  "id": "flyinghead/flycast",
+  "name": "Flycast",
+  "owner": "flyinghead",
+  "repo": "flycast",
+  "icon": "https://raw.githubusercontent.com/flyinghead/flycast/master/shell/apple/emulator-osx/emulator-osx/Images.xcassets/AppIcon.appiconset/Icon-1024.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Sega Dreamcast 模拟器，支持联网对战。",
+  "description_en": "Flycast is a multiplatform Sega Dreamcast, Naomi, Naomi 2 and Atomiswave emulator",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "dreamcast", "游戏"],
+  "default_version": "v2.7",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 2658,
+  "forks": 415,
+  "is_verified": true,
+  "homepage": "https://github.com/flyinghead/flycast",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["flycast.exe"],
+    "linux": ["flycast"],
+    "macos": ["flycast.app"],
+    "android": ["org.flycast"],
+    "ios": []
+  }
+}

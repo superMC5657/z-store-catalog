@@ -1,0 +1,28 @@
+{
+  "id": "sylikc/jpegview",
+  "name": "JPEGView",
+  "owner": "sylikc",
+  "repo": "jpegview",
+  "icon": "https://raw.githubusercontent.com/sylikc/jpegview/master/src/JPEGView/res/JPEGView.ico",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "极致轻量的 Windows 看图软件，秒开大图带基础编辑。",
+  "description_en": "Fork of JPEGView by David Kleiner - fast and highly configurable viewer/editor for JPEG, BMP, PNG, WEBP, TGA, GIF and TIFF images with a minimal GUI.  Basic on-the-fly image processing is provided - allowing adjusting typical parameters as sharpness, color balance, rotation, perspective, contrast and local under-/overexposure.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["看图", "图片", "轻量"],
+  "default_version": "v1.3.46",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 3025,
+  "forks": 195,
+  "is_verified": true,
+  "homepage": "https://github.com/sylikc/jpegview",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["jpegview.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

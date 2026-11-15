@@ -1,0 +1,28 @@
+{
+  "id": "mixxxdj/mixxx",
+  "name": "Mixxx",
+  "owner": "mixxxdj",
+  "repo": "mixxx",
+  "icon": "https://raw.githubusercontent.com/mixxxdj/mixxx/main/res/images/icons/512x512/apps/mixxx.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "专业级开源 DJ 软件，双 deck、热碟打点与硬件控制器映射。",
+  "description_en": "Mixxx is Free DJ software that gives you everything you need to perform live mixes.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["dj", "打碟", "music"],
+  "default_version": "2.5.6",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 7398,
+  "forks": 2082,
+  "is_verified": true,
+  "homepage": "http://mixxx.org",
+  "platforms": ["macos", "linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["mixxx"],
+    "macos": ["mixxx.app"],
+    "android": [],
+    "ios": []
+  }
+}

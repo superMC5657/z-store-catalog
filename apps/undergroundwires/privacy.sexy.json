@@ -1,0 +1,28 @@
+{
+  "id": "undergroundwires/privacy.sexy",
+  "name": "privacy.sexy",
+  "owner": "undergroundwires",
+  "repo": "privacy.sexy",
+  "icon": "https://raw.githubusercontent.com/undergroundwires/privacy.sexy/master/src/presentation/electron/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "一键应用 Windows/macOS 隐私与安全加固脚本，可视化可回滚。",
+  "description_en": "Open-source tool to enforce privacy & security best-practices on Windows, macOS and Linux, because privacy is sexy",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["隐私", "加固", "windows"],
+  "default_version": "0.13.8",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 6183,
+  "forks": 310,
+  "is_verified": true,
+  "homepage": "https://privacy.sexy",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["privacy.sexy-Setup.exe"],
+    "linux": ["privacy.sexy"],
+    "macos": ["privacy.sexy.app"],
+    "android": [],
+    "ios": []
+  }
+}

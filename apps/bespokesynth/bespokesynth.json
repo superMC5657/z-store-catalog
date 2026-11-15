@@ -1,0 +1,28 @@
+{
+  "id": "bespokesynth/bespokesynth",
+  "name": "Bespoke",
+  "owner": "BespokeSynth",
+  "repo": "BespokeSynth",
+  "icon": "https://raw.githubusercontent.com/BespokeSynth/BespokeSynth/main/bespoke_icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "模块化的可视化音乐创作环境，自由连线构建声音流程。",
+  "description_en": "Software modular synth",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "模块", "synth"],
+  "default_version": "v1.3.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 4758,
+  "forks": 309,
+  "is_verified": true,
+  "homepage": "https://github.com/BespokeSynth/BespokeSynth",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["BespokeSynth.exe"],
+    "linux": ["bespokesynth"],
+    "macos": ["BespokeSynth.app"],
+    "android": [],
+    "ios": []
+  }
+}

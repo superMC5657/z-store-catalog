@@ -1,0 +1,28 @@
+{
+  "id": "librecad/librecad",
+  "name": "LibreCAD",
+  "owner": "LibreCAD",
+  "repo": "LibreCAD",
+  "icon": "https://raw.githubusercontent.com/LibreCAD/LibreCAD/master/desktop/res_old/main/librecad.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "开源二维 CAD 制图软件，轻量易学。",
+  "description_en": "LibreCAD is a cross-platform 2D CAD program. It can read DXF/DWG, and write DXF/DWG/PDF/SVG files. It supports point/line/circle/ellipse/parabola/hyperbola/spline primitives. The GUI is highly customizable, and has dozens of translations.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["cad", "制图", "2d"],
+  "default_version": "v2.2.1.6",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 6593,
+  "forks": 1413,
+  "is_verified": true,
+  "homepage": "http://librecad.org/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["LibreCAD.exe"],
+    "linux": ["librecad"],
+    "macos": ["LibreCAD.app"],
+    "android": [],
+    "ios": []
+  }
+}

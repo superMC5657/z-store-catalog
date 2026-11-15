@@ -1,0 +1,28 @@
+{
+  "id": "jandedobbeleer/oh-my-posh",
+  "name": "Oh My Posh",
+  "owner": "JanDeDobbeleer",
+  "repo": "oh-my-posh",
+  "icon": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/packages/msix/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "跨平台通用 Shell 提示符主题引擎，支持 PowerShell、Bash、Zsh 等，极致美化终端。",
+  "description_en": "The most customisable and low-latency cross platform/shell prompt renderer",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["oh-my-posh", "posh", "prompt", "oh my posh", "终端美化"],
+  "default_version": "v32.0.0",
+  "added_at": "2026-09-10",
+  "license": "MIT",
+  "stars": 23757,
+  "forks": 2805,
+  "is_verified": true,
+  "homepage": "https://ohmyposh.dev",
+  "search_subdirs": ["bin"],
+  "publishers": ["Jan De Dobbeleer"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["oh-my-posh.exe"],
+    "linux": ["oh-my-posh"],
+    "macos": ["oh-my-posh"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "winmerge/winmerge",
+  "name": "WinMerge",
+  "owner": "WinMerge",
+  "repo": "winmerge",
+  "icon": "https://raw.githubusercontent.com/WinMerge/winmerge/master/Src/res/logo.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Windows 平台的文件与文件夹对比合并工具，支持三路对比。",
+  "description_en": "WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both folders and files, presenting differences in a visual text format that is easy to understand and handle.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["对比", "diff", "合并"],
+  "default_version": "v2.16.60",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 9372,
+  "forks": 1032,
+  "is_verified": true,
+  "homepage": "https://winmerge.org/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["WinMerge.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

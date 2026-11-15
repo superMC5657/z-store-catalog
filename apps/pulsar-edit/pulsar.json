@@ -1,0 +1,28 @@
+{
+  "id": "pulsar-edit/pulsar",
+  "name": "Pulsar",
+  "owner": "pulsar-edit",
+  "repo": "pulsar",
+  "icon": "https://raw.githubusercontent.com/pulsar-edit/pulsar/master/resources/pulsar.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Atom 编辑器的社区延续，可高度定制，插件生态丰富。",
+  "description_en": "A Community-led Hyper-Hackable Text Editor",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["编辑器", "atom", "ide"],
+  "default_version": "v1.133.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 4204,
+  "forks": 199,
+  "is_verified": true,
+  "homepage": "https://pulsar-edit.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Windows.Pulsar.Setup.1.132.1.exe"],
+    "linux": ["pulsar"],
+    "macos": ["pulsar.app"],
+    "android": [],
+    "ios": []
+  }
+}

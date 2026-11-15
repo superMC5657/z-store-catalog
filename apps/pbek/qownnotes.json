@@ -1,0 +1,28 @@
+{
+  "id": "pbek/qownnotes",
+  "name": "QOwnNotes",
+  "owner": "pbek",
+  "repo": "QOwnNotes",
+  "icon": "https://raw.githubusercontent.com/pbek/QOwnNotes/main/src/images/icons/512x512/apps/QOwnNotes.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "与云盘配合的 Markdown 纯文本笔记，支持 Nextcloud 与脚本。",
+  "description_en": "QOwnNotes is a plain-text file notepad and todo-list manager with Markdown support and Nextcloud / ownCloud integration.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "markdown", "owncloud"],
+  "default_version": "v26.11.9",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 5962,
+  "forks": 497,
+  "is_verified": true,
+  "homepage": "https://www.qownnotes.org/",
+  "platforms": ["macos", "linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["qownnotes"],
+    "macos": ["QOwnNotes.app"],
+    "android": [],
+    "ios": []
+  }
+}

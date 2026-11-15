@@ -1,0 +1,28 @@
+{
+  "id": "thomasnordquist/mqtt-explorer",
+  "name": "MQTT Explorer",
+  "owner": "thomasnordquist",
+  "repo": "MQTT-Explorer",
+  "icon": "https://raw.githubusercontent.com/thomasnordquist/MQTT-Explorer/master/res/icon.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "树状可视化 MQTT 客户端，topic 结构一目了然。",
+  "description_en": "An all-round MQTT client that provides a structured topic overview",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["mqtt", "物联网", "调试"],
+  "default_version": "v0.3.5",
+  "added_at": "2026-09-13",
+  "license": "CC-BY-4.0",
+  "stars": 4093,
+  "forks": 421,
+  "is_verified": true,
+  "homepage": "https://mqtt-explorer.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["MQTT-Explorer.exe"],
+    "linux": ["mqtt-explorer"],
+    "macos": ["MQTT-Explorer.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "oliverschwendener/ueli",
+  "name": "Ueli",
+  "owner": "oliverschwendener",
+  "repo": "ueli",
+  "icon": "https://raw.githubusercontent.com/oliverschwendener/ueli/main/assets/Core/FileImageGenerator/macOS/DesktopFolderIcon.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "跨平台按键呼出的快捷启动器，支持应用、文件、计算器与插件扩展，Alfred 的开源替代。",
+  "description_en": "Cross-Platform Keystroke Launcher",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["启动器", "快速启动", "spotlight", "alfred"],
+  "default_version": "v9.29.1",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 4617,
+  "forks": 272,
+  "is_verified": true,
+  "homepage": "https://ueli.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Ueli-Setup.exe"],
+    "linux": ["ueli"],
+    "macos": ["ueli.app"],
+    "android": [],
+    "ios": []
+  }
+}

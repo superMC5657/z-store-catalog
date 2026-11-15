@@ -1,0 +1,28 @@
+{
+  "id": "altair-graphql/altair",
+  "name": "Altair",
+  "owner": "altair-graphql",
+  "repo": "altair",
+  "icon": "https://raw.githubusercontent.com/altair-graphql/altair/master/packages/altair-tauri/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "功能完整的 GraphQL 调试客户端，订阅与文档内省。",
+  "description_en": "✨⚡️ A feature-rich GraphQL Client for all platforms.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["graphql", "api", "调试"],
+  "default_version": "v8.5.11",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 5436,
+  "forks": 403,
+  "is_verified": true,
+  "homepage": "https://altairgraphql.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["altair_8.5.9_x64_win.exe"],
+    "linux": ["altair"],
+    "macos": ["altair.app"],
+    "android": [],
+    "ios": []
+  }
+}

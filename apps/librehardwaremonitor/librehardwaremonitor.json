@@ -1,0 +1,28 @@
+{
+  "id": "librehardwaremonitor/librehardwaremonitor",
+  "name": "Libre Hardware Monitor",
+  "owner": "LibreHardwareMonitor",
+  "repo": "LibreHardwareMonitor",
+  "icon": "https://raw.githubusercontent.com/LibreHardwareMonitor/LibreHardwareMonitor/master/LibreHardwareMonitor.Windows.Forms/Resources/icon.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "开源硬件温度/风扇/电压监控工具，读取 CPU、GPU 与主板传感器数据。",
+  "description_en": "Libre Hardware Monitor is free software that can monitor the temperature sensors, fan speeds, voltages, load and clock speeds of your computer.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["硬件监控", "温度", "hwmonitor"],
+  "default_version": "v0.9.6",
+  "added_at": "2026-09-13",
+  "license": "MPL-2.0",
+  "stars": 9397,
+  "forks": 1054,
+  "is_verified": true,
+  "homepage": "https://github.com/LibreHardwareMonitor/LibreHardwareMonitor",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["LibreHardwareMonitor.exe"],
+    "linux": ["librehardwaremonitor"],
+    "macos": ["LibreHardwareMonitor.app"],
+    "android": [],
+    "ios": []
+  }
+}

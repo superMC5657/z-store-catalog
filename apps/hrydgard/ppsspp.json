@@ -1,0 +1,28 @@
+{
+  "id": "hrydgard/ppsspp",
+  "name": "PPSSPP",
+  "owner": "hrydgard",
+  "repo": "ppsspp",
+  "icon": "https://raw.githubusercontent.com/hrydgard/ppsspp/master/icons/hicolor/512x512/apps/ppsspp.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "可在多平台高速运行的 PSP 模拟器。",
+  "description_en": "A PSP emulator for Android, Windows, Mac, Linux and iOS, written in C++. Want to contribute? Join us on Discord at https://discord.gg/5NJB6dD or just send pull requests / issues.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "psp", "游戏"],
+  "default_version": "v1.20.4",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 14905,
+  "forks": 2762,
+  "is_verified": true,
+  "homepage": "https://www.ppsspp.org",
+  "platforms": ["windows", "macos", "linux", "ios"],
+  "identifiers": {
+    "windows": ["ppsspp.exe"],
+    "linux": ["ppsspp"],
+    "macos": ["ppsspp.app"],
+    "android": [],
+    "ios": ["org.ppsspp"]
+  }
+}

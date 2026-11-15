@@ -1,0 +1,28 @@
+{
+  "id": "azahar-emu/azahar",
+  "name": "Azahar",
+  "owner": "azahar-emu",
+  "repo": "azahar",
+  "icon": "https://raw.githubusercontent.com/azahar-emu/azahar/master/dist/azahar.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Citra 3DS 模拟器的社区延续版，持续维护。",
+  "description_en": "An open-source 3DS emulator project based on Citra.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "3ds", "游戏"],
+  "default_version": "2126.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 8679,
+  "forks": 834,
+  "is_verified": true,
+  "homepage": "https://azahar-emu.org/",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["azahar.exe"],
+    "linux": ["azahar"],
+    "macos": ["azahar.app"],
+    "android": ["org.azahar"],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "lizardbyte/sunshine",
+  "name": "Sunshine",
+  "owner": "LizardByte",
+  "repo": "Sunshine",
+  "icon": "https://raw.githubusercontent.com/LizardByte/Sunshine/master/sunshine.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "自托管的游戏串流服务端，配合任意客户端实现低延迟远程游戏。",
+  "description_en": "Self-hosted game stream host for Moonlight.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["串流", "gamestream", "远程游戏"],
+  "default_version": "v2026.914.233613",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 43423,
+  "forks": 2387,
+  "is_verified": true,
+  "homepage": "http://app.lizardbyte.dev/Sunshine/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Sunshine.exe"],
+    "linux": ["sunshine"],
+    "macos": ["Sunshine.app"],
+    "android": [],
+    "ios": []
+  }
+}

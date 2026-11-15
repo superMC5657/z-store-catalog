@@ -1,0 +1,28 @@
+{
+  "id": "veracrypt/veracrypt",
+  "name": "VeraCrypt",
+  "owner": "veracrypt",
+  "repo": "VeraCrypt",
+  "icon": "https://raw.githubusercontent.com/veracrypt/VeraCrypt/master/src/Resources/Icons/VeraCrypt.svg",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "TrueCrypt 的继承者，全盘/分区/虚拟加密盘，隐藏卷保护数据。",
+  "description_en": "Disk encryption with strong security based on TrueCrypt",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["加密", "磁盘", "truecrypt"],
+  "default_version": "VeraCrypt_1.26.31",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 12130,
+  "forks": 1397,
+  "is_verified": true,
+  "homepage": "https://veracrypt.jp",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["VeraCrypt.Portable.1.26.29.exe"],
+    "linux": ["veracrypt"],
+    "macos": ["VeraCrypt.app"],
+    "android": [],
+    "ios": []
+  }
+}

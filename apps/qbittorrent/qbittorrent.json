@@ -1,0 +1,27 @@
+{
+  "id": "qbittorrent/qbittorrent",
+  "name": "qBittorrent",
+  "owner": "qbittorrent",
+  "repo": "qBittorrent",
+  "icon": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/dist/unix/menuicons/scalable/apps/qbittorrent.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "自由开源的 BitTorrent 客户端，基于 Qt 工具包构建，无广告，支持远程 Web 控制。",
+  "description_en": "qBittorrent BitTorrent client",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["qbittorrent", "qb", "bt", "torrent", "下载器", "种子下载"],
+  "default_version": "release-5.3.0",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 41619,
+  "forks": 4988,
+  "is_verified": true,
+  "homepage": "https://www.qbittorrent.org",
+  "publishers": ["The qBittorrent project"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["qbittorrent.exe"],
+    "linux": ["qbittorrent"],
+    "macos": ["qbittorrent.app"]
+  }
+}

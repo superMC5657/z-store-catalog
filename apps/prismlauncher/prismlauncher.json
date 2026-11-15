@@ -1,0 +1,28 @@
+{
+  "id": "prismlauncher/prismlauncher",
+  "name": "PrismLauncher",
+  "owner": "PrismLauncher",
+  "repo": "PrismLauncher",
+  "icon": "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/launcher/resources/multimc/scalable/instances/prismlauncher.svg",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "多版本同屏管理的 Minecraft 第三方启动器。",
+  "description_en": "A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once (Fork of MultiMC)",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["cpp", "cpp20", "fabricmc", "forge", "linux"],
+  "default_version": "11.1.1",
+  "added_at": "2026-10-16",
+  "license": "GPL-3.0",
+  "stars": 11126,
+  "forks": 1717,
+  "is_verified": true,
+  "homepage": "https://prismlauncher.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["PrismLauncher-Windows-MinGW-arm64-Setup.exe"],
+    "linux": ["prismlauncher"],
+    "macos": ["PrismLauncher.app"],
+    "android": [],
+    "ios": []
+  }
+}

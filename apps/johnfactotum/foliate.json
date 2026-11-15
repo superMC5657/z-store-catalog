@@ -1,0 +1,28 @@
+{
+  "id": "johnfactotum/foliate",
+  "name": "Foliate",
+  "owner": "johnfactotum",
+  "repo": "foliate",
+  "icon": "https://raw.githubusercontent.com/johnfactotum/foliate/gtk4/src/icons/hicolor/scalable/actions/speedometer-symbolic.svg",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "简洁优雅的 Linux 电子书阅读器，字典与注释齐全。",
+  "description_en": "Read e-books in style",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["电子书", "epub", "阅读"],
+  "default_version": "3.3.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 8879,
+  "forks": 438,
+  "is_verified": true,
+  "homepage": "https://johnfactotum.github.io/foliate/",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["foliate"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

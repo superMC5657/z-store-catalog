@@ -1,0 +1,28 @@
+{
+  "id": "jurplel/qview",
+  "name": "qView",
+  "owner": "jurplel",
+  "repo": "qView",
+  "icon": "https://raw.githubusercontent.com/jurplel/qView/main/dist/linux/hicolor/scalable/apps/com.interversehq.qView.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "界面极简的跨平台图片查看器，专注图片本身。",
+  "description_en": "Practical and minimal image viewer",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["看图", "图片", "viewer"],
+  "default_version": "7.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3737,
+  "forks": 219,
+  "is_verified": true,
+  "homepage": "https://interversehq.com/qview/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["qView.exe"],
+    "linux": ["qview"],
+    "macos": ["qView.app"],
+    "android": [],
+    "ios": []
+  }
+}

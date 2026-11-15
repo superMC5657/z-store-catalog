@@ -1,0 +1,28 @@
+{
+  "id": "chen08209/flclash",
+  "name": "FlClash",
+  "owner": "chen08209",
+  "repo": "FlClash",
+  "icon": "https://raw.githubusercontent.com/chen08209/FlClash/main/assets/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "基于 ClashMeta 的多平台代理客户端，简洁易用支持订阅。",
+  "description_en": "A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["代理", "clash", "科学上网"],
+  "default_version": "v0.9.3",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 63273,
+  "forks": 4187,
+  "is_verified": true,
+  "homepage": "https://github.com/chen08209/FlClash",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["FlClash.exe"],
+    "linux": ["flclash"],
+    "macos": ["FlClash.app"],
+    "android": ["org.flclash"],
+    "ios": []
+  }
+}

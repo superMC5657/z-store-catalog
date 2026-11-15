@@ -1,0 +1,28 @@
+{
+  "id": "pingdotgg/t3code",
+  "name": "t3code",
+  "owner": "pingdotgg",
+  "repo": "t3code",
+  "icon": "https://raw.githubusercontent.com/pingdotgg/t3code/refs/heads/main/assets/prod/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "一站式协同调度 Claude Code、Codex、Antigravity、OpenCode、Cursor 与 Grok。",
+  "description_en": "The best way to control Claude Code, Codex and more from any computer or phone",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["t3code", "pingdotgg/t3code"],
+  "default_version": "v0.1.9",
+  "added_at": "2026-11-11",
+  "license": "MIT",
+  "stars": 60698,
+  "forks": 10928,
+  "is_verified": true,
+  "homepage": "https://t3.codes",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["t3code.exe"],
+    "linux": ["t3code"],
+    "macos": ["t3code"],
+    "android": [],
+    "ios": []
+  }
+}

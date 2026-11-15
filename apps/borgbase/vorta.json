@@ -1,0 +1,28 @@
+{
+  "id": "borgbase/vorta",
+  "name": "Vorta",
+  "owner": "borgbase",
+  "repo": "vorta",
+  "icon": "https://raw.githubusercontent.com/borgbase/vorta/master/src/vorta/assets/icons/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "Borg 备份的桌面图形界面，去重加密快照备份，适合桌面用户定时保护数据。",
+  "description_en": "Desktop Backup Client for Borg Backup",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["备份", "borg", "快照"],
+  "default_version": "v0.12.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2529,
+  "forks": 247,
+  "is_verified": true,
+  "homepage": "https://vorta.borgbase.com",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["vorta.app"],
+    "android": [],
+    "ios": []
+  }
+}

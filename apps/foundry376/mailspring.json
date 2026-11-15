@@ -1,0 +1,28 @@
+{
+  "id": "foundry376/mailspring",
+  "name": "Mailspring",
+  "owner": "Foundry376",
+  "repo": "Mailspring",
+  "icon": "https://raw.githubusercontent.com/Foundry376/Mailspring/master/app/internal_packages/open-tracking/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "界面现代的跨平台邮件客户端，统一收件箱、手势与签名管理。",
+  "description_en": ":love_letter: A beautiful, fast and fully open source mail client for Mac, Windows and Linux.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["邮件", "email", "mail"],
+  "default_version": "1.26.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 18012,
+  "forks": 1066,
+  "is_verified": true,
+  "homepage": "https://getmailspring.com/",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["MailspringSetup.exe"],
+    "linux": ["mailspring"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

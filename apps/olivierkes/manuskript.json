@@ -1,0 +1,28 @@
+{
+  "id": "olivierkes/manuskript",
+  "name": "Manuskript",
+  "owner": "olivierkes",
+  "repo": "manuskript",
+  "icon": "https://raw.githubusercontent.com/olivierkes/manuskript/develop/icons/Manuskript/icon-512px.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "作家的一体化创作工具，大纲、角色卡与闪卡。",
+  "description_en": "A open-source tool for writers",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["写作", "小说", "大纲"],
+  "default_version": "0.17.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2481,
+  "forks": 331,
+  "is_verified": true,
+  "homepage": "http://www.theologeek.ch/manuskript",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["manuskript.exe"],
+    "linux": ["manuskript"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

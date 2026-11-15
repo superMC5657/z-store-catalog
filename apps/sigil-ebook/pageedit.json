@@ -1,0 +1,28 @@
+{
+  "id": "sigil-ebook/pageedit",
+  "name": "PageEdit",
+  "owner": "Sigil-Ebook",
+  "repo": "PageEdit",
+  "icon": "https://raw.githubusercontent.com/Sigil-Ebook/PageEdit/master/screencaps/pageedit.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "Sigil 姊妹篇，所见即所得的 EPUB 页面编辑器。",
+  "description_en": "ePub XHTML Visual Editor",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["epub", "排版", "编辑"],
+  "default_version": "2.7.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 312,
+  "forks": 35,
+  "is_verified": true,
+  "homepage": "https://github.com/Sigil-Ebook/PageEdit",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["PageEdit.exe"],
+    "linux": ["pageedit"],
+    "macos": ["PageEdit.app"],
+    "android": [],
+    "ios": []
+  }
+}

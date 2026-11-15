@@ -1,0 +1,28 @@
+{
+  "id": "rustdesk/rustdesk",
+  "name": "RustDesk",
+  "owner": "rustdesk",
+  "repo": "rustdesk",
+  "icon": "https://raw.githubusercontent.com/rustdesk/rustdesk/master/res/icon.png",
+  "icon_bg": "linear-gradient(135deg, #f97316, #ea580c)",
+  "description": "开箱即用的开源远程桌面控制客户端，端到端加密，替代 TeamViewer 与 AnyDesk。",
+  "description_en": "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["远程桌面", "远控", "桌面控制", "remote desktop", "anydesk"],
+  "default_version": "1.5.3",
+  "added_at": "2026-09-10",
+  "license": "AGPL-3.0",
+  "stars": 129486,
+  "forks": 20706,
+  "is_verified": true,
+  "homepage": "https://rustdesk.com",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["rustdesk.exe"],
+    "linux": ["rustdesk"],
+    "macos": ["RustDesk.app", "rustdesk"],
+    "android": ["com.carriez.flutter_rustdesk"],
+    "ios": ["com.carriez.rustdesk"]
+  }
+}

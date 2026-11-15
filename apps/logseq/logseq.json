@@ -1,0 +1,28 @@
+{
+  "id": "logseq/logseq",
+  "name": "Logseq",
+  "owner": "logseq",
+  "repo": "logseq",
+  "icon": "https://raw.githubusercontent.com/logseq/logseq/master/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #10b981, #059669)",
+  "description": "保护隐私的本地优先双链大纲笔记工具，构建个人的第二大脑与知识图谱。",
+  "description_en": "A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: https://logseq.io/p/NX4mc_ggEV",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["大纲笔记", "双链笔记", "卡片盒", "第二大脑", "roam"],
+  "default_version": "2.0.2",
+  "added_at": "2026-09-10",
+  "license": "AGPL-3.0",
+  "stars": 45594,
+  "forks": 2870,
+  "is_verified": true,
+  "homepage": "https://logseq.com",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["Logseq.exe"],
+    "linux": ["logseq"],
+    "macos": ["Logseq.app"],
+    "android": ["com.logseq.app"],
+    "ios": ["com.logseq.mobile"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "authpass/authpass",
+  "name": "AuthPass",
+  "owner": "authpass",
+  "repo": "authpass",
+  "icon": "https://raw.githubusercontent.com/authpass/authpass/main/metadata/android/de-DE/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "跨平台兼容 KeePass 的密码管理器，多端同步。",
+  "description_en": "AuthPass - Password Manager based on Flutter for all platforms. Keepass 2.x (KDBX 3 and KDBX 4) compatible.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["密码", "keepass", "管理"],
+  "default_version": "v1.9.11",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2813,
+  "forks": 291,
+  "is_verified": true,
+  "homepage": "https://authpass.app/",
+  "platforms": ["windows", "linux", "android"],
+  "identifiers": {
+    "windows": ["authpass.exe"],
+    "linux": ["authpass"],
+    "macos": [],
+    "android": ["org.authpass"],
+    "ios": []
+  }
+}

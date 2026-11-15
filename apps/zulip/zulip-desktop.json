@@ -1,0 +1,28 @@
+{
+  "id": "zulip/zulip-desktop",
+  "name": "Zulip",
+  "owner": "zulip",
+  "repo": "zulip-desktop",
+  "icon": "https://raw.githubusercontent.com/zulip/zulip-desktop/main/public/resources/Icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "话题式组织消息的团队聊天桌面客户端，开源免费。",
+  "description_en": "Zulip Desktop client for Mac, Windows and Linux.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["聊天", "团队", "zulip"],
+  "default_version": "v5.14.2",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 992,
+  "forks": 556,
+  "is_verified": true,
+  "homepage": "https://zulip.com/apps",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Zulip-Web-Setup.exe"],
+    "linux": ["zulip-desktop"],
+    "macos": ["zulip-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

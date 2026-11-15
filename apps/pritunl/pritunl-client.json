@@ -1,0 +1,28 @@
+{
+  "id": "pritunl/pritunl-client",
+  "name": "Pritunl Client",
+  "owner": "pritunl",
+  "repo": "pritunl-client",
+  "icon": "https://raw.githubusercontent.com/pritunl/pritunl-client/master/client/dist-dev/img/logo.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "OpenVPN/WireGuard 图形客户端，多配置管理。",
+  "description_en": "Pritunl OpenVPN and WireGuard client",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["vpn", "openvpn", "客户端"],
+  "default_version": "1.4.4791.77",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 1477,
+  "forks": 270,
+  "is_verified": true,
+  "homepage": "https://client.pritunl.com",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["Pritunl.exe"],
+    "linux": ["pritunl-client"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

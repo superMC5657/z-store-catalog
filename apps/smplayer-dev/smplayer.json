@@ -1,0 +1,28 @@
+{
+  "id": "smplayer-dev/smplayer",
+  "name": "SMPlayer",
+  "owner": "smplayer-dev",
+  "repo": "smplayer",
+  "icon": "https://raw.githubusercontent.com/smplayer-dev/smplayer/master/src/default-theme/logo.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "记住播放进度与设置的跨平台播放器，内置字幕搜索，mpv 内核。",
+  "description_en": "Free Media Player for Windows, Linux and Mac OS with YouTube support.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["播放器", "字幕", "video"],
+  "default_version": "v26.8.29",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 1086,
+  "forks": 134,
+  "is_verified": true,
+  "homepage": "https://smplayer.info",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["smplayer.exe"],
+    "linux": ["smplayer"],
+    "macos": ["smplayer.app"],
+    "android": [],
+    "ios": []
+  }
+}

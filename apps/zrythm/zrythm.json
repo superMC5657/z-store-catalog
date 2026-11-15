@@ -1,0 +1,28 @@
+{
+  "id": "zrythm/zrythm",
+  "name": "Zrythm",
+  "owner": "zrythm",
+  "repo": "zrythm",
+  "icon": "https://raw.githubusercontent.com/zrythm/zrythm/master/src/gui/resources/icons/zrythm-dark/scalable/apps/zrythm.svg",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "现代化的开源 DAW，支持自动化曲线与 LV2 插件。",
+  "description_en": "a highly automated and intuitive digital audio workstation - official mirror",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["编曲", "daw", "音乐制作"],
+  "default_version": "v1.0.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 3206,
+  "forks": 153,
+  "is_verified": true,
+  "homepage": "https://www.zrythm.org",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["zrythm.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "warzone2100/warzone2100",
+  "name": "Warzone 2100",
+  "owner": "Warzone2100",
+  "repo": "warzone2100",
+  "icon": "https://raw.githubusercontent.com/Warzone2100/warzone2100/master/icons/warzone2100.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源未来战争 RTS，自由组装战车单位。",
+  "description_en": "Command the forces of The Project in a battle to rebuild the world after mankind has been nearly destroyed by nuclear missiles. A 100% free and open source real-time strategy game for Windows, macOS, Linux, BSD+",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["rts", "战争", "策略"],
+  "default_version": "4.7.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 4059,
+  "forks": 644,
+  "is_verified": true,
+  "homepage": "https://wz2100.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["warzone2100.exe"],
+    "linux": ["warzone2100"],
+    "macos": ["warzone2100.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "yang991178/fluent-reader",
+  "name": "Fluent Reader",
+  "owner": "yang991178",
+  "repo": "fluent-reader",
+  "icon": "https://raw.githubusercontent.com/yang991178/fluent-reader/master/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "Fluent Design 风格的跨平台 RSS 阅读器。",
+  "description_en": "Modern desktop RSS reader built with Electron, React, and Fluent UI",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["rss", "订阅", "阅读"],
+  "default_version": "v1.3.2",
+  "added_at": "2026-09-13",
+  "license": "BSD-3-Clause",
+  "stars": 9792,
+  "forks": 552,
+  "is_verified": true,
+  "homepage": "https://hyliu.me/fluent-reader/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Fluent.Reader.Setup.1.2.2.x64.exe"],
+    "linux": ["fluent-reader"],
+    "macos": ["fluent-reader.app"],
+    "android": [],
+    "ios": []
+  }
+}

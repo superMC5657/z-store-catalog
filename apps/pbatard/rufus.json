@@ -1,0 +1,28 @@
+{
+  "id": "pbatard/rufus",
+  "name": "Rufus",
+  "owner": "pbatard",
+  "repo": "rufus",
+  "icon": "https://raw.githubusercontent.com/pbatard/rufus/master/res/appstore/Images/Square44x44Logo.altform-lightunplated_targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "老牌可靠的 U 盘启动盘制作工具，支持 Windows To Go 与各类 ISO 镜像写入。",
+  "description_en": "The Reliable USB Formatting Utility",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["启动盘", "rufus", "usb"],
+  "default_version": "v4.15",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 38344,
+  "forks": 3209,
+  "is_verified": true,
+  "homepage": "https://rufus.ie",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["rufus.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

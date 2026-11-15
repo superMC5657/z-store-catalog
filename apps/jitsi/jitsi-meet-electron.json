@@ -1,0 +1,28 @@
+{
+  "id": "jitsi/jitsi-meet-electron",
+  "name": "Jitsi Meet",
+  "owner": "jitsi",
+  "repo": "jitsi-meet-electron",
+  "icon": "https://raw.githubusercontent.com/jitsi/jitsi-meet-electron/master/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "开源视频会议桌面客户端，无需注册即可加密会议与屏幕共享。",
+  "description_en": "Jitsi Meet desktop application powered by :electron:",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["视频会议", "会议", "zoom"],
+  "default_version": "v2026.10.0",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 1635,
+  "forks": 512,
+  "is_verified": true,
+  "homepage": "https://github.com/jitsi/jitsi-meet-electron",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["jitsi-meet.exe"],
+    "linux": ["jitsi-meet-electron"],
+    "macos": ["jitsi-meet-electron.app"],
+    "android": [],
+    "ios": []
+  }
+}

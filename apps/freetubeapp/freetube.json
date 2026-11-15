@@ -1,0 +1,28 @@
+{
+  "id": "freetubeapp/freetube",
+  "name": "FreeTube",
+  "owner": "FreeTubeApp",
+  "repo": "FreeTube",
+  "icon": "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/development/_icons/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "不追踪的本地 YouTube 客户端，订阅本地保存，无广告打扰。",
+  "description_en": "An Open Source YouTube app for privacy",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["youtube", "视频", "隐私"],
+  "default_version": "v0.25.3-beta",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 22455,
+  "forks": 1591,
+  "is_verified": true,
+  "homepage": "https://freetubeapp.io/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["freetube.exe"],
+    "linux": ["freetube"],
+    "macos": ["FreeTube.app"],
+    "android": [],
+    "ios": []
+  }
+}

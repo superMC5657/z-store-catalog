@@ -1,0 +1,28 @@
+{
+  "id": "2dust/v2rayn",
+  "name": "v2rayN",
+  "owner": "2dust",
+  "repo": "v2rayN",
+  "icon": "https://raw.githubusercontent.com/2dust/v2rayN/master/v2rayN/v2rayN.Desktop/v2rayN.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "Windows 平台流行的代理客户端，支持 Xray/sing-box 多内核与订阅管理。",
+  "description_en": "A GUI client for Windows, Linux and macOS, support Xray and sing-box and others",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["代理", "v2ray", "科学上网"],
+  "default_version": "7.25.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 120635,
+  "forks": 16324,
+  "is_verified": true,
+  "homepage": "https://v2rayn.2dust.link",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["v2rayN.exe"],
+    "linux": ["v2rayn"],
+    "macos": ["v2rayN.app"],
+    "android": [],
+    "ios": []
+  }
+}

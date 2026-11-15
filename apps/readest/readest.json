@@ -1,0 +1,28 @@
+{
+  "id": "readest/readest",
+  "name": "Readest",
+  "owner": "readest",
+  "repo": "readest",
+  "icon": "https://raw.githubusercontent.com/readest/readest/main/apps/readest-app/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "面向现代阅读体验的开源电子书阅读器，AI 辅助与多端同步。",
+  "description_en": "Readest is a modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface to elevate your reading experience.",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["电子书", "epub", "阅读"],
+  "default_version": "v0.12.20",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 26297,
+  "forks": 1874,
+  "is_verified": true,
+  "homepage": "https://readest.com",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Readest_0.12.8_arm64-portable.exe"],
+    "linux": ["readest"],
+    "macos": ["readest.app"],
+    "android": ["org.readest"],
+    "ios": []
+  }
+}

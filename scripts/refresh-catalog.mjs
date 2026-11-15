@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { formatCatalogJson } from './lib/catalog-shared.mjs';
+import { formatAppJson, formatCatalogJson } from './lib/catalog-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -108,6 +108,16 @@ for (const item of catalog) {
     process.exit(1);
   }
 }
+
+// 写回每个独立应用文件 apps/<owner>/<repo>.json
+const appsDir = path.join(rootDir, 'apps');
+for (const item of catalog) {
+  const parts = item.id.toLowerCase().split('/');
+  const ownerDir = path.join(appsDir, parts[0]);
+  fs.mkdirSync(ownerDir, { recursive: true });
+  fs.writeFileSync(path.join(ownerDir, `${parts[1]}.json`), formatAppJson(item), 'utf8');
+}
+console.log(`💾 已写回独立应用目录: apps/`);
 
 // 格式化写回 catalog.json（保持纯标量数组单行）
 const formattedJson = formatCatalogJson(catalog);

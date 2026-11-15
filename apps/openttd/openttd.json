@@ -1,0 +1,27 @@
+{
+  "id": "openttd/openttd",
+  "name": "OpenTTD",
+  "owner": "OpenTTD",
+  "repo": "OpenTTD",
+  "icon": "https://raw.githubusercontent.com/OpenTTD/OpenTTD/master/media/openttd.512.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #065f46)",
+  "description": "广受欢迎的开源模拟经营游戏《运输大亨豪华版》复刻版，支持多人联机。",
+  "description_en": "OpenTTD is an open source simulation game based upon Transport Tycoon Deluxe",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟经营", "运输大亨", "火车模拟", "经营游戏", "openttd"],
+  "default_version": "15.3",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 8504,
+  "forks": 1348,
+  "is_verified": true,
+  "homepage": "https://www.openttd.org",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["openttd.exe"],
+    "linux": ["openttd"],
+    "macos": ["OpenTTD.app"],
+    "android": ["org.openttd.sdl"]
+  }
+}

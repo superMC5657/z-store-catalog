@@ -1,0 +1,28 @@
+{
+  "id": "diskcryptor/diskcryptor",
+  "name": "DiskCryptor",
+  "owner": "DiskCryptor",
+  "repo": "DiskCryptor",
+  "icon": "https://raw.githubusercontent.com/DiskCryptor/DiskCryptor/master/DCrypt/gui/dcrypt.ico",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "开源磁盘分区加密工具，支持全盘与分区加密。",
+  "description_en": "DiskCryptor Open Source full disk encryption tool ",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["加密", "磁盘", "分区"],
+  "default_version": "v2.0.2",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 665,
+  "forks": 121,
+  "is_verified": true,
+  "homepage": "https://www.diskcryptor.org",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["DiskCryptor.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "pawelsalawa/letos",
+  "name": "SQLiteStudio",
+  "owner": "pawelsalawa",
+  "repo": "letos",
+  "icon": "https://raw.githubusercontent.com/pawelsalawa/letos/master/Letos/gui/img/letos.svg",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "功能丰富的 SQLite 管理器，插件化跨平台。",
+  "description_en": "A free, open source, multi-platform SQLite database manager.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["sqlite", "数据库", "工具"],
+  "default_version": "4.0.4",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 6827,
+  "forks": 667,
+  "is_verified": true,
+  "homepage": "https://letos.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["letos.exe"],
+    "linux": ["letos"],
+    "macos": ["letos.app"],
+    "android": [],
+    "ios": []
+  }
+}

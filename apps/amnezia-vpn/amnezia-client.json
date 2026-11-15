@@ -1,0 +1,28 @@
+{
+  "id": "amnezia-vpn/amnezia-client",
+  "name": "AmneziaVPN",
+  "owner": "amnezia-vpn",
+  "repo": "amnezia-client",
+  "icon": "https://raw.githubusercontent.com/amnezia-vpn/amnezia-client/dev/metadata/en-US/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "一键在自有服务器部署抗封锁 VPN 的客户端，协议混淆。",
+  "description_en": "Amnezia VPN Client (Desktop+Mobile)",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["vpn", "自建", "翻墙"],
+  "default_version": "5.1.0.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 15953,
+  "forks": 1291,
+  "is_verified": true,
+  "homepage": "https://amnezia.org",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["AmneziaVPN_5.0.1.5_windows_x64.exe"],
+    "linux": ["amnezia-client"],
+    "macos": ["amnezia-client.app"],
+    "android": ["org.amnezia-client"],
+    "ios": []
+  }
+}

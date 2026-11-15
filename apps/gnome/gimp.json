@@ -1,0 +1,28 @@
+{
+  "id": "gnome/gimp",
+  "name": "GIMP",
+  "owner": "GNOME",
+  "repo": "gimp",
+  "icon": "https://raw.githubusercontent.com/GNOME/gimp/master/plug-ins/gfig/images/gfig-logo.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "最著名的开源图像处理软件，图层蒙版与丰富滤镜，Photoshop 替代。",
+  "description_en": "Read-only mirror of https://gitlab.gnome.org/GNOME/gimp",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["图像", "photoshop", "修图"],
+  "default_version": "soc-2012-unified-transform-before-gsoc",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 6586,
+  "forks": 927,
+  "is_verified": true,
+  "homepage": "https://gitlab.gnome.org/GNOME/gimp",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["gimp.exe"],
+    "linux": ["gimp"],
+    "macos": ["gimp.app"],
+    "android": [],
+    "ios": []
+  }
+}

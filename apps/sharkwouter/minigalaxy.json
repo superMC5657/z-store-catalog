@@ -1,0 +1,28 @@
+{
+  "id": "sharkwouter/minigalaxy",
+  "name": "MiniGalaxy",
+  "owner": "sharkwouter",
+  "repo": "minigalaxy",
+  "icon": "https://raw.githubusercontent.com/sharkwouter/minigalaxy/master/minigalaxy/ui/data/icon_linux.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "简洁的 GOG 游戏库客户端，下载安装管理一体。",
+  "description_en": "A simple GOG client for Linux",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["游戏平台", "gog", "启动器"],
+  "default_version": "1.4.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1332,
+  "forks": 80,
+  "is_verified": true,
+  "homepage": "https://sharkwouter.github.io/minigalaxy/",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["minigalaxy"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

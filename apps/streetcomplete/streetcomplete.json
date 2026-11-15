@@ -1,0 +1,28 @@
+{
+  "id": "streetcomplete/streetcomplete",
+  "name": "StreetComplete",
+  "owner": "streetcomplete",
+  "repo": "StreetComplete",
+  "icon": "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/metadata/en/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "安卓上简单易用的 OpenStreetMap 地图编辑器。",
+  "description_en": "Easy to use OpenStreetMap editor for Android and iOS",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["android", "editor", "mapping", "openstreetmap", "osm"],
+  "default_version": "v64.1",
+  "added_at": "2026-10-16",
+  "license": "GPL-3.0",
+  "stars": 5152,
+  "forks": 478,
+  "is_verified": true,
+  "homepage": "https://streetcomplete.app",
+  "platforms": ["android"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": [],
+    "android": ["org.streetcomplete"],
+    "ios": []
+  }
+}

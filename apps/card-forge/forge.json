@@ -1,0 +1,28 @@
+{
+  "id": "card-forge/forge",
+  "name": "Forge",
+  "owner": "Card-Forge",
+  "repo": "forge",
+  "icon": "https://raw.githubusercontent.com/Card-Forge/forge/master/forge-gui-android/res/drawable/logo.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源万智牌游戏引擎与冒险模式。",
+  "description_en": "An unofficial rules engine for the world's greatest card game.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["万智牌", "卡牌", "mtg"],
+  "default_version": "forge-2.0.16",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2908,
+  "forks": 1249,
+  "is_verified": true,
+  "homepage": "https://card-forge.github.io/forge/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["forge.exe"],
+    "linux": ["forge"],
+    "macos": ["forge.app"],
+    "android": [],
+    "ios": []
+  }
+}

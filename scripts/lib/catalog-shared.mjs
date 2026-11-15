@@ -361,3 +361,15 @@ export function formatCatalogJson(catalog) {
     return `[${items}]`;
   }) + '\n';
 }
+
+/**
+ * 格式化单个独立应用清单 JSON
+ */
+export function formatAppJson(item) {
+  return (
+    formatCatalogJson([item])
+      .replace(/^\[\s*\n/, '')
+      .replace(/\n\s*\]\n?$/, '\n')
+      .replace(/^  /gm, '')
+  );
+}

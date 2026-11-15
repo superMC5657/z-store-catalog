@@ -1,0 +1,28 @@
+{
+  "id": "koreader/koreader",
+  "name": "KOReader",
+  "owner": "koreader",
+  "repo": "koreader",
+  "icon": "https://raw.githubusercontent.com/koreader/koreader/master/metadata/en-US/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "针对 E-ink 墨水屏及各类桌面设备打造的轻量级 EPUB/PDF 文档阅读神器。",
+  "description_en": "An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["电子书", "epub阅读", "pdf阅读器", "阅读", "ereader"],
+  "default_version": "v2026.07.1",
+  "added_at": "2026-09-10",
+  "license": "AGPL-3.0",
+  "stars": 31093,
+  "forks": 2037,
+  "is_verified": true,
+  "homepage": "https://koreader.rocks",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["koreader.exe"],
+    "linux": ["koreader"],
+    "macos": ["KOReader.app"],
+    "android": ["org.koreader.launcher"],
+    "ios": ["org.koreader.launcher"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "jellyfin/jellyfin-desktop",
+  "name": "Jellyfin Media Player",
+  "owner": "jellyfin",
+  "repo": "jellyfin-desktop",
+  "icon": "https://raw.githubusercontent.com/jellyfin/jellyfin-desktop/master/resources/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "Jellyfin 媒体服务器的官方桌面播放客户端，支持远程媒体库。",
+  "description_en": "Jellyfin Desktop Client",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["jellyfin", "媒体", "播放器"],
+  "default_version": "v1.12.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 6025,
+  "forks": 597,
+  "is_verified": true,
+  "homepage": "https://github.com/jellyfin/jellyfin-desktop",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["JellyfinMediaPlayer.exe"],
+    "linux": ["jellyfin-desktop"],
+    "macos": ["jellyfin-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

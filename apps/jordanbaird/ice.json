@@ -1,0 +1,28 @@
+{
+  "id": "jordanbaird/ice",
+  "name": "Ice",
+  "owner": "jordanbaird",
+  "repo": "Ice",
+  "icon": "https://raw.githubusercontent.com/jordanbaird/Ice/main/Resources/Icon.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "开源的 macOS 菜单栏图标管理工具，隐藏/折叠图标，Bartender 替代。",
+  "description_en": "Powerful menu bar manager for macOS",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["菜单栏", "menubar", "macos"],
+  "default_version": "0.11.12",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 30030,
+  "forks": 1056,
+  "is_verified": true,
+  "homepage": "https://icemenubar.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Ice.exe"],
+    "linux": ["ice"],
+    "macos": ["Ice.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "gemrb/gemrb",
+  "name": "GemRB",
+  "owner": "gemrb",
+  "repo": "gemrb",
+  "icon": "https://raw.githubusercontent.com/gemrb/gemrb/master/artwork/gemrb-logo.ico",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "无限引擎（博德之门/异域镇魂曲）的开源跨平台重实现。",
+  "description_en": "GemRB is a portable open-source implementation of Bioware’s Infinity Engine.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["博德之门", "rpg", "复刻"],
+  "default_version": "v0.9.5",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 1271,
+  "forks": 236,
+  "is_verified": true,
+  "homepage": "https://gemrb.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["gemrb.exe"],
+    "linux": ["gemrb"],
+    "macos": ["gemrb.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "syvaidya/openstego",
+  "name": "OpenStego",
+  "owner": "syvaidya",
+  "repo": "openstego",
+  "icon": "https://raw.githubusercontent.com/syvaidya/openstego/master/artifacts/openstego.svg",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "图片隐写与水印工具，把秘密藏进图片。",
+  "description_en": "OpenStego is a steganography application that provides two functionalities: a) Data Hiding: It can hide any data within an image file. b) Watermarking: Watermarking image files with an invisible signature. It can be used to detect unauthorized file copying.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["隐写", "水印", "stego"],
+  "default_version": "openstego-0.8.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 1449,
+  "forks": 245,
+  "is_verified": true,
+  "homepage": "https://www.openstego.com",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["Setup-OpenStego.exe"],
+    "linux": ["openstego"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

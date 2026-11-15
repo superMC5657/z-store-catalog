@@ -1,0 +1,26 @@
+{
+  "id": "hoppscotch/hoppscotch",
+  "name": "Hoppscotch",
+  "owner": "hoppscotch",
+  "repo": "hoppscotch",
+  "icon": "https://raw.githubusercontent.com/hoppscotch/hoppscotch/main/packages/hoppscotch-desktop/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "开源轻量的 API 研发与调试利器，替代 Postman，极速无广告。",
+  "description_en": "Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["接口调试", "api测试", "http测试", "postman替代", "rest"],
+  "default_version": "2026.10.1",
+  "added_at": "2026-09-10",
+  "license": "MIT",
+  "stars": 80814,
+  "forks": 6240,
+  "is_verified": true,
+  "homepage": "https://hoppscotch.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Hoppscotch.exe"],
+    "linux": ["hoppscotch"],
+    "macos": ["Hoppscotch.app"]
+  }
+}

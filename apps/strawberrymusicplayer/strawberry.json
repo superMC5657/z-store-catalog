@@ -1,0 +1,28 @@
+{
+  "id": "strawberrymusicplayer/strawberry",
+  "name": "Strawberry",
+  "owner": "strawberrymusicplayer",
+  "repo": "strawberry",
+  "icon": "https://raw.githubusercontent.com/strawberrymusicplayer/strawberry/master/data/icons/128x128/strawberry.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "面向音乐收藏者的播放器，源自 Clementine，标签管理强大。",
+  "description_en": ":strawberry: Strawberry Music Player",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "播放器", "clementine"],
+  "default_version": "1.2.31",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 4082,
+  "forks": 380,
+  "is_verified": true,
+  "homepage": "https://www.strawberrymusicplayer.org/",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["strawberry"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

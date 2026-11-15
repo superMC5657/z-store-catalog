@@ -1,0 +1,28 @@
+{
+  "id": "rizinorg/cutter",
+  "name": "Cutter",
+  "owner": "rizinorg",
+  "repo": "cutter",
+  "icon": "https://raw.githubusercontent.com/rizinorg/cutter/dev/src/img/cutter.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "基于 Rizin 的图形化逆向分析工具，反编译与调试一体。",
+  "description_en": "Free and Open Source Reverse Engineering Platform powered by rizin",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["逆向", "radare", "安全"],
+  "default_version": "v2.5.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 20220,
+  "forks": 1550,
+  "is_verified": true,
+  "homepage": "https://cutter.re",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["cutter.exe"],
+    "linux": ["cutter"],
+    "macos": ["cutter.app"],
+    "android": [],
+    "ios": []
+  }
+}

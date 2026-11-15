@@ -1,0 +1,28 @@
+{
+  "id": "spacedriveapp/spacedrive",
+  "name": "Spacedrive",
+  "owner": "spacedriveapp",
+  "repo": "spacedrive",
+  "icon": "https://raw.githubusercontent.com/spacedriveapp/spacedrive/main/apps/tauri/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "基于虚拟分布式文件系统的跨平台文件管理器，统一管理所有设备与云盘的照片文件。",
+  "description_en": "Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["文件管理", "跨设备", "相册"],
+  "default_version": "0.4.3",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 39515,
+  "forks": 1381,
+  "is_verified": true,
+  "homepage": "https://spacedrive.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["spacedrive.exe"],
+    "linux": ["spacedrive"],
+    "macos": ["spacedrive.app"],
+    "android": [],
+    "ios": []
+  }
+}

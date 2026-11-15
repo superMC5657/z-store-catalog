@@ -1,0 +1,24 @@
+{
+  "id": "sharex/sharex",
+  "name": "ShareX",
+  "owner": "ShareX",
+  "repo": "ShareX",
+  "icon": "https://raw.githubusercontent.com/ShareX/ShareX/develop/ShareX.HelpersLib/Resources/ShareX_Logo.png",
+  "icon_bg": "linear-gradient(135deg, #0ea5e9, #2563eb)",
+  "description": "Windows 平台最强开源截屏、录屏 GIF、OCR 文字识别与文件分享工具。",
+  "description_en": "ShareX is a free and open-source application that enables users to capture or record any area of their screen with a single keystroke. It also supports uploading images, text, and various file types to a wide range of destinations.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["截屏", "录屏gif", "ocr识别", "屏幕录制", "sharex"],
+  "default_version": "v22.4.0",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 41042,
+  "forks": 4079,
+  "is_verified": true,
+  "homepage": "https://getsharex.com",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["ShareX.exe"]
+  }
+}

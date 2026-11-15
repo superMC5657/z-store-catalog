@@ -1,0 +1,28 @@
+{
+  "id": "ares-emulator/ares",
+  "name": "ares",
+  "owner": "ares-emulator",
+  "repo": "ares",
+  "icon": "https://raw.githubusercontent.com/ares-emulator/ares/master/desktop-ui/resource/ares.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "追求高精度周期模拟的多机种模拟器，覆盖海量主机。",
+  "description_en": "ares is a cross-platform, open source, multi-system emulator, focusing on accuracy and preservation.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "多系统", "游戏"],
+  "default_version": "v148",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 1864,
+  "forks": 242,
+  "is_verified": true,
+  "homepage": "https://ares-emu.net",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["ares.exe"],
+    "linux": [],
+    "macos": ["ares.app"],
+    "android": [],
+    "ios": []
+  }
+}

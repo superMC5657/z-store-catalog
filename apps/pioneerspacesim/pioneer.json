@@ -1,0 +1,28 @@
+{
+  "id": "pioneerspacesim/pioneer",
+  "name": "Pioneer",
+  "owner": "pioneerspacesim",
+  "repo": "pioneer",
+  "icon": "https://raw.githubusercontent.com/pioneerspacesim/pioneer/master/data/icons/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源太空航行与探索模拟游戏，类 Frontier。",
+  "description_en": "A game of lonely space adventure",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["太空", "模拟", "探索"],
+  "default_version": "20260907",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 1935,
+  "forks": 431,
+  "is_verified": true,
+  "homepage": "https://pioneerspacesim.net",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["pioneer.exe"],
+    "linux": ["pioneer"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

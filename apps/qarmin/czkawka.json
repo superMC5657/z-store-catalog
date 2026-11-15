@@ -1,0 +1,28 @@
+{
+  "id": "qarmin/czkawka",
+  "name": "Czkawka",
+  "owner": "qarmin",
+  "repo": "czkawka",
+  "icon": "https://raw.githubusercontent.com/qarmin/czkawka/master/czkawka_gui/icons/icon.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "极速查找重复文件、空文件夹、相似图片与失效符号链接的跨平台清理工具。",
+  "description_en": "Multi functional app to find duplicates, empty folders, similar images etc.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["重复文件", "清理", "duplicate"],
+  "default_version": "12.0.2",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 35188,
+  "forks": 1265,
+  "is_verified": true,
+  "homepage": "https://github.com/qarmin/czkawka",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["windows_czkawka_cli.exe"],
+    "linux": ["czkawka"],
+    "macos": ["czkawka.app"],
+    "android": ["org.czkawka"],
+    "ios": []
+  }
+}

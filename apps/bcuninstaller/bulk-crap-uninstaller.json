@@ -1,0 +1,28 @@
+{
+  "id": "bcuninstaller/bulk-crap-uninstaller",
+  "name": "BCUninstaller",
+  "owner": "BCUninstaller",
+  "repo": "Bulk-Crap-Uninstaller",
+  "icon": "https://raw.githubusercontent.com/BCUninstaller/Bulk-Crap-Uninstaller/master/source/BulkCrapUninstaller/Resources/logo.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "批量卸载与残留清理工具，可强制卸载、静默卸载与扫描残留，免费开源。",
+  "description_en": "Remove large amounts of unwanted applications quickly.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["卸载", "清理", "uninstaller"],
+  "default_version": "v6.3",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 22487,
+  "forks": 983,
+  "is_verified": true,
+  "homepage": "https://www.bcuninstaller.com/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["Bulk-Crap-Uninstaller.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

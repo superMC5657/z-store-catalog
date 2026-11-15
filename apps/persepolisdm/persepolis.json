@@ -1,0 +1,28 @@
+{
+  "id": "persepolisdm/persepolis",
+  "name": "Persepolis",
+  "owner": "persepolisdm",
+  "repo": "persepolis",
+  "icon": "https://raw.githubusercontent.com/persepolisdm/persepolis/master/resources/Papirus/stop_all.svg",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "aria2 的图形前端下载管理器，多线程断点续传与视频下载。",
+  "description_en": "Persepolis is a download manager written in Python.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["下载器", "aria2", "download"],
+  "default_version": "5.2.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7501,
+  "forks": 712,
+  "is_verified": true,
+  "homepage": "https://persepolisdm.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["persepolis_5.2.0.0_windows_64bit.exe"],
+    "linux": ["persepolis"],
+    "macos": ["persepolis.app"],
+    "android": [],
+    "ios": []
+  }
+}

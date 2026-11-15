@@ -1,0 +1,28 @@
+{
+  "id": "triliumnext/trilium",
+  "name": "Trilium Notes",
+  "owner": "TriliumNext",
+  "repo": "Trilium",
+  "icon": "https://raw.githubusercontent.com/TriliumNext/Trilium/main/apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "面向大型知识库的层级笔记应用，丰富的编辑与关系视图。",
+  "description_en": "Build your personal knowledge base with Trilium Notes",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "知识库", "wiki"],
+  "default_version": "v0.107.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 38946,
+  "forks": 2629,
+  "is_verified": true,
+  "homepage": "https://triliumnotes.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["TriliumNotes.exe"],
+    "linux": ["trilium"],
+    "macos": ["Trilium.app"],
+    "android": [],
+    "ios": []
+  }
+}

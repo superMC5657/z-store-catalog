@@ -1,0 +1,28 @@
+{
+  "id": "albertlauncher/albert",
+  "name": "Albert",
+  "owner": "albertlauncher",
+  "repo": "albert",
+  "icon": "https://raw.githubusercontent.com/albertlauncher/albert/main/resources/albert.svg",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "C++/Qt 打造的 Linux 快捷启动器，插件丰富，类 Alfred/Spotlight。",
+  "description_en": "A fast and flexible keyboard launcher",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["启动器", "launcher", "linux"],
+  "default_version": "v35.2.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 8008,
+  "forks": 324,
+  "is_verified": true,
+  "homepage": "https://albertlauncher.github.io",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["albert.app"],
+    "android": [],
+    "ios": []
+  }
+}

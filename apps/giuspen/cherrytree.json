@@ -1,0 +1,28 @@
+{
+  "id": "giuspen/cherrytree",
+  "name": "CherryTree",
+  "owner": "giuspen",
+  "repo": "cherrytree",
+  "icon": "https://raw.githubusercontent.com/giuspen/cherrytree/master/icons/48px/cherrytree.svg",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "支持富文本与代码高亮的层级笔记，单文件存储。",
+  "description_en": "cherrytree",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "层级", "树"],
+  "default_version": "v1.7.3",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 3997,
+  "forks": 528,
+  "is_verified": true,
+  "homepage": "https://www.giuspen.net/cherrytree/",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["cherrytree.exe"],
+    "linux": ["cherrytree"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

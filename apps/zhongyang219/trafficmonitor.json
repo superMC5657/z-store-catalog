@@ -1,0 +1,28 @@
+{
+  "id": "zhongyang219/trafficmonitor",
+  "name": "TrafficMonitor",
+  "owner": "zhongyang219",
+  "repo": "TrafficMonitor",
+  "icon": "https://raw.githubusercontent.com/zhongyang219/TrafficMonitor/master/TrafficMonitor/res/notifyicon.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "显示当前网速、CPU 与内存占用率的桌面悬浮窗，支持皮肤与任务栏内嵌显示。",
+  "description_en": "这是一个用于显示当前网速、CPU及内存利用率的桌面悬浮窗软件，并支持任务栏显示，支持更换皮肤。",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["网速", "悬浮窗", "traffic monitor"],
+  "default_version": "V1.86",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 46923,
+  "forks": 3849,
+  "is_verified": true,
+  "homepage": "https://github.com/zhongyang219/TrafficMonitor",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["TrafficMonitor.exe"],
+    "linux": ["trafficmonitor"],
+    "macos": ["TrafficMonitor.app"],
+    "android": [],
+    "ios": []
+  }
+}

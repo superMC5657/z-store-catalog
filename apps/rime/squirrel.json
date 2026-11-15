@@ -1,0 +1,28 @@
+{
+  "id": "rime/squirrel",
+  "name": "Squirrel 鼠须管",
+  "owner": "rime",
+  "repo": "squirrel",
+  "icon": "https://raw.githubusercontent.com/rime/squirrel/master/Rime.icon/Assets/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "中州韵输入法引擎 macOS 版，极客高度定制的中文输入方案（Rime）。",
+  "description_en": "【鼠鬚管】Rime for macOS",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["输入法", "rime", "鼠须管"],
+  "default_version": "1.1.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 6541,
+  "forks": 583,
+  "is_verified": true,
+  "homepage": "https://rime.im",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["squirrel.app"],
+    "android": [],
+    "ios": []
+  }
+}

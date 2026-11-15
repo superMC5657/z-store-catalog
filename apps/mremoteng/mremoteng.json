@@ -1,0 +1,28 @@
+{
+  "id": "mremoteng/mremoteng",
+  "name": "mRemoteNG",
+  "owner": "mRemoteNG",
+  "repo": "mRemoteNG",
+  "icon": "https://raw.githubusercontent.com/mRemoteNG/mRemoteNG/v1.78.2-dev/mRemoteNGDocumentation/logo.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "标签式多协议远程连接管理器，支持 RDP/VNC/SSH 与凭据保存。",
+  "description_en": "mRemoteNG is the next generation of mRemote, open source, tabbed, multi-protocol, remote connections manager.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["远程桌面", "连接管理", "rdp"],
+  "default_version": "v1.76.20",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 11223,
+  "forks": 1641,
+  "is_verified": true,
+  "homepage": "https://mRemoteNG.org/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["mRemoteNG.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

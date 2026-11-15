@@ -1,0 +1,28 @@
+{
+  "id": "pdfarranger/pdfarranger",
+  "name": "PDF Arranger",
+  "owner": "pdfarranger",
+  "repo": "pdfarranger",
+  "icon": "https://raw.githubusercontent.com/pdfarranger/pdfarranger/main/data/icons/hicolor/256x256/apps/com.github.jeromerobert.pdfarranger.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "合并、拆分、旋转与重排 PDF 页面的简单工具。",
+  "description_en": "Small python-gtk application, which helps the user to merge or split PDF documents and rotate, crop and rearrange their pages using an interactive and intuitive graphical interface.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["pdf", "合并", "拆分"],
+  "default_version": "1.14.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 6052,
+  "forks": 330,
+  "is_verified": true,
+  "homepage": "https://github.com/pdfarranger/pdfarranger",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["pdfarranger.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "ksnip/ksnip",
+  "name": "Ksnip",
+  "owner": "ksnip",
+  "repo": "ksnip",
+  "icon": "https://raw.githubusercontent.com/ksnip/ksnip/master/desktop/ksnip.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "跨平台截图工具，支持注释、水印与上传图床。",
+  "description_en": "ksnip the cross-platform screenshot and annotation tool",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["截图", "标注", "screenshot"],
+  "default_version": "v1.10.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3382,
+  "forks": 256,
+  "is_verified": true,
+  "homepage": "https://github.com/ksnip/ksnip",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ksnip.exe"],
+    "linux": ["ksnip"],
+    "macos": ["ksnip.app"],
+    "android": [],
+    "ios": []
+  }
+}

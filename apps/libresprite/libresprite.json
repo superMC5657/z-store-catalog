@@ -1,0 +1,28 @@
+{
+  "id": "libresprite/libresprite",
+  "name": "LibreSprite",
+  "owner": "LibreSprite",
+  "repo": "LibreSprite",
+  "icon": "https://raw.githubusercontent.com/LibreSprite/LibreSprite/master/desktop/icons/hicolor/256x256/apps/libresprite.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "Aseprite 的开源分支，像素画与精灵动画编辑。",
+  "description_en": "Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["像素画", "aseprite", "动画"],
+  "default_version": "v1.3",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 8798,
+  "forks": 626,
+  "is_verified": true,
+  "homepage": "https://libresprite.github.io/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["LibreSprite.exe"],
+    "linux": ["libresprite"],
+    "macos": ["LibreSprite.app"],
+    "android": [],
+    "ios": []
+  }
+}

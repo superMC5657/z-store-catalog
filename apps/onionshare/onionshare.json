@@ -1,0 +1,28 @@
+{
+  "id": "onionshare/onionshare",
+  "name": "OnionShare",
+  "owner": "onionshare",
+  "repo": "onionshare",
+  "icon": "https://raw.githubusercontent.com/onionshare/onionshare/main/desktop/onionshare/resources/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "通过 Tor 匿名分享文件与搭建网站/聊天室的工具。",
+  "description_en": "Securely and anonymously share files, host websites, and chat with friends using the Tor network",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["tor", "匿名", "分享"],
+  "default_version": "v2.7.2",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 7231,
+  "forks": 744,
+  "is_verified": true,
+  "homepage": "https://onionshare.org/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["onionshare.exe"],
+    "linux": [],
+    "macos": ["onionshare.app"],
+    "android": [],
+    "ios": []
+  }
+}

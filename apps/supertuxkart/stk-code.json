@@ -1,0 +1,28 @@
+{
+  "id": "supertuxkart/stk-code",
+  "name": "SuperTuxKart",
+  "owner": "supertuxkart",
+  "repo": "stk-code",
+  "icon": "https://raw.githubusercontent.com/supertuxkart/stk-code/master/data/gui/icons/logo.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源 3D 卡丁车竞速游戏，本地分屏与联网对战。",
+  "description_en": "The code base of SuperTuxKart",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["赛车", "卡丁车", "竞速"],
+  "default_version": "1.5",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 5479,
+  "forks": 1265,
+  "is_verified": true,
+  "homepage": "https://github.com/supertuxkart/stk-code",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["stk-code.exe"],
+    "linux": ["stk-code"],
+    "macos": ["stk-code.app"],
+    "android": ["org.stk-code"],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "iterate-ch/cyberduck",
+  "name": "Cyberduck",
+  "owner": "iterate-ch",
+  "repo": "cyberduck",
+  "icon": "https://raw.githubusercontent.com/iterate-ch/cyberduck/master/cyberduck-application.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "连接 S3/FTP/网盘等协议的文件传输浏览器。",
+  "description_en": "Cyberduck is a libre FTP, SFTP, WebDAV, Amazon S3, Backblaze B2, Microsoft Azure & OneDrive and OpenStack Swift file transfer client for Mac and Windows.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["ftp", "s3", "上传"],
+  "default_version": "release-9-6-0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 4913,
+  "forks": 392,
+  "is_verified": true,
+  "homepage": "https://cyberduck.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["cyberduck.exe"],
+    "linux": ["cyberduck"],
+    "macos": ["cyberduck.app"],
+    "android": [],
+    "ios": []
+  }
+}

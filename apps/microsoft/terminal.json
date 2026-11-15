@@ -1,0 +1,28 @@
+{
+  "id": "microsoft/terminal",
+  "name": "Windows Terminal",
+  "owner": "microsoft",
+  "repo": "terminal",
+  "icon": "https://raw.githubusercontent.com/microsoft/terminal/main/res/terminal/Terminal.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "微软官方现代终端，多标签、GPU 加速与丰富的自定义。",
+  "description_en": "The new Windows Terminal and the original Windows console host, all in the same place!",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "terminal", "windows"],
+  "default_version": "v1.25.3131.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 105385,
+  "forks": 9741,
+  "is_verified": true,
+  "homepage": "https://github.com/microsoft/terminal",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["terminal.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

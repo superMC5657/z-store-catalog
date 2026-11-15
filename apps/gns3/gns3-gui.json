@@ -1,0 +1,28 @@
+{
+  "id": "gns3/gns3-gui",
+  "name": "GNS3",
+  "owner": "GNS3",
+  "repo": "gns3-gui",
+  "icon": "https://raw.githubusercontent.com/GNS3/gns3-gui/master/resources/images/gns3_icon_256x256.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "搭建复杂网络拓扑的开源模拟器，网络认证实验首选。",
+  "description_en": "GNS3 Graphical Network Simulator",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["网络", "模拟", "cisco"],
+  "default_version": "v2.2.61",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2670,
+  "forks": 479,
+  "is_verified": true,
+  "homepage": "http://www.gns3.com",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["GNS3.exe"],
+    "linux": [],
+    "macos": ["gns3-gui.app"],
+    "android": [],
+    "ios": []
+  }
+}

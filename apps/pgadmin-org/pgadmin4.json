@@ -1,0 +1,28 @@
+{
+  "id": "pgadmin-org/pgadmin4",
+  "name": "pgAdmin 4",
+  "owner": "pgadmin-org",
+  "repo": "pgadmin4",
+  "icon": "https://raw.githubusercontent.com/pgadmin-org/pgadmin4/master/runtime/assets/pgAdmin4.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "PostgreSQL 官方推荐的管理工具，功能全面。",
+  "description_en": "pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["postgres", "数据库", "管理"],
+  "default_version": "REL-9_17",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 3940,
+  "forks": 921,
+  "is_verified": true,
+  "homepage": "https://www.pgadmin.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["pgadmin4.exe"],
+    "linux": ["pgadmin4"],
+    "macos": ["pgadmin4.app"],
+    "android": [],
+    "ios": []
+  }
+}

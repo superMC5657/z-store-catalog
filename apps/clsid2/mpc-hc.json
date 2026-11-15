@@ -1,0 +1,28 @@
+{
+  "id": "clsid2/mpc-hc",
+  "name": "MPC-HC",
+  "owner": "clsid2",
+  "repo": "mpc-hc",
+  "icon": "https://raw.githubusercontent.com/clsid2/mpc-hc/develop/src/mpc-hc/res/icon.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "持续维护的 Media Player Classic 分支，轻量强大的 Windows 播放器。",
+  "description_en": "Media Player Classic",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["播放器", "classic", "video"],
+  "default_version": "2.8.5",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 16152,
+  "forks": 677,
+  "is_verified": true,
+  "homepage": "https://github.com/clsid2/mpc-hc",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["MPC-HC.2.8.1.x64.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

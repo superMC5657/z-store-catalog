@@ -1,0 +1,26 @@
+{
+  "id": "transmission/transmission",
+  "name": "Transmission",
+  "owner": "transmission",
+  "repo": "transmission",
+  "icon": "https://raw.githubusercontent.com/transmission/transmission/main/icon.png",
+  "icon_bg": "linear-gradient(135deg, #dc2626, #991b1b)",
+  "description": "极速、轻量、无广告的跨平台 BitTorrent 下载客户端，内存开销极低。",
+  "description_en": "Official Transmission BitTorrent client repository",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["BT下载", "种子下载", "bt客户端", "torrent", "p2p"],
+  "default_version": "4.1.4",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 15418,
+  "forks": 1487,
+  "is_verified": true,
+  "homepage": "https://transmissionbt.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["transmission-qt.exe", "transmission.exe"],
+    "linux": ["transmission-gtk", "transmission-qt", "transmission-daemon"],
+    "macos": ["Transmission.app"]
+  }
+}

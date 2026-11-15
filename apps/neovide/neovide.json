@@ -1,0 +1,28 @@
+{
+  "id": "neovide/neovide",
+  "name": "Neovide",
+  "owner": "neovide",
+  "repo": "neovide",
+  "icon": "https://raw.githubusercontent.com/neovide/neovide/main/assets/neovide.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Neovim 的跨平台图形界面，平滑光标动画与丰富的 GUI 特性。",
+  "description_en": "No Nonsense Neovim Client in Rust",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["编辑器", "neovim", "vim"],
+  "default_version": "0.17.2",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 15297,
+  "forks": 643,
+  "is_verified": true,
+  "homepage": "https://neovide.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["neovide.exe"],
+    "linux": ["neovide"],
+    "macos": ["neovide.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "blender/blender",
+  "name": "Blender",
+  "owner": "blender",
+  "repo": "blender",
+  "icon": "https://raw.githubusercontent.com/blender/blender/main/release/darwin/blender_liquid_glass.icon/Assets/Blender%20Logo.svg",
+  "icon_bg": "linear-gradient(135deg, #f97316, #c2410c)",
+  "description": "全球最受欢迎的自由开源 3D 建模、雕刻、动画、仿真与渲染制作软件。",
+  "description_en": "Official mirror of Blender",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["3d建模", "渲染", "动画制作", "三维设计", "blender3d"],
+  "default_version": "v4.2.1",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 22014,
+  "forks": 3590,
+  "is_verified": true,
+  "homepage": "https://www.blender.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["blender.exe"],
+    "linux": ["blender"],
+    "macos": ["Blender.app", "blender"]
+  }
+}

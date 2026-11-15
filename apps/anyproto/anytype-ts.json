@@ -1,0 +1,28 @@
+{
+  "id": "anyproto/anytype-ts",
+  "name": "Anytype",
+  "owner": "anyproto",
+  "repo": "anytype-ts",
+  "icon": "https://raw.githubusercontent.com/anyproto/anytype-ts/develop/nightly/electron/img/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "本地优先的对象型知识库，加密同步，Notion 替代。",
+  "description_en": "Official Anytype client for MacOS, Linux, and Windows",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["笔记", "知识库", "加密"],
+  "default_version": "v0.57.8-alpha",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 9094,
+  "forks": 607,
+  "is_verified": true,
+  "homepage": "https://anytype.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Anytype.Setup.0.56.9-alpha.exe"],
+    "linux": ["anytype-ts"],
+    "macos": ["anytype-ts.app"],
+    "android": [],
+    "ios": []
+  }
+}

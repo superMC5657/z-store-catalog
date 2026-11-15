@@ -1,0 +1,28 @@
+{
+  "id": "rime/weasel",
+  "name": "Weasel 小狼毫",
+  "owner": "rime",
+  "repo": "weasel",
+  "icon": "https://raw.githubusercontent.com/rime/weasel/master/resource/weasel.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "中州韵输入法引擎 Windows 版，高度自定义的中文输入方案（Rime）。",
+  "description_en": "【小狼毫】Rime for Windows",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["输入法", "rime", "中文输入"],
+  "default_version": "0.17.4",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 8301,
+  "forks": 865,
+  "is_verified": true,
+  "homepage": "https://rime.im",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["weasel.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

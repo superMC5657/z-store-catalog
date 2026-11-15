@@ -1,0 +1,28 @@
+{
+  "id": "texworks/texworks",
+  "name": "TeXworks",
+  "owner": "TeXworks",
+  "repo": "texworks",
+  "icon": "https://raw.githubusercontent.com/TeXworks/texworks/main/res/images/TeXworks.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "TeX 用户推荐的简洁 LaTeX 前端，低门槛入门。",
+  "description_en": "Main codebase for TeXworks, a simple interface for working with TeX documents",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["latex", "论文", "写作"],
+  "default_version": "release-0.6.11",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 791,
+  "forks": 174,
+  "is_verified": true,
+  "homepage": "https://tug.org/texworks/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["texworks.exe"],
+    "linux": ["texworks"],
+    "macos": ["texworks.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "nukeop/nuclear",
+  "name": "Nuclear",
+  "owner": "nukeop",
+  "repo": "nuclear",
+  "icon": "https://raw.githubusercontent.com/nukeop/nuclear/master/packages/player/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "聚合多源免费流媒体音乐的桌面播放器，类 Spotify 体验。",
+  "description_en": "Streaming music player that finds free music for you",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "spotify", "流媒体"],
+  "default_version": "player@1.55.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 18949,
+  "forks": 1358,
+  "is_verified": true,
+  "homepage": "https://nuclearplayer.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["nuclear.exe"],
+    "linux": ["nuclear"],
+    "macos": ["nuclear.app"],
+    "android": [],
+    "ios": []
+  }
+}

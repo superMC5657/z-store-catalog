@@ -1,0 +1,28 @@
+{
+  "id": "supertux/supertux",
+  "name": "SuperTux",
+  "owner": "SuperTux",
+  "repo": "supertux",
+  "icon": "https://raw.githubusercontent.com/SuperTux/supertux/master/data/images/engine/icons/supertux.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源 2D 平台跳跃游戏，类马里奥风格。",
+  "description_en": "SuperTux source code",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["平台", "跳跃", "马里奥"],
+  "default_version": "v0.7.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3199,
+  "forks": 625,
+  "is_verified": true,
+  "homepage": "https://supertux.org",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["supertux.exe"],
+    "linux": ["supertux"],
+    "macos": ["supertux.app"],
+    "android": ["org.supertux"],
+    "ios": []
+  }
+}

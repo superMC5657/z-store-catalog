@@ -1,0 +1,28 @@
+{
+  "id": "antimicrox/antimicrox",
+  "name": "AntiMicroX",
+  "owner": "AntiMicroX",
+  "repo": "antimicrox",
+  "icon": "https://raw.githubusercontent.com/AntiMicroX/antimicrox/master/src/images/antimicrox.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "把手柄按键映射为键鼠输入的图形工具。",
+  "description_en": "Graphical program used to map keyboard buttons and mouse controls to a gamepad. Useful for playing games with no gamepad support.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["手柄", "映射", "gamepad"],
+  "default_version": "3.6.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 4094,
+  "forks": 262,
+  "is_verified": true,
+  "homepage": "https://github.com/AntiMicroX/antimicrox",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["antimicrox.exe"],
+    "linux": ["antimicrox"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

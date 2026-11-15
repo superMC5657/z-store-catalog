@@ -1,0 +1,26 @@
+{
+  "id": "zed-industries/zed",
+  "name": "Zed Editor",
+  "owner": "zed-industries",
+  "repo": "zed",
+  "icon": "https://raw.githubusercontent.com/zed-industries/zed/main/crates/zed/resources/app-icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "由 Atom 与 Tree-sitter 原作者打造的超高性能 Rust 代码编辑器，毫秒级响应。",
+  "description_en": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["代码编辑器", "rust编辑器", "高性能开发", "code editor"],
+  "default_version": "v1.28.1",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 95047,
+  "forks": 11706,
+  "is_verified": true,
+  "homepage": "https://zed.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["zed.exe"],
+    "linux": ["zed", "zed-editor"],
+    "macos": ["Zed.app", "zed"]
+  }
+}

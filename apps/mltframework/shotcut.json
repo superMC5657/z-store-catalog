@@ -1,0 +1,28 @@
+{
+  "id": "mltframework/shotcut",
+  "name": "Shotcut",
+  "owner": "mltframework",
+  "repo": "shotcut",
+  "icon": "https://raw.githubusercontent.com/mltframework/shotcut/master/packaging/windows/Microsoft Store/PackageFiles/Assets/Square44x44Logo.targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "跨平台开源视频编辑器，支持 4K 与数百种音视频格式。",
+  "description_en": "cross-platform (Qt), open-source (GPLv3) video editor",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["视频剪辑", "编辑器", "video editor"],
+  "default_version": "v26.9.27",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 15683,
+  "forks": 1566,
+  "is_verified": true,
+  "homepage": "https://www.shotcut.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["shotcut-win64.exe"],
+    "linux": ["shotcut"],
+    "macos": ["shotcut.app"],
+    "android": [],
+    "ios": []
+  }
+}

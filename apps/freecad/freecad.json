@@ -1,0 +1,28 @@
+{
+  "id": "freecad/freecad",
+  "name": "FreeCAD",
+  "owner": "FreeCAD",
+  "repo": "FreeCAD",
+  "icon": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/main/src/Gui/Icons/freecad.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "开源参数化三维 CAD 建模器，机械设计首选。",
+  "description_en": "Official source code of FreeCAD, a free and opensource multiplatform 3D parametric modeler.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["cad", "3d", "建模"],
+  "default_version": "1.1.4",
+  "added_at": "2026-09-13",
+  "license": "LGPL-2.1",
+  "stars": 35454,
+  "forks": 6404,
+  "is_verified": true,
+  "homepage": "https://www.freecad.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["FreeCAD.exe"],
+    "linux": ["freecad"],
+    "macos": ["FreeCAD.app"],
+    "android": [],
+    "ios": []
+  }
+}

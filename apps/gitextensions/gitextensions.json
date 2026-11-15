@@ -1,0 +1,28 @@
+{
+  "id": "gitextensions/gitextensions",
+  "name": "Git Extensions",
+  "owner": "gitextensions",
+  "repo": "gitextensions",
+  "icon": "https://raw.githubusercontent.com/gitextensions/gitextensions/master/setup/assets/Logo/git-extensions-logo-512px.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Windows 平台功能完整的 Git 图形客户端，资源管理器集成。",
+  "description_en": "Git Extensions is a standalone UI tool for managing git repositories. It also integrates with Windows Explorer and Microsoft Visual Studio (2015/2017/2019).",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["git", "版本控制", "windows"],
+  "default_version": "v7.2.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 8619,
+  "forks": 2228,
+  "is_verified": true,
+  "homepage": "https://gitextensions.github.io/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["gitextensions.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

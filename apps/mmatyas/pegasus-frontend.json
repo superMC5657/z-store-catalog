@@ -1,0 +1,28 @@
+{
+  "id": "mmatyas/pegasus-frontend",
+  "name": "Pegasus",
+  "owner": "mmatyas",
+  "repo": "pegasus-frontend",
+  "icon": "https://raw.githubusercontent.com/mmatyas/pegasus-frontend/master/assets/icon.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "跨平台美观的游戏库前端，支持模拟器元数据。",
+  "description_en": "A cross platform, customizable graphical frontend for launching emulators and managing your game collection.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "启动器", "rom"],
+  "default_version": "weekly_2024w38",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 1933,
+  "forks": 180,
+  "is_verified": true,
+  "homepage": "http://pegasus-frontend.org",
+  "platforms": ["macos", "linux", "android"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["pegasus-frontend"],
+    "macos": ["pegasus-frontend.app"],
+    "android": ["org.pegasus-frontend"],
+    "ios": []
+  }
+}

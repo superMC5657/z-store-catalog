@@ -1,0 +1,28 @@
+{
+  "id": "sabrogden/ditto",
+  "name": "Ditto",
+  "owner": "sabrogden",
+  "repo": "Ditto",
+  "icon": "https://raw.githubusercontent.com/sabrogden/Ditto/master/DittoSetup/appx/ditto.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "开源剪贴板历史管理工具，支持无限条目、网络同步与搜索，增强系统剪贴板。",
+  "description_en": "Ditto is an extension to the Windows Clipboard. You copy something to the Clipboard and Ditto takes what you copied and stores it in a database to retrieve at a later time.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["剪贴板", "粘贴板", "clipboard"],
+  "default_version": "3.25.113.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7474,
+  "forks": 493,
+  "is_verified": true,
+  "homepage": "https://ditto-cp.sourceforge.io/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["DittoSetup_3_25_113_0.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

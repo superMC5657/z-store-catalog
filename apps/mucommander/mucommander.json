@@ -1,0 +1,28 @@
+{
+  "id": "mucommander/mucommander",
+  "name": "muCommander",
+  "owner": "mucommander",
+  "repo": "mucommander",
+  "icon": "https://raw.githubusercontent.com/mucommander/mucommander/master/mucommander-core/src/main/resources/images/mucommander/icon256_24.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "Java 编写的跨平台双栏文件管理器，支持 FTP/SFTP 与云协议，轻量便携。",
+  "description_en": "A lightweight, cross-platform file manager with a dual-pane interface",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["文件管理", "双栏", "dual pane"],
+  "default_version": "1.6.2-1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 1298,
+  "forks": 215,
+  "is_verified": true,
+  "homepage": "https://www.mucommander.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["mucommander.exe"],
+    "linux": ["mucommander"],
+    "macos": ["mucommander.app"],
+    "android": [],
+    "ios": []
+  }
+}

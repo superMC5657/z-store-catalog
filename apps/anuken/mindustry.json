@@ -1,0 +1,28 @@
+{
+  "id": "anuken/mindustry",
+  "name": "Mindustry",
+  "owner": "Anuken",
+  "repo": "Mindustry",
+  "icon": "https://raw.githubusercontent.com/Anuken/Mindustry/master/ios/data/Assets.xcassets/AppIcon.appiconset/icon-512.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #92400e)",
+  "description": "融合了塔防、自动化物流与工厂建设的开放源码沙盒策略游戏。",
+  "description_en": "The automation tower defense RTS",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["塔防游戏", "工厂模拟", "策略游戏", "像素沙盒", "mindustry"],
+  "default_version": "v160.7",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 29850,
+  "forks": 3882,
+  "is_verified": true,
+  "homepage": "https://mindustrygame.github.io",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["Mindustry.exe"],
+    "linux": ["mindustry"],
+    "macos": ["Mindustry.app"],
+    "android": ["io.anuke.mindustry"],
+    "ios": ["io.anuke.mindustry"]
+  }
+}

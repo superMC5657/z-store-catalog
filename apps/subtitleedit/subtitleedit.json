@@ -1,0 +1,28 @@
+{
+  "id": "subtitleedit/subtitleedit",
+  "name": "Subtitle Edit",
+  "owner": "SubtitleEdit",
+  "repo": "subtitleedit",
+  "icon": "https://raw.githubusercontent.com/SubtitleEdit/subtitleedit/main/src/libse/Icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "功能最全的开源字幕编辑器，波形图、OCR 与自动翻译。",
+  "description_en": "the subtitle editor :)",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["字幕", "subtitle", "编辑器"],
+  "default_version": "v5.4.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 14995,
+  "forks": 1377,
+  "is_verified": true,
+  "homepage": "http://www.nikse.dk/SubtitleEdit/Help",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["SubtitleEdit-Windows-x64-Setup.exe"],
+    "linux": ["subtitleedit"],
+    "macos": ["subtitleedit.app"],
+    "android": [],
+    "ios": []
+  }
+}

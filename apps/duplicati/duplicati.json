@@ -1,0 +1,28 @@
+{
+  "id": "duplicati/duplicati",
+  "name": "Duplicati",
+  "owner": "duplicati",
+  "repo": "duplicati",
+  "icon": "https://raw.githubusercontent.com/duplicati/duplicati/master/ReleaseBuilder/Resources/QNAP/icons/Duplicati.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "支持 AES-256 加密与增量快照的备份工具，可备份到云存储，定时自动执行。",
+  "description_en": "Store securely encrypted backups in the cloud!",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["备份", "backup", "加密"],
+  "default_version": "v2.4.1.0_stable_2026-10-29",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 15202,
+  "forks": 1092,
+  "is_verified": true,
+  "homepage": "https://github.com/duplicati/duplicati",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["duplicati.exe"],
+    "linux": ["duplicati"],
+    "macos": ["duplicati.app"],
+    "android": [],
+    "ios": []
+  }
+}

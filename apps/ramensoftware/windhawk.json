@@ -1,0 +1,28 @@
+{
+  "id": "ramensoftware/windhawk",
+  "name": "Windhawk",
+  "owner": "ramensoftware",
+  "repo": "windhawk",
+  "icon": "https://raw.githubusercontent.com/ramensoftware/windhawk/main/src/windhawk-core/ui/icons/icon.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "为 Windows 系统与应用安装社区调制片 memorized mod 的平台，深度自定义任务栏与资源管理器。",
+  "description_en": "The customization marketplace for Windows programs: https://windhawk.net/",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["系统美化", "调制", "windows"],
+  "default_version": "v1.7.3",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 9829,
+  "forks": 268,
+  "is_verified": true,
+  "homepage": "https://windhawk.net",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["windhawk.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

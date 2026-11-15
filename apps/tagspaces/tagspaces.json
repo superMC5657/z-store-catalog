@@ -1,0 +1,28 @@
+{
+  "id": "tagspaces/tagspaces",
+  "name": "TagSpaces",
+  "owner": "tagspaces",
+  "repo": "tagspaces",
+  "icon": "https://raw.githubusercontent.com/tagspaces/tagspaces/develop/assets/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "用标签管理本地文件与笔记的离线工具，无需数据库。",
+  "description_en": "TagSpaces is an offline, open source, document manager with tagging support",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["标签", "文件", "管理"],
+  "default_version": "v6.14.3",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 5380,
+  "forks": 513,
+  "is_verified": true,
+  "homepage": "https://www.tagspaces.org",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["tagspaces-win-arm64.exe"],
+    "linux": ["tagspaces"],
+    "macos": ["tagspaces.app"],
+    "android": ["org.tagspaces"],
+    "ios": []
+  }
+}

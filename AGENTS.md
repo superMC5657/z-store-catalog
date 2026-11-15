@@ -4,9 +4,11 @@
 
 ## 常用命令
 
+- 编译汇总清单：`node scripts/build-catalog.mjs`（`apps/` -> `catalog.json`）
 - 校验（CI 同款，提交前必须通过）：`node scripts/validate-catalog.mjs`
 - 单应用收录：`node scripts/add-app.mjs <owner/repo> -y`
 - Issue payload 预演：`node scripts/ingest-issue.mjs --body-file issue.md --dry-run`
+- 拆分已有清单（迁移用）：`node scripts/split-catalog.mjs`
 - Issue 解析单测：`node --test scripts/ingest-issue.test.mjs`
 - 批量核验：`GH_TOKEN=... node scripts/batch-add.mjs --dry-run`
 - 数据保鲜：`node scripts/refresh-catalog.mjs`
@@ -14,9 +16,10 @@
 
 Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
-## catalog.json 规则
+## catalog 架构与规则
 
-- 新条目追加到数组末尾；不改动既有条目，禁止整体重排或重格式化。
+- **真源分离**：每个应用作为独立文件存放于 `apps/<owner>/<repo>.json`（小写），PR 仅修改或新增对应的单个文件，彻底杜绝多 PR 并发合并时的 Git 冲突。
+- 根目录 `catalog.json` 为客户端直接读取的聚合产物，由 `scripts/build-catalog.mjs` 从 `apps/` 自动编译生成，按 `added_at` 升序、同日按 `id` 字典序排列。
 - 字段顺序固定：`id, name, owner, repo, icon, icon_bg, description, description_en, category, category_name, aliases, default_version, added_at, license, stars, forks, is_verified, homepage, install_dirs, search_subdirs, publishers, platforms, identifiers`。`install_dirs` / `search_subdirs` / `publishers` 为可选项（省略即可），其余为固定位置，不得乱序；校验脚本会拦截。
 - `id` 必须是 `owner/repo` 小写；`added_at` 用 UTC `YYYY-MM-DD`；收录条目 `is_verified` 为 `true`。
 - `platforms` 不能为空；`identifiers` 只放各平台真实可执行名。
@@ -25,11 +28,12 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
 ## 工作流
 
-- `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，补全元数据与平台信息后开 PR 并写入 `catalog-ingest` 门禁状态；默认 `AUTO_MERGE_POLICY=manual` 由维护者/作者人工确认合并（亦支持贴 `auto-merge` 标签触发自动合并）。不要绕过它手改 `catalog.json`。
+- `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，补全元数据与平台信息后生成 `apps/<owner>/<repo>.json` 并开 PR，写入 `catalog-ingest` 门禁状态；默认 `AUTO_MERGE_POLICY=manual` 由维护者/作者人工确认合并。
+- `build-catalog.yml`：当 `main` 推进且 `apps/**` 变动时，自动编译 `apps/` 生成 `catalog.json` 并提交入库，保证客户端随时获取最新汇总。
 - `catalog-gate.yml`：对人工 PR 写 `catalog-ingest` commit status；bot PR 由 `issue-to-pr.yml` / `refresh-catalog.yml` 自己写。
 - `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
 - `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`。
-- `sync-open-prs.yml`：当 `main` 推进（如合并某个 PR）且 `catalog.json` 变动时，自动将所有未合并的 `catalog/issue-*` PR 基于最新 `main` 重新追加并推送，避免尾部追加冲突。
+- `sync-open-prs.yml`：当 `main` 推进且 `catalog.json` 变动时，自动将所有未合并的 `catalog/issue-*` PR 基于最新 `main` 重新追加并推送，避免尾部追加冲突。
 
 ## 提交
 

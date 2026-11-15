@@ -1,0 +1,28 @@
+{
+  "id": "yairm210/unciv",
+  "name": "Unciv",
+  "owner": "yairm210",
+  "repo": "Unciv",
+  "icon": "https://raw.githubusercontent.com/yairm210/Unciv/master/docs/assets/Icon.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "用 Kotlin 重制的文明 V 开源版，像素画风跨平台。",
+  "description_en": "Open-source Android/Desktop remake of Civ V",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["策略", "文明", "4x"],
+  "default_version": "5.0.0",
+  "added_at": "2026-09-13",
+  "license": "MPL-2.0",
+  "stars": 11578,
+  "forks": 2000,
+  "is_verified": true,
+  "homepage": "https://github.com/yairm210/Unciv",
+  "platforms": ["windows", "linux", "android"],
+  "identifiers": {
+    "windows": ["Unciv.exe"],
+    "linux": ["unciv"],
+    "macos": [],
+    "android": ["com.unciv.app"],
+    "ios": []
+  }
+}

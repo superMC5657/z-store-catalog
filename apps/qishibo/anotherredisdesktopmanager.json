@@ -1,0 +1,28 @@
+{
+  "id": "qishibo/anotherredisdesktopmanager",
+  "name": "Another Redis Desktop Manager",
+  "owner": "qishibo",
+  "repo": "AnotherRedisDesktopManager",
+  "icon": "https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/master/pack/electron/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "更快更好用的 Redis 桌面客户端，集群/哨兵支持。",
+  "description_en": "🚀🚀🚀A faster, better and more stable Redis desktop manager [GUI client], compatible with Linux, Windows, Mac.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["redis", "数据库", "客户端"],
+  "default_version": "v1.7.4",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 34860,
+  "forks": 2718,
+  "is_verified": true,
+  "homepage": "https://github.com/qishibo/AnotherRedisDesktopManager",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Another-Redis-Desktop-Manager-win.exe"],
+    "linux": ["anotherredisdesktopmanager"],
+    "macos": ["AnotherRedisDesktopManager.app"],
+    "android": [],
+    "ios": []
+  }
+}

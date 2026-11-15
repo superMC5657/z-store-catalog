@@ -1,0 +1,28 @@
+{
+  "id": "openscad/openscad",
+  "name": "OpenSCAD",
+  "owner": "openscad",
+  "repo": "openscad",
+  "icon": "https://raw.githubusercontent.com/openscad/openscad/master/resources/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "用代码描述三维模型的 CAD 工具，精确参数化设计。",
+  "description_en": "OpenSCAD - The Programmers Solid 3D CAD Modeller  ",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["cad", "3d", "代码建模"],
+  "default_version": "openscad-2021.01",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 10655,
+  "forks": 1793,
+  "is_verified": true,
+  "homepage": "https://www.openscad.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenSCAD.exe"],
+    "linux": ["openscad"],
+    "macos": ["openscad.app"],
+    "android": [],
+    "ios": []
+  }
+}

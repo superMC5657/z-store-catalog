@@ -1,0 +1,28 @@
+{
+  "id": "lutris/lutris",
+  "name": "Lutris",
+  "owner": "lutris",
+  "repo": "lutris",
+  "icon": "https://raw.githubusercontent.com/lutris/lutris/master/share/lutris/media/logo.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Linux 游戏管理平台，统一管理各平台游戏库与运行环境。",
+  "description_en": "Lutris desktop client",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["游戏平台", "启动器", "linux"],
+  "default_version": "v0.5.22",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 10389,
+  "forks": 891,
+  "is_verified": true,
+  "homepage": "https://lutris.net",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["lutris"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

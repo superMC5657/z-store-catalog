@@ -1,0 +1,28 @@
+{
+  "id": "dataelement/dsh-desktop",
+  "name": "dsh-desktop",
+  "owner": "dataelement",
+  "repo": "dsh-desktop",
+  "icon": "https://raw.githubusercontent.com/dataelement/dsh-desktop/main/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "DeepSeek Harness 的桌面客户端，聚合 AI 对话与智能体工作流。",
+  "description_en": "DSHDesktop：DeepSeek Harness Desktop / DeepSeek Harness 桌面版",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ai编程", "deepseek", "agent", "ai助手", "harness"],
+  "default_version": "v0.14.0",
+  "added_at": "2026-10-16",
+  "license": "MIT",
+  "stars": 18952,
+  "forks": 649,
+  "is_verified": true,
+  "homepage": "https://dshdesktop.com",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["dsh-desktop.exe"],
+    "linux": [],
+    "macos": ["dsh-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

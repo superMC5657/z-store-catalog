@@ -1,0 +1,28 @@
+{
+  "id": "alex313031/thorium",
+  "name": "Thorium",
+  "owner": "Alex313031",
+  "repo": "thorium",
+  "icon": "https://thorium.rocks/imgs/thorium.svg",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "针对编译性能优化的 Chromium 分支，启动与页面加载更快，隐私增强。",
+  "description_en": "Chromium fork named after radioactive element No. 90. Source code and Linux releases. Windows/MacOS/ARM builds served in different repos, links are towards the top of the README.md.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["浏览器", "chromium", "高性能"],
+  "default_version": "M156.0.8078.80",
+  "added_at": "2026-09-13",
+  "license": "BSD-3-Clause",
+  "stars": 7644,
+  "forks": 301,
+  "is_verified": true,
+  "homepage": "https://thorium.rocks/",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["thorium"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

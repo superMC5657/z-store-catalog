@@ -1,0 +1,28 @@
+{
+  "id": "belphemur/soundswitch",
+  "name": "SoundSwitch",
+  "owner": "Belphemur",
+  "repo": "SoundSwitch",
+  "icon": "https://raw.githubusercontent.com/Belphemur/SoundSwitch/dev/SoundSwitch/Resources/Switch-Logo.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "快捷键即时切换音频输出/输入设备的小工具，直播录音利器。",
+  "description_en": "C# application to switch default playing device. Download: https://soundswitch.aaflalo.me/",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音频", "切换", "device"],
+  "default_version": "v7.4.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3533,
+  "forks": 207,
+  "is_verified": true,
+  "homepage": "https://soundswitch.aaflalo.me/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["SoundSwitch_v7.3.3.0_Release_Installer.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

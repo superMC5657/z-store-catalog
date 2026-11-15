@@ -1,0 +1,28 @@
+{
+  "id": "ghostty-org/ghostty",
+  "name": "Ghostty",
+  "owner": "ghostty-org",
+  "repo": "ghostty",
+  "icon": "https://raw.githubusercontent.com/ghostty-org/ghostty/main/images/icons/icon_1024.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "原生平台 UI 的快速终端，GPU 加速，配置简单体验原生。",
+  "description_en": "👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "terminal", "ghostty"],
+  "default_version": "tip",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 64116,
+  "forks": 3921,
+  "is_verified": true,
+  "homepage": "https://ghostty.org",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["ghostty.app"],
+    "android": [],
+    "ios": []
+  }
+}

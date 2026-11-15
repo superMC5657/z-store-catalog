@@ -1,0 +1,28 @@
+{
+  "id": "iina/iina",
+  "name": "IINA",
+  "owner": "iina",
+  "repo": "iina",
+  "icon": "https://raw.githubusercontent.com/iina/iina/develop/browser/Chrome_Open_In_IINA/icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "macOS 上最好用的现代播放器，基于 mpv，原生深色界面与手势。",
+  "description_en": "The modern video player for macOS.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["播放器", "mpv", "macos"],
+  "default_version": "v1.5.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 47127,
+  "forks": 2994,
+  "is_verified": true,
+  "homepage": "https://iina.io",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["iina.app"],
+    "android": [],
+    "ios": []
+  }
+}

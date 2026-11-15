@@ -1,0 +1,28 @@
+{
+  "id": "mumble-voip/mumble",
+  "name": "Mumble",
+  "owner": "mumble-voip",
+  "repo": "mumble",
+  "icon": "https://raw.githubusercontent.com/mumble-voip/mumble/master/icons/mumble.svg",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "低延迟高质量的开源语音通话客户端，游戏开黑与团队语音首选。",
+  "description_en": "Mumble is an open-source, low-latency, high quality voice chat software.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["语音", "语音聊天", "voip"],
+  "default_version": "v1.5.939",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 8423,
+  "forks": 1430,
+  "is_verified": true,
+  "homepage": "https://www.mumble.info",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["mumble_client.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

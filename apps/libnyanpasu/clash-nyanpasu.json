@@ -1,0 +1,28 @@
+{
+  "id": "libnyanpasu/clash-nyanpasu",
+  "name": "Clash Nyanpasu",
+  "owner": "libnyanpasu",
+  "repo": "clash-nyanpasu",
+  "icon": "https://raw.githubusercontent.com/libnyanpasu/clash-nyanpasu/main/backend/tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "基于 Tauri 的 Clash 图形客户端，Mihomo/Clash-Rust 双内核支持。",
+  "description_en": "Clash Nyanpasu～(∠・ω< )⌒☆​",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["代理", "clash", "科学上网"],
+  "default_version": "v2.0.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 13318,
+  "forks": 811,
+  "is_verified": true,
+  "homepage": "https://nyanpasu.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["clash-nyanpasu.exe"],
+    "linux": ["clash-nyanpasu"],
+    "macos": ["clash-nyanpasu.app"],
+    "android": [],
+    "ios": []
+  }
+}

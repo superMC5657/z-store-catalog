@@ -1,0 +1,28 @@
+{
+  "id": "ulauncher/ulauncher",
+  "name": "Ulauncher",
+  "owner": "Ulauncher",
+  "repo": "Ulauncher",
+  "icon": "https://raw.githubusercontent.com/Ulauncher/Ulauncher/main/data/icons/system/apps/ulauncher.svg",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "Linux 平台快捷启动器，支持扩展插件与主题，快速搜索应用文件。",
+  "description_en": "Feature rich application Launcher for Linux",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["启动器", "launcher", "linux"],
+  "default_version": "5.16.3",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 4539,
+  "forks": 240,
+  "is_verified": true,
+  "homepage": "https://ulauncher.io",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["ulauncher"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

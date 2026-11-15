@@ -43,8 +43,12 @@ jobs:
         run: |
           set +e
           git fetch --depth=1 origin "refs/pull/${{ github.event.pull_request.number }}/head"
-          git show FETCH_HEAD:catalog.json > "$RUNNER_TEMP/catalog.json"
-          CATALOG_PATH="$RUNNER_TEMP/catalog.json" node scripts/validate-catalog.mjs
+          changed_apps=$(git diff --name-only HEAD FETCH_HEAD -- apps/ 2>/dev/null || true)
+          if [ -n "$changed_apps" ]; then
+            git checkout FETCH_HEAD -- apps/
+          fi
+          node scripts/build-catalog.mjs
+          node scripts/validate-catalog.mjs
           echo "code=$?" >> "$GITHUB_OUTPUT"
 
       - name: Post success status

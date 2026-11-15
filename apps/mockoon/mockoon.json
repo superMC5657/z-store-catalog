@@ -1,0 +1,28 @@
+{
+  "id": "mockoon/mockoon",
+  "name": "Mockoon",
+  "owner": "mockoon",
+  "repo": "mockoon",
+  "icon": "https://raw.githubusercontent.com/mockoon/mockoon/main/packages/app/build-res/icon_1024x1024x32.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "最快最简单的本地 API mock 工具，图形化创建模拟端点。",
+  "description_en": "Mockoon is the easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["api", "mock", "模拟"],
+  "default_version": "v9.10.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 8484,
+  "forks": 487,
+  "is_verified": true,
+  "homepage": "https://mockoon.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["mockoon.portable.9.8.0.exe"],
+    "linux": ["mockoon"],
+    "macos": ["mockoon.app"],
+    "android": [],
+    "ios": []
+  }
+}

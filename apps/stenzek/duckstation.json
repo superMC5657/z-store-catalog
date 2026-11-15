@@ -1,0 +1,28 @@
+{
+  "id": "stenzek/duckstation",
+  "name": "DuckStation",
+  "owner": "stenzek",
+  "repo": "duckstation",
+  "icon": "https://raw.githubusercontent.com/stenzek/duckstation/master/src/duckstation-qt/resources/icons/monochrome/svg/vidicon-line.svg",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "追求准确与高分辨率的 PS1 模拟器，跨平台。",
+  "description_en": "Fast PlayStation 1 emulator for x86-64/AArch32/AArch64/RV64",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "ps1", "游戏"],
+  "default_version": "latest",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 11009,
+  "forks": 989,
+  "is_verified": true,
+  "homepage": "https://github.com/stenzek/duckstation",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["duckstation.exe"],
+    "linux": ["duckstation"],
+    "macos": ["duckstation.app"],
+    "android": [],
+    "ios": []
+  }
+}

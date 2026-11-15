@@ -1,0 +1,28 @@
+{
+  "id": "randomengy/vidcoder",
+  "name": "VidCoder",
+  "owner": "RandomEngy",
+  "repo": "VidCoder",
+  "icon": "https://raw.githubusercontent.com/RandomEngy/VidCoder/beta/VidCoder/Icons/VidCoder.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "HandBrake 引擎的 Windows 图形转码工具，批量队列与预设。",
+  "description_en": "A Blu-ray, DVD and video file transcoder for Windows.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["转码", "handbrake", "video"],
+  "default_version": "v12.23",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 867,
+  "forks": 53,
+  "is_verified": true,
+  "homepage": "http://vidcoder.net",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["VidCoder.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

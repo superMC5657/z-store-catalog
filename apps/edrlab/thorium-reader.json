@@ -1,0 +1,28 @@
+{
+  "id": "edrlab/thorium-reader",
+  "name": "Thorium Reader",
+  "owner": "edrlab",
+  "repo": "thorium-reader",
+  "icon": "https://raw.githubusercontent.com/edrlab/thorium-reader/develop/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "欧洲 EDRLab 出品的 EPUB 阅读器，无障碍支持一流。",
+  "description_en": "A cross platform desktop reading app, based on the Readium Desktop toolkit",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["电子书", "epub", "阅读"],
+  "default_version": "v3.5.1",
+  "added_at": "2026-09-13",
+  "license": "BSD-3-Clause",
+  "stars": 2946,
+  "forks": 247,
+  "is_verified": true,
+  "homepage": "https://www.edrlab.org/software/thorium-reader/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Thorium.exe"],
+    "linux": ["thorium-reader"],
+    "macos": ["thorium-reader.app"],
+    "android": [],
+    "ios": []
+  }
+}

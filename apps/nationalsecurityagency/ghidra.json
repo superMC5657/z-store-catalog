@@ -1,0 +1,28 @@
+{
+  "id": "nationalsecurityagency/ghidra",
+  "name": "Ghidra",
+  "owner": "NationalSecurityAgency",
+  "repo": "ghidra",
+  "icon": "https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/master/Ghidra/Framework/Gui/src/main/resources/images/GhidraIcon256.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "NSA 开源的反编译与逆向分析套件，支持多架构多格式。",
+  "description_en": "Ghidra is a software reverse engineering (SRE) framework",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["逆向", "反编译", "安全"],
+  "default_version": "Ghidra_12.2_build",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 100094,
+  "forks": 11375,
+  "is_verified": true,
+  "homepage": "https://www.nsa.gov/ghidra",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ghidra.exe"],
+    "linux": ["ghidra"],
+    "macos": ["ghidra.app"],
+    "android": [],
+    "ios": []
+  }
+}

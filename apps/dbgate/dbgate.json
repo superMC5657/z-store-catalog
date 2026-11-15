@@ -1,0 +1,28 @@
+{
+  "id": "dbgate/dbgate",
+  "name": "DbGate",
+  "owner": "dbgate",
+  "repo": "dbgate",
+  "icon": "https://raw.githubusercontent.com/dbgate/dbgate/master/misc/icon.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "跨平台数据库管理客户端，MySQL/Postgres/MongoDB/Redis。",
+  "description_en": "Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["数据库", "sql", "客户端"],
+  "default_version": "v7.3.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7381,
+  "forks": 491,
+  "is_verified": true,
+  "homepage": "https://www.dbgate.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["dbgate.exe"],
+    "linux": ["dbgate"],
+    "macos": ["dbgate.app"],
+    "android": [],
+    "ios": []
+  }
+}

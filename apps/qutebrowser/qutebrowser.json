@@ -1,0 +1,28 @@
+{
+  "id": "qutebrowser/qutebrowser",
+  "name": "qutebrowser",
+  "owner": "qutebrowser",
+  "repo": "qutebrowser",
+  "icon": "https://raw.githubusercontent.com/qutebrowser/qutebrowser/main/qutebrowser/icons/qutebrowser.svg",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "以键盘为核心的极简浏览器，Vim 式快捷键操作，Python 驱动高度可配置。",
+  "description_en": "A keyboard-driven, vim-like browser based on Python and Qt.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["浏览器", "键盘流", "vim"],
+  "default_version": "v3.7.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 11760,
+  "forks": 1141,
+  "is_verified": true,
+  "homepage": "https://www.qutebrowser.org/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["qutebrowser.exe"],
+    "linux": [],
+    "macos": ["qutebrowser.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "orama-interactive/pixelorama",
+  "name": "Pixelorama",
+  "owner": "Orama-Interactive",
+  "repo": "Pixelorama",
+  "icon": "https://raw.githubusercontent.com/Orama-Interactive/Pixelorama/master/assets/graphics/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "Godot 打造的开源像素画与动画编辑器。",
+  "description_en": "Unleash your creativity with Pixelorama, a powerful and accessible open-source pixel art multitool. Whether you want to create sprites, tiles, animations, or just express yourself in the language of pixel art, this software will realize your pixel-perfect dreams with a vast toolbox of features. Available on Windows, Linux, macOS and the Web!",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["像素画", "pixel", "动画"],
+  "default_version": "v1.2.4",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 11105,
+  "forks": 614,
+  "is_verified": true,
+  "homepage": "https://www.pixelorama.org/",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Pixelorama.exe"],
+    "linux": ["pixelorama"],
+    "macos": ["Pixelorama.app"],
+    "android": ["org.pixelorama"],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "pwsafe/pwsafe",
+  "name": "Password Safe",
+  "owner": "pwsafe",
+  "repo": "pwsafe",
+  "icon": "https://raw.githubusercontent.com/pwsafe/pwsafe/master/install/graphics/128x128/pwsafe.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "安全专家 Bruce Schneier 设计的密码管理器，老牌可靠。",
+  "description_en": "Password Safe - popular secure and convenient password manager",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["密码", "管理", "safe"],
+  "default_version": "1.26.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 889,
+  "forks": 175,
+  "is_verified": true,
+  "homepage": "https://pwsafe.org",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["pwsafe.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

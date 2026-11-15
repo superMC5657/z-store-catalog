@@ -1,0 +1,28 @@
+{
+  "id": "ventoy/ventoy",
+  "name": "Ventoy",
+  "owner": "ventoy",
+  "repo": "Ventoy",
+  "icon": "https://raw.githubusercontent.com/ventoy/Ventoy/master/ICON/logo_512.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "免格式化直装 ISO 的启动盘制作工具，一个 U 盘放多个系统即插即用。",
+  "description_en": "A new bootable USB solution.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["启动盘", "多系统", "usb"],
+  "default_version": "v1.1.18",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 80907,
+  "forks": 5094,
+  "is_verified": true,
+  "homepage": "https://www.ventoy.net",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["Ventoy.exe"],
+    "linux": ["ventoy"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

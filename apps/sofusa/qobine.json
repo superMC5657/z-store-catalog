@@ -1,0 +1,28 @@
+{
+  "id": "sofusa/qobine",
+  "name": "qobine",
+  "owner": "SofusA",
+  "repo": "qobine",
+  "icon": "https://raw.githubusercontent.com/SofusA/qobine/main/flatpak/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "Qobuz 音乐的终端、网页与 RFID 播放器。",
+  "description_en": "Tui, web and rfid player for Qobuz",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["music", "qobuz", "rfid", "rust", "tui"],
+  "default_version": "v2026-11-13",
+  "added_at": "2026-10-16",
+  "license": "GPL-3.0",
+  "stars": 282,
+  "forks": 32,
+  "is_verified": true,
+  "homepage": "https://github.com/SofusA/qobine",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["qobine.exe"],
+    "linux": ["qobine"],
+    "macos": ["qobine.app"],
+    "android": [],
+    "ios": []
+  }
+}

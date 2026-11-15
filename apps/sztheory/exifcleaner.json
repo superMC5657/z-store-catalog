@@ -1,0 +1,28 @@
+{
+  "id": "sztheory/exifcleaner",
+  "name": "ExifCleaner",
+  "owner": "szTheory",
+  "repo": "exifcleaner",
+  "icon": "https://raw.githubusercontent.com/szTheory/exifcleaner/master/.resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "批量清除图片元数据（EXIF/GPS）保护隐私的桌面工具。",
+  "description_en": "Cross-platform desktop GUI app to clean image metadata",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["隐私", "exif", "元数据"],
+  "default_version": "v4.8.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 2895,
+  "forks": 170,
+  "is_verified": true,
+  "homepage": "https://exifcleaner.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ExifCleaner.4.2.1.exe"],
+    "linux": ["exifcleaner"],
+    "macos": ["exifcleaner.app"],
+    "android": [],
+    "ios": []
+  }
+}

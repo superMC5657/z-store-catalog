@@ -1,0 +1,28 @@
+{
+  "id": "wulkano/kap",
+  "name": "Kap",
+  "owner": "wulkano",
+  "repo": "Kap",
+  "icon": "https://raw.githubusercontent.com/wulkano/Kap/main/renderer/public/static/kap-icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "美观的 macOS 开源录屏工具，导出 GIF/MP4，插件扩展。",
+  "description_en": "An open-source screen recorder built with web technology",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["录屏", "macos", "gif"],
+  "default_version": "v3.6.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 19427,
+  "forks": 901,
+  "is_verified": true,
+  "homepage": "https://getkap.co",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["Kap.app"],
+    "android": [],
+    "ios": []
+  }
+}

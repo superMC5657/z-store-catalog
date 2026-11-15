@@ -1,0 +1,28 @@
+{
+  "id": "pixieditor/pixieditor",
+  "name": "PixiEditor",
+  "owner": "PixiEditor",
+  "repo": "PixiEditor",
+  "icon": "https://raw.githubusercontent.com/PixiEditor/PixiEditor/master/assets/flatpak/icon-512.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "全能开源 2D 通用编辑器，像素画、矢量与动画一站式创作，轻量 Photoshop 替代。",
+  "description_en": "PixiEditor is a Universal Editor for all your 2D needs",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["photoshop替代", "修图", "像素画", "2d编辑", "pixel art", "图像编辑"],
+  "default_version": "2.1.2.5",
+  "added_at": "2026-10-16",
+  "license": "LGPL-3.0",
+  "stars": 8143,
+  "forks": 341,
+  "is_verified": true,
+  "homepage": "https://pixieditor.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["PixiEditor.exe"],
+    "linux": ["pixieditor"],
+    "macos": ["PixiEditor.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "gyulyvgc/sniffnet",
+  "name": "Sniffnet",
+  "owner": "GyulyVGC",
+  "repo": "sniffnet",
+  "icon": "https://raw.githubusercontent.com/GyulyVGC/sniffnet/main/resources/logos/raw/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "直观监控网络流量与连接的应用，实时图表与详细统计，Rust 编写。",
+  "description_en": "Comfortably monitor your network traffic 🕵️‍♂️",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["流量监控", "抓包", "network"],
+  "default_version": "v1.5.1",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 42797,
+  "forks": 2008,
+  "is_verified": true,
+  "homepage": "https://sniffnet.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["sniffnet.exe"],
+    "linux": ["sniffnet"],
+    "macos": ["sniffnet.app"],
+    "android": [],
+    "ios": []
+  }
+}

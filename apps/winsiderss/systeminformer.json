@@ -1,0 +1,28 @@
+{
+  "id": "winsiderss/systeminformer",
+  "name": "System Informer",
+  "owner": "winsiderss",
+  "repo": "systeminformer",
+  "icon": "https://raw.githubusercontent.com/winsiderss/systeminformer/master/SystemInformer/resources/systeminformer.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "原 Process Hacker，深度查看进程、网络与系统信息的开源工具。",
+  "description_en": "A free, powerful, multi-purpose tool that helps you monitor system resources, debug software and detect malware. Brought to you by Winsider Seminars & Solutions, Inc. @ https://windows-internals.com",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["任务管理器", "进程", "process hacker"],
+  "default_version": "v4.0.26241.138",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 16495,
+  "forks": 1825,
+  "is_verified": true,
+  "homepage": "https://systeminformer.com",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["systeminformer.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

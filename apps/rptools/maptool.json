@@ -1,0 +1,28 @@
+{
+  "id": "rptools/maptool",
+  "name": "MapTool",
+  "owner": "RPTools",
+  "repo": "maptool",
+  "icon": "https://raw.githubusercontent.com/RPTools/maptool/develop/src/main/resources/net/rptools/maptool/client/maptool.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "虚拟桌面跑团工具，地图战争迷雾与宏支持。",
+  "description_en": "Virtual Tabletop for playing roleplaying games with remote players or face to face.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["跑团", "桌游", "trpg"],
+  "default_version": "1.18.8",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 934,
+  "forks": 289,
+  "is_verified": true,
+  "homepage": "http://rptools.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["MapTool.exe"],
+    "linux": ["maptool"],
+    "macos": ["maptool.app"],
+    "android": [],
+    "ios": []
+  }
+}

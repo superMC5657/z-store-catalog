@@ -1,0 +1,28 @@
+{
+  "id": "audacity/audacity",
+  "name": "Audacity",
+  "owner": "audacity",
+  "repo": "audacity",
+  "icon": "https://raw.githubusercontent.com/audacity/audacity/master/share/icons/AppIcon/AU4_AppIcon_512x512.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "最流行的开源音频编辑器，录音、剪辑、降噪与多轨混音。",
+  "description_en": "Audio Editor                                     ",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音频", "录音", "剪辑"],
+  "default_version": "Audacity-4.0.2",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 19060,
+  "forks": 2731,
+  "is_verified": true,
+  "homepage": "https://wiki.audacityteam.org/wiki/For_Developers",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["audacity.exe"],
+    "linux": ["audacity"],
+    "macos": ["audacity.app"],
+    "android": [],
+    "ios": []
+  }
+}

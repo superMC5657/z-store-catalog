@@ -32,6 +32,7 @@ import {
   resolveGitHubToken,
   probeRepoLogo,
   deducePlatformsAndIdentifiers,
+  formatAppJson,
   formatCatalogJson,
   todayAddedAt,
 } from './lib/catalog-shared.mjs';
@@ -239,6 +240,14 @@ async function main() {
     catalog.push(newEntry);
     console.log(`\n➕ 已成功追加新应用: ${finalId} (${finalName})`);
   }
+
+  // 写回独立应用清单 apps/<owner>/<repo>.json
+  const appsDir = path.join(rootDir, 'apps');
+  const ownerDir = path.join(appsDir, owner.toLowerCase());
+  fs.mkdirSync(ownerDir, { recursive: true });
+  const appFilePath = path.join(ownerDir, `${repo.toLowerCase()}.json`);
+  fs.writeFileSync(appFilePath, formatAppJson(newEntry), 'utf8');
+  console.log(`💾 已写入独立应用清单: ${path.relative(rootDir, appFilePath)}`);
 
   // 格式化写回 catalog.json
   const formattedJson = formatCatalogJson(catalog);

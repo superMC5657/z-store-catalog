@@ -1,0 +1,28 @@
+{
+  "id": "tannerhelland/photodemon",
+  "name": "PhotoDemon",
+  "owner": "tannerhelland",
+  "repo": "PhotoDemon",
+  "icon": "https://raw.githubusercontent.com/tannerhelland/PhotoDemon/main/Resources/Assets/pd_icons_new.ico",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "免费便携的专业级照片编辑器，高性能易上手，经典 Photoshop 替代。",
+  "description_en": "A free portable photo editor focused on pro-grade features, high performance, and maximum usability.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["photoshop替代", "修图", "照片编辑", "photo editor", "图像处理"],
+  "default_version": "v2025.12",
+  "added_at": "2026-10-16",
+  "license": "NOASSERTION",
+  "stars": 2430,
+  "forks": 261,
+  "is_verified": true,
+  "homepage": "https://photodemon.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["PhotoDemon.exe"],
+    "linux": ["photodemon"],
+    "macos": ["PhotoDemon.app"],
+    "android": [],
+    "ios": []
+  }
+}

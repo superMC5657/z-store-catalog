@@ -1,0 +1,26 @@
+{
+  "id": "wireshark/wireshark",
+  "name": "Wireshark",
+  "owner": "wireshark",
+  "repo": "wireshark",
+  "icon": "https://raw.githubusercontent.com/wireshark/wireshark/master/resources/icons/wsicon256.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #075985)",
+  "description": "全球网络安全与协议工程师必备的开源网络封包实时捕获与协议深度分析器。",
+  "description_en": "Read-only mirror of Wireshark's Git repository at https://gitlab.com/wireshark/wireshark. You're welcome to submit pull requests there.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["网络抓包", "封包分析", "网络安全", "packet analyzer", "sniffer"],
+  "default_version": "v4.2.6",
+  "added_at": "2026-09-10",
+  "license": "GPL-2.0",
+  "stars": 10224,
+  "forks": 2262,
+  "is_verified": true,
+  "homepage": "https://www.wireshark.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Wireshark.exe"],
+    "linux": ["wireshark", "tshark"],
+    "macos": ["Wireshark.app", "tshark"]
+  }
+}

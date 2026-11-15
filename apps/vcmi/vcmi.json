@@ -1,0 +1,28 @@
+{
+  "id": "vcmi/vcmi",
+  "name": "VCMI",
+  "owner": "vcmi",
+  "repo": "vcmi",
+  "icon": "https://raw.githubusercontent.com/vcmi/vcmi/develop/clientapp/icons/vcmiclient.1024x1024.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "英雄无敌 3 的开源重实现引擎，支持高清与模组。",
+  "description_en": "Open-source engine for Heroes of Might and Magic III",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["英雄无敌", "复刻", "策略"],
+  "default_version": "1.7.5",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 6035,
+  "forks": 772,
+  "is_verified": true,
+  "homepage": "https://vcmi.eu/",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["VCMI-Windows-arm64.exe"],
+    "linux": ["vcmi"],
+    "macos": ["vcmi.app"],
+    "android": ["org.vcmi"],
+    "ios": ["org.vcmi"]
+  }
+}

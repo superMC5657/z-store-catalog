@@ -1,0 +1,28 @@
+{
+  "id": "netbirdio/netbird",
+  "name": "NetBird",
+  "owner": "netbirdio",
+  "repo": "netbird",
+  "icon": "https://raw.githubusercontent.com/netbirdio/netbird/main/docs/media/logo.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "基于 WireGuard 的零配置组网工具，设备互联如局域网。",
+  "description_en": "NetBird securely connects people, machines and AI agents across any network with one identity-based Zero Trust platform. Powered by peer-to-peer WireGuard®",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["组网", "vpn", "wireguard"],
+  "default_version": "v0.83.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 30999,
+  "forks": 1858,
+  "is_verified": true,
+  "homepage": "https://netbird.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["netbird.exe"],
+    "linux": ["netbird"],
+    "macos": ["netbird.app"],
+    "android": [],
+    "ios": []
+  }
+}

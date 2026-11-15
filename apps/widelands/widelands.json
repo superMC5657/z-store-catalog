@@ -1,0 +1,28 @@
+{
+  "id": "widelands/widelands",
+  "name": "Widelands",
+  "owner": "widelands",
+  "repo": "widelands",
+  "icon": "https://raw.githubusercontent.com/widelands/widelands/master/data/images/logos/wl-ico-128.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "类 Settlers 的开源即时战略经济建设游戏。",
+  "description_en": "Widelands is a free, open source real-time strategy game with singleplayer campaigns and a multiplayer mode. The game was inspired by Settlers II™ (© Bluebyte) but has significantly more variety and depth to it.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["策略", "建设", "rts"],
+  "default_version": "v1.3.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 3127,
+  "forks": 224,
+  "is_verified": true,
+  "homepage": "https://www.widelands.org/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Widelands.exe"],
+    "linux": ["widelands"],
+    "macos": ["widelands.app"],
+    "android": [],
+    "ios": []
+  }
+}

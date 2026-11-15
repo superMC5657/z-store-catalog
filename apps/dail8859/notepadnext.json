@@ -1,0 +1,28 @@
+{
+  "id": "dail8859/notepadnext",
+  "name": "Notepad Next",
+  "owner": "dail8859",
+  "repo": "NotepadNext",
+  "icon": "https://raw.githubusercontent.com/dail8859/NotepadNext/master/src/icons/NotepadNext.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Notepad++ 的跨平台重实现，语法高亮与多标签。",
+  "description_en": "A cross-platform, reimplementation of Notepad++",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["记事本", "编辑器", "notepad"],
+  "default_version": "v0.15",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 14791,
+  "forks": 946,
+  "is_verified": true,
+  "homepage": "https://github.com/dail8859/NotepadNext",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["NotepadNext.exe"],
+    "linux": ["notepadnext"],
+    "macos": ["NotepadNext.app"],
+    "android": [],
+    "ios": []
+  }
+}

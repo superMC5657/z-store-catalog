@@ -1,0 +1,28 @@
+{
+  "id": "nickemanarin/screentogif",
+  "name": "ScreenToGif",
+  "owner": "NickeManarin",
+  "repo": "ScreenToGif",
+  "icon": "https://raw.githubusercontent.com/NickeManarin/ScreenToGif/master/ScreenToGif/Resources/Logo.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "录制屏幕/摄像头/画板并逐帧编辑导出 GIF/视频的小工具。",
+  "description_en": "🎬 ScreenToGif allows you to record a selected area of your screen, edit and save it as a gif or video.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["gif", "录制", "录屏"],
+  "default_version": "2.43.2",
+  "added_at": "2026-09-13",
+  "license": "MS-PL",
+  "stars": 27942,
+  "forks": 2385,
+  "is_verified": true,
+  "homepage": "http://www.screentogif.com",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["ScreenToGif.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

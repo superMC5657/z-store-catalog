@@ -1,0 +1,28 @@
+{
+  "id": "giantpinkrobots/varia",
+  "name": "Varia",
+  "owner": "giantpinkrobots",
+  "repo": "varia",
+  "icon": "https://raw.githubusercontent.com/giantpinkrobots/varia/next/windows/icon.ico",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "基于 aria2 的现代下载管理器，支持浏览器集成与种子下载。",
+  "description_en": "Download manager that supports regular downloads, torrents and videos",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["下载器", "aria2", "download"],
+  "default_version": "v2026.8.5-1",
+  "added_at": "2026-09-13",
+  "license": "MPL-2.0",
+  "stars": 1919,
+  "forks": 105,
+  "is_verified": true,
+  "homepage": "https://giantpinkrobots.github.io/varia/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["varia.exe"],
+    "linux": [],
+    "macos": ["varia.app"],
+    "android": [],
+    "ios": []
+  }
+}

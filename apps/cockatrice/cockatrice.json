@@ -1,0 +1,28 @@
+{
+  "id": "cockatrice/cockatrice",
+  "name": "Cockatrice",
+  "owner": "Cockatrice",
+  "repo": "Cockatrice",
+  "icon": "https://raw.githubusercontent.com/Cockatrice/Cockatrice/master/cockatrice/resources/cockatrice.svg",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源集换式卡牌网络对战客户端。",
+  "description_en": "A cross-platform virtual tabletop for multiplayer card games",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["卡牌", "对战", "tcg"],
+  "default_version": "2026-10-25-Release-3.1.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 1849,
+  "forks": 541,
+  "is_verified": true,
+  "homepage": "https://cockatrice.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Cockatrice-Graduation-Day.exe"],
+    "linux": ["cockatrice"],
+    "macos": ["Cockatrice.app"],
+    "android": [],
+    "ios": []
+  }
+}

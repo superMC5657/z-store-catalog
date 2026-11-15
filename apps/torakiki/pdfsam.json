@@ -1,0 +1,28 @@
+{
+  "id": "torakiki/pdfsam",
+  "name": "PDFsam Basic",
+  "owner": "torakiki",
+  "repo": "pdfsam",
+  "icon": "https://raw.githubusercontent.com/torakiki/pdfsam/master/pdfsam-gui/src/main/resources/org/pdfsam/gui/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "开源的 PDF 拆分与合并工具，批量处理模块化。",
+  "description_en": "PDFsam, a desktop application to split, merge, mix, rotate PDF files and extract pages",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["pdf", "拆分", "合并"],
+  "default_version": "v6.0.10",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 4672,
+  "forks": 413,
+  "is_verified": true,
+  "homepage": "https://pdfsam.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["pdfsam.exe"],
+    "linux": ["pdfsam"],
+    "macos": ["pdfsam.app"],
+    "android": [],
+    "ios": []
+  }
+}

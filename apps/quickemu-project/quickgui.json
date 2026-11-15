@@ -1,0 +1,28 @@
+{
+  "id": "quickemu-project/quickgui",
+  "name": "Quickgui",
+  "owner": "quickemu-project",
+  "repo": "quickgui",
+  "icon": "https://raw.githubusercontent.com/quickemu-project/quickgui/main/assets/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "quickemu 的图形前端，一键下载创建 Linux/Windows 虚拟机。",
+  "description_en": "An elegant virtual machine manager for the desktop",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["虚拟机", "qemu", "vm"],
+  "default_version": "1.2.10",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 1339,
+  "forks": 110,
+  "is_verified": true,
+  "homepage": "https://github.com/quickemu-project/quickgui",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["quickgui"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

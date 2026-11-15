@@ -1,0 +1,28 @@
+{
+  "id": "modorganizer2/modorganizer",
+  "name": "Mod Organizer 2",
+  "owner": "ModOrganizer2",
+  "repo": "modorganizer",
+  "icon": "https://raw.githubusercontent.com/ModOrganizer2/modorganizer/master/src/mo_icon.ico",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "老牌游戏模组管理器，虚拟文件系统隔离安装。",
+  "description_en": "Mod manager for various PC games. Discord Server: https://discord.gg/ewUVAqyrQX if you would like to be more involved                                                           ",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["mod", "模组", "游戏"],
+  "default_version": "v2.5.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3167,
+  "forks": 239,
+  "is_verified": true,
+  "homepage": "http://www.nexusmods.com/skyrimspecialedition/mods/6194",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["Mod.Organizer.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

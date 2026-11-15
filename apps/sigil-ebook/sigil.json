@@ -1,0 +1,28 @@
+{
+  "id": "sigil-ebook/sigil",
+  "name": "Sigil",
+  "owner": "Sigil-Ebook",
+  "repo": "Sigil",
+  "icon": "https://raw.githubusercontent.com/Sigil-Ebook/Sigil/master/src/Resource_Files/icon/app_icons_orig/app_icon_512.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "专业的开源 EPUB 电子书编辑器，代码与预览双视图。",
+  "description_en": "Sigil is a multi-platform EPUB ebook editor",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["epub", "电子书", "编辑"],
+  "default_version": "2.8.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7054,
+  "forks": 631,
+  "is_verified": true,
+  "homepage": "https://github.com/Sigil-Ebook/Sigil",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Sigil.exe"],
+    "linux": ["sigil"],
+    "macos": ["Sigil.app"],
+    "android": [],
+    "ios": []
+  }
+}

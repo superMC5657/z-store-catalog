@@ -1,0 +1,28 @@
+{
+  "id": "evilsocket/opensnitch",
+  "name": "OpenSnitch",
+  "owner": "evilsocket",
+  "repo": "opensnitch",
+  "icon": "https://raw.githubusercontent.com/evilsocket/opensnitch/master/ui/opensnitch/res/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "Linux 平台的交互式应用防火墙，逐连接管控。",
+  "description_en": "OpenSnitch is a GNU/Linux interactive application firewall inspired by Little Snitch.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["防火墙", "linux", "network"],
+  "default_version": "v1.8.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 14299,
+  "forks": 687,
+  "is_verified": true,
+  "homepage": "https://github.com/evilsocket/opensnitch",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["opensnitch"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "podman-desktop/podman-desktop",
+  "name": "Podman Desktop",
+  "owner": "podman-desktop",
+  "repo": "podman-desktop",
+  "icon": "https://raw.githubusercontent.com/podman-desktop/podman-desktop/main/buildResources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "自由开源的无根 (Rootless) 容器与 Kubernetes 管理平台，替代商业 Docker。",
+  "description_en": "Podman Desktop is the best free and open source tool to work with Containers and Kubernetes for developers. Get an intuitive and user-friendly interface to effortlessly build, manage, and deploy containers and Kubernetes — all from your desktop.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["容器管理", "docker替代", "kubernetes", "k8s", "podman"],
+  "default_version": "v1.30.5",
+  "added_at": "2026-09-10",
+  "license": "Apache-2.0",
+  "stars": 8169,
+  "forks": 593,
+  "is_verified": true,
+  "homepage": "https://podman-desktop.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Podman Desktop.exe"],
+    "linux": ["podman-desktop"],
+    "macos": ["Podman Desktop.app"]
+  }
+}

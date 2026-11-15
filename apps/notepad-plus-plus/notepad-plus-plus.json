@@ -1,0 +1,28 @@
+{
+  "id": "notepad-plus-plus/notepad-plus-plus",
+  "name": "Notepad++",
+  "owner": "notepad-plus-plus",
+  "repo": "notepad-plus-plus",
+  "icon": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/master/PowerEditor/src/icons/npp.ico",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Windows 平台最流行的轻量代码编辑器，插件丰富启动极速。",
+  "description_en": "Notepad++ official repository",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["记事本", "编辑器", "notepad"],
+  "default_version": "v8.9.9.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 29892,
+  "forks": 5438,
+  "is_verified": true,
+  "homepage": "https://notepad-plus-plus.org/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["npp.8.9.8.Installer.arm64.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

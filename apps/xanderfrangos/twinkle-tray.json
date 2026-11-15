@@ -1,0 +1,28 @@
+{
+  "id": "xanderfrangos/twinkle-tray",
+  "name": "Twinkle Tray",
+  "owner": "xanderfrangos",
+  "repo": "twinkle-tray",
+  "icon": "https://raw.githubusercontent.com/xanderfrangos/twinkle-tray/master/src/assets/logo.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "快捷调节外接显示器亮度的小工具，支持多显示器独立控制与快捷键。",
+  "description_en": "Easily manage the brightness of your monitors in Windows from the system tray",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["亮度", "显示器", "brightness"],
+  "default_version": "v1.17.2",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 9358,
+  "forks": 353,
+  "is_verified": true,
+  "homepage": "https://twinkletray.com",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["Twinkle.Tray.v1.17.2.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

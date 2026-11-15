@@ -1,0 +1,28 @@
+{
+  "id": "werwolv/imhex",
+  "name": "ImHex",
+  "owner": "WerWolv",
+  "repo": "ImHex",
+  "icon": "https://raw.githubusercontent.com/WerWolv/ImHex/master/resources/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "面向逆向工程师的十六进制编辑器，模式语言与数据可视化。",
+  "description_en": "🔍 A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["十六进制", "逆向", "hex"],
+  "default_version": "v1.38.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 55863,
+  "forks": 2629,
+  "is_verified": true,
+  "homepage": "https://imhex.werwolv.net/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["ImHex.exe"],
+    "linux": ["imhex"],
+    "macos": ["ImHex.app"],
+    "android": [],
+    "ios": []
+  }
+}

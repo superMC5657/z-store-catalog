@@ -1,0 +1,25 @@
+{
+  "id": "microsoft/powertoys",
+  "name": "Microsoft PowerToys",
+  "owner": "microsoft",
+  "repo": "PowerToys",
+  "icon": "https://raw.githubusercontent.com/microsoft/PowerToys/main/installer/PowerToysSetupVNext/Images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #1e40af)",
+  "description": "微软官方开源系统增强套件，包含窗口布局、文本提取、取色器与全局检索。",
+  "description_en": "Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["系统百宝箱", "窗口分屏", "快速启动", "全局搜索", "powertoys"],
+  "default_version": "v0.102.3101",
+  "added_at": "2026-09-10",
+  "license": "MIT",
+  "stars": 140990,
+  "forks": 8742,
+  "is_verified": true,
+  "homepage": "https://learn.microsoft.com/windows/powertoys/",
+  "publishers": ["Microsoft Corporation"],
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["PowerToys.exe"]
+  }
+}

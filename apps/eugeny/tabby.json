@@ -1,0 +1,28 @@
+{
+  "id": "eugeny/tabby",
+  "name": "Tabby",
+  "owner": "Eugeny",
+  "repo": "tabby",
+  "icon": "https://raw.githubusercontent.com/Eugeny/tabby/master/build/icons/512x512.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "可定制的跨平台终端，SSH/SFTP/串口与面板分屏。",
+  "description_en": "A terminal for a more modern age",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "ssh", "terminal"],
+  "default_version": "v1.0.238",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 75431,
+  "forks": 4348,
+  "is_verified": true,
+  "homepage": "https://tabby.sh",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["tabby.exe"],
+    "linux": ["tabby"],
+    "macos": ["tabby.app"],
+    "android": [],
+    "ios": []
+  }
+}

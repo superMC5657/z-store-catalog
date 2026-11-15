@@ -1,0 +1,28 @@
+{
+  "id": "vita3k/vita3k",
+  "name": "Vita3K",
+  "owner": "Vita3K",
+  "repo": "Vita3K",
+  "icon": "https://raw.githubusercontent.com/Vita3K/Vita3K/HEAD/tools/native-tool/sce_sys/icon0.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "首个实验性 PlayStation Vita 模拟器。",
+  "description_en": "Experimental PlayStation Vita emulator",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "psv", "游戏"],
+  "default_version": "continuous",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 5976,
+  "forks": 711,
+  "is_verified": true,
+  "homepage": "https://vita3k.org/",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Vita3K.exe"],
+    "linux": ["vita3k"],
+    "macos": ["Vita3K.app"],
+    "android": ["org.vita3k"],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "winscp/winscp",
+  "name": "WinSCP",
+  "owner": "winscp",
+  "repo": "winscp",
+  "icon": "https://raw.githubusercontent.com/winscp/winscp/master/source/resource/Application.ico",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "Windows 知名的 SFTP/SCP/S3 图形传输客户端。",
+  "description_en": "WinSCP is a popular free file manager for Windows supporting SFTP, FTP, FTPS, SCP, S3, WebDAV and local-to-local file transfers. A powerful tool to enhance your productivity with a user-friendly interface and automation options like .NET assembly.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["sftp", "scp", "上传"],
+  "default_version": "6.6.3-RC",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 3953,
+  "forks": 440,
+  "is_verified": true,
+  "homepage": "https://winscp.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["winscp.exe"],
+    "linux": ["winscp"],
+    "macos": ["winscp.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "openshot/openshot-qt",
+  "name": "OpenShot",
+  "owner": "OpenShot",
+  "repo": "openshot-qt",
+  "icon": "https://raw.githubusercontent.com/OpenShot/openshot-qt/develop/xdg/icon/512/openshot-qt.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "简单易用的视频编辑器，时间线拖拽与关键帧动画。",
+  "description_en": "OpenShot Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and is dedicated to delivering high quality video editing and animation solutions to the world.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["视频剪辑", "编辑器", "video editor"],
+  "default_version": "v4.1.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 6784,
+  "forks": 843,
+  "is_verified": true,
+  "homepage": "http://www.openshot.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenShot.exe"],
+    "linux": ["openshot-qt"],
+    "macos": ["openshot-qt.app"],
+    "android": [],
+    "ios": []
+  }
+}

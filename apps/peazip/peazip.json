@@ -1,0 +1,28 @@
+{
+  "id": "peazip/peazip",
+  "name": "PeaZip",
+  "owner": "peazip",
+  "repo": "PeaZip",
+  "icon": "https://raw.githubusercontent.com/peazip/PeaZip/sources/peazip-sources/res/share/icons/peazip.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "支持 200+ 格式的压缩解压工具，带加密分卷与文件管理功能，跨平台。",
+  "description_en": "Free Zip / Unzip software and Rar file extractor. Cross-platform file and archive manager. Features volume spanning, compression, authenticated encryption. Supports 7Z, 7-Zip sfx, ACE, ARJ, Brotli, BZ2, CAB, CHM, CPIO, DEB, GZ, ISO, JAR, LHA/LZH, NSIS, OOo, PAQ/LPAQ, PEA, QUAD, RAR, RPM, split, TAR, Z, ZIP, ZIPX, Zstandard.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["压缩", "解压", "archiver"],
+  "default_version": "11.4.0",
+  "added_at": "2026-09-13",
+  "license": "LGPL-3.0",
+  "stars": 8142,
+  "forks": 430,
+  "is_verified": true,
+  "homepage": "https://peazip.github.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["peazip.exe"],
+    "linux": ["peazip"],
+    "macos": ["PeaZip.app"],
+    "android": [],
+    "ios": []
+  }
+}

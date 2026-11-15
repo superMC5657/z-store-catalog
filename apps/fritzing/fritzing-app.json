@@ -1,0 +1,28 @@
+{
+  "id": "fritzing/fritzing-app",
+  "name": "Fritzing",
+  "owner": "fritzing",
+  "repo": "fritzing-app",
+  "icon": "https://raw.githubusercontent.com/fritzing/fritzing-app/develop/resources/system_icons/linux/fzbz_icon256.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "面包板风格的电路设计工具，创客教育与原型开发首选。",
+  "description_en": "Fritzing desktop application",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["电路", "面包板", "arduino"],
+  "default_version": "CD-625",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 4865,
+  "forks": 969,
+  "is_verified": true,
+  "homepage": "http://fritzing.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["fritzing-app.exe"],
+    "linux": ["fritzing-app"],
+    "macos": ["fritzing-app.app"],
+    "android": [],
+    "ios": []
+  }
+}

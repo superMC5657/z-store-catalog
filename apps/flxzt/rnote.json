@@ -1,0 +1,28 @@
+{
+  "id": "flxzt/rnote",
+  "name": "Rnote",
+  "owner": "flxzt",
+  "repo": "rnote",
+  "icon": "https://raw.githubusercontent.com/flxzt/rnote/main/crates/rnote-ui/data/icons/scalable/apps/rnote.svg",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "GTK4 手写笔记与标注应用，无限画布与矢量笔迹。",
+  "description_en": "Sketch and take handwritten notes.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["手写", "笔记", "linux"],
+  "default_version": "v0.14.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 11879,
+  "forks": 537,
+  "is_verified": true,
+  "homepage": "https://rnote.flxzt.net",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["rnote.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

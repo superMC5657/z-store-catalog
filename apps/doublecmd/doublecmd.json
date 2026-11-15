@@ -1,0 +1,28 @@
+{
+  "id": "doublecmd/doublecmd",
+  "name": "Double Commander",
+  "owner": "doublecmd",
+  "repo": "doublecmd",
+  "icon": "https://raw.githubusercontent.com/doublecmd/doublecmd/master/pixmaps/mainicon/alt/doublecmd.svg",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "跨平台双栏开源文件管理器，支持插件与快捷键，Total Commander 的开源替代。",
+  "description_en": "Double Commander is a free cross platform open source file manager with two panels side by side.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["文件管理", "双栏", "total commander"],
+  "default_version": "v1.2.11",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 4790,
+  "forks": 387,
+  "is_verified": true,
+  "homepage": "https://doublecmd.sourceforge.io",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["doublecmd.exe"],
+    "linux": [],
+    "macos": ["doublecmd.app"],
+    "android": [],
+    "ios": []
+  }
+}

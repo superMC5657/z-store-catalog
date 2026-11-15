@@ -1,0 +1,28 @@
+{
+  "id": "kicad/kicad-source-mirror",
+  "name": "KiCad",
+  "owner": "KiCad",
+  "repo": "kicad-source-mirror",
+  "icon": "https://raw.githubusercontent.com/KiCad/kicad-source-mirror/master/resources/bitmaps_png/png/icon_kicad_256.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "专业开源的 EDA 套件，原理图与 PCB 设计。",
+  "description_en": "This is an active mirror of the KiCad development branch, which is hosted at GitLab (updated every time something is pushed). Pull requests on GitHub are not accepted or watched.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["eda", "pcb", "电路"],
+  "default_version": "10.0.8",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3150,
+  "forks": 788,
+  "is_verified": true,
+  "homepage": "https://gitlab.com/kicad/code/kicad",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["kicad.exe"],
+    "linux": [],
+    "macos": ["kicad-source-mirror.app"],
+    "android": [],
+    "ios": []
+  }
+}

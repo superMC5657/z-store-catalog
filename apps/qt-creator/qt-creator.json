@@ -1,0 +1,28 @@
+{
+  "id": "qt-creator/qt-creator",
+  "name": "Qt Creator",
+  "owner": "qt-creator",
+  "repo": "qt-creator",
+  "icon": "https://raw.githubusercontent.com/qt-creator/qt-creator/master/src/app/macos/qtcreator.icon/Assets/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Qt 官方跨平台 IDE，C++/QML 开发与调试设计一体。",
+  "description_en": "A cross-platform Qt IDE",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ide", "qt", "c++"],
+  "default_version": "v21.0.0-rc1",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 3081,
+  "forks": 878,
+  "is_verified": true,
+  "homepage": "https://github.com/qt-creator/qt-creator",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["qt-creator.exe"],
+    "linux": ["qt-creator"],
+    "macos": ["qt-creator.app"],
+    "android": [],
+    "ios": []
+  }
+}

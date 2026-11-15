@@ -1,0 +1,27 @@
+{
+  "id": "burntsushi/ripgrep",
+  "name": "ripgrep",
+  "owner": "BurntSushi",
+  "repo": "ripgrep",
+  "icon": "https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/main/static/images/rust-logo-blk.svg",
+  "icon_bg": "linear-gradient(135deg, #84cc16, #4d7c0f)",
+  "description": "基于 Rust 编写的超高速面向代码的递归行搜索工具，比 grep / ack / ag 更快更智能。",
+  "description_en": "ripgrep recursively searches directories for a regex pattern while respecting your gitignore",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ripgrep", "rg", "grep", "ripgrep msvc", "快速搜索"],
+  "default_version": "15.2.0",
+  "added_at": "2026-09-10",
+  "license": "Unlicense",
+  "stars": 69954,
+  "forks": 3474,
+  "is_verified": true,
+  "homepage": "https://github.com/BurntSushi/ripgrep",
+  "publishers": ["BurntSushi"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["rg.exe", "ripgrep.exe"],
+    "linux": ["rg"],
+    "macos": ["rg"]
+  }
+}

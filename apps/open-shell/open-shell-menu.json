@@ -1,0 +1,28 @@
+{
+  "id": "open-shell/open-shell-menu",
+  "name": "Open-Shell",
+  "owner": "Open-Shell",
+  "repo": "Open-Shell-Menu",
+  "icon": "https://raw.githubusercontent.com/Open-Shell/Open-Shell-Menu/master/Src/Localization/English/images/OpenShell.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "为 Windows 恢复经典开始菜单的开源工具，高度自定义样式与行为。",
+  "description_en": "Classic Shell Reborn.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["开始菜单", "start menu", "经典"],
+  "default_version": "v4.4.198",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 9470,
+  "forks": 534,
+  "is_verified": true,
+  "homepage": "https://github.com/Open-Shell/Open-Shell-Menu",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["OpenShellSetup_4_4_198.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

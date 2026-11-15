@@ -1,0 +1,28 @@
+{
+  "id": "openhv/openhv",
+  "name": "OpenHV",
+  "owner": "OpenHV",
+  "repo": "OpenHV",
+  "icon": "https://raw.githubusercontent.com/OpenHV/OpenHV/main/packaging/artwork/icon_512x512.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源像素风即时战略游戏，跨平台联机对战。",
+  "description_en": "An Open Source Pixelart Science-Fiction Real-Time-Strategy game",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["rts", "像素", "即时战略"],
+  "default_version": "20250725",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1099,
+  "forks": 69,
+  "is_verified": true,
+  "homepage": "https://www.openhv.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenHV.exe"],
+    "linux": ["openhv"],
+    "macos": ["OpenHV.app"],
+    "android": [],
+    "ios": []
+  }
+}

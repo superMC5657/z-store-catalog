@@ -1,0 +1,28 @@
+{
+  "id": "jendrikseipp/rednotebook",
+  "name": "rednotebook",
+  "owner": "jendrikseipp",
+  "repo": "rednotebook",
+  "icon": "https://raw.githubusercontent.com/jendrikseipp/rednotebook/master/web/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "跨平台的桌面日记本与笔记工具。",
+  "description_en": "RedNotebook is a cross-platform journal",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["cross-platform", "desktop", "diary", "gtk", "hashtags"],
+  "default_version": "v2.43",
+  "added_at": "2026-10-16",
+  "license": "GPL-2.0",
+  "stars": 562,
+  "forks": 126,
+  "is_verified": true,
+  "homepage": "https://rednotebook.app",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["rednotebook.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

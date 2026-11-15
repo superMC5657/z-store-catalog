@@ -1,0 +1,28 @@
+{
+  "id": "yacreader/yacreader",
+  "name": "YACReader",
+  "owner": "YACReader",
+  "repo": "yacreader",
+  "icon": "https://raw.githubusercontent.com/YACReader/yacreader/develop/images/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "漫画阅读与管理一体，支持压缩包与常见图片格式。",
+  "description_en": "This repo contains the code of YACReader's desktop version.",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["漫画", "comic", "阅读"],
+  "default_version": "10.5.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1438,
+  "forks": 130,
+  "is_verified": true,
+  "homepage": "https://www.yacreader.com",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["YACReader.exe"],
+    "linux": [],
+    "macos": ["yacreader.app"],
+    "android": [],
+    "ios": []
+  }
+}

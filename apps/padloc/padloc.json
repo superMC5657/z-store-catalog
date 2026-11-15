@@ -1,0 +1,28 @@
+{
+  "id": "padloc/padloc",
+  "name": "Padloc",
+  "owner": "padloc",
+  "repo": "padloc",
+  "icon": "https://raw.githubusercontent.com/padloc/padloc/main/assets/icons/app-icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "简洁现代的密码管理器，端到端加密，个人免费。",
+  "description_en": "A modern, open source password manager for individuals and teams.",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["密码", "管理", "vault"],
+  "default_version": "v4.3.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 2941,
+  "forks": 271,
+  "is_verified": true,
+  "homepage": "https://padloc.app",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["padloc_4.3.0_windows_electron_x64.exe"],
+    "linux": ["padloc"],
+    "macos": ["padloc.app"],
+    "android": ["org.padloc"],
+    "ios": []
+  }
+}

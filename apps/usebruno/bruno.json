@@ -1,0 +1,28 @@
+{
+  "id": "usebruno/bruno",
+  "name": "Bruno",
+  "owner": "usebruno",
+  "repo": "bruno",
+  "icon": "https://raw.githubusercontent.com/usebruno/bruno/main/assets/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "离线优先的开源 API 调试客户端，纯文本存储可 Git 协作，Postman 替代。",
+  "description_en": "Opensource IDE For Exploring and Testing API's (lightweight alternative to Postman/Insomnia)",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["api", "postman", "调试"],
+  "default_version": "v4.3.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 48399,
+  "forks": 3105,
+  "is_verified": true,
+  "homepage": "https://www.usebruno.com/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["bruno_4.1.0_arm64_win.exe"],
+    "linux": ["bruno"],
+    "macos": ["bruno.app"],
+    "android": [],
+    "ios": []
+  }
+}

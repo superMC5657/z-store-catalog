@@ -1,0 +1,28 @@
+{
+  "id": "sqlitebrowser/sqlitebrowser",
+  "name": "DB Browser for SQLite",
+  "owner": "sqlitebrowser",
+  "repo": "sqlitebrowser",
+  "icon": "https://raw.githubusercontent.com/sqlitebrowser/sqlitebrowser/master/src/icons/sqlitebrowser.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "最流行的 SQLite 可视化管理工具，创建编辑数据库。",
+  "description_en": "Official home of the DB Browser for SQLite (DB4S) project. Previously known as \"SQLite Database Browser\" and \"Database Browser for SQLite\". Website at: ",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["sqlite", "数据库", "工具"],
+  "default_version": "v3.13.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 24789,
+  "forks": 2381,
+  "is_verified": true,
+  "homepage": "https://sqlitebrowser.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["SQLiteDatabaseBrowserPortable_3.13.1.paf.exe"],
+    "linux": ["sqlitebrowser"],
+    "macos": ["sqlitebrowser.app"],
+    "android": [],
+    "ios": []
+  }
+}

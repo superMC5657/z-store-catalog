@@ -1,0 +1,27 @@
+{
+  "id": "molunerfinn/picgo",
+  "name": "PicGo",
+  "owner": "Molunerfinn",
+  "repo": "PicGo",
+  "icon": "https://raw.githubusercontent.com/Molunerfinn/PicGo/dev/build/icons/512x512.png",
+  "icon_bg": "linear-gradient(135deg, #38bdf8, #0284c7)",
+  "description": "一个用于快速上传图片并获取 Markdown 链接的开源图床客户端工具。",
+  "description_en": ":rocket: The Ultimate Image Uploader for Efficient Creators. Supports Obsidian, Typora, VS Code etc. and 60+ image hosting services  (S3, GitHub, Cloudflare R2, Imgur, Aliyun OSS...). Paste, upload, done.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["picgo", "图床", "图片上传", "markdown 图床", "image uploader"],
+  "default_version": "v3.0.4",
+  "added_at": "2026-09-10",
+  "license": "MIT",
+  "stars": 27492,
+  "forks": 2339,
+  "is_verified": true,
+  "homepage": "https://molunerfinn.com/PicGo/",
+  "publishers": ["Molunerfinn"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["PicGo.exe"],
+    "linux": ["picgo"],
+    "macos": ["PicGo.app"]
+  }
+}

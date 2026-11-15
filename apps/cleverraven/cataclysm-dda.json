@@ -1,0 +1,28 @@
+{
+  "id": "cleverraven/cataclysm-dda",
+  "name": "Cataclysm DDA",
+  "owner": "CleverRaven",
+  "repo": "Cataclysm-DDA",
+  "icon": "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/master/build-data/osx/AppIcon.iconset/icon_512x512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "深度生存 Roguelike，末日求生自由度极高。",
+  "description_en": "Cataclysm - Dark Days Ahead. A turn-based survival game set in a post-apocalyptic world.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["roguelike", "生存", "末日"],
+  "default_version": "0.I-1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 13534,
+  "forks": 4734,
+  "is_verified": true,
+  "homepage": "http://cataclysmdda.org",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Cataclysm-DDA.exe"],
+    "linux": ["cataclysm-dda"],
+    "macos": ["Cataclysm-DDA.app"],
+    "android": ["org.cataclysm-dda"],
+    "ios": []
+  }
+}

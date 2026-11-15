@@ -1,0 +1,28 @@
+{
+  "id": "moonlight-stream/moonlight-qt",
+  "name": "Moonlight",
+  "owner": "moonlight-stream",
+  "repo": "moonlight-qt",
+  "icon": "https://raw.githubusercontent.com/moonlight-stream/moonlight-qt/master/app/moonlight.ico",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "NVIDIA GameStream/Sunshine 的开源串流客户端，低延迟畅玩电脑游戏。",
+  "description_en": "GameStream client for PCs (Windows, Mac, Linux, and Steam Link)",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["串流", "gamestream", "远程游戏"],
+  "default_version": "v6.2.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 19532,
+  "forks": 1542,
+  "is_verified": true,
+  "homepage": "https://github.com/moonlight-stream/moonlight-qt",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["MoonlightSetup.exe"],
+    "linux": ["moonlight-qt"],
+    "macos": ["moonlight-qt.app"],
+    "android": [],
+    "ios": []
+  }
+}

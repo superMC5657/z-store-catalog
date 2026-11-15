@@ -1,0 +1,28 @@
+{
+  "id": "samhocevar/wincompose",
+  "name": "WinCompose",
+  "owner": "samhocevar",
+  "repo": "wincompose",
+  "icon": "https://raw.githubusercontent.com/samhocevar/wincompose/master/web/icon.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "在 Windows 上用组合键输入特殊符号的输入增强工具，emoji 一键打出。",
+  "description_en": "🔣 Compose Key for Windows",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["输入", "特殊符号", "compose"],
+  "default_version": "v0.9.11",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 2954,
+  "forks": 107,
+  "is_verified": true,
+  "homepage": "http://wincompose.info/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["WinCompose-Setup.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "linwooddev/butterfly",
+  "name": "Butterfly",
+  "owner": "LinwoodDev",
+  "repo": "Butterfly",
+  "icon": "https://raw.githubusercontent.com/LinwoodDev/Butterfly/develop/app/images/logo.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "强大极简的跨平台开源笔记应用。",
+  "description_en": "🎨 Powerful, minimalistic, cross-platform, opensource note-taking app",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["android", "app", "cross-platform", "customizable", "dart"],
+  "default_version": "v2.6.2",
+  "added_at": "2026-10-16",
+  "license": "AGPL-3.0",
+  "stars": 2102,
+  "forks": 160,
+  "is_verified": true,
+  "homepage": "https://butterfly.linwood.dev",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["Butterfly.exe"],
+    "linux": ["butterfly"],
+    "macos": ["Butterfly.app"],
+    "android": ["org.butterfly"],
+    "ios": ["org.butterfly"]
+  }
+}

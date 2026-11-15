@@ -1,0 +1,26 @@
+{
+  "id": "vscodium/vscodium",
+  "name": "VSCodium",
+  "owner": "VSCodium",
+  "repo": "vscodium",
+  "icon": "https://raw.githubusercontent.com/VSCodium/vscodium/master/icons/stable/codium_cnl.svg",
+  "icon_bg": "linear-gradient(135deg, #38bdf8, #0284c7)",
+  "description": "社区驱动的 VS Code 纯净无遥测追踪二进制发行版，100% 自由开源。",
+  "description_en": "binary releases of VS Code without MS branding/telemetry/licensing",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["代码编辑", "vscode", "编程开发", "code editor", "ide"],
+  "default_version": "1.143.17232",
+  "added_at": "2026-09-10",
+  "license": "MIT",
+  "stars": 34118,
+  "forks": 1927,
+  "is_verified": true,
+  "homepage": "https://vscodium.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["VSCodium.exe"],
+    "linux": ["codium"],
+    "macos": ["VSCodium.app", "codium"]
+  }
+}

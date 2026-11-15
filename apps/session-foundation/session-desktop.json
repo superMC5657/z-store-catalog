@@ -1,0 +1,28 @@
+{
+  "id": "session-foundation/session-desktop",
+  "name": "Session",
+  "owner": "session-foundation",
+  "repo": "session-desktop",
+  "icon": "https://raw.githubusercontent.com/session-foundation/session-desktop/dev/build/icons/icon_1024x1024.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "无需手机号与账户的端到端加密即时通讯，匿名洋葱路由保护身份。",
+  "description_en": "Session Desktop - A Decentralized, Onion Routed, Private Messenger",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["聊天", "加密", "匿名"],
+  "default_version": "v1.18.4",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 613,
+  "forks": 118,
+  "is_verified": true,
+  "homepage": "https://getsession.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["session-desktop-win-x64.exe"],
+    "linux": ["session-desktop"],
+    "macos": ["session-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

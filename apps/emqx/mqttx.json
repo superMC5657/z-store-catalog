@@ -1,0 +1,28 @@
+{
+  "id": "emqx/mqttx",
+  "name": "MQTTX",
+  "owner": "emqx",
+  "repo": "MQTTX",
+  "icon": "https://raw.githubusercontent.com/emqx/MQTTX/main/public/icons/app.ico",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "优雅的跨平台 MQTT 5.0 客户端，调试物联网必备。",
+  "description_en": "A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["mqtt", "物联网", "调试"],
+  "default_version": "v1.13.3",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 5103,
+  "forks": 557,
+  "is_verified": true,
+  "homepage": "https://mqttx.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["mqttx-cli-win-arm64.exe"],
+    "linux": ["mqttx"],
+    "macos": ["MQTTX.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "lmms/lmms",
+  "name": "LMMS",
+  "owner": "LMMS",
+  "repo": "lmms",
+  "icon": "https://raw.githubusercontent.com/LMMS/lmms/master/cmake/linux/icons/256x256/apps/lmms.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "跨平台数字音乐工作站，合成器与采样器丰富，FL Studio 替代。",
+  "description_en": "Cross-platform music production software",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["编曲", "音乐制作", "daw"],
+  "default_version": "v1.2.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 10663,
+  "forks": 1324,
+  "is_verified": true,
+  "homepage": "https://lmms.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["lmms.exe"],
+    "linux": ["lmms"],
+    "macos": ["lmms.app"],
+    "android": [],
+    "ios": []
+  }
+}

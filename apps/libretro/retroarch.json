@@ -1,0 +1,28 @@
+{
+  "id": "libretro/retroarch",
+  "name": "RetroArch",
+  "owner": "libretro",
+  "repo": "RetroArch",
+  "icon": "https://raw.githubusercontent.com/libretro/RetroArch/master/media/icons/playstore/icon.png",
+  "icon_bg": "linear-gradient(135deg, #6366f1, #4338ca)",
+  "description": "跨平台的经典复古游戏模拟器前端，整合数十种经典游戏机核心与滤镜效果。",
+  "description_en": "Cross-platform, sophisticated frontend for the libretro API. Licensed GPLv3.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["游戏模拟器", "红白机", "街机", "经典游戏", "emulator", "retro"],
+  "default_version": "v1.22.2",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 14616,
+  "forks": 2358,
+  "is_verified": true,
+  "homepage": "https://www.retroarch.com",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["retroarch.exe"],
+    "linux": ["retroarch"],
+    "macos": ["RetroArch.app"],
+    "android": ["com.retroarch"],
+    "ios": ["com.libretro.RetroArch"]
+  }
+}

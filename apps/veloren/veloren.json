@@ -1,0 +1,28 @@
+{
+  "id": "veloren/veloren",
+  "name": "Veloren",
+  "owner": "veloren",
+  "repo": "veloren",
+  "icon": "https://raw.githubusercontent.com/veloren/veloren/master/assets/voxygen/logo.ico",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Rust 编写的开源体素多人 RPG，社区驱动。",
+  "description_en": "[mirror of https://gitlab.com/veloren/veloren] An open world, open source voxel RPG inspired by Dwarf Fortress and Cube World. This repository is a mirror. Please submit all PRs and issues on our GitLab page.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["沙盒", "rpg", "多人"],
+  "default_version": "weekly",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 7696,
+  "forks": 580,
+  "is_verified": true,
+  "homepage": "https://veloren.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["veloren.exe"],
+    "linux": ["veloren"],
+    "macos": ["veloren.app"],
+    "android": [],
+    "ios": []
+  }
+}

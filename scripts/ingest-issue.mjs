@@ -25,6 +25,7 @@ import {
   CATEGORIES,
   CATEGORY_GRADIENTS,
   deducePlatformsAndIdentifiers,
+  formatAppJson,
   formatCatalogJson,
   guessCategory,
   probeRepoLogo,
@@ -883,6 +884,24 @@ async function main() {
   result.warnings = [...new Set(warnings)];
 
   if (args.write) {
+    const appsDir = path.join(rootDir, 'apps');
+    for (const item of added) {
+      const parts = item.id.toLowerCase().split('/');
+      const ownerDir = path.join(appsDir, parts[0]);
+      fs.mkdirSync(ownerDir, { recursive: true });
+      fs.writeFileSync(path.join(ownerDir, `${parts[1]}.json`), formatAppJson(reorderCatalogFields(item)), 'utf8');
+    }
+    for (const u of updated) {
+      const updatedItem = reorderCatalogFields({
+        ...u.existing,
+        ...u.item,
+        added_at: u.existing.added_at || u.item.added_at,
+      });
+      const parts = updatedItem.id.toLowerCase().split('/');
+      const ownerDir = path.join(appsDir, parts[0]);
+      fs.mkdirSync(ownerDir, { recursive: true });
+      fs.writeFileSync(path.join(ownerDir, `${parts[1]}.json`), formatAppJson(updatedItem), 'utf8');
+    }
     fs.writeFileSync(catalogPath, formatCatalogJson(next), 'utf8');
   }
 

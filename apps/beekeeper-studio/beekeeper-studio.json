@@ -1,0 +1,28 @@
+{
+  "id": "beekeeper-studio/beekeeper-studio",
+  "name": "Beekeeper Studio",
+  "owner": "beekeeper-studio",
+  "repo": "beekeeper-studio",
+  "icon": "https://raw.githubusercontent.com/beekeeper-studio/beekeeper-studio/master/apps/studio/public/icons/png/1024x1024.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "界面优雅易用的 SQL 编辑与管理客户端，多库支持。",
+  "description_en": "Modern and easy to use database GUI & SQL client for MySQL, Postgres, SQLite, SQL Server, ClickHouse, and more. Linux, MacOS, and Windows.",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["数据库", "sql", "客户端"],
+  "default_version": "v6.2.2",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 23891,
+  "forks": 1678,
+  "is_verified": true,
+  "homepage": "https://www.beekeeperstudio.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Beekeeper-Studio.exe"],
+    "linux": ["beekeeper-studio"],
+    "macos": ["beekeeper-studio.app"],
+    "android": [],
+    "ios": []
+  }
+}

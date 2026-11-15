@@ -1,0 +1,28 @@
+{
+  "id": "react/react-native",
+  "name": "react-native",
+  "owner": "react",
+  "repo": "react-native",
+  "icon": "https://raw.githubusercontent.com/react/react-native/main/packages/debugger-shell/src/electron/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "用 React 构建原生应用的开源框架，一套代码跑 iOS 与安卓。",
+  "description_en": "A framework for building native applications using React",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["android", "app-framework", "cross-platform", "ios", "mobile"],
+  "default_version": "v0.88.1",
+  "added_at": "2026-10-16",
+  "license": "MIT",
+  "stars": 126926,
+  "forks": 25489,
+  "is_verified": true,
+  "homepage": "https://reactnative.dev",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["react-native.exe"],
+    "linux": ["react-native"],
+    "macos": ["react-native.app"],
+    "android": [],
+    "ios": []
+  }
+}

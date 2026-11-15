@@ -1,0 +1,27 @@
+{
+  "id": "telegramdesktop/tdesktop",
+  "name": "Telegram Desktop",
+  "owner": "telegramdesktop",
+  "repo": "tdesktop",
+  "icon": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/art/icon512.png",
+  "icon_bg": "linear-gradient(135deg, #0ea5e9, #0284c7)",
+  "description": "官方 Telegram 桌面开源客户端，高速、安全、端到端加密支持的即时通讯工具。",
+  "description_en": "Telegram Desktop messaging app",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["telegram", "电报", "tg", "tdesktop", "telegram desktop"],
+  "default_version": "v7.4.4",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 33572,
+  "forks": 7642,
+  "is_verified": true,
+  "homepage": "https://desktop.telegram.org",
+  "publishers": ["Telegram FZ-LLC", "Telegram"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Telegram.exe", "telegram.exe"],
+    "linux": ["telegram-desktop", "Telegram"],
+    "macos": ["Telegram.app"]
+  }
+}

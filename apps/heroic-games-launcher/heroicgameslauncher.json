@@ -1,0 +1,28 @@
+{
+  "id": "heroic-games-launcher/heroicgameslauncher",
+  "name": "Heroic Games Launcher",
+  "owner": "Heroic-Games-Launcher",
+  "repo": "HeroicGamesLauncher",
+  "icon": "https://raw.githubusercontent.com/Heroic-Games-Launcher/HeroicGamesLauncher/main/public/icon.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源的 Epic/GOG/Amazon 游戏启动器，Wine 管理友好。",
+  "description_en": "A games launcher for GOG, Amazon and Epic Games for Linux, Windows and macOS.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["游戏平台", "启动器", "epic"],
+  "default_version": "v2.22.4",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 12634,
+  "forks": 720,
+  "is_verified": true,
+  "homepage": "https://heroicgameslauncher.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Heroic.exe"],
+    "linux": ["heroicgameslauncher"],
+    "macos": ["HeroicGamesLauncher.app"],
+    "android": [],
+    "ios": []
+  }
+}

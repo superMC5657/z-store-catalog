@@ -1,0 +1,28 @@
+{
+  "id": "jeffvli/feishin",
+  "name": "Feishin",
+  "owner": "jeffvli",
+  "repo": "feishin",
+  "icon": "https://raw.githubusercontent.com/jeffvli/feishin/development/assets/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "现代的全功能 Subsonic/Jellyfin 音乐服务器桌面客户端。",
+  "description_en": "A modern self-hosted music player.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "navidrome", "subsonic"],
+  "default_version": "v1.17.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 10420,
+  "forks": 606,
+  "is_verified": true,
+  "homepage": "https://feishin.vercel.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Feishin.exe"],
+    "linux": ["feishin"],
+    "macos": ["feishin.app"],
+    "android": [],
+    "ios": []
+  }
+}

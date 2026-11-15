@@ -1,0 +1,28 @@
+{
+  "id": "calcprogrammer1/openrgb",
+  "name": "OpenRGB",
+  "owner": "CalcProgrammer1",
+  "repo": "OpenRGB",
+  "icon": "https://raw.githubusercontent.com/CalcProgrammer1/OpenRGB/master/Documentation/Images/OpenRGB.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "统一控制各品牌 RGB 内存/主板/外设灯效的开源工具，摆脱厂商软件绑定。",
+  "description_en": "Open source RGB lighting control that doesn't depend on manufacturer software. Supports Windows, Linux, MacOS.  Mirror of https://gitlab.com/CalcProgrammer1/OpenRGB.  Releases can be found on GitLab.",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["rgb", "灯效", "光效"],
+  "default_version": "release_1.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 4698,
+  "forks": 486,
+  "is_verified": true,
+  "homepage": "https://github.com/CalcProgrammer1/OpenRGB",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenRGB.exe"],
+    "linux": ["openrgb"],
+    "macos": ["OpenRGB.app"],
+    "android": [],
+    "ios": []
+  }
+}

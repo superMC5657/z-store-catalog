@@ -1,0 +1,28 @@
+{
+  "id": "faster3ck/converseen",
+  "name": "Converseen",
+  "owner": "Faster3ck",
+  "repo": "Converseen",
+  "icon": "https://raw.githubusercontent.com/Faster3ck/Converseen/main/res/icons/512x512/converseen.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "批量转换与压缩图片格式，支持上百种格式与 PDF。",
+  "description_en": "Converseen is a batch image converter and resizer",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["图片转换", "批量", "convert"],
+  "default_version": "v0.15.2.9",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1191,
+  "forks": 89,
+  "is_verified": true,
+  "homepage": "https://converseen.fasterland.net/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Converseen.exe"],
+    "linux": ["converseen"],
+    "macos": ["Converseen.app"],
+    "android": [],
+    "ios": []
+  }
+}

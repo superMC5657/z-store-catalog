@@ -1,0 +1,28 @@
+{
+  "id": "rancher-sandbox/rancher-desktop",
+  "name": "Rancher Desktop",
+  "owner": "rancher-sandbox",
+  "repo": "rancher-desktop",
+  "icon": "https://raw.githubusercontent.com/rancher-sandbox/rancher-desktop/main/resources/icons/logo-square-512.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "在桌面管理 Kubernetes 与容器的开源应用，containerd/dockerd 可选。",
+  "description_en": "Container Management and Kubernetes on the Desktop",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["docker", "kubernetes", "容器"],
+  "default_version": "v1.25.0",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 7415,
+  "forks": 392,
+  "is_verified": true,
+  "homepage": "https://rancherdesktop.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["rancher-desktop.exe"],
+    "linux": ["rancher-desktop"],
+    "macos": ["rancher-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

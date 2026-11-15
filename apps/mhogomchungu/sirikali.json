@@ -1,0 +1,28 @@
+{
+  "id": "mhogomchungu/sirikali",
+  "name": "SiriKali",
+  "owner": "mhogomchungu",
+  "repo": "sirikali",
+  "icon": "https://raw.githubusercontent.com/mhogomchungu/sirikali/master/icons/256x256/sirikali.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "管理加密卷的图形前端，支持 CryFS/gocryptfs 等。",
+  "description_en": "A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["加密", "挂载", "cryfs"],
+  "default_version": "1.8.6",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1012,
+  "forks": 64,
+  "is_verified": true,
+  "homepage": "http://mhogomchungu.github.io/sirikali",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["sirikali.exe"],
+    "linux": [],
+    "macos": ["sirikali.app"],
+    "android": [],
+    "ios": []
+  }
+}

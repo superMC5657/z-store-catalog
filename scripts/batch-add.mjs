@@ -35,6 +35,7 @@ import {
   resolveGitHubToken,
   probeRepoLogo,
   deducePlatformsAndIdentifiers,
+  formatAppJson,
   formatCatalogJson,
   todayAddedAt,
 } from './lib/catalog-shared.mjs';
@@ -241,6 +242,13 @@ async function runQueue(queue, idx, catalog, headers, report, categoryNames, exi
     // 非 dry-run 且成功时立即写盘（崩溃可续跑；dry-run 不写盘）
     if (!dryRun && isOk) {
       catalog.push(result.entry);
+
+      // 写回 apps/<owner>/<repo>.json
+      const appsDir = path.join(rootDir, 'apps');
+      const ownerDir = path.join(appsDir, result.entry.owner.toLowerCase());
+      fs.mkdirSync(ownerDir, { recursive: true });
+      fs.writeFileSync(path.join(ownerDir, `${result.entry.repo.toLowerCase()}.json`), formatAppJson(result.entry), 'utf8');
+
       const formatted = formatCatalogJson(catalog);
       fs.writeFileSync(catalogPath, formatted, 'utf8');
       const clientCatalogPath = path.resolve(rootDir, '../../catalog.json');

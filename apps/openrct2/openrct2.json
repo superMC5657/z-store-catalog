@@ -1,0 +1,28 @@
+{
+  "id": "openrct2/openrct2",
+  "name": "OpenRCT2",
+  "owner": "OpenRCT2",
+  "repo": "OpenRCT2",
+  "icon": "https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/resources/g2/logo.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "RollerCoaster Tycoon 2 的开源增强重实现。",
+  "description_en": "An open source re-implementation of RollerCoaster Tycoon 2 🎢",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟经营", "游乐场", "复刻"],
+  "default_version": "v0.5.7",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 16582,
+  "forks": 1969,
+  "is_verified": true,
+  "homepage": "https://openrct2.io",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["OpenRCT2.exe"],
+    "linux": ["openrct2"],
+    "macos": ["OpenRCT2.app"],
+    "android": ["org.openrct2"],
+    "ios": []
+  }
+}

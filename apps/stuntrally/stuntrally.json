@@ -1,0 +1,28 @@
+{
+  "id": "stuntrally/stuntrally",
+  "name": "Stunt Rally",
+  "owner": "stuntrally",
+  "repo": "stuntrally",
+  "icon": "https://raw.githubusercontent.com/stuntrally/stuntrally/master/data/gui/stuntrally.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源特技赛车游戏，赛道编辑器与拉力赛模式。",
+  "description_en": "NOTE: development in stuntrally3 repo. 3D racing game based on VDrift and OGRE with own Track Editor. The main repository with Stunt Rally 2.x sources and data.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["赛车", "竞速", "特技"],
+  "default_version": "2.7",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 649,
+  "forks": 132,
+  "is_verified": true,
+  "homepage": "https://stuntrally.tuxfamily.org/",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["stuntrally.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

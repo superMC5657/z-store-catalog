@@ -1,0 +1,28 @@
+{
+  "id": "emoacht/monitorian",
+  "name": "Monitorian",
+  "owner": "emoacht",
+  "repo": "Monitorian",
+  "icon": "https://raw.githubusercontent.com/emoacht/Monitorian/master/Source/Monitorian.Core/Resources/Icons/LightTrayIcon.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "Windows 任务栏亮度快捷调节工具，支持多显示器与多台同步调节。",
+  "description_en": "A Windows desktop tool to adjust the brightness of multiple monitors with ease",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["亮度", "显示器", "brightness"],
+  "default_version": "4.16.11-Installer",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 4813,
+  "forks": 233,
+  "is_verified": true,
+  "homepage": "https://www.microsoft.com/store/apps/9nw33j738bl0",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Monitorian.exe"],
+    "linux": ["monitorian"],
+    "macos": ["Monitorian.app"],
+    "android": [],
+    "ios": []
+  }
+}

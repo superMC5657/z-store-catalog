@@ -1,0 +1,28 @@
+{
+  "id": "serial-studio/serial-studio",
+  "name": "Serial Studio",
+  "owner": "Serial-Studio",
+  "repo": "Serial-Studio",
+  "icon": "https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/master/lib/QSimpleUpdater/etc/icon.png",
+  "icon_bg": "linear-gradient(135deg, #4f46e5, #3730a3)",
+  "description": "实时解析串口数据并可视化为仪表盘的工具。",
+  "description_en": "Open-source telemetry dashboard. Supports UART, BLE, MQTT, Modbus, CAN Bus and more. ",
+  "category": "ops",
+  "category_name": "运维部署",
+  "aliases": ["串口", "仪表", "硬件"],
+  "default_version": "v4.2.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 7329,
+  "forks": 1102,
+  "is_verified": true,
+  "homepage": "https://serial-studio.com/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Serial-Studio.exe"],
+    "linux": ["serial-studio"],
+    "macos": ["Serial-Studio.app"],
+    "android": [],
+    "ios": []
+  }
+}

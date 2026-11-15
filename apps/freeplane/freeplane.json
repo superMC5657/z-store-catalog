@@ -1,0 +1,28 @@
+{
+  "id": "freeplane/freeplane",
+  "name": "Freeplane",
+  "owner": "freeplane",
+  "repo": "freeplane",
+  "icon": "https://raw.githubusercontent.com/freeplane/freeplane/1.13.x/freeplane/src/editor/resources/images/Freeplane_frame_icon_512x512.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "功能强大的开源思维导图，节点属性与脚本扩展。",
+  "description_en": "Application for Mind Mapping, Knowledge Management, Project Management. Develop, organize and communicate your ideas and knowledge in the most effective way.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["思维导图", "脑图", "mindmap"],
+  "default_version": "release-1.13.5",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 4480,
+  "forks": 506,
+  "is_verified": true,
+  "homepage": "https://www.freeplane.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Freeplane-Setup.exe"],
+    "linux": ["freeplane"],
+    "macos": ["freeplane.app"],
+    "android": [],
+    "ios": []
+  }
+}

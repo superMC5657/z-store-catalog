@@ -1,0 +1,28 @@
+{
+  "id": "brave/brave-browser",
+  "name": "Brave",
+  "owner": "brave",
+  "repo": "brave-browser",
+  "icon": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_256.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "自带广告拦截与反指纹追踪的 Chromium 浏览器，注重隐私与速度。",
+  "description_en": "Brave browser for Android, iOS, Linux, macOS, Windows.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["浏览器", "brave", "隐私"],
+  "default_version": "v1.99.57",
+  "added_at": "2026-09-13",
+  "license": "MPL-2.0",
+  "stars": 24220,
+  "forks": 3288,
+  "is_verified": true,
+  "homepage": "https://brave.com",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["BraveBrowserSetup.exe"],
+    "linux": ["brave-browser"],
+    "macos": ["brave-browser.app"],
+    "android": ["org.brave-browser"],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "nomacs/nomacs",
+  "name": "nomacs",
+  "owner": "nomacs",
+  "repo": "nomacs",
+  "icon": "https://raw.githubusercontent.com/nomacs/nomacs/master/ImageLounge/nomacs.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "跨平台快速图片查看器，支持 RAW 与网络同步浏览。",
+  "description_en": "nomacs is a free image viewer for windows, linux, and mac systems.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["看图", "图片", "viewer"],
+  "default_version": "3.22.5",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 3328,
+  "forks": 210,
+  "is_verified": true,
+  "homepage": "https://nomacs.org/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["nomacs.exe"],
+    "linux": ["nomacs"],
+    "macos": ["nomacs.app"],
+    "android": [],
+    "ios": []
+  }
+}

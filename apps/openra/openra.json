@@ -1,0 +1,28 @@
+{
+  "id": "openra/openra",
+  "name": "OpenRA",
+  "owner": "OpenRA",
+  "repo": "OpenRA",
+  "icon": "https://raw.githubusercontent.com/OpenRA/OpenRA/bleed/packaging/artwork/ra_512x512.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "重制经典 Westwood RTS 的开源引擎，红色警戒与命令与征服。",
+  "description_en": "Open Source real-time strategy game engine for early Westwood games such as Command & Conquer: Red Alert written in C# using SDL and OpenGL. Runs on Windows, Linux, *BSD and Mac OS X.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["rts", "红警", "即时战略"],
+  "default_version": "release-20250330",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 17786,
+  "forks": 3114,
+  "is_verified": true,
+  "homepage": "https://www.openra.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenRA-release.exe"],
+    "linux": ["openra"],
+    "macos": ["OpenRA.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "bitwarden/clients",
+  "name": "Bitwarden Desktop",
+  "owner": "bitwarden",
+  "repo": "clients",
+  "icon": "https://raw.githubusercontent.com/bitwarden/clients/main/apps/desktop/resources/icon.png",
+  "icon_bg": "linear-gradient(135deg, #175ddc, #0a44ad)",
+  "description": "全球最信任的端到端加密开源密码与通行密钥 (Passkey) 管理桌面客户端。",
+  "description_en": "Bitwarden client apps (web, browser extension, desktop, and cli).",
+  "category": "security",
+  "category_name": "安全加密",
+  "aliases": ["密码管理", "安全私钥", "passkey", "password", "bitwarden"],
+  "default_version": "desktop-v2026.10.4",
+  "added_at": "2026-09-10",
+  "license": "NOASSERTION",
+  "stars": 14232,
+  "forks": 2210,
+  "is_verified": true,
+  "homepage": "https://bitwarden.com",
+  "platforms": ["windows", "macos", "linux", "android", "ios"],
+  "identifiers": {
+    "windows": ["Bitwarden.exe"],
+    "linux": ["bitwarden"],
+    "macos": ["Bitwarden.app"],
+    "android": ["com.x8bit.bitwarden"],
+    "ios": ["com.8bit.bitwarden"]
+  }
+}

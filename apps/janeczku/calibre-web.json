@@ -1,0 +1,26 @@
+{
+  "id": "janeczku/calibre-web",
+  "name": "Calibre-web",
+  "owner": "janeczku",
+  "repo": "calibre-web",
+  "icon": "https://raw.githubusercontent.com/janeczku/calibre-web/master/cps/static/icon.png",
+  "icon_bg": "linear-gradient(135deg, #059669, #047857)",
+  "description": "开源电子书库管理平台，集成格式转换、元数据抓取与在线阅读分发。",
+  "description_en": ":books: Web app for browsing, reading and downloading eBooks stored in a Calibre database",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["电子书库", "书库管理", "calibre", "阅读器"],
+  "default_version": "0.6.27",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 18561,
+  "forks": 1909,
+  "is_verified": true,
+  "homepage": "https://calibre-ebook.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["calibre.exe"],
+    "linux": ["calibre", "ebook-viewer"],
+    "macos": ["calibre.app", "calibre"]
+  }
+}

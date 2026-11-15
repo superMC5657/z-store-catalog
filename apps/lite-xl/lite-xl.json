@@ -1,0 +1,28 @@
+{
+  "id": "lite-xl/lite-xl",
+  "name": "Lite XL",
+  "owner": "lite-xl",
+  "repo": "lite-xl",
+  "icon": "https://lite-xl.com/assets/icon.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "用 Lua 可扩展的超轻量代码编辑器，启动毫秒级。",
+  "description_en": "A lightweight text editor written in Lua",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["编辑器", "轻量", "lua"],
+  "default_version": "v2.1.8",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 6543,
+  "forks": 329,
+  "is_verified": true,
+  "homepage": "https://lite-xl.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["lite-xl.exe"],
+    "linux": ["lite-xl"],
+    "macos": ["lite-xl.app"],
+    "android": [],
+    "ios": []
+  }
+}

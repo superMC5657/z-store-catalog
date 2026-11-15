@@ -1,0 +1,28 @@
+{
+  "id": "upscayl/upscayl",
+  "name": "Upscayl",
+  "owner": "upscayl",
+  "repo": "upscayl",
+  "icon": "https://raw.githubusercontent.com/upscayl/upscayl/main/renderer/public/icon.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "免费开源的 AI 图片超分辨率放大器，本地离线运行。",
+  "description_en": "🆙 Upscayl - #1 Free and Open Source AI Image Upscaler for Linux, MacOS and Windows.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["ai", "放大", "超分"],
+  "default_version": "v2.15.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 52602,
+  "forks": 2757,
+  "is_verified": true,
+  "homepage": "https://upscayl.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["upscayl.exe"],
+    "linux": ["upscayl"],
+    "macos": ["upscayl.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "opentabletdriver/opentabletdriver",
+  "name": "OpenTabletDriver",
+  "owner": "OpenTabletDriver",
+  "repo": "OpenTabletDriver",
+  "icon": "https://raw.githubusercontent.com/OpenTabletDriver/OpenTabletDriver/0.6.x/OpenTabletDriver.UX/Assets/otd.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "跨平台开源的用户态数位板驱动，低延迟高兼容。",
+  "description_en": "Open source, cross-platform, user-mode tablet driver",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["数位板", "驱动", "tablet"],
+  "default_version": "v0.6.8.1",
+  "added_at": "2026-09-13",
+  "license": "LGPL-3.0",
+  "stars": 4267,
+  "forks": 578,
+  "is_verified": true,
+  "homepage": "https://opentabletdriver.net/",
+  "platforms": ["linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["opentabletdriver"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

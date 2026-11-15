@@ -1,0 +1,28 @@
+{
+  "id": "obsproject/obs-studio",
+  "name": "OBS Studio",
+  "owner": "obsproject",
+  "repo": "obs-studio",
+  "icon": "https://raw.githubusercontent.com/obsproject/obs-studio/master/frontend/cmake/linux/icons/obs-logo-512.png",
+  "icon_bg": "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+  "description": "专业级开源视频录制和直播推流软件，强大插件生态与多轨混音支持。",
+  "description_en": "OBS Studio - Free and open source software for live streaming and screen recording",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["录屏", "直播", "推流", "screen recorder", "streaming"],
+  "default_version": "33.0.1",
+  "added_at": "2026-09-10",
+  "license": "GPL-2.0",
+  "stars": 79587,
+  "forks": 11264,
+  "is_verified": true,
+  "homepage": "https://obsproject.com",
+  "search_subdirs": ["bin/64bit", "bin/32bit", "bin"],
+  "publishers": ["OBS Project"],
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["obs64.exe", "obs32.exe", "obs.exe"],
+    "linux": ["obs"],
+    "macos": ["OBS.app", "obs"]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "zotero/zotero",
+  "name": "Zotero",
+  "owner": "zotero",
+  "repo": "zotero",
+  "icon": "https://raw.githubusercontent.com/zotero/zotero/main/app/linux/icons/icon128.png",
+  "icon_bg": "linear-gradient(135deg, #0d9488, #0f766e)",
+  "description": "学术文献收集管理与引用的标杆工具，浏览器集成。",
+  "description_en": "Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share your research sources.",
+  "category": "reading",
+  "category_name": "阅读学习",
+  "aliases": ["文献", "学术", "引用"],
+  "default_version": "10.0.2",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 15945,
+  "forks": 1180,
+  "is_verified": true,
+  "homepage": "https://www.zotero.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["zotero.exe"],
+    "linux": ["zotero"],
+    "macos": ["zotero.app"],
+    "android": [],
+    "ios": []
+  }
+}

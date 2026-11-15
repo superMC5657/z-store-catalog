@@ -1,0 +1,28 @@
+{
+  "id": "kde/krita",
+  "name": "Krita",
+  "owner": "KDE",
+  "repo": "krita",
+  "icon": "https://raw.githubusercontent.com/KDE/krita/master/packaging/windows/msix/pkg/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "面向概念艺术与插画的开源绘画软件，笔刷引擎强大。",
+  "description_en": "Krita is a free and open source cross-platform application that offers an end-to-end solution for creating digital art files from scratch built on the KDE and Qt frameworks.",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["绘画", "插画", "drawing"],
+  "default_version": "v42.0-beta2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 10744,
+  "forks": 916,
+  "is_verified": true,
+  "homepage": "https://invent.kde.org/graphics/krita",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["krita.exe"],
+    "linux": ["krita"],
+    "macos": ["krita.app"],
+    "android": [],
+    "ios": []
+  }
+}

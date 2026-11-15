@@ -1,0 +1,28 @@
+{
+  "id": "pcsx2/pcsx2",
+  "name": "PCSX2",
+  "owner": "PCSX2",
+  "repo": "pcsx2",
+  "icon": "https://raw.githubusercontent.com/PCSX2/pcsx2/master/bin/resources/icons/AppIconLarge.ico",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "高性能 PlayStation 2 模拟器，兼容性与画质增强领先。",
+  "description_en": "PCSX2 - The Playstation 2 Emulator",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "ps2", "游戏"],
+  "default_version": "v2.8.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 16074,
+  "forks": 2439,
+  "is_verified": true,
+  "homepage": "https://pcsx2.net",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["pcsx2.exe"],
+    "linux": ["pcsx2"],
+    "macos": ["pcsx2.app"],
+    "android": [],
+    "ios": []
+  }
+}

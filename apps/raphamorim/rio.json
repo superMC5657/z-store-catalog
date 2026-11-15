@@ -1,0 +1,28 @@
+{
+  "id": "raphamorim/rio",
+  "name": "Rio",
+  "owner": "raphamorim",
+  "repo": "rio",
+  "icon": "https://raw.githubusercontent.com/raphamorim/rio/main/frontends/rioterm/src/router/resources/images/rio-logo.ico",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "Rust 与 WebAssembly 驱动的硬件加速终端模拟器。",
+  "description_en": "A hardware-accelerated GPU terminal emulator focusing to run in desktops and browsers.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "terminal", "rust"],
+  "default_version": "v0.5.32",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 7741,
+  "forks": 384,
+  "is_verified": true,
+  "homepage": "https://rioterm.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["rio-portable-aarch64.exe"],
+    "linux": ["rio"],
+    "macos": ["rio.app"],
+    "android": [],
+    "ios": []
+  }
+}

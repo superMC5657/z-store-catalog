@@ -1,0 +1,28 @@
+{
+  "id": "quodlibet/quodlibet",
+  "name": "Quod Libet",
+  "owner": "quodlibet",
+  "repo": "quodlibet",
+  "icon": "https://raw.githubusercontent.com/quodlibet/quodlibet/main/docs/favicon/favicon.ico",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "支持大音乐库与正则搜索的音乐播放器，内置标签编辑器。",
+  "description_en": "Music player and music library manager for Linux, Windows, and macOS",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "播放器", "标签"],
+  "default_version": "release-4.7.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-2.0",
+  "stars": 1771,
+  "forks": 266,
+  "is_verified": true,
+  "homepage": "https://quodlibet.readthedocs.io",
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["quodlibet.exe"],
+    "linux": [],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

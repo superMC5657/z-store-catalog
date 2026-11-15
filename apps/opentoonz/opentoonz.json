@@ -1,0 +1,28 @@
+{
+  "id": "opentoonz/opentoonz",
+  "name": "OpenToonz",
+  "owner": "opentoonz",
+  "repo": "opentoonz",
+  "icon": "https://raw.githubusercontent.com/opentoonz/opentoonz/master/toonz/sources/xdg-data/io.github.OpenToonz.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "吉卜力参与开发的 professional 二维动画制作软件。",
+  "description_en": "OpenToonz - An open-source full-featured 2D animation creation software",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["动画", "二维", "anime"],
+  "default_version": "v1.8.0",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 8237,
+  "forks": 946,
+  "is_verified": true,
+  "homepage": "https://opentoonz.github.io/",
+  "platforms": ["windows", "macos"],
+  "identifiers": {
+    "windows": ["OpenToonzSetup.exe"],
+    "linux": [],
+    "macos": ["opentoonz.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "openai/codex",
+  "name": "Codex",
+  "owner": "openai",
+  "repo": "codex",
+  "icon": "https://avatars.githubusercontent.com/u/14957082?v=4",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "OpenAI 开源的轻量终端 AI 编程智能体，理解代码库并加速日常开发。",
+  "description_en": "Lightweight coding agent that runs in your terminal",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ai编程", "agent", "codex", "openai", "编程助手"],
+  "default_version": "rust-v0.169.0",
+  "added_at": "2026-10-16",
+  "license": "Apache-2.0",
+  "stars": 135311,
+  "forks": 21461,
+  "is_verified": true,
+  "homepage": "https://github.com/openai/codex",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["codex.exe"],
+    "linux": ["codex"],
+    "macos": ["codex"],
+    "android": [],
+    "ios": []
+  }
+}

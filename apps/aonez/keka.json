@@ -1,0 +1,28 @@
+{
+  "id": "aonez/keka",
+  "name": "Keka",
+  "owner": "aonez",
+  "repo": "Keka",
+  "icon": "https://www.keka.io/favicon-square-v2.ico",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "macOS 平台流行的压缩解压工具，支持分卷加密与多种格式。",
+  "description_en": "The macOS & iOS file archiver",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["压缩", "解压", "macos"],
+  "default_version": "v1.6.8",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 7659,
+  "forks": 305,
+  "is_verified": true,
+  "homepage": "https://www.keka.io",
+  "platforms": ["macos"],
+  "identifiers": {
+    "windows": [],
+    "linux": [],
+    "macos": ["Keka.app"],
+    "android": [],
+    "ios": []
+  }
+}

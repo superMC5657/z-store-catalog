@@ -1,0 +1,28 @@
+{
+  "id": "k4yt3x/video2x",
+  "name": "Video2X",
+  "owner": "k4yt3x",
+  "repo": "video2x",
+  "icon": "https://raw.githubusercontent.com/k4yt3x/video2x/master/packaging/appimage/video2x.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "基于 AI 的视频与图片放大工具，动漫与实拍模型丰富。",
+  "description_en": "A machine learning-based video super resolution and frame interpolation framework. Est. Hack the Valley II, 2018.",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["超分辨率", "ai", "放大"],
+  "default_version": "6.4.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 22738,
+  "forks": 1987,
+  "is_verified": true,
+  "homepage": "https://docs.video2x.org",
+  "platforms": ["windows", "linux"],
+  "identifiers": {
+    "windows": ["video2x.exe"],
+    "linux": ["video2x"],
+    "macos": [],
+    "android": [],
+    "ios": []
+  }
+}

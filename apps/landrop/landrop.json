@@ -1,0 +1,28 @@
+{
+  "id": "landrop/landrop",
+  "name": "LANDrop",
+  "owner": "LANDrop",
+  "repo": "LANDrop",
+  "icon": "https://raw.githubusercontent.com/LANDrop/LANDrop/master/LANDrop/icons/app.ico",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "跨平台局域网文件传输工具，无需互联网，AirDrop 的开源替代。",
+  "description_en": "Drop any files to any devices on your LAN.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["快传", "局域网", "airdrop"],
+  "default_version": "v0.4.0",
+  "added_at": "2026-09-13",
+  "license": "BSD-3-Clause",
+  "stars": 6001,
+  "forks": 500,
+  "is_verified": true,
+  "homepage": "https://landrop.app/",
+  "platforms": ["macos", "linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["landrop"],
+    "macos": ["LANDrop.app"],
+    "android": [],
+    "ios": []
+  }
+}

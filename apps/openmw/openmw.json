@@ -1,0 +1,28 @@
+{
+  "id": "openmw/openmw",
+  "name": "OpenMW",
+  "owner": "OpenMW",
+  "repo": "openmw",
+  "icon": "https://raw.githubusercontent.com/OpenMW/openmw/master/files/launcher/images/openmw.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "Morrowind 的开源重实现引擎，支持模组。",
+  "description_en": "OpenMW is an open-source open-world RPG game engine that supports playing Morrowind. Main repo and issue tracker can be found here: https://gitlab.com/OpenMW/openmw/",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["复刻", "rpg", "上古卷轴"],
+  "default_version": "openmw-0.51.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 6753,
+  "forks": 1172,
+  "is_verified": true,
+  "homepage": "https://gitlab.com/OpenMW/openmw",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["OpenMW.exe"],
+    "linux": ["openmw"],
+    "macos": ["openmw.app"],
+    "android": [],
+    "ios": []
+  }
+}

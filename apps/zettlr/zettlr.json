@@ -1,0 +1,28 @@
+{
+  "id": "zettlr/zettlr",
+  "name": "Zettlr",
+  "owner": "Zettlr",
+  "repo": "Zettlr",
+  "icon": "https://raw.githubusercontent.com/Zettlr/Zettlr/develop/resources/icons/icns/icon.iconset/icon_512x512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "面向学者与记者的 Markdown 写作工具，引文管理与 Pandoc 导出。",
+  "description_en": "Your One-Stop Publication Workbench",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["写作", "markdown", "学术"],
+  "default_version": "v4.10.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 13916,
+  "forks": 874,
+  "is_verified": true,
+  "homepage": "https://www.zettlr.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Zettlr.exe"],
+    "linux": ["zettlr"],
+    "macos": ["Zettlr.app"],
+    "android": [],
+    "ios": []
+  }
+}

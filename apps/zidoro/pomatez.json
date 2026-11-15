@@ -1,0 +1,28 @@
+{
+  "id": "zidoro/pomatez",
+  "name": "Pomatez",
+  "owner": "zidoro",
+  "repo": "pomatez",
+  "icon": "https://raw.githubusercontent.com/zidoro/pomatez/master/app/tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "可定制的番茄钟与待办结合的专注工具。",
+  "description_en": "Stay Focused. Take a Break.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["番茄钟", "专注", "pomodoro"],
+  "default_version": "v1.11.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 4929,
+  "forks": 213,
+  "is_verified": true,
+  "homepage": "https://zidoro.github.io/pomatez/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Pomatez.exe"],
+    "linux": ["pomatez"],
+    "macos": ["pomatez.app"],
+    "android": [],
+    "ios": []
+  }
+}

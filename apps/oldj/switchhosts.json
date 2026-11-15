@@ -1,0 +1,28 @@
+{
+  "id": "oldj/switchhosts",
+  "name": "SwitchHosts",
+  "owner": "oldj",
+  "repo": "SwitchHosts",
+  "icon": "https://raw.githubusercontent.com/oldj/SwitchHosts/master/assets/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "快速切换与编辑 hosts 文件的开发者工具，支持远程 hosts 同步。",
+  "description_en": "Switch hosts quickly!",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["hosts", "域名", "switch hosts"],
+  "default_version": "v5.0.3",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 27407,
+  "forks": 2689,
+  "is_verified": true,
+  "homepage": "https://switchhosts.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["SwitchHosts.exe"],
+    "linux": ["switchhosts"],
+    "macos": ["SwitchHosts.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "cinnyapp/cinny-desktop",
+  "name": "Cinny",
+  "owner": "cinnyapp",
+  "repo": "cinny-desktop",
+  "icon": "https://raw.githubusercontent.com/cinnyapp/cinny-desktop/main/src-tauri/icons/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "界面美观的 Matrix 桌面客户端，类 Discord 布局，支持加密。",
+  "description_en": "Yet another matrix client for desktop",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["matrix", "聊天", "discord"],
+  "default_version": "v4.12.8",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 883,
+  "forks": 131,
+  "is_verified": true,
+  "homepage": "https://github.com/cinnyapp/cinny-desktop",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["cinny-desktop.exe"],
+    "linux": ["cinny-desktop"],
+    "macos": ["cinny-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

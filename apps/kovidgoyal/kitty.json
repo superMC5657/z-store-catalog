@@ -1,0 +1,28 @@
+{
+  "id": "kovidgoyal/kitty",
+  "name": "kitty",
+  "owner": "kovidgoyal",
+  "repo": "kitty",
+  "icon": "https://raw.githubusercontent.com/kovidgoyal/kitty/master/logo/kitty.png",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "GPU 加速的快速功能丰富终端，支持图片显示与布局分屏。",
+  "description_en": "If you live in the terminal, kitty is made for you! Cross-platform, fast, feature-rich, GPU based.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["终端", "terminal", "gpu"],
+  "default_version": "v0.50.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 35681,
+  "forks": 1605,
+  "is_verified": true,
+  "homepage": "https://sw.kovidgoyal.net/kitty/",
+  "platforms": ["macos", "linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["kitty"],
+    "macos": ["kitty.app"],
+    "android": [],
+    "ios": []
+  }
+}

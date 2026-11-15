@@ -1,0 +1,28 @@
+{
+  "id": "00-evan/shattered-pixel-dungeon",
+  "name": "Shattered Pixel Dungeon",
+  "owner": "00-Evan",
+  "repo": "shattered-pixel-dungeon",
+  "icon": "https://raw.githubusercontent.com/00-Evan/shattered-pixel-dungeon/master/desktop/src/main/assets/icons/icon_256.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "经典 Roguelike 像素地牢的增强开源版，跨平台。",
+  "description_en": "Shattered Pixel Dungeon is an open-source traditional roguelike dungeon crawler with randomized levels and enemies, and hundreds of items to collect and use. It's based on the source code of Pixel Dungeon, by Watabou.",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["roguelike", "像素", "地牢"],
+  "default_version": "v4.0.2",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 6794,
+  "forks": 1738,
+  "is_verified": true,
+  "homepage": "https://shatteredpixel.com/shatteredpd/",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["shattered-pixel-dungeon.exe"],
+    "linux": ["shattered-pixel-dungeon"],
+    "macos": ["shattered-pixel-dungeon.app"],
+    "android": ["com.shatteredpixel.shatteredpixeldungeon"],
+    "ios": []
+  }
+}

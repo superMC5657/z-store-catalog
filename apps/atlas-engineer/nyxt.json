@@ -1,0 +1,28 @@
+{
+  "id": "atlas-engineer/nyxt",
+  "name": "Nyxt",
+  "owner": "atlas-engineer",
+  "repo": "nyxt",
+  "icon": "https://raw.githubusercontent.com/atlas-engineer/nyxt/master/assets/icon_512x512.png.ico",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "可用 Lisp 深度定制的键盘流浏览器，内置命令面板与强大历史搜索。",
+  "description_en": "Nyxt - the hacker's browser.",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["浏览器", "可编程", "lisp"],
+  "default_version": "4.0.0",
+  "added_at": "2026-09-13",
+  "license": "Unknown",
+  "stars": 11068,
+  "forks": 470,
+  "is_verified": true,
+  "homepage": "https://nyxt-browser.com",
+  "platforms": ["macos", "linux"],
+  "identifiers": {
+    "windows": [],
+    "linux": ["nyxt"],
+    "macos": ["nyxt.app"],
+    "android": [],
+    "ios": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "flameshot-org/flameshot",
+  "name": "Flameshot",
+  "owner": "flameshot-org",
+  "repo": "flameshot",
+  "icon": "https://raw.githubusercontent.com/flameshot-org/flameshot/master/data/img/app/flameshot.png",
+  "icon_bg": "linear-gradient(135deg, #ef4444, #b91c1c)",
+  "description": "强大而简便的开源截图贴图工具，支持丰富的取色、马赛克与标注功能。",
+  "description_en": "Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["截图", "屏幕截取", "贴图", "snip", "screenshot"],
+  "default_version": "v15.0.0",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 31549,
+  "forks": 2106,
+  "is_verified": true,
+  "homepage": "https://flameshot.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["flameshot.exe"],
+    "linux": ["flameshot"],
+    "macos": ["flameshot.app", "flameshot"]
+  }
+}

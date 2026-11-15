@@ -1,0 +1,28 @@
+{
+  "id": "super-productivity/super-productivity",
+  "name": "Super Productivity",
+  "owner": "super-productivity",
+  "repo": "super-productivity",
+  "icon": "https://raw.githubusercontent.com/super-productivity/super-productivity/master/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "任务管理与时间追踪一体的待办清单，番茄钟与工时统计。",
+  "description_en": "Super Productivity is an advanced todo list app with integrated Timeboxing and time tracking capabilities. It also comes with integrations for Jira, GitLab, GitHub and Open Project.",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["待办", "时间管理", "todo"],
+  "default_version": "v20.0.0",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 23676,
+  "forks": 2297,
+  "is_verified": true,
+  "homepage": "http://super-productivity.com?ref=github",
+  "platforms": ["windows", "macos", "linux", "android"],
+  "identifiers": {
+    "windows": ["Super-Productivity-Setup-arm64.exe"],
+    "linux": ["super-productivity"],
+    "macos": ["super-productivity.app"],
+    "android": ["org.super-productivity"],
+    "ios": []
+  }
+}

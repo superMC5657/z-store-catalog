@@ -1,0 +1,28 @@
+{
+  "id": "cline/cline",
+  "name": "cline",
+  "owner": "cline",
+  "repo": "cline",
+  "icon": "https://cdn.simpleicons.org/cline",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "自主 AI 编程智能体，支持 SDK、IDE 插件与 CLI 全形态接入。",
+  "description_en": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["ai编程", "agent", "cline", "编程助手", "ide插件"],
+  "default_version": "v4.1.26",
+  "added_at": "2026-10-16",
+  "license": "Apache-2.0",
+  "stars": 71638,
+  "forks": 7925,
+  "is_verified": true,
+  "homepage": "https://cline.bot",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["cline.exe"],
+    "linux": ["cline"],
+    "macos": ["cline.app"],
+    "android": [],
+    "ios": []
+  }
+}

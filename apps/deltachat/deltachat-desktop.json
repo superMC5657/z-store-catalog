@@ -1,0 +1,28 @@
+{
+  "id": "deltachat/deltachat-desktop",
+  "name": "Delta Chat",
+  "owner": "deltachat",
+  "repo": "deltachat-desktop",
+  "icon": "https://raw.githubusercontent.com/deltachat/deltachat-desktop/main/packages/target-electron/build/icon.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "基于电子邮件的端到端加密聊天应用，无需对方安装新软件。",
+  "description_en": "Decentralized private messenger with chat-shared tools and games for Desktop",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["聊天", "email", "加密"],
+  "default_version": "v2.65.0",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 1650,
+  "forks": 256,
+  "is_verified": true,
+  "homepage": "https://github.com/deltachat/deltachat-desktop",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["DeltaChat.exe"],
+    "linux": ["deltachat-desktop"],
+    "macos": ["deltachat-desktop.app"],
+    "android": [],
+    "ios": []
+  }
+}

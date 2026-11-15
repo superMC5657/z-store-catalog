@@ -1,0 +1,28 @@
+{
+  "id": "lwouis/alt-tab-macos",
+  "name": "AltTab",
+  "owner": "lwouis",
+  "repo": "alt-tab-macos",
+  "icon": "https://raw.githubusercontent.com/lwouis/alt-tab-macos/HEAD/resources/icons/app/app.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "给 macOS 带来 Windows 风格 Alt+Tab 的窗口预览切换器。",
+  "description_en": "Windows alt-tab on macOS ",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["窗口切换", "alt tab", "macos"],
+  "default_version": "v11.10.1",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 16531,
+  "forks": 932,
+  "is_verified": true,
+  "homepage": "https://alt-tab.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["alt-tab-macos.exe"],
+    "linux": ["alt-tab-macos"],
+    "macos": ["alt-tab-macos.app"],
+    "android": [],
+    "ios": []
+  }
+}

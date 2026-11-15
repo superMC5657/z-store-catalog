@@ -1,0 +1,28 @@
+{
+  "id": "xemu-project/xemu",
+  "name": "xemu",
+  "owner": "xemu-project",
+  "repo": "xemu",
+  "icon": "https://raw.githubusercontent.com/xemu-project/xemu/master/ui/icons/xemu.svg",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源的原始 Xbox 模拟器，跨平台。",
+  "description_en": "Original Xbox Emulator for Windows, macOS, and Linux (Active Development)",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["模拟器", "xbox", "游戏"],
+  "default_version": "v0.8.139",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 4261,
+  "forks": 643,
+  "is_verified": true,
+  "homepage": "https://xemu.app",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["xemu.exe"],
+    "linux": ["xemu"],
+    "macos": ["xemu.app"],
+    "android": [],
+    "ios": []
+  }
+}

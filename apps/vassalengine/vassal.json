@@ -1,0 +1,28 @@
+{
+  "id": "vassalengine/vassal",
+  "name": "VASSAL",
+  "owner": "vassalengine",
+  "repo": "vassal",
+  "icon": "https://raw.githubusercontent.com/vassalengine/vassal/master/vassal-app/src/main/resources/icons/32x32/VASSAL.png",
+  "icon_bg": "linear-gradient(135deg, #e11d48, #be123c)",
+  "description": "开源桌游在线模拟引擎，海量实体桌游模块。",
+  "description_en": "VASSAL, the open-source boardgame engine",
+  "category": "games",
+  "category_name": "休闲游戏",
+  "aliases": ["桌游", "棋盘", "boardgame"],
+  "default_version": "3.8.1",
+  "added_at": "2026-09-13",
+  "license": "LGPL-2.1",
+  "stars": 651,
+  "forks": 144,
+  "is_verified": true,
+  "homepage": "https://vassalengine.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["VASSAL.exe"],
+    "linux": ["vassal"],
+    "macos": ["vassal.app"],
+    "android": [],
+    "ios": []
+  }
+}

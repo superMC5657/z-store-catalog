@@ -1,0 +1,28 @@
+{
+  "id": "synfig/synfig",
+  "name": "Synfig Studio",
+  "owner": "synfig",
+  "repo": "synfig",
+  "icon": "https://raw.githubusercontent.com/synfig/synfig/master/synfig-studio/images/org.synfig.SynfigStudio.svg",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+  "description": "开源二维矢量动画软件，骨骼动画与补间强大。",
+  "description_en": "This is the Official source code repository of Synfig Studio animation software",
+  "category": "graphics",
+  "category_name": "图形创作",
+  "aliases": ["动画", "矢量", "2d"],
+  "default_version": "v1.5.5",
+  "added_at": "2026-09-13",
+  "license": "GPL-3.0",
+  "stars": 2425,
+  "forks": 467,
+  "is_verified": true,
+  "homepage": "https://synfig.org",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["SynfigStudio.exe"],
+    "linux": ["synfig"],
+    "macos": ["synfig.app"],
+    "android": [],
+    "ios": []
+  }
+}

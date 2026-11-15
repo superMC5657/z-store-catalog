@@ -1,0 +1,23 @@
+{
+  "id": "ql-win/quicklook",
+  "name": "QuickLook",
+  "owner": "QL-Win",
+  "repo": "QuickLook",
+  "icon": "https://raw.githubusercontent.com/QL-Win/QuickLook/master/Build/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
+  "icon_bg": "linear-gradient(135deg, #8b5cf6, #4c1d95)",
+  "description": "为 Windows 文件资源管理器带来 macOS 般丝滑的按下空格即时预览文档功能。",
+  "description_en": "Bring macOS “Quick Look” feature to Windows",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["空格预览", "快速预览", "mac预览", "file preview", "quicklook"],
+  "default_version": "4.5.0",
+  "added_at": "2026-09-10",
+  "license": "GPL-3.0",
+  "stars": 25766,
+  "forks": 1375,
+  "is_verified": true,
+  "platforms": ["windows"],
+  "identifiers": {
+    "windows": ["QuickLook.exe"]
+  }
+}

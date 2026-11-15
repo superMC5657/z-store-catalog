@@ -1,0 +1,28 @@
+{
+  "id": "martpie/museeks",
+  "name": "Museeks",
+  "owner": "martpie",
+  "repo": "museeks",
+  "icon": "https://raw.githubusercontent.com/martpie/museeks/master/src-tauri/icons/app-icon.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "简洁跨平台的本地音乐播放器，支持播放队列与深色模式。",
+  "description_en": "🎵 A simple, clean and cross-platform music player",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["音乐", "播放器", "music"],
+  "default_version": "0.23.4",
+  "added_at": "2026-09-13",
+  "license": "MIT",
+  "stars": 2143,
+  "forks": 232,
+  "is_verified": true,
+  "homepage": "https://museeks.io",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["museeks.exe"],
+    "linux": ["museeks"],
+    "macos": ["museeks.app"],
+    "android": [],
+    "ios": []
+  }
+}

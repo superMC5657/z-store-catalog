@@ -1,0 +1,28 @@
+{
+  "id": "squidowl/halloy",
+  "name": "halloy",
+  "owner": "squidowl",
+  "repo": "halloy",
+  "icon": "https://raw.githubusercontent.com/squidowl/halloy/main/assets/logo.png",
+  "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
+  "description": "Rust 编写的 IRC 聊天客户端。",
+  "description_en": "IRC application written in Rust",
+  "category": "network",
+  "category_name": "网络工具",
+  "aliases": ["iced", "irc", "rust"],
+  "default_version": "2026.10",
+  "added_at": "2026-10-16",
+  "license": "GPL-3.0",
+  "stars": 4620,
+  "forks": 230,
+  "is_verified": true,
+  "homepage": "https://halloy.chat/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["halloy.exe"],
+    "linux": ["halloy"],
+    "macos": ["halloy.app"],
+    "android": [],
+    "ios": []
+  }
+}

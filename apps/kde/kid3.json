@@ -1,0 +1,28 @@
+{
+  "id": "kde/kid3",
+  "name": "Kid3",
+  "owner": "KDE",
+  "repo": "kid3",
+  "icon": "https://raw.githubusercontent.com/KDE/kid3/master/logo.png",
+  "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+  "description": "批量编辑 MP3/FLAC 等音频标签的工具，支持在线专辑信息获取。",
+  "description_en": "Efficient audio tagger that supports a large variety of file formats",
+  "category": "media",
+  "category_name": "影音播放",
+  "aliases": ["标签", "音乐", "id3"],
+  "default_version": "v3.10.1",
+  "added_at": "2026-09-13",
+  "license": "NOASSERTION",
+  "stars": 212,
+  "forks": 16,
+  "is_verified": true,
+  "homepage": "https://invent.kde.org/multimedia/kid3",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["kid3.exe"],
+    "linux": ["kid3"],
+    "macos": ["kid3.app"],
+    "android": [],
+    "ios": []
+  }
+}

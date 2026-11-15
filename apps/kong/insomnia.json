@@ -1,0 +1,28 @@
+{
+  "id": "kong/insomnia",
+  "name": "Insomnia",
+  "owner": "Kong",
+  "repo": "insomnia",
+  "icon": "https://raw.githubusercontent.com/Kong/insomnia/develop/packages/insomnia-inso/assets/logo.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "流行的 API 设计调试工具，REST/GraphQL/gRPC 全支持。",
+  "description_en": "The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage.",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["api", "调试", "rest"],
+  "default_version": "core@13.4.0",
+  "added_at": "2026-09-13",
+  "license": "Apache-2.0",
+  "stars": 40159,
+  "forks": 2401,
+  "is_verified": true,
+  "homepage": "https://insomnia.rest",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["Insomnia.Core.exe"],
+    "linux": ["insomnia"],
+    "macos": ["insomnia.app"],
+    "android": [],
+    "ios": []
+  }
+}

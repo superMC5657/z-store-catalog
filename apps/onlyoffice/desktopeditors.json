@@ -1,0 +1,28 @@
+{
+  "id": "onlyoffice/desktopeditors",
+  "name": "ONLYOFFICE",
+  "owner": "ONLYOFFICE",
+  "repo": "DesktopEditors",
+  "icon": "https://avatars.githubusercontent.com/u/1426033?v=4&s=200&v=4",
+  "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
+  "description": "兼容 Microsoft 格式的办公套件，文档表格幻灯片一体。",
+  "description_en": "Open-source office suite pack that comprises all the tools you need to work with documents, spreadsheets, presentations, PDFs, and PDF forms on Windows, Linux, and macOS",
+  "category": "office",
+  "category_name": "办公协同",
+  "aliases": ["office", "word", "excel"],
+  "default_version": "v10.0.0",
+  "added_at": "2026-09-13",
+  "license": "AGPL-3.0",
+  "stars": 5737,
+  "forks": 579,
+  "is_verified": true,
+  "homepage": "https://www.onlyoffice.com",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["DesktopEditors_arm64.exe"],
+    "linux": ["desktopeditors"],
+    "macos": ["DesktopEditors.app"],
+    "android": [],
+    "ios": []
+  }
+}
