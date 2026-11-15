@@ -1,0 +1,28 @@
+{
+  "id": "openchamber/openchamber",
+  "name": "openchamber",
+  "owner": "openchamber",
+  "repo": "openchamber",
+  "icon": "https://openchamber.dev/logo-dark.svg",
+  "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
+  "description": "基于 OpenCode AI 代理的智能体开发环境",
+  "description_en": "Agentic Development Environment based on OpenCode AI agent",
+  "category": "dev",
+  "category_name": "开发编程",
+  "aliases": ["openchamber", "openchamber/openchamber"],
+  "default_version": "v2.7.1",
+  "added_at": "2026-11-15",
+  "license": "MIT",
+  "stars": 12924,
+  "forks": 1499,
+  "is_verified": true,
+  "homepage": "https://openchamber.dev/",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["openchamber.exe"],
+    "linux": ["openchamber"],
+    "macos": ["openchamber"],
+    "android": [],
+    "ios": []
+  }
+}
