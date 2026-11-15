@@ -61,7 +61,7 @@ git checkout -b add-my-app
 }
 ```
 
-> 手动新增时，`added_at` 请填写提交当天的 UTC 日期（`YYYY-MM-DD` 格式）；合入 `main` 后 `build-catalog.yml` 会自动编译生成根目录 `catalog.json`。
+> 手动新增时，`added_at` 请填写提交当天的 UTC 日期（`YYYY-MM-DD` 格式）；合入 `main` 后，将在每日 `00:00 UTC`（或由维护者手动触发）通过 `build-catalog.yml` 编译生成根目录 `catalog.json`。
 
 #### 可选分类 (`category`):
 - `system`: 系统增强、文件管理、快捷启动器、压缩工具
@@ -89,7 +89,7 @@ node scripts/validate-catalog.mjs
 提交 Commit 并发起 PR：
 - Commit 信息建议形如：`feat(app): add <app-name>`；
 - PR 提交后，GitHub Actions 会自动运行格式校验；
-- 审核通过并合并后，全网 Z-Store 客户端将自动同步展示！
+- 审核合并并完成 `catalog.json` 编译后，全网 Z-Store 客户端即可同步展示！
 
 ### 5. 通过 Issue 提交（客户端一键收录）
 

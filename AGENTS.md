@@ -25,10 +25,9 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 ## 工作流
 
 - `issue-to-pr.yml`：解析收录 Issue 的 `payload_json`，补全元数据与平台信息后生成 `apps/<owner>/<repo>.json` 并开 PR，写入 `catalog-ingest` 门禁状态；默认 `AUTO_MERGE_POLICY=manual` 由维护者/作者人工确认合并。
-- `build-catalog.yml`：当 `main` 推进且 `apps/**` 变动时，自动编译 `apps/` 生成 `catalog.json` 并提交入库，保证客户端随时获取最新汇总。
+- `build-catalog.yml`：每天 00:00 UTC（北京时间 08:00）定时或手动扫描 `apps/` 增量编译生成 `catalog.json` 并提交入库。
 - `catalog-gate.yml`：对人工 PR 写 `catalog-ingest` commit status；bot PR 由 `issue-to-pr.yml` / `refresh-catalog.yml` 自己写。
-- `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
-- `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`。
+- `refresh-catalog.yml`：依赖定时 `build-catalog.yml` 成功后串联触发（或手动触发），刷新 stars / forks / release；走 PR + `catalog-ingest`。
 
 ## 提交
 

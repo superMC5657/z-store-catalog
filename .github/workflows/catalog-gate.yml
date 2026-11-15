@@ -1,7 +1,7 @@
 name: Catalog Gate
 
 # 为所有 PR 生成统一的 catalog-ingest commit status。
-# - 人工/同仓库 PR：本 workflow 校验 PR 里的 catalog.json 后写 status；
+# - 人工/同仓库 PR：本 workflow 校验 PR 变更的 apps/ 能否通过编译与规范检查后写 status；
 # - bot 收录 PR：pull_request run 会停在 approval-required，由 issue-to-pr.yml 自己写 status；
 # - fork PR：GITHUB_TOKEN 只读，无法写 status，需维护者 bypass 后手动合并。
 #

@@ -174,13 +174,6 @@ export async function verifyImageBytes(url, timeoutMs = 10000) {
 }
 
 /**
- * 生成 jsDelivr 镜像 URL（与 raw.githubusercontent 同源同文件）
- */
-export function jsdelivrMirror(owner, repo, branch, filePath) {
-  return `https://cdn.jsdelivr.net/gh/${owner}/${repo}@${branch}/${filePath.replace(/^\//, '')}`;
-}
-
-/**
  * 由仓库名派生 Simple Icons slug 候选（小写、去分隔符等）
  * 例如：SeriousSamClassic-VK -> ['serioussamclassicvk', 'serioussamclassic-vk']
  */
@@ -195,27 +188,10 @@ export function deriveSimpleIconSlugs(repoName) {
 }
 
 /**
- * 探测远程仓库中的高质量 Logo（顺序：种子hint → 品牌库Simple Icons → 翻全家Git Trees）
- * 返回 { url, source, size? }，source ∈ hint | simple-icons | trees，未命中返回 null
+ * 探测远程仓库中的高质量 Logo（顺序：品牌库 Simple Icons → 翻全家 Git Trees）
+ * 返回 { url, source, size? }，source ∈ simple-icons | trees，未命中返回 null
  */
-export async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD', iconHint = null) {
-  // 0. 种子提示（若传入 iconHint）
-  if (iconHint) {
-    try {
-      const candidate = iconHint.replace(/^\//, '');
-      const verified = await verifyImageBytes(jsdelivrMirror(owner, repo, defaultBranch, candidate));
-      if (verified) {
-        return {
-          url: `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${candidate}`,
-          source: 'hint',
-          size: verified.bytes,
-        };
-      }
-    } catch {
-      // 平滑降级
-    }
-  }
-
+export async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD') {
   // 1. Simple Icons 品牌库 CDN 探测（由 repo 名派生 slug 候选，命中官方矢量标）
   try {
     const slugCandidates = deriveSimpleIconSlugs(repo);
@@ -254,7 +230,7 @@ export async function probeRepoLogo(owner, repo, headers, defaultBranch = 'HEAD'
         }
       }
     }
-  } catch (err) {
+  } catch {
     // API 超时或受限时静默结束
   }
 

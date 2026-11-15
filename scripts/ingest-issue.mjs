@@ -3,7 +3,8 @@
 /**
  * ingest-issue.mjs
  *
- * 把收录申请 Issue 正文里的 `### payload_json` 合并进 catalog.json。
+ * 解析收录申请 Issue 正文里的 `### payload_json`，补齐元数据并生成 apps/<owner>/<repo>.json
+ * （--write 时同步更新本地 catalog.json）。
  *
  * 设计原则：
  * 1. 确定性优先：schema/格式化/去重由脚本完成，不依赖 LLM；
@@ -52,7 +53,7 @@ const OSI_LICENSES = new Set([
   'Unlicense', 'Zlib', 'BSL-1.0', 'EPL-2.0', 'CC0-1.0', 'MS-PL',
 ]);
 
-// 与 catalog.json 磁盘顺序一致，保证自动写入不产生无意义 diff。
+// normalizeItem 时的字段白名单与磁盘顺序（丢弃 install_dirs/search_subdirs/publishers 等客户端预填字段）。
 const FIELD_ORDER = [
   'id', 'name', 'owner', 'repo', 'icon', 'icon_bg',
   'description', 'description_en', 'category', 'category_name',
@@ -91,10 +92,10 @@ function usage() {
       '  --pr-title <path>         写入 PR 标题',
       '  --comment <path>          写入 Issue 评论素材（成功/重复）',
       '  --failure-comment <path>  写入失败说明（Issue 评论用）',
-      '  --write                   实际写入 catalog.json（默认 dry-run）',
+      '  --write                   实际写入 apps/<owner>/<repo>.json 与 catalog.json（默认 dry-run）',
       '  --update                  允许更新已收录条目（否则按重复处理）',
       '  --no-enrich               不调用 GitHub API / 不探测图标（离线测试用）',
-      '  --dry-run                 只解析与校验，不写 catalog.json（默认行为）',
+      '  --dry-run                 只解析与校验，不写入文件（默认行为）',
     ].join('\n')
   );
 }

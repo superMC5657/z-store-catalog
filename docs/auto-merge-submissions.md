@@ -38,18 +38,17 @@ Z-Store 客户端提交收录申请时，会生成正文包含 `### payload_json
 
 社区贡献者直接 Fork 仓库、新增或修改 `apps/<owner>/<repo>.json` 并发起 PR：
 
-- **`catalog-gate.yml`（必需门禁）**：使用 **base 分支的可信脚本**检出 PR 中变更的 `apps/` 目录，运行 `build-catalog.mjs` + `validate-catalog.mjs`，通过后写入 `catalog-ingest=success`（不执行外部 PR 自带的脚本，确保安全）。
+- **`catalog-gate.yml`（必需门禁）**：使用 **base 分支的可信脚本**检出 PR 中变更的 `apps/` 目录，运行 `build-catalog.mjs`（内含全量 `validateCatalog` 校验），通过后写入 `catalog-ingest=success`（不执行外部 PR 自带的脚本，确保安全）。
 - **Fork PR 说明**：由于 GitHub 对 fork PR 的 `GITHUB_TOKEN` 只读，无法写入 commit status，需要维护者检查通过后 bypass 合并。
 
 ---
 
-## 3. 合并后编译与日常维护
+## 3. 定时编译与日常维护
 
 | 工作流 | 触发时机 | 职责 |
 | --- | --- | --- |
-| `build-catalog.yml` | `main` 上 `apps/**` 变更或 PR 合入 | 自动执行 `node scripts/build-catalog.mjs` 更新根目录 `catalog.json` 并提交入库 |
-| `validate-pr.yml` | PR 或 `main` 推送 | 普通 CI：运行 `validate-catalog.mjs` 及 `scripts/*.test.mjs` 单元测试 |
-| `refresh-catalog.yml` | 每天 00:00 UTC / 手动 | 运行 `refresh-catalog.mjs` 更新 `stars` / `forks` / `license` / `description_en` / `default_version`（不改动 `added_at`），通过 PR + `catalog-ingest` 合入 |
+| `build-catalog.yml` | 每天 00:00 UTC / 手动 | 执行 `node scripts/build-catalog.mjs` 将 `apps/` 增量编译生成根目录 `catalog.json` 并提交入库 |
+| `refresh-catalog.yml` | 定时 `Build Catalog` 成功后 / 手动 | 运行 `refresh-catalog.mjs` 更新 `stars` / `forks` / `license` / `description_en` / `default_version`（不改动 `added_at`），通过 PR + `catalog-ingest` 合入 |
 
 ---
 

@@ -1,9 +1,12 @@
 name: Refresh Catalog Baseline
 
+# 依赖于 Build Catalog：仅在定时 Build Catalog 成功后自动串联触发保鲜，
+# 避免与 Build Catalog 并发抢跑；手动刷新可通过 workflow_dispatch 单独触发。
+
 on:
-  schedule:
-    # 每天 00:00 UTC 自动执行应用库保鲜任务
-    - cron: '0 0 * * *'
+  workflow_run:
+    workflows: ["Build Catalog"]
+    types: [completed]
   workflow_dispatch: # 支持在 GitHub Actions 页面手动点击触发
 
 concurrency:
@@ -18,6 +21,11 @@ permissions:
 jobs:
   refresh-catalog:
     name: Fetch Latest Stars & Releases
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'schedule')
     runs-on: ubuntu-latest
     env:
       REPO: ${{ github.repository }}

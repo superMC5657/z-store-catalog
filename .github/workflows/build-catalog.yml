@@ -1,18 +1,12 @@
 name: Build Catalog
 
-# 当 main 发生变更且修改了 apps/** 时，
-# 自动扫描所有独立应用清单并编译生成根目录 catalog.json。
+# 每天 00:00 UTC（北京时间 08:00）定时或手动扫描 apps/ 增量编译生成根目录 catalog.json；
+# 定时任务成功结束后，会通过 workflow_run 自动串联触发 refresh-catalog.yml 进行每日保鲜。
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'apps/**'
-  pull_request:
-    types: [closed]
-    branches:
-      - main
+  schedule:
+    # 每天 00:00 UTC（北京时间 08:00）自动编译 catalog.json
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -27,11 +21,6 @@ concurrency:
 jobs:
   build:
     name: Build catalog.json
-    if: >-
-      github.event_name == 'push' ||
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'pull_request' &&
-       github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { formatCatalogJson } from './lib/catalog-shared.mjs';
+import { formatCatalogJson, resolveGitHubToken } from './lib/catalog-shared.mjs';
 import { reorderCatalogFields } from './ingest-issue.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -34,7 +34,7 @@ const addedAtSnapshot = new Map(
 );
 console.log(`📋 开始保鲜收录库，已载入 ${catalog.length} 款应用...`);
 
-const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+const token = resolveGitHubToken();
 const headers = {
   'User-Agent': 'ZStore-Catalog-Refresher/1.0.0',
   'Accept': 'application/vnd.github.v3+json',
@@ -115,13 +115,6 @@ const orderedCatalog = catalog.map((item) => reorderCatalogFields(item));
 const formattedJson = formatCatalogJson(orderedCatalog);
 fs.writeFileSync(catalogPath, formattedJson, 'utf8');
 console.log(`💾 已写回清单仓库: ${path.relative(rootDir, catalogPath)}`);
-
-// 同步检测：若本地存在客户端根目录种子 catalog.json (../../catalog.json)，顺手一并同步！
-const clientCatalogPath = path.resolve(rootDir, '../../catalog.json');
-if (fs.existsSync(clientCatalogPath)) {
-  fs.writeFileSync(clientCatalogPath, formattedJson, 'utf8');
-  console.log(`🚀 已自动同步至主客户端离线种子: ${path.relative(rootDir, clientCatalogPath)}`);
-}
 
 console.log(`\n🎉 保鲜完成！已成功保鲜 ${updatedCount}/${catalog.length} 款应用数据。`);
 
