@@ -1,0 +1,28 @@
+{
+  "id": "earendil-works/pi",
+  "name": "pi",
+  "owner": "earendil-works",
+  "repo": "pi",
+  "icon": "https://raw.githubusercontent.com/earendil-works/pi/main/apps/p2/public/icons/icon-512.png",
+  "icon_bg": "linear-gradient(135deg, #475569, #334155)",
+  "description": "AI 代理工具集：统一大模型接口、代理执行循环、终端界面与编程代理命令行工具",
+  "description_en": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+  "category": "system",
+  "category_name": "系统实用",
+  "aliases": ["pi", "earendil-works/pi"],
+  "default_version": "v1.5.2",
+  "added_at": "2026-11-15",
+  "license": "MIT",
+  "stars": 122129,
+  "forks": 15745,
+  "is_verified": true,
+  "homepage": "https://github.com/earendil-works/pi",
+  "platforms": ["windows", "macos", "linux"],
+  "identifiers": {
+    "windows": ["pi.exe"],
+    "linux": ["pi"],
+    "macos": ["pi"],
+    "android": [],
+    "ios": []
+  }
+}
