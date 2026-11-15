@@ -9,6 +9,10 @@ on:
       - main
     paths:
       - 'apps/**'
+  pull_request:
+    types: [closed]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -23,6 +27,11 @@ concurrency:
 jobs:
   build:
     name: Build catalog.json
+    if: >-
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

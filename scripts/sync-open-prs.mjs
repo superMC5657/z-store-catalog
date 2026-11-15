@@ -166,9 +166,6 @@ async function main() {
         const fileTitle = fs.readFileSync(tempTitleFile, 'utf8').trim();
         if (fileTitle) title = fileTitle;
       }
-      if (!title.includes('[skip ci]')) {
-        title = `${title} [skip ci]`;
-      }
 
       // 提交并强制推送到 PR 分支
       run(`git config user.name "github-actions[bot]"`);
