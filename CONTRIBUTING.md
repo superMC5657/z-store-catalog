@@ -24,17 +24,11 @@ git checkout -b add-my-app
 
 ### 2. 添加应用配置
 
-#### 方式 A：极速智能收录（推荐，10 秒搞定）
-运行自动收录脚本，输入 GitHub 仓库地址，脚本会自动抓取 Stars、Forks、Releases 产物、推断支持平台并探测高清 Logo：
+#### 方式 A：通过 Issue 提交（推荐，客户端一键收录）
+参见下方第 5 节「通过 Issue 提交」，由 `issue-to-pr.yml` 自动补全元数据并创建 PR。
 
-```bash
-pnpm add:app <github-repo-url>
-# 或
-node scripts/add-app.mjs <owner/repo>
-```
-
-#### 方式 B：手动在 `catalog.json` 末尾追加
-在 `catalog.json` 数组中添加一项，填入基础信息：
+#### 方式 B：手动新增 `apps/<owner>/<repo>.json`
+在 `apps/<owner>/<repo>.json`（全小写路径）中新建应用清单文件，填入基础信息：
 
 ```json
 {
@@ -67,7 +61,7 @@ node scripts/add-app.mjs <owner/repo>
 }
 ```
 
-> 手动追加时，`added_at` 请填写提交当天的 UTC 日期（`YYYY-MM-DD` 格式）；使用 `add-app` / `batch-add` 脚本收录时会自动填充 `added_at`，无需手填。
+> 手动新增时，`added_at` 请填写提交当天的 UTC 日期（`YYYY-MM-DD` 格式）；合入 `main` 后 `build-catalog.yml` 会自动编译生成根目录 `catalog.json`。
 
 #### 可选分类 (`category`):
 - `system`: 系统增强、文件管理、快捷启动器、压缩工具
@@ -82,9 +76,10 @@ node scripts/add-app.mjs <owner/repo>
 - `games`: 开源游戏引擎、游戏模拟器、游戏启动器
 
 ### 3. 本地验证
-在提交 PR 之前，请在终端运行校验脚本：
+在提交 PR 之前，请在终端运行编译与校验脚本：
 
 ```bash
+node scripts/build-catalog.mjs
 node scripts/validate-catalog.mjs
 ```
 
@@ -116,14 +111,3 @@ Z-Store 客户端「提交收录申请」会打开一个预填 Issue，正文包
 - **人工 PR**：由 `catalog-gate.yml` 基于 base 分支脚本校验 PR 内容后打上 `catalog-ingest=success`；
 - **客户端 Issue PR**：由 `issue-to-pr.yml` 自动清洗补齐并写入 `catalog-ingest=success` 门禁状态，由维护者/作者核对后确认合并（亦可打 `auto-merge` 标签触发自动合并）；
 - **每日 refresh PR**：由 `refresh-catalog.yml` 自动保鲜并写入 `catalog-ingest=success` 后合并。
-
----
-
-## 🛠️ 批量收录与挖掘（维护者）
-
-候选种子按日期归档：`scripts/seed/YYYY-MM-DD/`（`batch-report*.json` / `seed-excluded.json` 为运行产物，不计入输入）。挖掘与收录用同一 `--date` 即同一批输入，无需复制：
-
-```bash
-node scripts/discover-apps.mjs --date=2026-10-01 --limit=50
-GH_TOKEN=$(gh auth token) node scripts/batch-add.mjs --date=2026-10-01 --dry-run --limit=2
-```

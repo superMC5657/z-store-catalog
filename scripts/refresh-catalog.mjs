@@ -14,7 +14,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { formatAppJson, formatCatalogJson } from './lib/catalog-shared.mjs';
+import { formatCatalogJson } from './lib/catalog-shared.mjs';
+import { reorderCatalogFields } from './ingest-issue.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -62,15 +63,13 @@ for (let i = 0; i < catalog.length; i++) {
       const newStars = repoData.stargazers_count ?? oldStars;
       const newForks = repoData.forks_count ?? item.forks;
 
-      // 仅刷新 stars/forks/license/description_en/default_version 等动态字段；
-      // added_at（收录日期）为静态元数据，刷新逻辑中绝不覆盖或删除，写回前另有断言兜底。
+      // 仅刷新动态字段（stars/forks/default_version）；静态字段以 apps/ 为准，仅在缺失时兜底补全。
       item.stars = newStars;
       item.forks = newForks;
-      if (repoData.license?.spdx_id) {
+      if ((!item.license || item.license === 'Unknown') && repoData.license?.spdx_id) {
         item.license = repoData.license.spdx_id;
       }
-      // 同步刷新英文原文 description_en（取 GitHub description）；中文 description 为人工文案不覆盖。
-      if (repoData.description) {
+      if (!item.description_en && repoData.description) {
         item.description_en = repoData.description;
       }
 
@@ -109,18 +108,11 @@ for (const item of catalog) {
   }
 }
 
-// 写回每个独立应用文件 apps/<owner>/<repo>.json
-const appsDir = path.join(rootDir, 'apps');
-for (const item of catalog) {
-  const parts = item.id.toLowerCase().split('/');
-  const ownerDir = path.join(appsDir, parts[0]);
-  fs.mkdirSync(ownerDir, { recursive: true });
-  fs.writeFileSync(path.join(ownerDir, `${parts[1]}.json`), formatAppJson(item), 'utf8');
-}
-console.log(`💾 已写回独立应用目录: apps/`);
+// 重排字段顺序，避免补全缺失字段后破坏固定 schema 顺序
+const orderedCatalog = catalog.map((item) => reorderCatalogFields(item));
 
-// 格式化写回 catalog.json（保持纯标量数组单行）
-const formattedJson = formatCatalogJson(catalog);
+// 仅写回根目录 catalog.json（apps/ 只存各应用基础静态数据，不随每日刷星产生噪音 diff）
+const formattedJson = formatCatalogJson(orderedCatalog);
 fs.writeFileSync(catalogPath, formattedJson, 'utf8');
 console.log(`💾 已写回清单仓库: ${path.relative(rootDir, catalogPath)}`);
 

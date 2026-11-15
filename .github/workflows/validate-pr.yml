@@ -26,11 +26,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: Validate Catalog
-        run: node scripts/validate-catalog.mjs
+      - name: Build & Validate Catalog
+        run: node scripts/build-catalog.mjs
 
       - name: Test ingest parser
         run: |
           node --test scripts/ingest-issue.test.mjs
-          node --test scripts/sync-open-prs.test.mjs
           node --test scripts/build-catalog.test.mjs

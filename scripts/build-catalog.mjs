@@ -77,9 +77,31 @@ export function collectAppFiles(dir) {
 }
 
 /**
- * 读取并聚合所有独立应用清单
+ * 读取现有 catalog.json 中可保留的动态字段索引（id -> item）
  */
-export function buildCatalogFromApps(appsDir = defaultAppsDir) {
+export function loadExistingCatalogMap(catalogPath) {
+  if (!catalogPath || !fs.existsSync(catalogPath)) return new Map();
+  try {
+    const raw = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+    if (!Array.isArray(raw)) return new Map();
+    const map = new Map();
+    for (const item of raw) {
+      if (item && typeof item.id === 'string') {
+        map.set(item.id.toLowerCase(), item);
+      }
+    }
+    return map;
+  } catch {
+    return new Map();
+  }
+}
+
+/**
+ * 读取并聚合所有独立应用清单；
+ * 若提供 existingMap（来自现有 catalog.json），则增量保留其中的动态字段
+ * （stars / forks / default_version），避免日常刷星必须同步改动 apps/。
+ */
+export function buildCatalogFromApps(appsDir = defaultAppsDir, existingMap = new Map()) {
   const appFiles = collectAppFiles(appsDir);
   const items = [];
   const seenIds = new Set();
@@ -96,13 +118,27 @@ export function buildCatalogFromApps(appsDir = defaultAppsDir) {
       throw new Error(`应用文件内容必须是 JSON 对象 [${filePath}]`);
     }
 
-    const reordered = reorderCatalogFields(raw);
-    const id = (reordered.id || '').toLowerCase();
+    const id = String(raw.id || '').toLowerCase();
     if (seenIds.has(id)) {
       throw new Error(`发现重复应用 ID [${id}] 于文件: ${filePath}`);
     }
     seenIds.add(id);
-    items.push(reordered);
+
+    const prev = existingMap instanceof Map ? existingMap.get(id) : null;
+    const merged = { ...raw };
+    if (prev) {
+      if (Number.isFinite(prev.stars)) merged.stars = prev.stars;
+      if (Number.isFinite(prev.forks)) merged.forks = prev.forks;
+      if (
+        typeof prev.default_version === 'string' &&
+        prev.default_version &&
+        !['latest', 'unknown'].includes(prev.default_version)
+      ) {
+        merged.default_version = prev.default_version;
+      }
+    }
+
+    items.push(reorderCatalogFields(merged));
   }
 
   // 排序规则：按收录日期 added_at 升序，同一天按 id 字典序升序
@@ -119,7 +155,8 @@ export function main() {
   const args = parseArgs(process.argv.slice(2));
   console.log(`🔨 正在扫描 ${path.relative(rootDir, args.appsDir)}/ 编译 catalog.json...`);
 
-  const items = buildCatalogFromApps(args.appsDir);
+  const existingMap = loadExistingCatalogMap(args.catalogPath);
+  const items = buildCatalogFromApps(args.appsDir, existingMap);
   console.log(`📦 已载入 ${items.length} 款独立应用。`);
 
   // 全量规范校验

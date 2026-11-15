@@ -6,20 +6,16 @@
 
 - 编译汇总清单：`node scripts/build-catalog.mjs`（`apps/` -> `catalog.json`）
 - 校验（CI 同款，提交前必须通过）：`node scripts/validate-catalog.mjs`
-- 单应用收录：`node scripts/add-app.mjs <owner/repo> -y`
 - Issue payload 预演：`node scripts/ingest-issue.mjs --body-file issue.md --dry-run`
-- 拆分已有清单（迁移用）：`node scripts/split-catalog.mjs`
-- Issue 解析单测：`node --test scripts/ingest-issue.test.mjs`
-- 批量核验：`GH_TOKEN=... node scripts/batch-add.mjs --dry-run`
+- 运行单测：`node --test scripts/ingest-issue.test.mjs scripts/build-catalog.test.mjs`
 - 数据保鲜：`node scripts/refresh-catalog.mjs`
-- 同步待合并 PR：`node scripts/sync-open-prs.mjs`
 
 Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
 ## catalog 架构与规则
 
 - **真源分离**：每个应用作为独立文件存放于 `apps/<owner>/<repo>.json`（小写），PR 仅修改或新增对应的单个文件，彻底杜绝多 PR 并发合并时的 Git 冲突。
-- 根目录 `catalog.json` 为客户端直接读取的聚合产物，由 `scripts/build-catalog.mjs` 从 `apps/` 自动编译生成，按 `added_at` 升序、同日按 `id` 字典序排列。
+- 根目录 `catalog.json` 为客户端直接读取的聚合产物，由 `scripts/build-catalog.mjs` 从 `apps/` 增量编译生成（静态字段以 `apps/` 为准，已有条目的 `stars` / `forks` / `default_version` 从现有 `catalog.json` 保留），按 `added_at` 升序、同日按 `id` 字典序排列。
 - 字段顺序固定：`id, name, owner, repo, icon, icon_bg, description, description_en, category, category_name, aliases, default_version, added_at, license, stars, forks, is_verified, homepage, install_dirs, search_subdirs, publishers, platforms, identifiers`。`install_dirs` / `search_subdirs` / `publishers` 为可选项（省略即可），其余为固定位置，不得乱序；校验脚本会拦截。
 - `id` 必须是 `owner/repo` 小写；`added_at` 用 UTC `YYYY-MM-DD`；收录条目 `is_verified` 为 `true`。
 - `platforms` 不能为空；`identifiers` 只放各平台真实可执行名。
@@ -33,11 +29,10 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 - `catalog-gate.yml`：对人工 PR 写 `catalog-ingest` commit status；bot PR 由 `issue-to-pr.yml` / `refresh-catalog.yml` 自己写。
 - `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
 - `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`。
-- `sync-open-prs.yml`：当 `main` 推进且 `catalog.json` 变动时，自动将所有未合并的 `catalog/issue-*` PR 基于最新 `main` 重新追加并推送，避免尾部追加冲突。
 
 ## 提交
 
 - 维护者本地开发：在分支上改完后直接 `git merge` 进本地 `main` 再 push，不必为此开 PR。ruleset 的 `pull_request` / `required_status_checks` 只约束外部贡献，管理员的 `bypass_mode` 是 `always`。
 - 使用 conventional commits：`feat(catalog): ...`、`fix(scripts): ...`、`docs: ...`。
 - 一个 PR 只做一件事；不要顺手改无关条目或 workflow。
-- 不要提交 token、API key、个人路径；`scripts/seed/` 是运行产物，已被 git 忽略。
+- 不要提交 token、API key、个人路径。

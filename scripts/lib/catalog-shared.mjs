@@ -2,7 +2,7 @@
  * catalog-shared.mjs
  *
  * Z-Store 目录脚本共享库：
- * 供 add-app.mjs（单应用交互收录）与 batch-add.mjs（批量智能收录）复用，
+ * 供 ingest-issue.mjs、build-catalog.mjs 与 refresh-catalog.mjs 复用，
  * 包含分类定义、图标探测评分器、平台标识符推断与 JSON 排版格式化。
  */
 
@@ -37,7 +37,6 @@ export const CATEGORY_GRADIENTS = {
 
 /**
  * 根据仓库简介与 topics 自动推断最贴切的软件分类。
- * add-app 与 ingest-issue 共用，避免两套启发式漂移。
  */
 export function guessCategory(desc, topics) {
   const text = `${desc || ''} ${(topics || []).join(' ')}`.toLowerCase();
