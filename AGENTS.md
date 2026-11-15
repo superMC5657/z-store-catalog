@@ -10,6 +10,7 @@
 - Issue 解析单测：`node --test scripts/ingest-issue.test.mjs`
 - 批量核验：`GH_TOKEN=... node scripts/batch-add.mjs --dry-run`
 - 数据保鲜：`node scripts/refresh-catalog.mjs`
+- 同步待合并 PR：`node scripts/sync-open-prs.mjs`
 
 Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 
@@ -28,6 +29,7 @@ Node >= 18，脚本零运行时依赖；不要为了改清单引入新依赖。
 - `catalog-gate.yml`：对人工 PR 写 `catalog-ingest` commit status；bot PR 由 `issue-to-pr.yml` / `refresh-catalog.yml` 自己写。
 - `validate-pr.yml`：PR 与 `main` 的格式校验（普通 CI，不是必需 check）。
 - `refresh-catalog.yml`：每日刷新 stars / forks / release；走 PR + `catalog-ingest`。
+- `sync-open-prs.yml`：当 `main` 推进（如合并某个 PR）且 `catalog.json` 变动时，自动将所有未合并的 `catalog/issue-*` PR 基于最新 `main` 重新追加并推送，避免尾部追加冲突。
 
 ## 提交
 

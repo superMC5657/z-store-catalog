@@ -1,0 +1,49 @@
+name: Sync Open Catalog PRs
+
+# 当 main 发生变更（如某个 PR 被合并、或者每日 baseline refresh 被合并）且修改了 catalog.json 时，
+# 自动检测所有处于打开状态的 catalog/issue-* PR。
+# 若存在因 catalog.json 尾部追加导致的基线落后或冲突，本 workflow 将基于最新 main
+# 自动重新追加并推送到对应的 PR 分支，同时写回 catalog-ingest 绿标，避免人工解冲突。
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'catalog.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: sync-open-catalog-prs
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync Open Catalog PRs
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      REPO: ${{ github.repository }}
+      GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync open catalog PRs
+        run: node scripts/sync-open-prs.mjs --repo "$REPO"

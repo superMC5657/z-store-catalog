@@ -29,8 +29,8 @@ permissions:
   statuses: write
 
 concurrency:
-  # 同一个 Issue 串行；不同 Issue 允许并行（合并前会 update-branch）。
-  group: catalog-issue-${{ github.event.issue.number || github.event.inputs.issue_number }}
+  # 全局串行处理收录申请，避免并发创建 PR 产生 catalog.json 尾部追加竞争。
+  group: catalog-ingest
   cancel-in-progress: false
 
 jobs:
@@ -241,11 +241,37 @@ jobs:
             forced=true
           fi
 
-          # 如果 main 已被 refresh 或其他 PR 推进，先同步分支再合并。
+          # 如果 main 已被 refresh 或其他 PR 推进，重新基于最新 main 追加以避免尾部追加冲突。
           merge_state=$(gh pr view "${{ steps.pr.outputs.url }}" --repo "$REPO" \
             --json mergeStateStatus --jq '.mergeStateStatus // ""' 2>/dev/null || true)
-          if [ "$merge_state" = "BEHIND" ]; then
-            gh pr update-branch "${{ steps.pr.outputs.url }}" --repo "$REPO" || true
+          if [ "$merge_state" = "BEHIND" ] || [ "$merge_state" = "DIRTY" ]; then
+            echo "PR 分支基线落后或冲突，重新基于最新 main 追加..."
+            git fetch origin main
+            git checkout -f origin/main
+            extra="--write"
+            if echo "$labels" | grep -qx update; then
+              extra="$extra --update"
+            fi
+            node scripts/ingest-issue.mjs \
+              --issue "$ISSUE_NUMBER" \
+              --repo "$REPO" \
+              --out result.json \
+              --pr-body pr-body.md \
+              --pr-title pr-title.txt \
+              --comment comment.md \
+              --failure-comment failure.md \
+              $extra
+            node scripts/validate-catalog.mjs
+            branch="catalog/issue-${ISSUE_NUMBER}"
+            git checkout -B "$branch" origin/main
+            git add catalog.json
+            git commit -m "$(cat pr-title.txt) [skip ci]"
+            git push --force origin "HEAD:refs/heads/$branch"
+            sha=$(git rev-parse HEAD)
+            gh api -X POST "repos/$REPO/statuses/$sha" \
+              -f state=success \
+              -f context=catalog-ingest \
+              -f description="catalog.json validated by ingest"
           fi
 
           can_merge=false

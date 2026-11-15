@@ -28,4 +28,6 @@ jobs:
         run: node scripts/validate-catalog.mjs
 
       - name: Test ingest parser
-        run: node --test scripts/ingest-issue.test.mjs
+        run: |
+          node --test scripts/ingest-issue.test.mjs
+          node --test scripts/sync-open-prs.test.mjs
