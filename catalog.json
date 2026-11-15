@@ -10301,5 +10301,33 @@
       "android": [],
       "ios": []
     }
+  },
+  {
+    "id": "storytold/artcraft",
+    "name": "artcraft",
+    "owner": "storytold",
+    "repo": "artcraft",
+    "icon": "https://raw.githubusercontent.com/storytold/artcraft/main/crates/desktop/artcraft/icons/icon.png",
+    "icon_bg": "linear-gradient(135deg, #ec4899, #be185d)",
+    "description": "ArtCraft 是一款专为艺术家、设计师与电影创作者打造的意图驱动型创作引擎。",
+    "description_en": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers.",
+    "category": "media",
+    "category_name": "影音播放",
+    "aliases": ["artcraft", "storytold/artcraft"],
+    "default_version": "artcraft-v0.41.1",
+    "added_at": "2026-11-15",
+    "license": "Apache-2.0",
+    "stars": 41102,
+    "forks": 6381,
+    "is_verified": true,
+    "homepage": "https://getartcraft.com",
+    "platforms": ["windows", "macos", "linux"],
+    "identifiers": {
+      "windows": ["artcraft.exe"],
+      "linux": ["artcraft"],
+      "macos": ["artcraft"],
+      "android": [],
+      "ios": []
+    }
   }
 ]
