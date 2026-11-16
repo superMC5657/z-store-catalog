@@ -29,10 +29,13 @@ const rootDir = path.resolve(path.dirname(__filename), '..');
 export const HISTORY_FILE = 'history.json';
 
 export function parseArgs(argv) {
+  const defaultCatalog = path.join(rootDir, 'catalog.json');
   const args = {
     dir: path.join(rootDir, 'showcase'),
     out: path.join(rootDir, 'showcase.json'),
-    catalog: path.join(rootDir, 'catalog.json'),
+    catalog: defaultCatalog,
+    apps: path.join(rootDir, 'apps'),
+    appsExplicit: false,
     today: new Date().toISOString().slice(0, 10),
     prune: false,
     check: false,
@@ -48,12 +51,16 @@ export function parseArgs(argv) {
     if (flag === '--dir') args.dir = path.resolve(take());
     else if (flag === '--out') args.out = path.resolve(take());
     else if (flag === '--catalog') args.catalog = path.resolve(take());
-    else if (flag === '--today') args.today = take();
+    else if (flag === '--apps') {
+      args.apps = path.resolve(take());
+      args.appsExplicit = true;
+    } else if (flag === '--today') args.today = take();
     else if (flag === '--remove') args.remove = take();
     else if (flag === '--prune') args.prune = true;
     else if (flag === '--check') args.check = true;
     else throw new Error(`未知参数: ${flag}`);
   }
+  if (!args.appsExplicit && args.catalog !== defaultCatalog) args.apps = null;
   return args;
 }
 
@@ -87,10 +94,25 @@ export function loadEntries(dir) {
   });
 }
 
-export function loadCatalogIds(catalogPath) {
-  if (!fs.existsSync(catalogPath)) return new Set();
-  const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
-  return new Set((Array.isArray(catalog) ? catalog : []).map((i) => String(i.id).toLowerCase()));
+export function loadCatalogIds(catalogPath, appsDir = null) {
+  const ids = new Set();
+  if (catalogPath && fs.existsSync(catalogPath)) {
+    const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+    for (const i of Array.isArray(catalog) ? catalog : []) {
+      if (i?.id) ids.add(String(i.id).toLowerCase());
+    }
+  }
+  if (appsDir && fs.existsSync(appsDir)) {
+    for (const file of collectEntryFiles(appsDir)) {
+      try {
+        const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+        if (raw?.id) ids.add(String(raw.id).toLowerCase());
+      } catch {
+        // 个别损坏文件由 validate-catalog 处理
+      }
+    }
+  }
+  return ids;
 }
 
 export function loadHistory(dir) {
@@ -105,21 +127,24 @@ export function saveHistory(dir, history) {
   fs.writeFileSync(path.join(dir, HISTORY_FILE), formatShowcaseJson(sorted), 'utf8');
 }
 
-/** 删除条目文件（空 owner 目录一并删除）并记录下架日期。 */
+/** 删除条目文件（空 owner 目录一并删除）并记录下架日期；文件不存在时返回 false。 */
 export function removeEntry(dir, id, today, history) {
-  const file = entryPath(dir, id);
-  if (fs.existsSync(file)) fs.rmSync(file);
+  const coord = parseRepoCoord(id);
+  if (!coord) throw new Error(`非法应用标识: ${id}`);
+  const file = path.join(dir, coord.owner, `${coord.repo}.json`);
+  if (!fs.existsSync(file)) return false;
+  fs.rmSync(file);
   const ownerDir = path.dirname(file);
   if (fs.existsSync(ownerDir) && fs.readdirSync(ownerDir).length === 0) fs.rmdirSync(ownerDir);
-  history[parseRepoCoord(id).id] = today;
+  history[coord.id] = today;
+  return true;
 }
 
 /** 编译（可选清理）：返回 `{ manifest, dropped, text }`。 */
 export function runBuild(args) {
-  const catalogIds = loadCatalogIds(args.catalog);
+  const catalogIds = loadCatalogIds(args.catalog, args.apps ?? null);
   const history = loadHistory(args.dir);
-  if (args.remove) {
-    removeEntry(args.dir, args.remove, args.today, history);
+  if (args.remove && removeEntry(args.dir, args.remove, args.today, history)) {
     saveHistory(args.dir, history);
   }
   const loaded = loadEntries(args.dir);

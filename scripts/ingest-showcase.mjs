@@ -45,30 +45,39 @@ const rootDir = path.resolve(path.dirname(__filename), '..');
 const MAX_BODY_BYTES = 16 * 1024;
 
 export function parseArgs(argv) {
+  const defaultCatalog = path.join(rootDir, 'catalog.json');
   const args = {
     dir: path.join(rootDir, 'showcase'),
-    catalog: path.join(rootDir, 'catalog.json'),
+    catalog: defaultCatalog,
+    apps: path.join(rootDir, 'apps'),
+    appsExplicit: false,
     today: todayAddedAt(),
     write: false,
   };
   const valueFlags = new Set([
     '--issue', '--repo', '--body-file', '--author', '--out', '--comment',
-    '--failure-comment', '--pr-title', '--pr-body', '--today', '--dir', '--catalog',
+    '--failure-comment', '--pr-title', '--pr-body', '--today', '--dir', '--catalog', '--apps',
   ]);
   for (let i = 0; i < argv.length; i++) {
     const flag = argv[i];
     if (valueFlags.has(flag)) {
       const value = argv[++i];
       if (value === undefined) throw new Error(`参数 ${flag} 缺少取值`);
-      args[flag.slice(2).replace(/-([a-z])/g, (_m, c) => c.toUpperCase())] = value;
+      const key = flag.slice(2).replace(/-([a-z])/g, (_m, c) => c.toUpperCase());
+      args[key] = value;
+      if (flag === '--apps') args.appsExplicit = true;
     } else if (flag === '--write') args.write = true;
     else if (flag === '--dry-run') args.write = false;
     else throw new Error(`未知参数: ${flag}`);
   }
   if (!args.bodyFile && !args.issue) throw new Error('必须提供 --issue 或 --body-file');
   if (!args.repo) args.repo = process.env.GITHUB_REPOSITORY || '';
+  if (!args.bodyFile && !args.repo) throw new Error('读取远程 Issue 时必须提供 --repo 或 GITHUB_REPOSITORY');
+  if (!args.bodyFile && !/^\d+$/.test(String(args.issue))) throw new Error(`--issue 必须是数字: ${args.issue}`);
   if (args.dir) args.dir = path.resolve(args.dir);
   if (args.catalog) args.catalog = path.resolve(args.catalog);
+  if (!args.appsExplicit && args.catalog !== defaultCatalog) args.apps = null;
+  else if (args.apps) args.apps = path.resolve(args.apps);
   return args;
 }
 
@@ -220,24 +229,27 @@ export async function run(args) {
     );
   }
 
-  const login = issue.user?.login ?? '';
+  const login = String(issue.user?.login ?? '').trim();
+  if (!login) errors.push('无法识别提交人 GitHub 登录名');
   const repoRes = await apiFetch(`https://api.github.com/repos/${coord.id}`);
   const repo = repoRes.status === 200 ? repoRes.body : null;
-  const releaseRes = repo ? await apiFetch(`https://api.github.com/repos/${coord.id}/releases/latest`) : null;
+  // GitHub 仓库改名/转移后跟随重定向后的规范坐标（ADR-0010）。
+  const canonicalCoord = (repo?.full_name && parseRepoCoord(repo.full_name)) || coord;
+  const releaseRes = repo ? await apiFetch(`https://api.github.com/repos/${canonicalCoord.id}/releases/latest`) : null;
   const release = releaseRes?.status === 200 ? releaseRes.body : null;
   const facts = evaluateRepo({ repo, release, today: args.today });
   errors.push(...facts.errors);
 
-  const identity = repo ? await checkIdentity(coord, repo, login) : 'unknown';
+  const identity = repo ? await checkIdentity(canonicalCoord, repo, login) : 'unknown';
   if (identity === 'denied') errors.push(`@${login} 不是该仓库的所有者或协作者`);
 
   const entries = loadEntries(args.dir);
-  const existing = entries.find((e) => e.entry.id === coord.id)?.entry ?? null;
+  const existing = entries.find((e) => e.entry.id === canonicalCoord.id)?.entry ?? null;
   const decision = decideSubmission({
-    id: coord.id,
+    id: canonicalCoord.id,
     submittedBy: login,
     today: args.today,
-    catalogIds: loadCatalogIds(args.catalog),
+    catalogIds: loadCatalogIds(args.catalog, args.apps ?? null),
     existing,
     activeBySubmitter: activeBySubmitter(entries, args.today),
     history: loadHistory(args.dir),
@@ -247,8 +259,8 @@ export async function run(args) {
   if (errors.length > 0) {
     return finish(
       args,
-      { ok: false, action: 'reject', id: coord.id, errors },
-      `## 自荐未通过校验：\`${coord.id}\`\n\n${bullet(errors)}\n`,
+      { ok: false, action: 'reject', id: canonicalCoord.id, errors },
+      `## 自荐未通过校验：\`${canonicalCoord.id}\`\n\n${bullet(errors)}\n`,
     );
   }
 
@@ -267,7 +279,7 @@ export async function run(args) {
           renewed: true,
         })
       : orderEntry({
-          id: coord.id,
+          id: canonicalCoord.id,
           submitted_by: login,
           pitch: pitch.pitch.trim() || null,
           pitch_en: pitch.pitch_en.trim() || null,
@@ -280,13 +292,13 @@ export async function run(args) {
         });
 
   if (args.write) {
-    const file = entryPath(args.dir, coord.id);
+    const file = entryPath(args.dir, canonicalCoord.id);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, formatShowcaseJson(entry), 'utf8');
   }
 
   const verb = decision.action === 'renew' ? '续期' : '自荐';
-  write(args.prTitle, `feat(showcase): ${verb} ${coord.id}`);
+  write(args.prTitle, `feat(showcase): ${verb} ${canonicalCoord.id}`);
   write(
     args.prBody,
     [
@@ -294,7 +306,7 @@ export async function run(args) {
       '',
       '| 字段 | 值 |',
       '| --- | --- |',
-      `| 应用 | \`${coord.id}\` |`,
+      `| 应用 | \`${canonicalCoord.id}\` |`,
       `| 提交人 | @${login}（${identity}） |`,
       `| 平台 | ${facts.platforms.join(', ')} |`,
       `| 展示期 | ${entry.submitted_at} → ${entry.expires_at} |`,
@@ -306,8 +318,8 @@ export async function run(args) {
   );
   return finish(
     args,
-    { ok: true, action: decision.action, id: coord.id, needsReview, warnings, entry },
-    `## 自荐校验通过：\`${coord.id}\`\n\n${verb}后展示至 ${entry.expires_at}。${
+    { ok: true, action: decision.action, id: canonicalCoord.id, needsReview, warnings, entry },
+    `## 自荐校验通过：\`${canonicalCoord.id}\`\n\n${verb}后展示至 ${entry.expires_at}。${
       warnings.length > 0 ? `\n\n需要维护者复核：\n\n${bullet(warnings)}` : ''
     }\n`,
   );

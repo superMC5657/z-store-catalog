@@ -49,14 +49,19 @@ export function isOsiLicense(spdx) {
 
 const DAY_MS = 86_400_000;
 
-/** `YYYY-MM-DD` → UTC 天序号；非法返回 null。 */
+/** `YYYY-MM-DD` → UTC 天序号；非法（含 2 月 31 日等无效日历）返回 null。 */
 export function ymdToDays(ymd) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ymd ?? '').trim());
   if (!m) return null;
+  const year = Number(m[1]);
   const month = Number(m[2]);
   const day = Number(m[3]);
   if (month < 1 || month > 12 || day < 1 || day > 31) return null;
-  return Math.floor(Date.UTC(Number(m[1]), month - 1, day) / DAY_MS);
+  const dt = new Date(Date.UTC(year, month - 1, day));
+  if (dt.getUTCFullYear() !== year || dt.getUTCMonth() !== month - 1 || dt.getUTCDate() !== day) {
+    return null;
+  }
+  return Math.floor(dt.getTime() / DAY_MS);
 }
 
 export function daysToYmd(days) {
@@ -195,9 +200,15 @@ export function decideSubmission({ id, submittedBy, today, catalogIds, existing,
     }
     return { action: 'renew' };
   }
-  const removedAt = history?.[id];
-  if (removedAt) {
-    const since = ymdToDays(today) - ymdToDays(removedAt);
+  // 已过期但尚未被每日 --prune 清理的条目，同样按到期日计算 180 天冷却期。
+  const historyDate = history?.[id] ?? null;
+  const expiredDate = existing && !isActive(existing, today) ? existing.expires_at : null;
+  const cooldownFrom =
+    historyDate && expiredDate
+      ? (ymdToDays(historyDate) >= ymdToDays(expiredDate) ? historyDate : expiredDate)
+      : (historyDate || expiredDate);
+  if (cooldownFrom) {
+    const since = ymdToDays(today) - ymdToDays(cooldownFrom);
     if (since < SHOWCASE_COOLDOWN_DAYS) {
       return { action: 'reject', reason: `该应用自荐下架未满 ${SHOWCASE_COOLDOWN_DAYS} 天，暂不能再次自荐` };
     }
@@ -223,6 +234,14 @@ export function validateEntry(entry) {
   if (sub === null) errors.push(`提交日期非法: ${id}`);
   if (exp === null) errors.push(`到期日期非法: ${id}`);
   if (sub !== null && exp !== null && exp <= sub) errors.push(`到期日期须晚于提交日期: ${id}`);
+  if (!Array.isArray(entry?.keywords)) errors.push(`keywords 须为数组: ${id}`);
+  if (typeof entry?.renewed !== 'boolean') errors.push(`renewed 须为布尔值: ${id}`);
+  if (!Number.isInteger(entry?.stars_at_submit) || entry.stars_at_submit < 0) {
+    errors.push(`stars_at_submit 须为非负整数: ${id}`);
+  }
+  if (entry?.issue_url !== null && entry?.issue_url !== undefined && typeof entry.issue_url !== 'string') {
+    errors.push(`issue_url 须为字符串或 null: ${id}`);
+  }
   const keywords = Array.isArray(entry?.keywords) ? entry.keywords : [];
   for (const e of validatePitch({ pitch: entry?.pitch ?? '', pitch_en: entry?.pitch_en ?? '', keywords })) {
     errors.push(`${e}: ${id}`);

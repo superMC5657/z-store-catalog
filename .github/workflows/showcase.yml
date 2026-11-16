@@ -63,6 +63,8 @@ jobs:
             --description "Report a showcase entry" --force || true
           gh label create needs-review --repo "$REPO" --color FBCA04 \
             --description "Needs maintainer review" --force || true
+          gh label create needs-info --repo "$REPO" --color D876E3 \
+            --description "Waiting on submitter to fix issues" --force || true
 
       - name: Ingest
         id: ingest
@@ -87,6 +89,11 @@ jobs:
             printf '## 自荐处理失败\n\n请查看 Actions 日志。\n' > failure.md
           fi
           gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file failure.md
+          if [ "${{ steps.ingest.outputs.action }}" = "reject" ]; then
+            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" --add-label needs-info || true
+          else
+            exit 1
+          fi
 
       - name: Build showcase.json
         if: steps.ingest.outputs.code == '0'
@@ -96,6 +103,7 @@ jobs:
         if: steps.ingest.outputs.code == '0'
         run: |
           set -euo pipefail
+          gh issue edit "$ISSUE_NUMBER" --repo "$REPO" --remove-label needs-info || true
           branch="showcase/issue-${ISSUE_NUMBER}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -119,6 +127,10 @@ jobs:
             -f state=success -f context=catalog-ingest -f description="showcase validated by ingest"
           if [ "${{ steps.ingest.outputs.needs_review }}" = "true" ]; then
             gh pr edit "$pr_url" --repo "$REPO" --add-label needs-review || true
+            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" --add-label needs-review || true
+          else
+            gh pr edit "$pr_url" --repo "$REPO" --remove-label needs-review || true
+            gh issue edit "$ISSUE_NUMBER" --repo "$REPO" --remove-label needs-review || true
           fi
           { cat comment.md; echo; echo "PR: $pr_url"; echo; echo "⏳ 等待维护者合并。"; } > final.md
           gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file final.md
@@ -136,6 +148,7 @@ jobs:
       REPO: ${{ github.repository }}
       ISSUE_NUMBER: ${{ github.event.issue.number }}
       GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
       ISSUE_BODY: ${{ github.event.issue.body }}
     steps:
       - uses: actions/checkout@v4
@@ -166,21 +179,26 @@ jobs:
           ENTRY_ID: ${{ steps.entry.outputs.id }}
         run: |
           set -euo pipefail
-          node scripts/build-showcase.mjs --remove "$ENTRY_ID"
           branch="showcase/report-${ISSUE_NUMBER}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B "$branch" origin/main
+          node scripts/build-showcase.mjs --remove "$ENTRY_ID"
           git add showcase/ showcase.json
           if git diff --cached --quiet; then
             gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "\`$ENTRY_ID\` 当前不在自荐清单中，无需下架。"
             exit 0
           fi
-          git commit -m "fix(showcase): 下架被举报的 ${ENTRY_ID}"
+          title="fix(showcase): 下架被举报的 ${ENTRY_ID}"
+          body="举报已确认，下架 \`${ENTRY_ID}\`。Closes #${ISSUE_NUMBER}"
+          git commit -m "$title"
           git push --force origin "HEAD:refs/heads/$branch"
-          pr_url=$(gh pr create --repo "$REPO" --base main --head "$branch" \
-            --title "fix(showcase): 下架被举报的 ${ENTRY_ID}" \
-            --body "举报已确认，下架 \`${ENTRY_ID}\`。Closes #${ISSUE_NUMBER}")
+          pr_url=$(gh pr list --repo "$REPO" --head "$branch" --state open --json url --jq '.[0].url // ""')
+          if [ -z "$pr_url" ]; then
+            pr_url=$(gh pr create --repo "$REPO" --base main --head "$branch" --title "$title" --body "$body")
+          else
+            gh pr edit "$pr_url" --repo "$REPO" --title "$title" --body "$body"
+          fi
           sha=$(git rev-parse HEAD)
           gh api -X POST "repos/$REPO/statuses/$sha" \
             -f state=success -f context=catalog-ingest -f description="showcase removal"

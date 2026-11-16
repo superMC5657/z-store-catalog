@@ -17,8 +17,9 @@ import {
   promoWarnings,
   validateEntry,
   validatePitch,
+  ymdToDays,
 } from './lib/showcase-shared.mjs';
-import { entryPath, runBuild } from './build-showcase.mjs';
+import { entryPath, loadCatalogIds, loadHistory, runBuild } from './build-showcase.mjs';
 import { evaluateRepo, installableAssets } from './ingest-showcase.mjs';
 
 const TODAY = '2026-11-16';
@@ -105,11 +106,19 @@ test('decideSubmission：新建 / 续期 / 各类拒绝', () => {
   assert.equal(decideSubmission({ ...base, existing: entry('o/r', { expires_at: '2027-01-30' }) }).action, 'reject');
   assert.equal(decideSubmission({ ...base, existing: entry('o/r', { expires_at: '2026-11-25' }) }).action, 'renew');
   assert.equal(decideSubmission({ ...base, existing: entry('o/r', { expires_at: '2026-11-25', renewed: true }) }).action, 'reject');
-  // 已过期的旧条目文件：视为新建（再受冷却期约束）
-  assert.equal(decideSubmission({ ...base, existing: entry('o/r', { expires_at: '2026-11-01' }) }).action, 'create');
+  // 已过期但尚未被每日 --prune 清理的旧条目文件：仍受 180 天冷却期约束
+  assert.equal(decideSubmission({ ...base, existing: entry('o/r', { expires_at: '2026-11-01' }) }).action, 'reject');
+  assert.equal(decideSubmission({ ...base, existing: entry('o/r', { expires_at: '2026-01-01' }) }).action, 'create');
   assert.equal(decideSubmission({ ...base, history: { 'o/r': '2026-10-01' } }).action, 'reject');
   assert.equal(decideSubmission({ ...base, history: { 'o/r': '2026-01-01' } }).action, 'create');
   assert.equal(decideSubmission({ ...base, activeBySubmitter: new Map([['o', 2]]) }).action, 'reject');
+});
+
+test('ymdToDays 拒绝 2 月 31 日等无效日历日期', () => {
+  assert.equal(ymdToDays('2026-02-31'), null);
+  assert.equal(ymdToDays('2026-04-31'), null);
+  assert.ok(Number.isInteger(ymdToDays('2024-02-29')));
+  assert.equal(ymdToDays('2025-02-29'), null);
 });
 
 test('validateEntry 拦截客户端会整份拒绝的条目', () => {
@@ -118,6 +127,9 @@ test('validateEntry 拦截客户端会整份拒绝的条目', () => {
   assert.ok(validateEntry(entry('o/r', { expires_at: '2026-11-01' })).length > 0);
   assert.ok(validateEntry(entry('o/r', { pitch: null, pitch_en: '' })).length > 0);
   assert.ok(validateEntry({ ...entry('o/r'), extra: 1 }).length > 0);
+  assert.ok(validateEntry(entry('o/r', { keywords: 'bad' })).length > 0);
+  assert.ok(validateEntry(entry('o/r', { renewed: 'no' })).length > 0);
+  assert.ok(validateEntry(entry('o/r', { stars_at_submit: -1 })).length > 0);
 });
 
 test('buildShowcaseManifest 剔除到期 / 转正并按提交日期倒序', () => {
@@ -158,6 +170,16 @@ test('runBuild --prune 删除到期条目并记入 history；--remove 下架单�
     assert.ok(!fs.existsSync(path.join(dir, 'q')));
     const history = JSON.parse(fs.readFileSync(path.join(dir, 'history.json'), 'utf8'));
     assert.deepEqual(history, { 'p/expired': TODAY, 'q/report': TODAY });
+
+    // 对不存在的条目执行 --remove 不应写入 history.json。
+    runBuild({ dir, catalog, today: TODAY, prune: false, remove: 'ghost/missing', out: path.join(tmp, 'showcase.json') });
+    assert.deepEqual(loadHistory(dir), { 'p/expired': TODAY, 'q/report': TODAY });
+
+    // loadCatalogIds 同时合并 catalog.json 与 apps/（覆盖当日刚合入尚未编译的新条目）。
+    const appsDir = path.join(tmp, 'apps');
+    fs.mkdirSync(path.join(appsDir, 'newowner'), { recursive: true });
+    fs.writeFileSync(path.join(appsDir, 'newowner', 'app.json'), JSON.stringify({ id: 'NewOwner/App' }));
+    assert.ok(loadCatalogIds(catalog, appsDir).has('newowner/app'));
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }

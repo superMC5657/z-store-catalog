@@ -48,7 +48,14 @@ jobs:
             git checkout FETCH_HEAD -- apps/
           fi
           node scripts/build-catalog.mjs
-          echo "code=$?" >> "$GITHUB_OUTPUT"
+          rc=$?
+          changed_showcase=$(git diff --name-only HEAD FETCH_HEAD -- showcase/ showcase.json 2>/dev/null || true)
+          if [ "$rc" -eq 0 ] && [ -n "$changed_showcase" ]; then
+            git checkout FETCH_HEAD -- showcase/ showcase.json
+            node scripts/build-showcase.mjs --check
+            rc=$?
+          fi
+          echo "code=$rc" >> "$GITHUB_OUTPUT"
 
       - name: Post success status
         if: >-
