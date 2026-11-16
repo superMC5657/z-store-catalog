@@ -1,0 +1,32 @@
+name: 举报自荐条目 / Report a showcase entry
+description: 自荐条目不是本人提交、内容不实、含恶意软件或营销文案时举报。维护者确认后会下架。
+title: "[自荐举报] "
+labels: ["showcase-report"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: 被举报的条目 / Entry
+      description: 应用标识，如 owner/repo
+    validations:
+      required: true
+  - type: input
+    id: issue
+    attributes:
+      label: 原自荐 Issue / Original issue
+  - type: dropdown
+    id: reason
+    attributes:
+      label: 举报理由 / Reason
+      options:
+        - 非本人提交 / Not submitted by the owner
+        - 内容不实 / Misleading
+        - 恶意软件 / Malware
+        - 营销文案 / Marketing copy
+        - 其他 / Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 补充说明 / Details

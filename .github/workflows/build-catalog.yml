@@ -1,6 +1,7 @@
 name: Build Catalog
 
-# 每天 00:00 UTC（北京时间 08:00）定时或手动扫描 apps/ 增量编译生成根目录 catalog.json；
+# 每天 00:00 UTC（北京时间 08:00）定时或手动扫描 apps/ 增量编译生成根目录 catalog.json，
+# 并编译 showcase.json（同时下架到期 / 已被精选收录的自荐条目）；
 # 定时任务成功结束后，会通过 workflow_run 自动串联触发 refresh-catalog.yml 进行每日保鲜。
 
 on:
@@ -43,14 +44,17 @@ jobs:
       - name: Build catalog.json
         run: node scripts/build-catalog.mjs
 
+      - name: Build showcase.json (prune expired / graduated)
+        run: node scripts/build-showcase.mjs --prune
+
       - name: Commit and push catalog.json
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add catalog.json
+          git add catalog.json showcase.json showcase/
           if git diff --staged --quiet; then
-            echo "catalog.json is already up to date."
+            echo "catalog.json and showcase.json are already up to date."
             exit 0
           fi
           git commit -m "chore(catalog): automated build of catalog.json [skip ci]"

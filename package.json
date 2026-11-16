@@ -9,7 +9,9 @@
     "refresh": "node scripts/refresh-catalog.mjs",
     "test": "node scripts/validate-catalog.mjs",
     "test:ingest": "node --test scripts/ingest-issue.test.mjs",
-    "validate": "node scripts/validate-catalog.mjs"
+    "validate": "node scripts/validate-catalog.mjs",
+    "build:showcase": "node scripts/build-showcase.mjs",
+    "test:showcase": "node --test scripts/showcase.test.mjs"
   },
   "keywords": [
     "z-store",

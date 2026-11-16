@@ -83,6 +83,10 @@
 
 详细提交流程与规范请参阅：👉 [CONTRIBUTING.md](./CONTRIBUTING.md)
 
+### 开发者自荐 (Developer Showcase)
+
+如果你是开源应用的作者，可以用「开发者自荐」Issue 模板把自己的应用放进 Z-Store「自荐」页展示 90 天（也可以在客户端「待收录」页一键生成预填 Issue）。自荐与精选收录分开、明确标注「未经编辑精选」，**没有付费位**；要求你是仓库所有者或协作者、采用 OSI 协议并在最新 Release 提供可安装的构建包。规则详见 [AGENTS.md](./AGENTS.md#开发者自荐showcase)。
+
 ---
 
 ## 📁 目录结构 (Directory Layout)
@@ -90,11 +94,13 @@
 ```text
 z-store-catalog/
 ├── apps/                  # 【唯一真源】按 <owner>/<repo>.json 拆分的独立应用清单，PR 只改对应文件
+├── showcase/              # 开发者自荐条目（<owner>/<repo>.json）与下架历史 history.json
 ├── scripts/               # 维护脚本（编译、校验、Issue 入库、定时保鲜）与单元测试
 │   └── lib/               # 共享核心库（分类定义、图标探测评分、平台推断、JSON 格式化）
 ├── .github/workflows/     # GitHub Actions 自动化流水线（Issue 转 PR、PR 门禁、自动编译、每日保鲜）
 ├── docs/                  # 自动化收录与门禁机制说明文档
 ├── catalog.json           # 【编译产物】由 scripts/build-catalog.mjs 从 apps/ 自动汇总，供客户端拉取
+├── showcase.json          # 【编译产物】由 scripts/build-showcase.mjs 从 showcase/ 汇总的自荐清单
 ├── AGENTS.md              # 维护者与 AI 代理操作规范
 ├── CONTRIBUTING.md        # 社区贡献指南
 └── package.json           # 脚本快捷命令与 ESM 模块声明

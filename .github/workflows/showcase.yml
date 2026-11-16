@@ -1,0 +1,187 @@
+name: Showcase
+
+# 开发者自荐：
+# - 带 `showcase` 标签的 Issue（表单创建或编辑）→ 校验 → showcase/<owner>/<repo>.json + showcase.json → PR；
+#   自荐 PR 一律由维护者人工合并（needs-review 标出需要核对的点）。
+# - 带 `showcase-report` 标签的举报 Issue 被维护者贴上 `confirmed` 后 → 下架该条目 → PR。
+#
+# 安全边界：Issue 正文只当数据；只允许 showcase/issue-* 分支提交 showcase 变更。
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 要重新处理的 Issue 编号
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: showcase-ingest
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    name: Ingest showcase submission
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue != null &&
+       contains(github.event.issue.labels.*.name, 'showcase') &&
+       github.event.sender.login != 'github-actions[bot]' &&
+       (github.event.action == 'opened' ||
+        (github.event.action == 'edited' && github.event.changes.body != null) ||
+        (github.event.action == 'labeled' && github.event.label.name == 'retry')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      REPO: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ github.event.issue.number || github.event.inputs.issue_number }}
+      GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      GITHUB_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Ensure labels
+        run: |
+          gh label create showcase --repo "$REPO" --color 5319E7 \
+            --description "Developer showcase submission" --force || true
+          gh label create showcase-report --repo "$REPO" --color B60205 \
+            --description "Report a showcase entry" --force || true
+          gh label create needs-review --repo "$REPO" --color FBCA04 \
+            --description "Needs maintainer review" --force || true
+
+      - name: Ingest
+        id: ingest
+        run: |
+          set +e
+          node scripts/ingest-showcase.mjs \
+            --issue "$ISSUE_NUMBER" --repo "$REPO" --write \
+            --out result.json --comment comment.md --failure-comment failure.md \
+            --pr-title pr-title.txt --pr-body pr-body.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          if [ -f result.json ]; then
+            echo "action=$(jq -r '.action // "error"' result.json)" >> "$GITHUB_OUTPUT"
+            echo "needs_review=$(jq -r 'if .needsReview == null then false else .needsReview end' result.json)" >> "$GITHUB_OUTPUT"
+            echo "id=$(jq -r '.id // ""' result.json)" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Comment rejection
+        if: steps.ingest.outputs.code != '0'
+        run: |
+          if [ ! -f failure.md ]; then
+            printf '## 自荐处理失败\n\n请查看 Actions 日志。\n' > failure.md
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file failure.md
+
+      - name: Build showcase.json
+        if: steps.ingest.outputs.code == '0'
+        run: node scripts/build-showcase.mjs
+
+      - name: Commit, push and open PR
+        if: steps.ingest.outputs.code == '0'
+        run: |
+          set -euo pipefail
+          branch="showcase/issue-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch" origin/main
+          git add showcase/ showcase.json
+          if git diff --cached --quiet; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file comment.md
+            exit 0
+          fi
+          git commit -m "$(cat pr-title.txt)"
+          git push --force origin "HEAD:refs/heads/$branch"
+          pr_url=$(gh pr list --repo "$REPO" --head "$branch" --state open --json url --jq '.[0].url // ""')
+          if [ -z "$pr_url" ]; then
+            pr_url=$(gh pr create --repo "$REPO" --base main --head "$branch" \
+              --title "$(cat pr-title.txt)" --body-file pr-body.md)
+          else
+            gh pr edit "$pr_url" --repo "$REPO" --title "$(cat pr-title.txt)" --body-file pr-body.md
+          fi
+          sha=$(git rev-parse HEAD)
+          gh api -X POST "repos/$REPO/statuses/$sha" \
+            -f state=success -f context=catalog-ingest -f description="showcase validated by ingest"
+          if [ "${{ steps.ingest.outputs.needs_review }}" = "true" ]; then
+            gh pr edit "$pr_url" --repo "$REPO" --add-label needs-review || true
+          fi
+          { cat comment.md; echo; echo "PR: $pr_url"; echo; echo "⏳ 等待维护者合并。"; } > final.md
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body-file final.md
+
+  report:
+    name: Remove reported entry
+    if: >-
+      github.event_name == 'issues' &&
+      github.event.action == 'labeled' &&
+      github.event.label.name == 'confirmed' &&
+      contains(github.event.issue.labels.*.name, 'showcase-report')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REPO: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      GH_TOKEN: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.CATALOG_BOT_TOKEN || github.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Resolve entry id
+        id: entry
+        run: |
+          id=$(node --input-type=module -e '
+            import { parseIssueForm, REPORT_FORM_LABELS, parseRepoCoord } from "./scripts/lib/showcase-shared.mjs";
+            const form = parseIssueForm(process.env.ISSUE_BODY ?? "", REPORT_FORM_LABELS);
+            process.stdout.write(parseRepoCoord(form.entry)?.id ?? "");
+          ')
+          if [ -z "$id" ]; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "无法从举报正文识别条目标识（owner/repo），请修正后重新贴 confirmed。"
+            exit 1
+          fi
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+
+      - name: Remove entry and open PR
+        env:
+          ENTRY_ID: ${{ steps.entry.outputs.id }}
+        run: |
+          set -euo pipefail
+          node scripts/build-showcase.mjs --remove "$ENTRY_ID"
+          branch="showcase/report-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch" origin/main
+          git add showcase/ showcase.json
+          if git diff --cached --quiet; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "\`$ENTRY_ID\` 当前不在自荐清单中，无需下架。"
+            exit 0
+          fi
+          git commit -m "fix(showcase): 下架被举报的 ${ENTRY_ID}"
+          git push --force origin "HEAD:refs/heads/$branch"
+          pr_url=$(gh pr create --repo "$REPO" --base main --head "$branch" \
+            --title "fix(showcase): 下架被举报的 ${ENTRY_ID}" \
+            --body "举报已确认，下架 \`${ENTRY_ID}\`。Closes #${ISSUE_NUMBER}")
+          sha=$(git rev-parse HEAD)
+          gh api -X POST "repos/$REPO/statuses/$sha" \
+            -f state=success -f context=catalog-ingest -f description="showcase removal"
+          gh issue comment "$ISSUE_NUMBER" --repo "$REPO" --body "已生成下架 PR：$pr_url"

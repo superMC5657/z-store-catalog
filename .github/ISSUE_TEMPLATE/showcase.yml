@@ -1,0 +1,35 @@
+name: 开发者自荐 / Developer showcase
+description: 仓库所有者或协作者把自己的开源应用放进 Z-Store「自荐」页展示 90 天。
+title: "[自荐] "
+labels: ["showcase"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        自荐页只展示开发者本人提交的开源应用，**没有付费位**，排序只按提交时间、自荐以来新增 Star 与剩余时间。
+        提交后 CI 会自动校验：你是仓库所有者 / 协作者、OSI 开源协议、最新 Release 有可安装的构建包、近 180 天有推送、不在精选收录库中。
+        每条自荐展示 90 天，到期前 14 天内可再提交一次续期；每位开发者同时最多 2 个有效自荐。
+  - type: input
+    id: repo
+    attributes:
+      label: 仓库地址 / Repository
+      description: 例如 https://github.com/owner/repo（目前只接受 github.com）
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: input
+    id: pitch
+    attributes:
+      label: 中文自荐语 / Chinese pitch
+      description: 一句话描述应用本身，最多 80 字；不要放链接、联系方式或优惠信息。中英文至少填一种。
+  - type: input
+    id: pitch_en
+    attributes:
+      label: 英文自荐语 / English pitch
+      description: One line about the app itself, up to 160 characters. No links, contact details or offers.
+  - type: input
+    id: keywords
+    attributes:
+      label: 关键词 / Keywords
+      description: 最多 3 个，用逗号分隔
+      placeholder: markdown, 笔记
