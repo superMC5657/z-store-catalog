@@ -19,9 +19,9 @@
   "homepage": "https://anytype.io",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Anytype.Setup.0.56.9-alpha.exe"],
-    "linux": ["anytype-ts"],
-    "macos": ["anytype-ts.app"],
+    "windows": ["Anytype.exe"],
+    "linux": ["anytype"],
+    "macos": ["Anytype.app"],
     "android": [],
     "ios": []
   }

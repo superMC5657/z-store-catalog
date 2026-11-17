@@ -19,9 +19,9 @@
   "homepage": "http://super-productivity.com?ref=github",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["Super-Productivity-Setup-arm64.exe"],
-    "linux": ["super-productivity"],
-    "macos": ["super-productivity.app"],
+    "windows": ["superProductivity.exe"],
+    "linux": ["superproductivity", "super-productivity"],
+    "macos": ["Super Productivity.app"],
     "android": ["org.super-productivity"],
     "ios": []
   }

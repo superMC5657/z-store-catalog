@@ -19,9 +19,9 @@
   "homepage": "https://readest.com",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["Readest_0.12.8_arm64-portable.exe"],
+    "windows": ["Readest.exe"],
     "linux": ["readest"],
-    "macos": ["readest.app"],
+    "macos": ["Readest.app"],
     "android": ["org.readest"],
     "ios": []
   }

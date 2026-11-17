@@ -19,9 +19,9 @@
   "homepage": "http://www.meshlab.net",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["MeshLab2025.07-windows_x86_64.exe"],
+    "windows": ["meshlab.exe"],
     "linux": ["meshlab"],
-    "macos": ["meshlab.app"],
+    "macos": ["MeshLab.app"],
     "android": [],
     "ios": []
   }

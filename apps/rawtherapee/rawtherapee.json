@@ -19,7 +19,7 @@
   "homepage": "https://rawtherapee.com",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["RawTherapee_5.13_win64_arm64_release.exe"],
+    "windows": ["rawtherapee.exe"],
     "linux": ["rawtherapee"],
     "macos": ["RawTherapee.app"],
     "android": [],

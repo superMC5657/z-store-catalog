@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["lite-xl.exe"],
     "linux": ["lite-xl"],
-    "macos": ["lite-xl.app"],
+    "macos": ["Lite XL.app"],
     "android": [],
     "ios": []
   }

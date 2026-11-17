@@ -19,9 +19,9 @@
   "homepage": "https://github.com/qt-creator/qt-creator",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["qt-creator.exe"],
-    "linux": ["qt-creator"],
-    "macos": ["qt-creator.app"],
+    "windows": ["qtcreator.exe"],
+    "linux": ["qtcreator"],
+    "macos": ["Qt Creator.app"],
     "android": [],
     "ios": []
   }

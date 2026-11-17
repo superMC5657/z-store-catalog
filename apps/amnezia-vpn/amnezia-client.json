@@ -19,10 +19,10 @@
   "homepage": "https://amnezia.org",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["AmneziaVPN_5.0.1.5_windows_x64.exe"],
-    "linux": ["amnezia-client"],
-    "macos": ["amnezia-client.app"],
-    "android": ["org.amnezia-client"],
+    "windows": ["AmneziaVPN.exe"],
+    "linux": ["amneziavpn", "amnezia-client"],
+    "macos": ["AmneziaVPN.app"],
+    "android": ["org.amnezia.vpn"],
     "ios": []
   }
 }

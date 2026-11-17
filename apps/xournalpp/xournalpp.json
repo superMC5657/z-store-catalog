@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["xournalpp.exe"],
     "linux": ["xournalpp"],
-    "macos": ["xournalpp.app"],
+    "macos": ["Xournal++.app"],
     "android": [],
     "ios": []
   }

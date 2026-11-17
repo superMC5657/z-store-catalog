@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["doublecmd.exe"],
     "linux": [],
-    "macos": ["doublecmd.app"],
+    "macos": ["Double Commander.app"],
     "android": [],
     "ios": []
   }

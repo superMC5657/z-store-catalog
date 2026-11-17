@@ -19,9 +19,9 @@
   "homepage": "https://voicestudio.sh",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["VoiceStudio.exe", "voicestudio.exe"],
-    "linux": ["VoiceStudio", "voicestudio"],
-    "macos": ["VoiceStudio", "voicestudio"],
+    "windows": ["VoiceStudio.exe"],
+    "linux": ["voicestudio"],
+    "macos": ["VoiceStudio.app"],
     "android": [],
     "ios": []
   }

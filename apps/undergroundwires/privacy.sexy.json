@@ -19,7 +19,7 @@
   "homepage": "https://privacy.sexy",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["privacy.sexy-Setup.exe"],
+    "windows": ["privacy.sexy.exe"],
     "linux": ["privacy.sexy"],
     "macos": ["privacy.sexy.app"],
     "android": [],

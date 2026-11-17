@@ -19,7 +19,7 @@
   "homepage": "http://www.nexusmods.com/skyrimspecialedition/mods/6194",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["Mod.Organizer.exe"],
+    "windows": ["ModOrganizer.exe"],
     "linux": [],
     "macos": [],
     "android": [],

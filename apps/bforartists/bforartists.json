@@ -19,7 +19,7 @@
   "homepage": "http://www.bforartists.de",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Install_Bforartists5_520.exe"],
+    "windows": ["bforartists.exe"],
     "linux": ["bforartists"],
     "macos": ["Bforartists.app"],
     "android": [],

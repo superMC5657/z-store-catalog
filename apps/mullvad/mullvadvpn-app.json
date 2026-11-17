@@ -20,8 +20,8 @@
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
     "windows": ["MullvadVPN.exe"],
-    "linux": ["mullvadvpn-app"],
-    "macos": ["mullvadvpn-app.app"],
+    "linux": ["mullvad-vpn"],
+    "macos": ["Mullvad VPN.app"],
     "android": [],
     "ios": []
   }

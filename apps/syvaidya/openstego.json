@@ -19,7 +19,7 @@
   "homepage": "https://www.openstego.com",
   "platforms": ["windows", "linux"],
   "identifiers": {
-    "windows": ["Setup-OpenStego.exe"],
+    "windows": ["openstego.exe"],
     "linux": ["openstego"],
     "macos": [],
     "android": [],

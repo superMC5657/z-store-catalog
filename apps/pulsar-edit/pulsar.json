@@ -19,9 +19,9 @@
   "homepage": "https://pulsar-edit.dev",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Windows.Pulsar.Setup.1.132.1.exe"],
+    "windows": ["Pulsar.exe"],
     "linux": ["pulsar"],
-    "macos": ["pulsar.app"],
+    "macos": ["Pulsar.app"],
     "android": [],
     "ios": []
   }

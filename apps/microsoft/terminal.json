@@ -19,7 +19,7 @@
   "homepage": "https://github.com/microsoft/terminal",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["terminal.exe"],
+    "windows": ["wt.exe", "WindowsTerminal.exe"],
     "linux": [],
     "macos": [],
     "android": [],

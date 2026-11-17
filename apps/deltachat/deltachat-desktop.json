@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["DeltaChat.exe"],
     "linux": ["deltachat-desktop"],
-    "macos": ["deltachat-desktop.app"],
+    "macos": ["Delta Chat.app"],
     "android": [],
     "ios": []
   }

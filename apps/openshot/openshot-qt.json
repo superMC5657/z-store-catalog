@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["OpenShot.exe"],
     "linux": ["openshot-qt"],
-    "macos": ["openshot-qt.app"],
+    "macos": ["OpenShot Video Editor.app"],
     "android": [],
     "ios": []
   }

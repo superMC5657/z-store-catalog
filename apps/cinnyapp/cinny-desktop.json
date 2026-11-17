@@ -19,9 +19,9 @@
   "homepage": "https://github.com/cinnyapp/cinny-desktop",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["cinny-desktop.exe"],
-    "linux": ["cinny-desktop"],
-    "macos": ["cinny-desktop.app"],
+    "windows": ["Cinny.exe"],
+    "linux": ["cinny"],
+    "macos": ["Cinny.app"],
     "android": [],
     "ios": []
   }

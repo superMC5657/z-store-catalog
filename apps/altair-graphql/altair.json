@@ -19,9 +19,9 @@
   "homepage": "https://altairgraphql.dev",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["altair_8.5.9_x64_win.exe"],
+    "windows": ["Altair GraphQL Client.exe", "altair.exe"],
     "linux": ["altair"],
-    "macos": ["altair.app"],
+    "macos": ["Altair GraphQL Client.app"],
     "android": [],
     "ios": []
   }

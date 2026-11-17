@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["JellyfinMediaPlayer.exe"],
     "linux": ["jellyfin-desktop"],
-    "macos": ["jellyfin-desktop.app"],
+    "macos": ["Jellyfin Media Player.app", "Jellyfin Desktop.app"],
     "android": [],
     "ios": []
   }

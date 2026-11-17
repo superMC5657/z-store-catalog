@@ -20,8 +20,8 @@
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
     "windows": ["balenaEtcher.exe"],
-    "linux": ["etcher"],
-    "macos": ["etcher.app"],
+    "linux": ["balena-etcher", "etcher"],
+    "macos": ["balenaEtcher.app"],
     "android": [],
     "ios": []
   }

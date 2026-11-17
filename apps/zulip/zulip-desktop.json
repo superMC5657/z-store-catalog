@@ -19,9 +19,9 @@
   "homepage": "https://zulip.com/apps",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Zulip-Web-Setup.exe"],
-    "linux": ["zulip-desktop"],
-    "macos": ["zulip-desktop.app"],
+    "windows": ["Zulip.exe"],
+    "linux": ["zulip"],
+    "macos": ["Zulip.app"],
     "android": [],
     "ios": []
   }

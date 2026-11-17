@@ -19,7 +19,7 @@
   "homepage": "https://www.heidisql.com/",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["HeidiSQL_12.21.0.7344_Setup.exe"],
+    "windows": ["heidisql.exe"],
     "linux": ["heidisql"],
     "macos": ["HeidiSQL.app"],
     "android": [],

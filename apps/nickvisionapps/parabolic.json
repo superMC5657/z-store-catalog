@@ -17,10 +17,10 @@
   "forks": 375,
   "is_verified": true,
   "homepage": "https://flathub.org/apps/details/org.nickvision.tubeconverter",
-  "platforms": ["windows", "macos"],
+  "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["NickvisionParabolicSetup-arm64.exe"],
-    "linux": [],
+    "windows": ["Nickvision.Parabolic.WinUI.exe", "Parabolic.exe"],
+    "linux": ["org.nickvision.tubeconverter", "parabolic"],
     "macos": ["Parabolic.app"],
     "android": [],
     "ios": []

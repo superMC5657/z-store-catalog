@@ -19,9 +19,9 @@
   "homepage": "https://hiddify.com",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["Hiddify-Windows-Setup-x64.exe"],
-    "linux": ["hiddify-app"],
-    "macos": ["hiddify-app.app"],
+    "windows": ["Hiddify.exe"],
+    "linux": ["hiddify"],
+    "macos": ["Hiddify.app"],
     "android": ["org.hiddify-app"],
     "ios": []
   }

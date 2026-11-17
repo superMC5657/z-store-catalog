@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["shattered-pixel-dungeon.exe"],
     "linux": ["shattered-pixel-dungeon"],
-    "macos": ["shattered-pixel-dungeon.app"],
+    "macos": ["Shattered Pixel Dungeon.app"],
     "android": ["com.shatteredpixel.shatteredpixeldungeon"],
     "ios": []
   }

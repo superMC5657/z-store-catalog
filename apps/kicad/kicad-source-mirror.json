@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["kicad.exe"],
     "linux": [],
-    "macos": ["kicad-source-mirror.app"],
+    "macos": ["KiCad.app"],
     "android": [],
     "ios": []
   }

@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["Beekeeper-Studio.exe"],
     "linux": ["beekeeper-studio"],
-    "macos": ["beekeeper-studio.app"],
+    "macos": ["Beekeeper Studio.app"],
     "android": [],
     "ios": []
   }

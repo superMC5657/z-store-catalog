@@ -19,7 +19,7 @@
   "homepage": "https://twinkletray.com",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["Twinkle.Tray.v1.17.2.exe"],
+    "windows": ["Twinkle Tray.exe"],
     "linux": [],
     "macos": [],
     "android": [],

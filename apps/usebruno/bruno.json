@@ -19,9 +19,9 @@
   "homepage": "https://www.usebruno.com/",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["bruno_4.1.0_arm64_win.exe"],
+    "windows": ["bruno.exe", "Bruno.exe"],
     "linux": ["bruno"],
-    "macos": ["bruno.app"],
+    "macos": ["Bruno.app"],
     "android": [],
     "ios": []
   }

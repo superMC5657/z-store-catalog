@@ -19,9 +19,9 @@
   "homepage": "https://padloc.app",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["padloc_4.3.0_windows_electron_x64.exe"],
+    "windows": ["Padloc.exe"],
     "linux": ["padloc"],
-    "macos": ["padloc.app"],
+    "macos": ["Padloc.app"],
     "android": ["org.padloc"],
     "ios": []
   }

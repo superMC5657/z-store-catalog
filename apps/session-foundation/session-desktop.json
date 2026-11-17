@@ -19,9 +19,9 @@
   "homepage": "https://getsession.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["session-desktop-win-x64.exe"],
-    "linux": ["session-desktop"],
-    "macos": ["session-desktop.app"],
+    "windows": ["Session.exe"],
+    "linux": ["session-desktop", "session"],
+    "macos": ["Session.app"],
     "android": [],
     "ios": []
   }

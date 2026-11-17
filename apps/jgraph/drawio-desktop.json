@@ -19,9 +19,9 @@
   "homepage": "https://www.diagrams.net",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["drawio-desktop.exe"],
-    "linux": ["drawio-desktop"],
-    "macos": ["drawio-desktop.app"],
+    "windows": ["draw.io.exe"],
+    "linux": ["drawio"],
+    "macos": ["draw.io.app"],
     "android": [],
     "ios": []
   }

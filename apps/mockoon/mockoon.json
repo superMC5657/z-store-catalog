@@ -19,9 +19,9 @@
   "homepage": "https://mockoon.com",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["mockoon.portable.9.8.0.exe"],
+    "windows": ["mockoon.exe"],
     "linux": ["mockoon"],
-    "macos": ["mockoon.app"],
+    "macos": ["Mockoon.app"],
     "android": [],
     "ios": []
   }

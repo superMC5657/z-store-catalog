@@ -20,8 +20,8 @@
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
     "windows": ["rocketchat.exe"],
-    "linux": ["rocket.chat.electron"],
-    "macos": ["Rocket.Chat.Electron.app"],
+    "linux": ["rocketchat-desktop"],
+    "macos": ["Rocket.Chat.app"],
     "android": [],
     "ios": []
   }

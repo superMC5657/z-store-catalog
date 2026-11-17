@@ -17,11 +17,11 @@
   "forks": 1066,
   "is_verified": true,
   "homepage": "https://getmailspring.com/",
-  "platforms": ["windows", "linux"],
+  "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["MailspringSetup.exe"],
+    "windows": ["mailspring.exe"],
     "linux": ["mailspring"],
-    "macos": [],
+    "macos": ["Mailspring.app"],
     "android": [],
     "ios": []
   }

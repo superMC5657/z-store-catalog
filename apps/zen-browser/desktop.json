@@ -19,9 +19,9 @@
   "homepage": "https://zen-browser.app",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["desktop.exe"],
-    "linux": ["desktop"],
-    "macos": ["desktop.app"],
+    "windows": ["zen.exe"],
+    "linux": ["zen"],
+    "macos": ["Zen Browser.app"],
     "android": [],
     "ios": []
   }

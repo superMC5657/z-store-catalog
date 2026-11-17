@@ -373,7 +373,7 @@
     "name": "Playnite",
     "owner": "JosefNemec",
     "repo": "Playnite",
-    "icon": "https://raw.githubusercontent.com/JosefNemec/Playnite/master/media/playnite-avatar.png",
+    "icon": "https://raw.githubusercontent.com/JosefNemec/Playnite/master/media/playnite-logo-default.svg",
     "icon_bg": "linear-gradient(135deg, #ea580c, #c2410c)",
     "description": "开源多平台视频游戏库管理器，支持 Steam、Epic、GOG、Xbox 等多平台游戏一键整合。",
     "description_en": "Video game library manager with support for wide range of 3rd party libraries and game emulation support, providing one unified interface for your games.",
@@ -1057,7 +1057,7 @@
     "identifiers": {
       "windows": ["shattered-pixel-dungeon.exe"],
       "linux": ["shattered-pixel-dungeon"],
-      "macos": ["shattered-pixel-dungeon.app"],
+      "macos": ["Shattered Pixel Dungeon.app"],
       "android": ["com.shatteredpixel.shatteredpixeldungeon"],
       "ios": []
     }
@@ -1095,7 +1095,7 @@
     "name": "ActivityWatch",
     "owner": "ActivityWatch",
     "repo": "activitywatch",
-    "icon": "https://avatars.githubusercontent.com/u/18249061?v=4&s=200&v=4",
+    "icon": "https://raw.githubusercontent.com/ActivityWatch/media/master/logo/logo.png",
     "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
     "description": "自动追踪应用与网站使用时长，数据隐私本地存储。",
     "description_en": "The best free and open-source automated time tracker. Cross-platform, extensible, privacy-focused.",
@@ -1251,9 +1251,9 @@
     "homepage": "https://altairgraphql.dev",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["altair_8.5.9_x64_win.exe"],
+      "windows": ["Altair GraphQL Client.exe", "altair.exe"],
       "linux": ["altair"],
-      "macos": ["altair.app"],
+      "macos": ["Altair GraphQL Client.app"],
       "android": [],
       "ios": []
     }
@@ -1279,10 +1279,10 @@
     "homepage": "https://amnezia.org",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["AmneziaVPN_5.0.1.5_windows_x64.exe"],
-      "linux": ["amnezia-client"],
-      "macos": ["amnezia-client.app"],
-      "android": ["org.amnezia-client"],
+      "windows": ["AmneziaVPN.exe"],
+      "linux": ["amneziavpn", "amnezia-client"],
+      "macos": ["AmneziaVPN.app"],
+      "android": ["org.amnezia.vpn"],
       "ios": []
     }
   },
@@ -1391,9 +1391,9 @@
     "homepage": "https://anx.anxcye.com",
     "platforms": ["windows", "macos", "android", "ios"],
     "identifiers": {
-      "windows": ["Anx-Reader-windows.exe"],
+      "windows": ["anx_reader.exe", "Anx Reader.exe"],
       "linux": [],
-      "macos": ["anx-reader.app"],
+      "macos": ["Anx Reader.app"],
       "android": ["org.anx-reader"],
       "ios": ["org.anx-reader"]
     }
@@ -1419,9 +1419,9 @@
     "homepage": "https://anytype.io",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Anytype.Setup.0.56.9-alpha.exe"],
-      "linux": ["anytype-ts"],
-      "macos": ["anytype-ts.app"],
+      "windows": ["Anytype.exe"],
+      "linux": ["anytype"],
+      "macos": ["Anytype.app"],
       "android": [],
       "ios": []
     }
@@ -1672,8 +1672,8 @@
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
       "windows": ["balenaEtcher.exe"],
-      "linux": ["etcher"],
-      "macos": ["etcher.app"],
+      "linux": ["balena-etcher", "etcher"],
+      "macos": ["balenaEtcher.app"],
       "android": [],
       "ios": []
     }
@@ -1699,7 +1699,7 @@
     "homepage": "https://www.bcuninstaller.com/",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["Bulk-Crap-Uninstaller.exe"],
+      "windows": ["BCUninstaller.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -1729,7 +1729,7 @@
     "identifiers": {
       "windows": ["Beekeeper-Studio.exe"],
       "linux": ["beekeeper-studio"],
-      "macos": ["beekeeper-studio.app"],
+      "macos": ["Beekeeper Studio.app"],
       "android": [],
       "ios": []
     }
@@ -1755,7 +1755,7 @@
     "homepage": "https://soundswitch.aaflalo.me/",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["SoundSwitch_v7.3.3.0_Release_Installer.exe"],
+      "windows": ["SoundSwitch.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -1811,7 +1811,7 @@
     "homepage": "http://www.bforartists.de",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Install_Bforartists5_520.exe"],
+      "windows": ["bforartists.exe"],
       "linux": ["bforartists"],
       "macos": ["Bforartists.app"],
       "android": [],
@@ -1895,9 +1895,9 @@
     "homepage": "https://brave.com",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["BraveBrowserSetup.exe"],
-      "linux": ["brave-browser"],
-      "macos": ["brave-browser.app"],
+      "windows": ["brave.exe"],
+      "linux": ["brave-browser", "brave"],
+      "macos": ["Brave Browser.app"],
       "android": ["org.brave-browser"],
       "ios": []
     }
@@ -2091,9 +2091,9 @@
     "homepage": "https://github.com/cinnyapp/cinny-desktop",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["cinny-desktop.exe"],
-      "linux": ["cinny-desktop"],
-      "macos": ["cinny-desktop.app"],
+      "windows": ["Cinny.exe"],
+      "linux": ["cinny"],
+      "macos": ["Cinny.app"],
       "android": [],
       "ios": []
     }
@@ -2119,9 +2119,9 @@
     "homepage": "http://cataclysmdda.org",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["Cataclysm-DDA.exe"],
+      "windows": ["cataclysm-tiles.exe", "cataclysm.exe"],
       "linux": ["cataclysm-dda"],
-      "macos": ["Cataclysm-DDA.app"],
+      "macos": ["Cataclysm.app"],
       "android": ["org.cataclysm-dda"],
       "ios": []
     }
@@ -2147,7 +2147,7 @@
     "homepage": "https://github.com/clsid2/mpc-hc",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["MPC-HC.2.8.1.x64.exe"],
+      "windows": ["mpc-hc64.exe", "mpc-hc.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -2175,9 +2175,9 @@
     "homepage": "http://www.meshlab.net",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["MeshLab2025.07-windows_x86_64.exe"],
+      "windows": ["meshlab.exe"],
       "linux": ["meshlab"],
-      "macos": ["meshlab.app"],
+      "macos": ["MeshLab.app"],
       "android": [],
       "ios": []
     }
@@ -2429,7 +2429,7 @@
     "identifiers": {
       "windows": ["DeltaChat.exe"],
       "linux": ["deltachat-desktop"],
-      "macos": ["deltachat-desktop.app"],
+      "macos": ["Delta Chat.app"],
       "android": [],
       "ios": []
     }
@@ -2481,11 +2481,11 @@
     "forks": 10720,
     "is_verified": true,
     "homepage": "https://github.com/apps/desktop",
-    "platforms": ["windows"],
+    "platforms": ["windows", "macos"],
     "identifiers": {
-      "windows": ["GitHubDesktopSetup-x64.exe"],
+      "windows": ["GitHubDesktop.exe"],
       "linux": [],
-      "macos": [],
+      "macos": ["GitHub Desktop.app"],
       "android": [],
       "ios": []
     }
@@ -2597,7 +2597,7 @@
     "identifiers": {
       "windows": ["doublecmd.exe"],
       "linux": [],
-      "macos": ["doublecmd.app"],
+      "macos": ["Double Commander.app"],
       "android": [],
       "ios": []
     }
@@ -2653,7 +2653,7 @@
     "identifiers": {
       "windows": ["Thorium.exe"],
       "linux": ["thorium-reader"],
-      "macos": ["thorium-reader.app"],
+      "macos": ["Thorium Reader.app", "Thorium.app"],
       "android": [],
       "ios": []
     }
@@ -2737,7 +2737,7 @@
     "identifiers": {
       "windows": ["endless-sky.exe"],
       "linux": ["endless-sky"],
-      "macos": ["endless-sky.app"],
+      "macos": ["Endless Sky.app"],
       "android": [],
       "ios": []
     }
@@ -2831,7 +2831,7 @@
     "name": "Stats",
     "owner": "exelban",
     "repo": "stats",
-    "icon": "https://camo.githubusercontent.com/7d32c5fac1c57db1d239556bd639b839552b37691f9308e3f6adfd9e21cfed50/68747470733a2f2f63646e2e6d61632d73746174732e636f6d2f6173736574732f69636f6e2e706e67",
+    "icon": "https://cdn.mac-stats.com/assets/icon.png",
     "icon_bg": "linear-gradient(135deg, #475569, #334155)",
     "description": "macOS 菜单栏系统监控器，实时显示 CPU、内存、磁盘、网络与传感器信息。",
     "description_en": "macOS system monitor in your menu bar",
@@ -3013,11 +3013,11 @@
     "forks": 1068,
     "is_verified": true,
     "homepage": "https://getmailspring.com/",
-    "platforms": ["windows", "linux"],
+    "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["MailspringSetup.exe"],
+      "windows": ["mailspring.exe"],
       "linux": ["mailspring"],
-      "macos": [],
+      "macos": ["Mailspring.app"],
       "android": [],
       "ios": []
     }
@@ -3043,9 +3043,9 @@
     "homepage": "https://frappe.io/books",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Frappe-Books.exe"],
-      "linux": ["books"],
-      "macos": ["books.app"],
+      "windows": ["Frappe Books.exe"],
+      "linux": ["frappe-books"],
+      "macos": ["Frappe Books.app"],
       "android": [],
       "ios": []
     }
@@ -3099,9 +3099,9 @@
     "homepage": "https://www.freeplane.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Freeplane-Setup.exe"],
+      "windows": ["freeplane.exe"],
       "linux": ["freeplane"],
-      "macos": ["freeplane.app"],
+      "macos": ["Freeplane.app"],
       "android": [],
       "ios": []
     }
@@ -3155,9 +3155,9 @@
     "homepage": "http://fritzing.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["fritzing-app.exe"],
-      "linux": ["fritzing-app"],
-      "macos": ["fritzing-app.app"],
+      "windows": ["Fritzing.exe"],
+      "linux": ["Fritzing"],
+      "macos": ["Fritzing.app"],
       "android": [],
       "ios": []
     }
@@ -3419,7 +3419,7 @@
     "name": "GIMP",
     "owner": "GNOME",
     "repo": "gimp",
-    "icon": "https://raw.githubusercontent.com/GNOME/gimp/master/plug-ins/gfig/images/gfig-logo.png",
+    "icon": "https://cdn.simpleicons.org/gimp",
     "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
     "description": "最著名的开源图像处理软件，图层蒙版与丰富滤镜，Photoshop 替代。",
     "description_en": "Read-only mirror of https://gitlab.gnome.org/GNOME/gimp",
@@ -3465,7 +3465,7 @@
     "identifiers": {
       "windows": ["GNS3.exe"],
       "linux": [],
-      "macos": ["gns3-gui.app"],
+      "macos": ["GNS3.app"],
       "android": [],
       "ios": []
     }
@@ -3547,7 +3547,7 @@
     "homepage": "https://www.heidisql.com/",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["HeidiSQL_12.21.0.7344_Setup.exe"],
+      "windows": ["heidisql.exe"],
       "linux": ["heidisql"],
       "macos": ["HeidiSQL.app"],
       "android": [],
@@ -3631,9 +3631,9 @@
     "homepage": "https://hiddify.com",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["Hiddify-Windows-Setup-x64.exe"],
-      "linux": ["hiddify-app"],
-      "macos": ["hiddify-app.app"],
+      "windows": ["Hiddify.exe"],
+      "linux": ["hiddify"],
+      "macos": ["Hiddify.app"],
       "android": ["org.hiddify-app"],
       "ios": []
     }
@@ -3727,7 +3727,7 @@
     "name": "Inkscape",
     "owner": "inkscape",
     "repo": "inkscape",
-    "icon": "https://avatars.githubusercontent.com/u/8506907?v=4&s=200&v=4",
+    "icon": "https://cdn.simpleicons.org/inkscape",
     "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
     "description": "专业的开源矢量图形编辑器，SVG 编辑与设计，Illustrator 替代。",
     "description_en": "Project Website: https://inkscape.org - Code Repository: https://gitlab.com/inkscape/inkscape - Draw freely. 🖌",
@@ -3885,7 +3885,7 @@
     "identifiers": {
       "windows": ["JellyfinMediaPlayer.exe"],
       "linux": ["jellyfin-desktop"],
-      "macos": ["jellyfin-desktop.app"],
+      "macos": ["Jellyfin Media Player.app", "Jellyfin Desktop.app"],
       "android": [],
       "ios": []
     }
@@ -3911,9 +3911,9 @@
     "homepage": "https://www.diagrams.net",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["drawio-desktop.exe"],
-      "linux": ["drawio-desktop"],
-      "macos": ["drawio-desktop.app"],
+      "windows": ["draw.io.exe"],
+      "linux": ["drawio"],
+      "macos": ["draw.io.app"],
       "android": [],
       "ios": []
     }
@@ -3941,7 +3941,7 @@
     "identifiers": {
       "windows": ["jitsi-meet.exe"],
       "linux": ["jitsi-meet-electron"],
-      "macos": ["jitsi-meet-electron.app"],
+      "macos": ["Jitsi Meet.app"],
       "android": [],
       "ios": []
     }
@@ -4079,9 +4079,9 @@
     "homepage": "https://invent.kde.org/network/kdeconnect-kde",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["kdeconnect-kde.exe"],
-      "linux": ["kdeconnect-kde"],
-      "macos": ["kdeconnect-kde.app"],
+      "windows": ["kdeconnect-app.exe", "kdeconnect-indicator.exe"],
+      "linux": ["kdeconnect-app", "kdeconnect-indicator"],
+      "macos": ["KDE Connect.app"],
       "android": [],
       "ios": []
     }
@@ -4221,7 +4221,7 @@
     "identifiers": {
       "windows": ["kicad.exe"],
       "linux": [],
-      "macos": ["kicad-source-mirror.app"],
+      "macos": ["KiCad.app"],
       "android": [],
       "ios": []
     }
@@ -4305,7 +4305,7 @@
     "identifiers": {
       "windows": ["Koodo-Reader.exe"],
       "linux": ["koodo-reader"],
-      "macos": ["koodo-reader.app"],
+      "macos": ["Koodo Reader.app"],
       "android": ["org.koodo-reader"],
       "ios": []
     }
@@ -4555,9 +4555,9 @@
     "homepage": "https://nyanpasu.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["clash-nyanpasu.exe"],
+      "windows": ["Clash Nyanpasu.exe"],
       "linux": ["clash-nyanpasu"],
-      "macos": ["clash-nyanpasu.app"],
+      "macos": ["Clash Nyanpasu.app"],
       "android": [],
       "ios": []
     }
@@ -4669,7 +4669,7 @@
     "identifiers": {
       "windows": ["lite-xl.exe"],
       "linux": ["lite-xl"],
-      "macos": ["lite-xl.app"],
+      "macos": ["Lite XL.app"],
       "android": [],
       "ios": []
     }
@@ -4833,11 +4833,11 @@
     "forks": 934,
     "is_verified": true,
     "homepage": "https://alt-tab.app",
-    "platforms": ["windows", "macos", "linux"],
+    "platforms": ["macos"],
     "identifiers": {
-      "windows": ["alt-tab-macos.exe"],
-      "linux": ["alt-tab-macos"],
-      "macos": ["alt-tab-macos.app"],
+      "windows": [],
+      "linux": [],
+      "macos": ["AltTab.app"],
       "android": [],
       "ios": []
     }
@@ -5003,9 +5003,9 @@
     "homepage": "https://picard.musicbrainz.org",
     "platforms": ["windows", "macos"],
     "identifiers": {
-      "windows": ["MusicBrainz-Picard.exe"],
+      "windows": ["picard.exe"],
       "linux": [],
-      "macos": ["picard.app"],
+      "macos": ["MusicBrainz Picard.app"],
       "android": [],
       "ios": []
     }
@@ -5087,7 +5087,7 @@
     "homepage": "https://github.com/microsoft/terminal",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["terminal.exe"],
+      "windows": ["wt.exe", "WindowsTerminal.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -5227,9 +5227,9 @@
     "homepage": "https://www.shotcut.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["shotcut-win64.exe"],
+      "windows": ["shotcut.exe"],
       "linux": ["shotcut"],
-      "macos": ["shotcut.app"],
+      "macos": ["Shotcut.app"],
       "android": [],
       "ios": []
     }
@@ -5283,9 +5283,9 @@
     "homepage": "https://mockoon.com",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["mockoon.portable.9.8.0.exe"],
+      "windows": ["mockoon.exe"],
       "linux": ["mockoon"],
-      "macos": ["mockoon.app"],
+      "macos": ["Mockoon.app"],
       "android": [],
       "ios": []
     }
@@ -5311,7 +5311,7 @@
     "homepage": "http://www.nexusmods.com/skyrimspecialedition/mods/6194",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["Mod.Organizer.exe"],
+      "windows": ["ModOrganizer.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -5339,9 +5339,9 @@
     "homepage": "https://github.com/moonlight-stream/moonlight-qt",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["MoonlightSetup.exe"],
-      "linux": ["moonlight-qt"],
-      "macos": ["moonlight-qt.app"],
+      "windows": ["Moonlight.exe"],
+      "linux": ["moonlight"],
+      "macos": ["Moonlight.app"],
       "android": [],
       "ios": []
     }
@@ -5379,7 +5379,7 @@
     "name": "mRemoteNG",
     "owner": "mRemoteNG",
     "repo": "mRemoteNG",
-    "icon": "https://raw.githubusercontent.com/mRemoteNG/mRemoteNG/v1.78.2-dev/mRemoteNGDocumentation/logo.png",
+    "icon": "https://raw.githubusercontent.com/mRemoteNG/mRemoteNG/develop/mRemoteNGDocumentation/logo.png",
     "icon_bg": "linear-gradient(135deg, #0284c7, #0369a1)",
     "description": "标签式多协议远程连接管理器，支持 RDP/VNC/SSH 与凭据保存。",
     "description_en": "mRemoteNG is the next generation of mRemote, open source, tabbed, multi-protocol, remote connections manager.",
@@ -5452,8 +5452,8 @@
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
       "windows": ["MullvadVPN.exe"],
-      "linux": ["mullvadvpn-app"],
-      "macos": ["mullvadvpn-app.app"],
+      "linux": ["mullvad-vpn"],
+      "macos": ["Mullvad VPN.app"],
       "android": [],
       "ios": []
     }
@@ -5701,10 +5701,10 @@
     "forks": 376,
     "is_verified": true,
     "homepage": "https://flathub.org/apps/details/org.nickvision.tubeconverter",
-    "platforms": ["windows", "macos"],
+    "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["NickvisionParabolicSetup-arm64.exe"],
-      "linux": [],
+      "windows": ["Nickvision.Parabolic.WinUI.exe", "Parabolic.exe"],
+      "linux": ["org.nickvision.tubeconverter", "parabolic"],
       "macos": ["Parabolic.app"],
       "android": [],
       "ios": []
@@ -5733,7 +5733,7 @@
     "identifiers": {
       "windows": [],
       "linux": [],
-      "macos": ["mac-mouse-fix.app"],
+      "macos": ["Mac Mouse Fix.app"],
       "android": [],
       "ios": []
     }
@@ -5787,7 +5787,7 @@
     "homepage": "https://notepad-plus-plus.org/",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["npp.8.9.8.Installer.arm64.exe"],
+      "windows": ["notepad++.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -5871,7 +5871,7 @@
     "homepage": "https://ueli.app",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Ueli-Setup.exe"],
+      "windows": ["ueli.exe"],
       "linux": ["ueli"],
       "macos": ["ueli.app"],
       "android": [],
@@ -5939,7 +5939,7 @@
     "name": "ONLYOFFICE",
     "owner": "ONLYOFFICE",
     "repo": "DesktopEditors",
-    "icon": "https://avatars.githubusercontent.com/u/1426033?v=4&s=200&v=4",
+    "icon": "https://cdn.simpleicons.org/onlyoffice",
     "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
     "description": "兼容 Microsoft 格式的办公套件，文档表格幻灯片一体。",
     "description_en": "Open-source office suite pack that comprises all the tools you need to work with documents, spreadsheets, presentations, PDFs, and PDF forms on Windows, Linux, and macOS",
@@ -5983,7 +5983,7 @@
     "homepage": "https://github.com/Open-Shell/Open-Shell-Menu",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["OpenShellSetup_4_4_198.exe"],
+      "windows": ["StartMenu.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -5995,7 +5995,7 @@
     "name": "OpenBoard",
     "owner": "OpenBoard-org",
     "repo": "OpenBoard",
-    "icon": "https://raw.githubusercontent.com/OpenBoard-org/OpenBoard/master/resources/library/applications/Latex2svg.wgt/icon.png",
+    "icon": "https://raw.githubusercontent.com/OpenBoard-org/OpenBoard/master/resources/images/OpenBoard.png",
     "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
     "description": "面向教学的开源交互式白板软件。",
     "description_en": "OpenBoard is a cross-platform interactive whiteboard application intended for use in a classroom setting.",
@@ -6011,7 +6011,7 @@
     "homepage": "https://openboard.ch/",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["OpenBoard_Installer_1.7.7.exe"],
+      "windows": ["OpenBoard.exe"],
       "linux": ["openboard"],
       "macos": ["OpenBoard.app"],
       "android": [],
@@ -6209,7 +6209,7 @@
     "identifiers": {
       "windows": ["OpenShot.exe"],
       "linux": ["openshot-qt"],
-      "macos": ["openshot-qt.app"],
+      "macos": ["OpenShot Video Editor.app"],
       "android": [],
       "ios": []
     }
@@ -6263,9 +6263,9 @@
     "homepage": "https://opentoonz.github.io/",
     "platforms": ["windows", "macos"],
     "identifiers": {
-      "windows": ["OpenToonzSetup.exe"],
+      "windows": ["OpenToonz.exe"],
       "linux": [],
-      "macos": ["opentoonz.app"],
+      "macos": ["OpenToonz.app"],
       "android": [],
       "ios": []
     }
@@ -6317,11 +6317,11 @@
     "forks": 1470,
     "is_verified": true,
     "homepage": "https://getoutline.org/",
-    "platforms": ["windows", "linux"],
+    "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Outline-Client.exe"],
+      "windows": ["Outline.exe"],
       "linux": ["outline-apps"],
-      "macos": [],
+      "macos": ["Outline.app"],
       "android": [],
       "ios": []
     }
@@ -6375,9 +6375,9 @@
     "homepage": "https://padloc.app",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["padloc_4.3.0_windows_electron_x64.exe"],
+      "windows": ["Padloc.exe"],
       "linux": ["padloc"],
-      "macos": ["padloc.app"],
+      "macos": ["Padloc.app"],
       "android": ["org.padloc"],
       "ios": []
     }
@@ -6403,9 +6403,9 @@
     "homepage": "https://letos.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["letos.exe"],
-      "linux": ["letos"],
-      "macos": ["letos.app"],
+      "windows": ["SQLiteStudio.exe", "sqlitestudio.exe"],
+      "linux": ["sqlitestudio"],
+      "macos": ["SQLiteStudio.app"],
       "android": [],
       "ios": []
     }
@@ -6599,9 +6599,9 @@
     "homepage": "https://persepolisdm.github.io",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["persepolis_5.2.0.0_windows_64bit.exe"],
+      "windows": ["persepolis.exe"],
       "linux": ["persepolis"],
-      "macos": ["persepolis.app"],
+      "macos": ["Persepolis Download Manager.app", "persepolis.app"],
       "android": [],
       "ios": []
     }
@@ -6723,7 +6723,7 @@
     "name": "Karabiner-Elements",
     "owner": "pqrs-org",
     "repo": "Karabiner-Elements",
-    "icon": "https://raw.githubusercontent.com/pqrs-org/Karabiner-Elements/main/files/icons/@Zabriskije/KarabinerElements/exported/KarabinerElements.png",
+    "icon": "https://raw.githubusercontent.com/pqrs-org/Karabiner-Elements/main/files/icons/v13/KarabinerElements/karabiner.svg",
     "icon_bg": "linear-gradient(135deg, #475569, #334155)",
     "description": "macOS 强大的键盘自定义工具，改键、组合键与复杂映射。",
     "description_en": "Karabiner-Elements is a powerful tool for customizing keyboards on macOS",
@@ -6795,9 +6795,9 @@
     "homepage": "https://pulsar-edit.dev",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Windows.Pulsar.Setup.1.132.1.exe"],
+      "windows": ["Pulsar.exe"],
       "linux": ["pulsar"],
-      "macos": ["pulsar.app"],
+      "macos": ["Pulsar.app"],
       "android": [],
       "ios": []
     }
@@ -6907,9 +6907,9 @@
     "homepage": "https://github.com/qt-creator/qt-creator",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["qt-creator.exe"],
-      "linux": ["qt-creator"],
-      "macos": ["qt-creator.app"],
+      "windows": ["qtcreator.exe"],
+      "linux": ["qtcreator"],
+      "macos": ["Qt Creator.app"],
       "android": [],
       "ios": []
     }
@@ -7047,9 +7047,9 @@
     "homepage": "https://rancherdesktop.io",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["rancher-desktop.exe"],
+      "windows": ["Rancher Desktop.exe"],
       "linux": ["rancher-desktop"],
-      "macos": ["rancher-desktop.app"],
+      "macos": ["Rancher Desktop.app"],
       "android": [],
       "ios": []
     }
@@ -7159,7 +7159,7 @@
     "homepage": "https://rawtherapee.com",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["RawTherapee_5.13_win64_arm64_release.exe"],
+      "windows": ["rawtherapee.exe"],
       "linux": ["rawtherapee"],
       "macos": ["RawTherapee.app"],
       "android": [],
@@ -7187,9 +7187,9 @@
     "homepage": "https://readest.com",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["Readest_0.12.8_arm64-portable.exe"],
+      "windows": ["Readest.exe"],
       "linux": ["readest"],
-      "macos": ["readest.app"],
+      "macos": ["Readest.app"],
       "android": ["org.readest"],
       "ios": []
     }
@@ -7300,8 +7300,8 @@
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
       "windows": ["rocketchat.exe"],
-      "linux": ["rocket.chat.electron"],
-      "macos": ["Rocket.Chat.Electron.app"],
+      "linux": ["rocketchat-desktop"],
+      "macos": ["Rocket.Chat.app"],
       "android": [],
       "ios": []
     }
@@ -7383,7 +7383,7 @@
     "homepage": "https://ditto-cp.sourceforge.io/",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["DittoSetup_3_25_113_0.exe"],
+      "windows": ["Ditto.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -7439,7 +7439,7 @@
     "homepage": "http://wincompose.info/",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["WinCompose-Setup.exe"],
+      "windows": ["WinCompose.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -7523,9 +7523,9 @@
     "homepage": "https://getsession.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["session-desktop-win-x64.exe"],
-      "linux": ["session-desktop"],
-      "macos": ["session-desktop.app"],
+      "windows": ["Session.exe"],
+      "linux": ["session-desktop", "session"],
+      "macos": ["Session.app"],
       "android": [],
       "ios": []
     }
@@ -7747,9 +7747,9 @@
     "homepage": "https://sqlitebrowser.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["SQLiteDatabaseBrowserPortable_3.13.1.paf.exe"],
+      "windows": ["DB Browser for SQLite.exe"],
       "linux": ["sqlitebrowser"],
-      "macos": ["sqlitebrowser.app"],
+      "macos": ["DB Browser for SQLite.app"],
       "android": [],
       "ios": []
     }
@@ -7915,9 +7915,9 @@
     "homepage": "http://www.nikse.dk/SubtitleEdit/Help",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["SubtitleEdit-Windows-x64-Setup.exe"],
+      "windows": ["SubtitleEdit.exe"],
       "linux": ["subtitleedit"],
-      "macos": ["subtitleedit.app"],
+      "macos": ["Subtitle Edit.app"],
       "android": [],
       "ios": []
     }
@@ -7943,9 +7943,9 @@
     "homepage": "http://super-productivity.com?ref=github",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["Super-Productivity-Setup-arm64.exe"],
-      "linux": ["super-productivity"],
-      "macos": ["super-productivity.app"],
+      "windows": ["superProductivity.exe"],
+      "linux": ["superproductivity", "super-productivity"],
+      "macos": ["Super Productivity.app"],
       "android": ["org.super-productivity"],
       "ios": []
     }
@@ -8027,9 +8027,9 @@
     "homepage": "https://github.com/supertuxkart/stk-code",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["stk-code.exe"],
-      "linux": ["stk-code"],
-      "macos": ["stk-code.app"],
+      "windows": ["supertuxkart.exe"],
+      "linux": ["supertuxkart"],
+      "macos": ["SuperTuxKart.app"],
       "android": ["org.stk-code"],
       "ios": []
     }
@@ -8085,7 +8085,7 @@
     "identifiers": {
       "windows": ["SynfigStudio.exe"],
       "linux": ["synfig"],
-      "macos": ["synfig.app"],
+      "macos": ["SynfigStudio.app"],
       "android": [],
       "ios": []
     }
@@ -8111,7 +8111,7 @@
     "homepage": "https://www.openstego.com",
     "platforms": ["windows", "linux"],
     "identifiers": {
-      "windows": ["Setup-OpenStego.exe"],
+      "windows": ["openstego.exe"],
       "linux": ["openstego"],
       "macos": [],
       "android": [],
@@ -8139,9 +8139,9 @@
     "homepage": "https://exifcleaner.com",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["ExifCleaner.4.2.1.exe"],
+      "windows": ["ExifCleaner.exe"],
       "linux": ["exifcleaner"],
-      "macos": ["exifcleaner.app"],
+      "macos": ["ExifCleaner.app"],
       "android": [],
       "ios": []
     }
@@ -8393,7 +8393,7 @@
     "identifiers": {
       "windows": ["pdfsam.exe"],
       "linux": ["pdfsam"],
-      "macos": ["pdfsam.app"],
+      "macos": ["PDFsam Basic.app"],
       "android": [],
       "ios": []
     }
@@ -8531,7 +8531,7 @@
     "homepage": "https://privacy.sexy",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["privacy.sexy-Setup.exe"],
+      "windows": ["privacy.sexy.exe"],
       "linux": ["privacy.sexy"],
       "macos": ["privacy.sexy.app"],
       "android": [],
@@ -8587,9 +8587,9 @@
     "homepage": "https://www.usebruno.com/",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["bruno_4.1.0_arm64_win.exe"],
+      "windows": ["bruno.exe", "Bruno.exe"],
       "linux": ["bruno"],
-      "macos": ["bruno.app"],
+      "macos": ["Bruno.app"],
       "android": [],
       "ios": []
     }
@@ -8727,7 +8727,7 @@
     "homepage": "https://veracrypt.jp",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["VeraCrypt.Portable.1.26.29.exe"],
+      "windows": ["VeraCrypt.exe", "VeraCrypt-x64.exe"],
       "linux": ["veracrypt"],
       "macos": ["VeraCrypt.app"],
       "android": [],
@@ -8755,9 +8755,9 @@
     "homepage": "https://hyper.is",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Hyper-Setup.exe"],
+      "windows": ["Hyper.exe"],
       "linux": ["hyper"],
-      "macos": ["hyper.app"],
+      "macos": ["Hyper.app"],
       "android": [],
       "ios": []
     }
@@ -8839,9 +8839,9 @@
     "homepage": "https://www.waveterm.dev",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Wave-win32-x64.exe"],
-      "linux": ["waveterm"],
-      "macos": ["waveterm.app"],
+      "windows": ["Wave.exe"],
+      "linux": ["wave", "waveterm"],
+      "macos": ["Wave.app"],
       "android": [],
       "ios": []
     }
@@ -9019,7 +9019,7 @@
     "name": "x64dbg",
     "owner": "x64dbg",
     "repo": "x64dbg",
-    "icon": "https://avatars.githubusercontent.com/u/7937360?v=4&s=200&v=4",
+    "icon": "https://raw.githubusercontent.com/x64dbg/x64dbg.github.io/master/img/bug.png",
     "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
     "description": "Windows 平台开源的用户态调试器，插件生态丰富。",
     "description_en": "An open-source user mode debugger for Windows. Optimized for reverse engineering and malware analysis.",
@@ -9033,11 +9033,11 @@
     "forks": 2955,
     "is_verified": true,
     "homepage": "http://x64dbg.com",
-    "platforms": ["windows", "macos", "linux"],
+    "platforms": ["windows"],
     "identifiers": {
-      "windows": ["x64dbg.exe"],
-      "linux": ["x64dbg"],
-      "macos": ["x64dbg.app"],
+      "windows": ["x64dbg.exe", "x32dbg.exe", "x96dbg.exe"],
+      "linux": [],
+      "macos": [],
       "android": [],
       "ios": []
     }
@@ -9063,7 +9063,7 @@
     "homepage": "https://twinkletray.com",
     "platforms": ["windows"],
     "identifiers": {
-      "windows": ["Twinkle.Tray.v1.17.2.exe"],
+      "windows": ["Twinkle Tray.exe"],
       "linux": [],
       "macos": [],
       "android": [],
@@ -9149,7 +9149,7 @@
     "identifiers": {
       "windows": ["xournalpp.exe"],
       "linux": ["xournalpp"],
-      "macos": ["xournalpp.app"],
+      "macos": ["Xournal++.app"],
       "android": [],
       "ios": []
     }
@@ -9231,9 +9231,9 @@
     "homepage": "https://hyliu.me/fluent-reader/",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Fluent.Reader.Setup.1.2.2.x64.exe"],
+      "windows": ["Fluent Reader.exe"],
       "linux": ["fluent-reader"],
-      "macos": ["fluent-reader.app"],
+      "macos": ["Fluent Reader.app"],
       "android": [],
       "ios": []
     }
@@ -9259,9 +9259,9 @@
     "homepage": "https://www.zaproxy.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["ZAP_2_17_0_windows-x32.exe"],
-      "linux": ["zaproxy"],
-      "macos": ["zaproxy.app"],
+      "windows": ["zap.exe"],
+      "linux": ["zap.sh", "zaproxy"],
+      "macos": ["ZAP.app"],
       "android": [],
       "ios": []
     }
@@ -9315,9 +9315,9 @@
     "homepage": "https://zen-browser.app",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["desktop.exe"],
-      "linux": ["desktop"],
-      "macos": ["desktop.app"],
+      "windows": ["zen.exe"],
+      "linux": ["zen"],
+      "macos": ["Zen Browser.app"],
       "android": [],
       "ios": []
     }
@@ -9483,9 +9483,9 @@
     "homepage": "https://zulip.com/apps",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["Zulip-Web-Setup.exe"],
-      "linux": ["zulip-desktop"],
-      "macos": ["zulip-desktop.app"],
+      "windows": ["Zulip.exe"],
+      "linux": ["zulip"],
+      "macos": ["Zulip.app"],
       "android": [],
       "ios": []
     }
@@ -9595,7 +9595,7 @@
     "homepage": "https://cutwire.org/drift",
     "platforms": ["windows", "macos", "linux", "android"],
     "identifiers": {
-      "windows": ["Drift-Setup.exe"],
+      "windows": ["Drift.exe"],
       "linux": ["drift"],
       "macos": ["Drift.app"],
       "android": ["org.drift"],
@@ -9716,7 +9716,7 @@
   },
   {
     "id": "onekeepass/desktop",
-    "name": "desktop",
+    "name": "OneKeePass",
     "owner": "OneKeePass",
     "repo": "desktop",
     "icon": "https://raw.githubusercontent.com/OneKeePass/desktop/main/src-tauri/icons/icon.png",
@@ -9735,9 +9735,9 @@
     "homepage": "https://github.com/OneKeePass/desktop",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["OneKeePass_0.26.0_Windows_x64_Setup.exe"],
-      "linux": ["desktop"],
-      "macos": ["desktop.app"],
+      "windows": ["OneKeePass.exe"],
+      "linux": ["onekeepass"],
+      "macos": ["OneKeePass.app"],
       "android": [],
       "ios": []
     }
@@ -9819,7 +9819,7 @@
     "homepage": "https://prismlauncher.org",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["PrismLauncher-Windows-MinGW-arm64-Setup.exe"],
+      "windows": ["prismlauncher.exe"],
       "linux": ["prismlauncher"],
       "macos": ["PrismLauncher.app"],
       "android": [],
@@ -9903,7 +9903,7 @@
     "homepage": "https://github.com/SethRobinson/Patchy",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["PatchyWindowsInstaller.exe"],
+      "windows": ["Patchy.exe"],
       "linux": ["patchy"],
       "macos": ["Patchy.app"],
       "android": [],
@@ -10099,9 +10099,9 @@
     "homepage": "https://voicestudio.sh",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["VoiceStudio.exe", "voicestudio.exe"],
-      "linux": ["VoiceStudio", "voicestudio"],
-      "macos": ["VoiceStudio", "voicestudio"],
+      "windows": ["VoiceStudio.exe"],
+      "linux": ["voicestudio"],
+      "macos": ["VoiceStudio.app"],
       "android": [],
       "ios": []
     }
@@ -10136,7 +10136,7 @@
   },
   {
     "id": "stablyai/orca",
-    "name": "orca",
+    "name": "Orca",
     "owner": "stablyai",
     "repo": "orca",
     "icon": "https://raw.githubusercontent.com/stablyai/orca/HEAD/resources/build/icon.png",
@@ -10156,8 +10156,8 @@
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
       "windows": ["orca.exe"],
-      "linux": ["orca"],
-      "macos": ["orca"],
+      "linux": ["orca-ide", "orca"],
+      "macos": ["Orca.app"],
       "android": [],
       "ios": []
     }
@@ -10192,7 +10192,7 @@
   },
   {
     "id": "anywhere-labs/dsh-desktop",
-    "name": "dsh-desktop",
+    "name": "DSH Desktop",
     "owner": "anywhere-labs",
     "repo": "dsh-desktop",
     "icon": "https://raw.githubusercontent.com/anywhere-labs/dsh-desktop/master/dsh-plugin-desktop-beta/build/app-icon.png",
@@ -10211,16 +10211,16 @@
     "homepage": "https://dshdesktop.cn",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["dsh-desktop.exe", "dshdesktop.exe"],
-      "linux": ["dsh-desktop", "dshdesktop"],
-      "macos": ["dsh-desktop", "dshdesktop"],
+      "windows": ["DSH.exe", "DSH Desktop.exe"],
+      "linux": ["dsh", "dsh-desktop"],
+      "macos": ["DSH.app", "DSH Desktop.app"],
       "android": [],
       "ios": []
     }
   },
   {
     "id": "pingdotgg/t3code",
-    "name": "t3code",
+    "name": "T3 Code",
     "owner": "pingdotgg",
     "repo": "t3code",
     "icon": "https://raw.githubusercontent.com/pingdotgg/t3code/refs/heads/main/assets/prod/logo.svg",
@@ -10239,16 +10239,16 @@
     "homepage": "https://t3.codes",
     "platforms": ["windows", "macos", "linux"],
     "identifiers": {
-      "windows": ["t3code.exe"],
+      "windows": ["T3 Code.exe", "t3code.exe"],
       "linux": ["t3code"],
-      "macos": ["t3code"],
+      "macos": ["T3 Code.app"],
       "android": [],
       "ios": []
     }
   },
   {
     "id": "yetone/magpie",
-    "name": "magpie",
+    "name": "Magpie",
     "owner": "yetone",
     "repo": "magpie",
     "icon": "https://raw.githubusercontent.com/yetone/magpie/HEAD/site/public/img/icon-256.png",
@@ -10267,16 +10267,16 @@
     "homepage": "https://github.com/yetone/magpie",
     "platforms": ["windows", "macos"],
     "identifiers": {
-      "windows": ["magpie.exe"],
+      "windows": ["magpie.exe", "Magpie.exe"],
       "linux": [],
-      "macos": ["magpie"],
+      "macos": ["Magpie.app"],
       "android": [],
       "ios": []
     }
   },
   {
     "id": "zhulinsen/daily_stock_analysis",
-    "name": "daily_stock_analysis",
+    "name": "Daily Stock Analysis",
     "owner": "ZhuLinsen",
     "repo": "daily_stock_analysis",
     "icon": "https://raw.githubusercontent.com/zhulinsen/daily_stock_analysis/main/docs/assets/dsa_vi/darklogo.iconset/icon_512x512%402x.png",
@@ -10295,9 +10295,9 @@
     "homepage": "https://dsa.zhulinsen.tech",
     "platforms": ["windows", "macos"],
     "identifiers": {
-      "windows": ["daily_stock_analysis.exe"],
+      "windows": ["Daily Stock Analysis.exe", "daily_stock_analysis.exe"],
       "linux": [],
-      "macos": ["daily_stock_analysis"],
+      "macos": ["Daily Stock Analysis.app"],
       "android": [],
       "ios": []
     }

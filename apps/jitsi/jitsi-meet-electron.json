@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["jitsi-meet.exe"],
     "linux": ["jitsi-meet-electron"],
-    "macos": ["jitsi-meet-electron.app"],
+    "macos": ["Jitsi Meet.app"],
     "android": [],
     "ios": []
   }

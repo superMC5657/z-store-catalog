@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["SynfigStudio.exe"],
     "linux": ["synfig"],
-    "macos": ["synfig.app"],
+    "macos": ["SynfigStudio.app"],
     "android": [],
     "ios": []
   }

@@ -19,7 +19,7 @@
   "homepage": "https://github.com/SethRobinson/Patchy",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["PatchyWindowsInstaller.exe"],
+    "windows": ["Patchy.exe"],
     "linux": ["patchy"],
     "macos": ["Patchy.app"],
     "android": [],

@@ -19,7 +19,7 @@
   "homepage": "https://ueli.app",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Ueli-Setup.exe"],
+    "windows": ["ueli.exe"],
     "linux": ["ueli"],
     "macos": ["ueli.app"],
     "android": [],

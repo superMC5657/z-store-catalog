@@ -19,9 +19,9 @@
   "homepage": "https://invent.kde.org/network/kdeconnect-kde",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["kdeconnect-kde.exe"],
-    "linux": ["kdeconnect-kde"],
-    "macos": ["kdeconnect-kde.app"],
+    "windows": ["kdeconnect-app.exe", "kdeconnect-indicator.exe"],
+    "linux": ["kdeconnect-app", "kdeconnect-indicator"],
+    "macos": ["KDE Connect.app"],
     "android": [],
     "ios": []
   }

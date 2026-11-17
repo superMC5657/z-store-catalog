@@ -19,9 +19,9 @@
   "homepage": "https://sqlitebrowser.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["SQLiteDatabaseBrowserPortable_3.13.1.paf.exe"],
+    "windows": ["DB Browser for SQLite.exe"],
     "linux": ["sqlitebrowser"],
-    "macos": ["sqlitebrowser.app"],
+    "macos": ["DB Browser for SQLite.app"],
     "android": [],
     "ios": []
   }

@@ -3,7 +3,7 @@
   "name": "OpenBoard",
   "owner": "OpenBoard-org",
   "repo": "OpenBoard",
-  "icon": "https://raw.githubusercontent.com/OpenBoard-org/OpenBoard/master/resources/library/applications/Latex2svg.wgt/icon.png",
+  "icon": "https://raw.githubusercontent.com/OpenBoard-org/OpenBoard/master/resources/images/OpenBoard.png",
   "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
   "description": "面向教学的开源交互式白板软件。",
   "description_en": "OpenBoard is a cross-platform interactive whiteboard application intended for use in a classroom setting.",
@@ -19,7 +19,7 @@
   "homepage": "https://openboard.ch/",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["OpenBoard_Installer_1.7.7.exe"],
+    "windows": ["OpenBoard.exe"],
     "linux": ["openboard"],
     "macos": ["OpenBoard.app"],
     "android": [],

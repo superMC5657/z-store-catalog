@@ -3,7 +3,7 @@
   "name": "Karabiner-Elements",
   "owner": "pqrs-org",
   "repo": "Karabiner-Elements",
-  "icon": "https://raw.githubusercontent.com/pqrs-org/Karabiner-Elements/main/files/icons/@Zabriskije/KarabinerElements/exported/KarabinerElements.png",
+  "icon": "https://raw.githubusercontent.com/pqrs-org/Karabiner-Elements/main/files/icons/v13/KarabinerElements/karabiner.svg",
   "icon_bg": "linear-gradient(135deg, #475569, #334155)",
   "description": "macOS 强大的键盘自定义工具，改键、组合键与复杂映射。",
   "description_en": "Karabiner-Elements is a powerful tool for customizing keyboards on macOS",

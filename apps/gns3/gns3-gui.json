@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["GNS3.exe"],
     "linux": [],
-    "macos": ["gns3-gui.app"],
+    "macos": ["GNS3.app"],
     "android": [],
     "ios": []
   }

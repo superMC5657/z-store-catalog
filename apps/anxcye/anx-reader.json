@@ -19,9 +19,9 @@
   "homepage": "https://anx.anxcye.com",
   "platforms": ["windows", "macos", "android", "ios"],
   "identifiers": {
-    "windows": ["Anx-Reader-windows.exe"],
+    "windows": ["anx_reader.exe", "Anx Reader.exe"],
     "linux": [],
-    "macos": ["anx-reader.app"],
+    "macos": ["Anx Reader.app"],
     "android": ["org.anx-reader"],
     "ios": ["org.anx-reader"]
   }

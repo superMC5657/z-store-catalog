@@ -19,9 +19,9 @@
   "homepage": "https://www.zaproxy.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["ZAP_2_17_0_windows-x32.exe"],
-    "linux": ["zaproxy"],
-    "macos": ["zaproxy.app"],
+    "windows": ["zap.exe"],
+    "linux": ["zap.sh", "zaproxy"],
+    "macos": ["ZAP.app"],
     "android": [],
     "ios": []
   }

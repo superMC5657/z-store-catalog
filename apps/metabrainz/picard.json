@@ -19,9 +19,9 @@
   "homepage": "https://picard.musicbrainz.org",
   "platforms": ["windows", "macos"],
   "identifiers": {
-    "windows": ["MusicBrainz-Picard.exe"],
+    "windows": ["picard.exe"],
     "linux": [],
-    "macos": ["picard.app"],
+    "macos": ["MusicBrainz Picard.app"],
     "android": [],
     "ios": []
   }
