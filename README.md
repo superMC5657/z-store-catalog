@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="./catalog.json"><img src="https://img.shields.io/badge/Apps-373-blue.svg" alt="Apps Count" /></a>
+  <a href="./catalog.json"><img src="https://img.shields.io/badge/Apps-358-blue.svg" alt="Apps Count" /></a>
   <a href="./scripts/validate-catalog.mjs"><img src="https://img.shields.io/badge/Validation-Passing-brightgreen.svg" alt="Validation" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License" /></a>
 </p>
