@@ -19,9 +19,9 @@
   "homepage": "https://nyanpasu.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["clash-nyanpasu.exe"],
+    "windows": ["Clash Nyanpasu.exe"],
     "linux": ["clash-nyanpasu"],
-    "macos": ["clash-nyanpasu.app"],
+    "macos": ["Clash Nyanpasu.app"],
     "android": [],
     "ios": []
   }

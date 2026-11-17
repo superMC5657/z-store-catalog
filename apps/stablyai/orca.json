@@ -1,6 +1,6 @@
 {
   "id": "stablyai/orca",
-  "name": "orca",
+  "name": "Orca",
   "owner": "stablyai",
   "repo": "orca",
   "icon": "https://raw.githubusercontent.com/stablyai/orca/HEAD/resources/build/icon.png",
@@ -20,8 +20,8 @@
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
     "windows": ["orca.exe"],
-    "linux": ["orca"],
-    "macos": ["orca"],
+    "linux": ["orca-ide", "orca"],
+    "macos": ["Orca.app"],
     "android": [],
     "ios": []
   }

@@ -19,9 +19,9 @@
   "homepage": "http://www.nikse.dk/SubtitleEdit/Help",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["SubtitleEdit-Windows-x64-Setup.exe"],
+    "windows": ["SubtitleEdit.exe"],
     "linux": ["subtitleedit"],
-    "macos": ["subtitleedit.app"],
+    "macos": ["Subtitle Edit.app"],
     "android": [],
     "ios": []
   }

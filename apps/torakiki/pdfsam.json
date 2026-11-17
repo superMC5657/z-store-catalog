@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["pdfsam.exe"],
     "linux": ["pdfsam"],
-    "macos": ["pdfsam.app"],
+    "macos": ["PDFsam Basic.app"],
     "android": [],
     "ios": []
   }

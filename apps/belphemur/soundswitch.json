@@ -19,7 +19,7 @@
   "homepage": "https://soundswitch.aaflalo.me/",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["SoundSwitch_v7.3.3.0_Release_Installer.exe"],
+    "windows": ["SoundSwitch.exe"],
     "linux": [],
     "macos": [],
     "android": [],

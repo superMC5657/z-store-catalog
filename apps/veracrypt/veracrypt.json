@@ -19,7 +19,7 @@
   "homepage": "https://veracrypt.jp",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["VeraCrypt.Portable.1.26.29.exe"],
+    "windows": ["VeraCrypt.exe", "VeraCrypt-x64.exe"],
     "linux": ["veracrypt"],
     "macos": ["VeraCrypt.app"],
     "android": [],

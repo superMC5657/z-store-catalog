@@ -19,9 +19,9 @@
   "homepage": "https://github.com/supertuxkart/stk-code",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["stk-code.exe"],
-    "linux": ["stk-code"],
-    "macos": ["stk-code.app"],
+    "windows": ["supertuxkart.exe"],
+    "linux": ["supertuxkart"],
+    "macos": ["SuperTuxKart.app"],
     "android": ["org.stk-code"],
     "ios": []
   }

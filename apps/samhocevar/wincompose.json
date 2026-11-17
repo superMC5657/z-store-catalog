@@ -19,7 +19,7 @@
   "homepage": "http://wincompose.info/",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["WinCompose-Setup.exe"],
+    "windows": ["WinCompose.exe"],
     "linux": [],
     "macos": [],
     "android": [],

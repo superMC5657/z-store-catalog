@@ -17,11 +17,11 @@
   "forks": 10718,
   "is_verified": true,
   "homepage": "https://github.com/apps/desktop",
-  "platforms": ["windows"],
+  "platforms": ["windows", "macos"],
   "identifiers": {
-    "windows": ["GitHubDesktopSetup-x64.exe"],
+    "windows": ["GitHubDesktop.exe"],
     "linux": [],
-    "macos": [],
+    "macos": ["GitHub Desktop.app"],
     "android": [],
     "ios": []
   }

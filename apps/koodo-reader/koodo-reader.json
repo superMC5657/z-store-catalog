@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["Koodo-Reader.exe"],
     "linux": ["koodo-reader"],
-    "macos": ["koodo-reader.app"],
+    "macos": ["Koodo Reader.app"],
     "android": ["org.koodo-reader"],
     "ios": []
   }

@@ -19,9 +19,9 @@
   "homepage": "https://brave.com",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["BraveBrowserSetup.exe"],
-    "linux": ["brave-browser"],
-    "macos": ["brave-browser.app"],
+    "windows": ["brave.exe"],
+    "linux": ["brave-browser", "brave"],
+    "macos": ["Brave Browser.app"],
     "android": ["org.brave-browser"],
     "ios": []
   }

@@ -19,9 +19,9 @@
   "homepage": "https://www.shotcut.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["shotcut-win64.exe"],
+    "windows": ["shotcut.exe"],
     "linux": ["shotcut"],
-    "macos": ["shotcut.app"],
+    "macos": ["Shotcut.app"],
     "android": [],
     "ios": []
   }

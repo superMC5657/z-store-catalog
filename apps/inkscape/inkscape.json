@@ -3,7 +3,7 @@
   "name": "Inkscape",
   "owner": "inkscape",
   "repo": "inkscape",
-  "icon": "https://avatars.githubusercontent.com/u/8506907?v=4&s=200&v=4",
+  "icon": "https://cdn.simpleicons.org/inkscape",
   "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
   "description": "专业的开源矢量图形编辑器，SVG 编辑与设计，Illustrator 替代。",
   "description_en": "Project Website: https://inkscape.org - Code Repository: https://gitlab.com/inkscape/inkscape - Draw freely. 🖌",

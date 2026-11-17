@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["endless-sky.exe"],
     "linux": ["endless-sky"],
-    "macos": ["endless-sky.app"],
+    "macos": ["Endless Sky.app"],
     "android": [],
     "ios": []
   }

@@ -21,7 +21,7 @@
   "identifiers": {
     "windows": ["Thorium.exe"],
     "linux": ["thorium-reader"],
-    "macos": ["thorium-reader.app"],
+    "macos": ["Thorium Reader.app", "Thorium.app"],
     "android": [],
     "ios": []
   }

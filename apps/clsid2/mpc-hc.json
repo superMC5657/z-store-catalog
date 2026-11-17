@@ -19,7 +19,7 @@
   "homepage": "https://github.com/clsid2/mpc-hc",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["MPC-HC.2.8.1.x64.exe"],
+    "windows": ["mpc-hc64.exe", "mpc-hc.exe"],
     "linux": [],
     "macos": [],
     "android": [],

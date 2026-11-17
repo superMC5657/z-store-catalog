@@ -19,9 +19,9 @@
   "homepage": "https://www.freeplane.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Freeplane-Setup.exe"],
+    "windows": ["freeplane.exe"],
     "linux": ["freeplane"],
-    "macos": ["freeplane.app"],
+    "macos": ["Freeplane.app"],
     "android": [],
     "ios": []
   }

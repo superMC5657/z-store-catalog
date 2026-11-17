@@ -19,7 +19,7 @@
   "homepage": "https://notepad-plus-plus.org/",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["npp.8.9.8.Installer.arm64.exe"],
+    "windows": ["notepad++.exe"],
     "linux": [],
     "macos": [],
     "android": [],

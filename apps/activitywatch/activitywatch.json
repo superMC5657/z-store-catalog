@@ -3,7 +3,7 @@
   "name": "ActivityWatch",
   "owner": "ActivityWatch",
   "repo": "activitywatch",
-  "icon": "https://avatars.githubusercontent.com/u/18249061?v=4&s=200&v=4",
+  "icon": "https://raw.githubusercontent.com/ActivityWatch/media/master/logo/logo.png",
   "icon_bg": "linear-gradient(135deg, #d97706, #b45309)",
   "description": "自动追踪应用与网站使用时长，数据隐私本地存储。",
   "description_en": "The best free and open-source automated time tracker. Cross-platform, extensible, privacy-focused.",

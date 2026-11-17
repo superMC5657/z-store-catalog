@@ -19,9 +19,9 @@
   "homepage": "https://letos.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["letos.exe"],
-    "linux": ["letos"],
-    "macos": ["letos.app"],
+    "windows": ["SQLiteStudio.exe", "sqlitestudio.exe"],
+    "linux": ["sqlitestudio"],
+    "macos": ["SQLiteStudio.app"],
     "android": [],
     "ios": []
   }

@@ -1,6 +1,6 @@
 {
   "id": "onekeepass/desktop",
-  "name": "desktop",
+  "name": "OneKeePass",
   "owner": "OneKeePass",
   "repo": "desktop",
   "icon": "https://raw.githubusercontent.com/OneKeePass/desktop/main/src-tauri/icons/icon.png",
@@ -19,9 +19,9 @@
   "homepage": "https://github.com/OneKeePass/desktop",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["OneKeePass_0.26.0_Windows_x64_Setup.exe"],
-    "linux": ["desktop"],
-    "macos": ["desktop.app"],
+    "windows": ["OneKeePass.exe"],
+    "linux": ["onekeepass"],
+    "macos": ["OneKeePass.app"],
     "android": [],
     "ios": []
   }

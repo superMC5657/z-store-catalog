@@ -19,9 +19,9 @@
   "homepage": "http://cataclysmdda.org",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["Cataclysm-DDA.exe"],
+    "windows": ["cataclysm-tiles.exe", "cataclysm.exe"],
     "linux": ["cataclysm-dda"],
-    "macos": ["Cataclysm-DDA.app"],
+    "macos": ["Cataclysm.app"],
     "android": ["org.cataclysm-dda"],
     "ios": []
   }

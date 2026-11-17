@@ -19,7 +19,7 @@
   "homepage": "https://www.bcuninstaller.com/",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["Bulk-Crap-Uninstaller.exe"],
+    "windows": ["BCUninstaller.exe"],
     "linux": [],
     "macos": [],
     "android": [],

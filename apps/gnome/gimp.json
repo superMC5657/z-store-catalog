@@ -3,7 +3,7 @@
   "name": "GIMP",
   "owner": "GNOME",
   "repo": "gimp",
-  "icon": "https://raw.githubusercontent.com/GNOME/gimp/master/plug-ins/gfig/images/gfig-logo.png",
+  "icon": "https://cdn.simpleicons.org/gimp",
   "icon_bg": "linear-gradient(135deg, #8b5cf6, #6d28d9)",
   "description": "最著名的开源图像处理软件，图层蒙版与丰富滤镜，Photoshop 替代。",
   "description_en": "Read-only mirror of https://gitlab.gnome.org/GNOME/gimp",

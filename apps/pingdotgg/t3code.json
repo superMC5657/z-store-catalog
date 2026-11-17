@@ -1,6 +1,6 @@
 {
   "id": "pingdotgg/t3code",
-  "name": "t3code",
+  "name": "T3 Code",
   "owner": "pingdotgg",
   "repo": "t3code",
   "icon": "https://raw.githubusercontent.com/pingdotgg/t3code/refs/heads/main/assets/prod/logo.svg",
@@ -19,9 +19,9 @@
   "homepage": "https://t3.codes",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["t3code.exe"],
+    "windows": ["T3 Code.exe", "t3code.exe"],
     "linux": ["t3code"],
-    "macos": ["t3code"],
+    "macos": ["T3 Code.app"],
     "android": [],
     "ios": []
   }

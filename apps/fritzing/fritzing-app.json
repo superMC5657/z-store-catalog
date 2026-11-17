@@ -19,9 +19,9 @@
   "homepage": "http://fritzing.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["fritzing-app.exe"],
-    "linux": ["fritzing-app"],
-    "macos": ["fritzing-app.app"],
+    "windows": ["Fritzing.exe"],
+    "linux": ["Fritzing"],
+    "macos": ["Fritzing.app"],
     "android": [],
     "ios": []
   }

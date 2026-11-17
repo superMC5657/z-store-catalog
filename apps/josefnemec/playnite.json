@@ -3,7 +3,7 @@
   "name": "Playnite",
   "owner": "JosefNemec",
   "repo": "Playnite",
-  "icon": "https://raw.githubusercontent.com/JosefNemec/Playnite/master/media/playnite-avatar.png",
+  "icon": "https://raw.githubusercontent.com/JosefNemec/Playnite/master/media/playnite-logo-default.svg",
   "icon_bg": "linear-gradient(135deg, #ea580c, #c2410c)",
   "description": "开源多平台视频游戏库管理器，支持 Steam、Epic、GOG、Xbox 等多平台游戏一键整合。",
   "description_en": "Video game library manager with support for wide range of 3rd party libraries and game emulation support, providing one unified interface for your games.",

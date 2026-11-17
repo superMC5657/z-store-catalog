@@ -17,11 +17,11 @@
   "forks": 1469,
   "is_verified": true,
   "homepage": "https://getoutline.org/",
-  "platforms": ["windows", "linux"],
+  "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Outline-Client.exe"],
+    "windows": ["Outline.exe"],
     "linux": ["outline-apps"],
-    "macos": [],
+    "macos": ["Outline.app"],
     "android": [],
     "ios": []
   }

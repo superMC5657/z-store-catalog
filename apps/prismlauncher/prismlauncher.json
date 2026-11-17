@@ -19,7 +19,7 @@
   "homepage": "https://prismlauncher.org",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["PrismLauncher-Windows-MinGW-arm64-Setup.exe"],
+    "windows": ["prismlauncher.exe"],
     "linux": ["prismlauncher"],
     "macos": ["PrismLauncher.app"],
     "android": [],

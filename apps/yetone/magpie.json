@@ -1,6 +1,6 @@
 {
   "id": "yetone/magpie",
-  "name": "magpie",
+  "name": "Magpie",
   "owner": "yetone",
   "repo": "magpie",
   "icon": "https://raw.githubusercontent.com/yetone/magpie/HEAD/site/public/img/icon-256.png",
@@ -19,9 +19,9 @@
   "homepage": "https://github.com/yetone/magpie",
   "platforms": ["windows", "macos"],
   "identifiers": {
-    "windows": ["magpie.exe"],
+    "windows": ["magpie.exe", "Magpie.exe"],
     "linux": [],
-    "macos": ["magpie"],
+    "macos": ["Magpie.app"],
     "android": [],
     "ios": []
   }

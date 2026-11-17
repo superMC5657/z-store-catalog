@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Open-Shell/Open-Shell-Menu",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["OpenShellSetup_4_4_198.exe"],
+    "windows": ["StartMenu.exe"],
     "linux": [],
     "macos": [],
     "android": [],

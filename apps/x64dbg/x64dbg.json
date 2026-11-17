@@ -3,7 +3,7 @@
   "name": "x64dbg",
   "owner": "x64dbg",
   "repo": "x64dbg",
-  "icon": "https://avatars.githubusercontent.com/u/7937360?v=4&s=200&v=4",
+  "icon": "https://raw.githubusercontent.com/x64dbg/x64dbg.github.io/master/img/bug.png",
   "icon_bg": "linear-gradient(135deg, #2563eb, #1d4ed8)",
   "description": "Windows 平台开源的用户态调试器，插件生态丰富。",
   "description_en": "An open-source user mode debugger for Windows. Optimized for reverse engineering and malware analysis.",
@@ -17,11 +17,11 @@
   "forks": 2948,
   "is_verified": true,
   "homepage": "http://x64dbg.com",
-  "platforms": ["windows", "macos", "linux"],
+  "platforms": ["windows"],
   "identifiers": {
-    "windows": ["x64dbg.exe"],
-    "linux": ["x64dbg"],
-    "macos": ["x64dbg.app"],
+    "windows": ["x64dbg.exe", "x32dbg.exe", "x96dbg.exe"],
+    "linux": [],
+    "macos": [],
     "android": [],
     "ios": []
   }

@@ -19,7 +19,7 @@
   "homepage": "https://cutwire.org/drift",
   "platforms": ["windows", "macos", "linux", "android"],
   "identifiers": {
-    "windows": ["Drift-Setup.exe"],
+    "windows": ["Drift.exe"],
     "linux": ["drift"],
     "macos": ["Drift.app"],
     "android": ["org.drift"],

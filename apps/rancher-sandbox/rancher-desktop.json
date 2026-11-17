@@ -19,9 +19,9 @@
   "homepage": "https://rancherdesktop.io",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["rancher-desktop.exe"],
+    "windows": ["Rancher Desktop.exe"],
     "linux": ["rancher-desktop"],
-    "macos": ["rancher-desktop.app"],
+    "macos": ["Rancher Desktop.app"],
     "android": [],
     "ios": []
   }

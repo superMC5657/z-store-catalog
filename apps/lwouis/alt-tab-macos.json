@@ -17,11 +17,11 @@
   "forks": 932,
   "is_verified": true,
   "homepage": "https://alt-tab.app",
-  "platforms": ["windows", "macos", "linux"],
+  "platforms": ["macos"],
   "identifiers": {
-    "windows": ["alt-tab-macos.exe"],
-    "linux": ["alt-tab-macos"],
-    "macos": ["alt-tab-macos.app"],
+    "windows": [],
+    "linux": [],
+    "macos": ["AltTab.app"],
     "android": [],
     "ios": []
   }

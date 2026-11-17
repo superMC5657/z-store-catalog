@@ -19,9 +19,9 @@
   "homepage": "https://frappe.io/books",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Frappe-Books.exe"],
-    "linux": ["books"],
-    "macos": ["books.app"],
+    "windows": ["Frappe Books.exe"],
+    "linux": ["frappe-books"],
+    "macos": ["Frappe Books.app"],
     "android": [],
     "ios": []
   }

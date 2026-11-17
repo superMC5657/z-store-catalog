@@ -19,9 +19,9 @@
   "homepage": "https://hyper.is",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Hyper-Setup.exe"],
+    "windows": ["Hyper.exe"],
     "linux": ["hyper"],
-    "macos": ["hyper.app"],
+    "macos": ["Hyper.app"],
     "android": [],
     "ios": []
   }

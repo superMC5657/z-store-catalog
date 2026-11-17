@@ -19,9 +19,9 @@
   "homepage": "https://hyliu.me/fluent-reader/",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Fluent.Reader.Setup.1.2.2.x64.exe"],
+    "windows": ["Fluent Reader.exe"],
     "linux": ["fluent-reader"],
-    "macos": ["fluent-reader.app"],
+    "macos": ["Fluent Reader.app"],
     "android": [],
     "ios": []
   }

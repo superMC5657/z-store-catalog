@@ -19,9 +19,9 @@
   "homepage": "https://github.com/moonlight-stream/moonlight-qt",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["MoonlightSetup.exe"],
-    "linux": ["moonlight-qt"],
-    "macos": ["moonlight-qt.app"],
+    "windows": ["Moonlight.exe"],
+    "linux": ["moonlight"],
+    "macos": ["Moonlight.app"],
     "android": [],
     "ios": []
   }

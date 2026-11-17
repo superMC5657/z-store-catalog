@@ -19,9 +19,9 @@
   "homepage": "https://www.waveterm.dev",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["Wave-win32-x64.exe"],
-    "linux": ["waveterm"],
-    "macos": ["waveterm.app"],
+    "windows": ["Wave.exe"],
+    "linux": ["wave", "waveterm"],
+    "macos": ["Wave.app"],
     "android": [],
     "ios": []
   }

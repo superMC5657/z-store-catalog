@@ -19,9 +19,9 @@
   "homepage": "https://exifcleaner.com",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["ExifCleaner.4.2.1.exe"],
+    "windows": ["ExifCleaner.exe"],
     "linux": ["exifcleaner"],
-    "macos": ["exifcleaner.app"],
+    "macos": ["ExifCleaner.app"],
     "android": [],
     "ios": []
   }

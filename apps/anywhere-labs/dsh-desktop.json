@@ -1,6 +1,6 @@
 {
   "id": "anywhere-labs/dsh-desktop",
-  "name": "dsh-desktop",
+  "name": "DSH Desktop",
   "owner": "anywhere-labs",
   "repo": "dsh-desktop",
   "icon": "https://raw.githubusercontent.com/anywhere-labs/dsh-desktop/master/dsh-plugin-desktop-beta/build/app-icon.png",
@@ -19,9 +19,9 @@
   "homepage": "https://dshdesktop.cn",
   "platforms": ["windows", "macos", "linux"],
   "identifiers": {
-    "windows": ["dsh-desktop.exe", "dshdesktop.exe"],
-    "linux": ["dsh-desktop", "dshdesktop"],
-    "macos": ["dsh-desktop", "dshdesktop"],
+    "windows": ["DSH.exe", "DSH Desktop.exe"],
+    "linux": ["dsh", "dsh-desktop"],
+    "macos": ["DSH.app", "DSH Desktop.app"],
     "android": [],
     "ios": []
   }

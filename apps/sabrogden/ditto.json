@@ -19,7 +19,7 @@
   "homepage": "https://ditto-cp.sourceforge.io/",
   "platforms": ["windows"],
   "identifiers": {
-    "windows": ["DittoSetup_3_25_113_0.exe"],
+    "windows": ["Ditto.exe"],
     "linux": [],
     "macos": [],
     "android": [],

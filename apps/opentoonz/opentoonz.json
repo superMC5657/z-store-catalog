@@ -19,9 +19,9 @@
   "homepage": "https://opentoonz.github.io/",
   "platforms": ["windows", "macos"],
   "identifiers": {
-    "windows": ["OpenToonzSetup.exe"],
+    "windows": ["OpenToonz.exe"],
     "linux": [],
-    "macos": ["opentoonz.app"],
+    "macos": ["OpenToonz.app"],
     "android": [],
     "ios": []
   }
